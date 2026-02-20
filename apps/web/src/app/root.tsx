@@ -32,6 +32,7 @@ import { HotReloadIndicator } from '../__create/HotReload';
 import { useSandboxStore } from '../__create/hmr-sandbox-store';
 import type { Route } from './+types/root';
 import { useDevServerHeartbeat } from '../__create/useDevServerHeartbeat';
+import { Providers } from './providers';
 
 export const links = () => [];
 
@@ -477,6 +478,8 @@ export function Layout({ children }: { children: ReactNode }) {
 
 export default function App() {
   return (
-    <Outlet />
+    <Providers>
+      <Outlet />
+    </Providers>
   );
 }
