@@ -253,10 +253,3 @@ app.route(API_BASENAME, api);
 
 export { app };
 
-if (!process.env.VERCEL) {
-  const { createHonoServer } = await import('react-router-hono-server/node');
-  await createHonoServer({
-    app,
-    defaultLogger: false,
-  });
-}

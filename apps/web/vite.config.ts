@@ -35,10 +35,10 @@ export default defineConfig({
   plugins: [
     nextPublicProcessEnv(),
     restartEnvFileChange(),
-    reactRouterHonoServer({
-      serverEntryPoint: './__create/index.ts',
+    !process.env.VERCEL ? reactRouterHonoServer({
+      serverEntryPoint: './__create/server.ts',
       runtime: 'node',
-    }),
+    }) : null,
     babel({
       include: ['src/**/*.{js,jsx,ts,tsx}'], // or RegExp: /src\/.*\.[tj]sx?$/
       exclude: /node_modules/, // skip everything else

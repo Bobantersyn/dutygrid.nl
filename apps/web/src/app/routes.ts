@@ -107,7 +107,7 @@ function generateRoutes(node: Tree): RouteConfigEntry[] {
 if (import.meta.env.DEV) {
 	import.meta.glob('./**/page.jsx', {});
 	if (import.meta.hot) {
-		import.meta.hot.accept((newSelf) => {
+		import.meta.hot.accept((newSelf: any) => {
 			import.meta.hot?.invalidate();
 		});
 	}
