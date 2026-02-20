@@ -1,11 +1,5 @@
 import { useState } from "react";
-
-function formatLocalDate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
+import { formatDateLocal } from "@/utils/dateUtils";
 
 function getWeekNumber(date) {
   const d = new Date(
@@ -26,12 +20,12 @@ function getWeekDates(date) {
   sunday.setDate(sunday.getDate() + 6);
 
   return {
-    start: formatLocalDate(monday),
-    end: formatLocalDate(sunday),
+    start: formatDateLocal(monday),
+    end: formatDateLocal(sunday),
     dates: Array.from({ length: 7 }, (_, i) => {
       const date = new Date(monday);
       date.setDate(date.getDate() + i);
-      return formatLocalDate(date);
+      return formatDateLocal(date);
     }),
     weekNumber: getWeekNumber(monday),
   };
@@ -93,4 +87,4 @@ export function usePlanningWeek() {
   };
 }
 
-export { formatLocalDate };
+export { formatDateLocal as formatLocalDate };

@@ -1,4 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { formatDateLocal } from "@/utils/dateUtils";
 
 export function usePlanningData(currentWeek, userRole) {
   const queryClient = useQueryClient();
@@ -127,7 +128,7 @@ export function usePlanningData(currentWeek, userRole) {
     const end = new Date(req.end_date);
 
     while (loop <= end) {
-      days.push(loop.toISOString().split('T')[0]);
+      days.push(formatDateLocal(loop));
       loop.setDate(loop.getDate() + 1);
     }
 

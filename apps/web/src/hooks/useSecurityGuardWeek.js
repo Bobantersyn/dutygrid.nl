@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { formatDateLocal } from "@/utils/dateUtils";
 
 export function useSecurityGuardWeek(employeeId) {
   const [currentWeekStart, setCurrentWeekStart] = useState(() => {
@@ -42,10 +43,10 @@ export function useSecurityGuardWeek(employeeId) {
       currentWeekStart.toISOString(),
     ],
     queryFn: async () => {
-      const startDate = currentWeekStart.toISOString().split("T")[0];
+      const startDate = formatDateLocal(currentWeekStart);
       const endDate = new Date(currentWeekStart);
       endDate.setDate(currentWeekStart.getDate() + 6);
-      const endDateStr = endDate.toISOString().split("T")[0];
+      const endDateStr = formatDateLocal(endDate);
 
       const url = `/api/shifts?employee_id=${employeeId}&start_date=${startDate}&end_date=${endDateStr}`;
       const response = await fetch(url);
@@ -59,7 +60,7 @@ export function useSecurityGuardWeek(employeeId) {
   const shifts = shiftsData?.shifts || [];
 
   const shiftsByDate = weekDates.map((date) => {
-    const dateStr = date.toISOString().split("T")[0];
+    const dateStr = formatDateLocal(date);
     return {
       date,
       dateStr,
