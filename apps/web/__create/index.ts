@@ -251,7 +251,11 @@ app.use('/api/auth/*', async (c, next) => {
 });
 app.route(API_BASENAME, api);
 
-export default await createHonoServer({
-  app,
-  defaultLogger: false,
-});
+export { app };
+
+if (!process.env.VERCEL) {
+  await createHonoServer({
+    app,
+    defaultLogger: false,
+  });
+}
