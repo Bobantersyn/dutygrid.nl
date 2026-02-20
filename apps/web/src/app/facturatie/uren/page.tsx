@@ -1,142 +1,158 @@
 "use client";
 
 import { useState } from "react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
-    FileDown, CheckCircle, AlertCircle, Clock, Save, Edit2
+    FileDown, CheckCircle, Clock, Building2, MapPin, ChevronDown, ChevronRight, ArrowLeft
 } from "lucide-react";
+import { DashboardHeader } from "@/components/Dashboard/DashboardHeader";
+import { LoadingState } from "@/components/Dashboard/LoadingState";
 
-export default function HoursPage() {
+export default function BillingPage() {
     const [month, setMonth] = useState(new Date().toISOString().slice(0, 7)); // YYYY-MM
-    const [editingId, setEditingId] = useState(null);
-    const [editValues, setEditValues] = useState({});
-    const queryClient = useQueryClient();
+    const [expandedClients, setExpandedClients] = useState<Record<string, boolean>>({});
 
-    const { data: reportData, isLoading } = useQuery({
-        queryKey: ["hours-report", month],
+    const { data: billingData, isLoading } = useQuery({
+        queryKey: ["billing-report", month],
         queryFn: async () => {
-            const res = await fetch(`/api/reports/hours?month=${month}`);
+            const res = await fetch(`/api/reports/billing?month=${month}`);
             if (!res.ok) throw new Error("Failed");
             return res.json();
         }
     });
 
-    const updateMutation = useMutation({
-        mutationFn: async (data: any) => {
-            const res = await fetch("/api/hours", {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
-            if (!res.ok) throw new Error("Failed");
-            return res.json();
-        },
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ["hours-report"] });
-            setEditingId(null);
-        },
-        onError: (err: Error) => {
-            alert(`Fout bij opslaan: ${err.message}`);
-        }
-    });
-
-    const handleSave = (record: any) => {
-        // Construct timestamps
-        const date = new Date(record.start_time).toISOString().split("T")[0];
-        const actualStart = (editValues as any).actual_start ? `${date}T${(editValues as any).actual_start}:00` : null;
-        const actualEnd = (editValues as any).actual_end ? `${date}T${(editValues as any).actual_end}:00` : null;
-        // Handle overnight for end time if needed (simplified here)
-
-        updateMutation.mutate({
-            id: record.id,
-            actual_start_time: actualStart,
-            actual_end_time: actualEnd,
-            actual_break_minutes: parseInt((editValues as any).actual_break || 0),
-            status: 'verified' // Auto verify on save
-        } as any);
-    };
-
-    const startEdit = (record: any) => {
-        setEditingId(record.id);
-        setEditValues({
-            actual_start: record.actual_start_time ? new Date(record.actual_start_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }) : new Date(record.start_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }),
-            actual_end: record.actual_end_time ? new Date(record.actual_end_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }) : new Date(record.end_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }),
-            actual_break: record.actual_break_minutes ?? record.break_minutes
-        });
+    const toggleClient = (clientId: string) => {
+        setExpandedClients(prev => ({
+            ...prev,
+            [clientId]: !prev[clientId]
+        }));
     };
 
     const handleExport = () => {
-        window.location.href = `/api/reports/hours/export?month=${month}`;
+        // We will create the export endpoint next
+        window.location.href = `/api/reports/billing/export?month=${month}`;
     };
 
+    if (isLoading) return <LoadingState />;
+
+    const totalBilledHours = billingData?.reduce((sum: number, client: any) => sum + Number(client.total_client_hours), 0) || 0;
+
     return (
-        <div className="min-h-screen bg-gray-50 p-8">
-            <div className="max-w-7xl mx-auto">
-                <div className="flex justify-between items-center mb-8">
-                    <div>
-                        <h1 className="text-3xl font-bold text-gray-900">Urenverantwoording & Rapportage</h1>
-                        <p className="text-gray-600">Overzicht van ingeplande en gewerkte uren t.o.v. CAO</p>
+        <div className="min-h-screen bg-gray-50">
+            <DashboardHeader isPlannerOrAdmin={true} />
+
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                {/* Header Section */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+                    <div className="flex items-center gap-4">
+                        <a href="/administratie" className="p-2 hover:bg-white rounded-full transition-colors border border-transparent hover:border-slate-200">
+                            <ArrowLeft size={20} className="text-slate-600" />
+                        </a>
+                        <div>
+                            <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+                                <Building2 className="text-blue-600" size={24} />
+                                Klant Facturatie
+                            </h1>
+                            <p className="text-gray-600 text-sm mt-0.5">Overzicht van te factureren uren per opdrachtgever</p>
+                        </div>
                     </div>
-                    <div className="flex gap-4">
-                        <input
-                            type="month"
-                            value={month}
-                            onChange={(e) => setMonth(e.target.value)}
-                            className="border rounded-lg px-3 py-2 bg-white shadow-sm"
-                        />
+
+                    <div className="flex items-center gap-4">
+                        <div className="bg-white p-1 rounded-xl shadow-sm border border-slate-200 flex items-center">
+                            <input
+                                type="month"
+                                value={month}
+                                onChange={(e) => setMonth(e.target.value)}
+                                className="border-none bg-transparent rounded-lg px-4 py-2 font-medium text-slate-800 focus:ring-0 outline-none"
+                            />
+                        </div>
+
                         <button
                             onClick={handleExport}
-                            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center gap-2"
+                            className="bg-blue-600 text-white px-5 py-2.5 rounded-xl hover:bg-blue-700 font-medium flex items-center gap-2 shadow-sm transition-all active:scale-95"
                         >
                             <FileDown size={18} />
-                            Export CSV
+                            Exporteer CSV
                         </button>
                     </div>
                 </div>
 
-                <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                    {isLoading ? (
-                        <div className="p-8 text-center text-gray-500">Gegevens laden...</div>
-                    ) : (
-                        <table className="w-full text-left text-sm">
-                            <thead className="bg-gray-50 text-gray-700 font-semibold border-b">
-                                <tr>
-                                    <th className="px-4 py-3">Medewerker</th>
-                                    <th className="px-4 py-3">Geplande Uren</th>
-                                    <th className="px-4 py-3">Gewerkte Uren</th>
-                                    <th className="px-4 py-3">Contract/Maand</th>
-                                    <th className="px-4 py-3">Overuren / Tekort</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-gray-100">
-                                {reportData?.map((record: any) => {
-                                    const isOvertime = parseFloat(record.overtime_hours) > 0;
+                {/* Summary Card */}
+                <div className="bg-white rounded-2xl shadow-sm border border-blue-100 p-6 mb-8 flex items-center gap-6 max-w-sm">
+                    <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
+                        <Clock size={28} />
+                    </div>
+                    <div>
+                        <p className="text-sm font-medium text-slate-500">Totaal Te Factureren Uren</p>
+                        <p className="text-3xl font-bold text-slate-900 mt-1">
+                            {totalBilledHours.toFixed(2)}
+                            <span className="text-lg text-slate-400 font-normal ml-1">uur</span>
+                        </p>
+                    </div>
+                </div>
 
-                                    return (
-                                        <tr key={record.employee_id} className="hover:bg-gray-50">
-                                            <td className="px-4 py-3 font-medium text-gray-900">{record.name}</td>
-                                            <td className="px-4 py-3 text-gray-600">{parseFloat(record.total_planned_hours).toFixed(2)}u</td>
-                                            <td className="px-4 py-3 font-semibold text-gray-900">{parseFloat(record.total_actual_hours).toFixed(2)}u</td>
-                                            <td className="px-4 py-3 text-gray-500">{parseFloat(record.expected_monthly_hours).toFixed(2)}u</td>
-                                            <td className="px-4 py-3">
-                                                <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${isOvertime ? 'bg-orange-100 text-orange-800' : 'bg-green-100 text-green-800'}`}>
-                                                    {isOvertime ? '+' : ''}{parseFloat(record.overtime_hours).toFixed(2)}u
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
+                {/* Billing List */}
+                <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                    {billingData?.length === 0 ? (
+                        <div className="p-12 text-center">
+                            <Building2 className="mx-auto text-slate-300 mb-4" size={48} />
+                            <p className="text-slate-500 text-lg">Geen gefactureerde uren gevonden voor deze maand.</p>
+                        </div>
+                    ) : (
+                        <div className="divide-y divide-gray-100">
+                            {billingData?.map((client: any) => (
+                                <div key={client.client_id} className="group">
+                                    {/* Client Row (Clickable) */}
+                                    <div
+                                        className="flex items-center justify-between p-6 cursor-pointer hover:bg-slate-50 transition-colors"
+                                        onClick={() => toggleClient(client.client_id)}
+                                    >
+                                        <div className="flex items-center gap-4">
+                                            <div className="text-slate-400 group-hover:text-blue-500 transition-colors">
+                                                {expandedClients[client.client_id] ? <ChevronDown size={24} /> : <ChevronRight size={24} />}
+                                            </div>
+                                            <div>
+                                                <h3 className="text-lg font-bold text-slate-900">{client.client_name}</h3>
+                                                <p className="text-sm text-slate-500">{client.assignments.length} actieve klussen deze maand</p>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-xl font-bold text-blue-600">{Number(client.total_client_hours).toFixed(2)} uur</p>
+                                            <p className="text-sm text-slate-500">Totaal voor klant</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Expanded Assignments Area */}
+                                    {expandedClients[client.client_id] && (
+                                        <div className="bg-slate-50/50 p-6 pt-2 pb-6 border-t border-slate-100">
+                                            <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 ml-12">Onderliggende Opdrachten</h4>
+
+                                            <div className="space-y-3 ml-12">
+                                                {client.assignments.map((assignment: any) => (
+                                                    <div key={assignment.assignment_id} className="bg-white border text-center flex items-center justify-between border-slate-200 p-4 rounded-xl shadow-sm hover:border-blue-200 transition-colors">
+                                                        <div className="flex items-center gap-3">
+                                                            <MapPin size={18} className="text-slate-400" />
+                                                            <span className="font-semibold text-slate-800">{assignment.assignment_name}</span>
+                                                        </div>
+                                                        <div className="flex items-center gap-6">
+                                                            <div className="text-right">
+                                                                <p className="text-sm font-medium text-slate-600">{assignment.total_shifts} diensten</p>
+                                                            </div>
+                                                            <div className="text-right w-24">
+                                                                <p className="font-bold text-slate-900">{Number(assignment.total_hours).toFixed(2)} uur</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
                     )}
                 </div>
-            </div>
+            </main>
         </div>
     );
-}
-
-function StatusBadge({ status }: { status: string }) {
-    if (status === 'verified') return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800"><CheckCircle size={12} className="mr-1" />Geverifieerd</span>;
-    if (status === 'completed') return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800"><Clock size={12} className="mr-1" />Gewerkt</span>;
-    return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">Gepland</span>;
 }
