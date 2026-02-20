@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useSecurityGuardWeek } from "@/hooks/useSecurityGuardWeek";
 import { ShiftDetailModal } from "./ShiftDetailModal";
+import NotificationBell from "../NotificationBell";
 
 export function SecurityGuardWeekView({ employeeId }) {
   const [selectedShift, setSelectedShift] = useState(null);
@@ -66,12 +67,15 @@ export function SecurityGuardWeekView({ employeeId }) {
                 <ArrowLeftRight size={20} />
                 Diensten Ruilen
               </a>
-              <a
-                href="/account/logout"
-                className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
-              >
-                Uitloggen
-              </a>
+              <div className="flex items-center gap-2">
+                <NotificationBell />
+                <a
+                  href="/account/logout"
+                  className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                >
+                  Uitloggen
+                </a>
+              </div>
             </div>
           </div>
         </div>
