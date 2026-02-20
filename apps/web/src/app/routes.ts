@@ -23,6 +23,7 @@ const routes: RouteConfigEntry[] = [
 	route("/planning", "./planning/page.tsx"),
 	route("/planning/edit/[id]", "./planning/edit/[id]/page.tsx"),
 	route("/planning/new", "./planning/new/page.tsx"),
+	route("/planning/reports", "./planning/reports/page.tsx"),
 	route("/planning/v2", "./planning/v2/page.tsx"),
 	route("/quick-login", "./quick-login/page.tsx"),
 	route("/setup-role", "./setup-role/page.tsx"),
