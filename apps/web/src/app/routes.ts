@@ -28,6 +28,7 @@ const routes: RouteConfigEntry[] = [
 	route("/setup-role", "./setup-role/page.tsx"),
 	route("/test-login", "./test-login/page.tsx"),
 	route("/test-setup", "./test-setup/page.tsx"),
+	route("/api/*", "./api.$.tsx"),
 	route("*", "./__create/not-found.tsx")
 ];
 
