@@ -15,7 +15,8 @@ export async function GET(request) {
     }
 
     try {
-        const dayOfWeek = new Date(date).getDay(); // 0 for Sunday, 1 for Monday, etc.
+        const dateObj = new Date(date);
+        const dayOfWeek = dateObj.getDay();
 
         // Find available employees:
         // 1. Active employees
@@ -24,7 +25,15 @@ export async function GET(request) {
         // 4. Who DO NOT have an exception on this day that is_available = false.
 
         const suggestions = await sql`
-            WITH overlapping_shifts AS (
+            WITH day_availability AS (
+                SELECT employee_id
+                FROM availability_patterns
+                WHERE day_of_week = ${dayOfWeek}
+                  AND is_available = TRUE
+                  AND CAST(start_time AS TIME) <= CAST(${start} AS TIME)
+                  AND CAST(end_time AS TIME) >= CAST(${end} AS TIME)
+            ),
+            overlapping_shifts AS (
                 SELECT employee_id 
                 FROM shifts 
                 WHERE 
