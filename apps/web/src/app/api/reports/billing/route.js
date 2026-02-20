@@ -20,7 +20,7 @@ export async function GET(request) {
                     a.client_id,
                     c.name as client_name,
                     s.assignment_id,
-                    a.location_name as assignment_name,
+                    a.name as assignment_name,
                     COALESCE(EXTRACT(EPOCH FROM (COALESCE(s.actual_end_time, s.end_time) - COALESCE(s.actual_start_time, s.start_time)))/3600 - COALESCE(s.actual_break_minutes, s.break_minutes)/60.0, 0) as worked_hours,
                     s.id as shift_id
                 FROM shifts s

@@ -44,6 +44,6 @@ const routeModules = {
   "../src/app/api/shift-swaps/suggestions/[shift_id]/route.js": () => import("../src/app/api/shift-swaps/suggestions/[shift_id]/route.js"),
   "../src/app/api/shifts/[id]/approve-override/route.js": () => import("../src/app/api/shifts/[id]/approve-override/route.js"),
   "../src/app/api/availability/exceptions/batch/delete/route.js": () => import("../src/app/api/availability/exceptions/batch/delete/route.js"),
-  "../src/app/api/reports/billing/route.js": () => import("../src/app/api/reports/billing/route.js"),
-  "../src/app/api/reports/billing/export/route.js": () => import("../src/app/api/reports/billing/export/route.js")
+  "../src/app/api/reports/billing/route.ts": () => import("../src/app/api/reports/billing/route.ts"),
+  "../src/app/api/reports/billing/export/route.ts": () => import("../src/app/api/reports/billing/export/route.ts")
 };

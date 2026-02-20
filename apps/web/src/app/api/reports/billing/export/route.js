@@ -17,7 +17,7 @@ export async function GET(request) {
         const billingData = await sql`
             SELECT 
                 c.name as "Klant",
-                a.location_name as "Klus/Opdracht",
+                a.name as "Klus/Opdracht",
                 TO_CHAR(s.start_time, 'YYYY-MM-DD') as "Datum",
                 TO_CHAR(COALESCE(s.actual_start_time, s.start_time), 'HH24:MI') as "Begin Tijd",
                 TO_CHAR(COALESCE(s.actual_end_time, s.end_time), 'HH24:MI') as "Eind Tijd",
@@ -28,7 +28,7 @@ export async function GET(request) {
             JOIN clients c ON a.client_id = c.id
             WHERE TO_CHAR(s.start_time, 'YYYY-MM') = ${month}
               AND s.status != 'cancelled'
-            ORDER BY c.name ASC, a.location_name ASC, s.start_time ASC;
+            ORDER BY c.name ASC, a.name ASC, s.start_time ASC;
         `;
 
         if (!billingData || billingData.length === 0) {
