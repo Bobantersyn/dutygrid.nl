@@ -1,17 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
 export default function SignInPage() {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
-  const onSubmit = async (e) => {
+  useEffect(() => {
+    const savedEmail = localStorage.getItem("remembered_email");
+    if (savedEmail) {
+      setEmail(savedEmail);
+      setRememberMe(true);
+    }
+  }, []);
+
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
@@ -44,6 +52,11 @@ export default function SignInPage() {
 
       if (response.ok && result.success) {
         console.log("Login successful, redirecting...");
+        if (rememberMe) {
+          localStorage.setItem("remembered_email", email.trim());
+        } else {
+          localStorage.removeItem("remembered_email");
+        }
         window.location.href = "/";
       } else {
         setError(result.error || "Onjuist e-mailadres of wachtwoord");
