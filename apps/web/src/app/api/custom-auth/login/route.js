@@ -72,7 +72,7 @@ export async function POST(request) {
             {
                 status: 200,
                 headers: {
-                    'Set-Cookie': `session=${sessionToken}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${durationSeconds}`,
+                    'Set-Cookie': `session=${sessionToken}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${durationSeconds}; Secure`,
                 },
             }
         );

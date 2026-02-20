@@ -465,7 +465,9 @@ export function Layout({ children }: { children: ReactNode }) {
         {LoadFontsSSR ? <LoadFontsSSR /> : null}
       </head>
       <body>
-        <ClientOnly loader={() => children} />
+        <Providers>
+          <ClientOnly loader={() => children} />
+        </Providers>
         <HotReloadIndicator />
         <Toaster position="bottom-right" />
         <ScrollRestoration />
@@ -478,8 +480,6 @@ export function Layout({ children }: { children: ReactNode }) {
 
 export default function App() {
   return (
-    <Providers>
-      <Outlet />
-    </Providers>
+    <Outlet />
   );
 }

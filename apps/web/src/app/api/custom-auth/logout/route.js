@@ -30,7 +30,7 @@ export async function POST(request) {
             {
                 status: 200,
                 headers: {
-                    'Set-Cookie': 'session=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0',
+                    'Set-Cookie': 'session=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0; Secure',
                 },
             }
         );
