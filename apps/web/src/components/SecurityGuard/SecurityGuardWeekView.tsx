@@ -12,8 +12,8 @@ import { useSecurityGuardWeek } from "@/hooks/useSecurityGuardWeek";
 import { ShiftDetailModal } from "./ShiftDetailModal";
 import NotificationBell from "../NotificationBell";
 
-export function SecurityGuardWeekView({ employeeId }) {
-  const [selectedShift, setSelectedShift] = useState(null);
+export function SecurityGuardWeekView({ employeeId }: { employeeId: string | number }) {
+  const [selectedShift, setSelectedShift] = useState<any>(null);
 
   const { formatWeekRange, navigateWeek, shiftsByDate, isLoading } =
     useSecurityGuardWeek(employeeId);
@@ -32,7 +32,7 @@ export function SecurityGuardWeekView({ employeeId }) {
   const canManageAvailability =
     employeeData?.employee?.can_manage_own_availability !== false;
 
-  const openShiftDetail = (shift) => {
+  const openShiftDetail = (shift: any) => {
     setSelectedShift(shift);
   };
 
@@ -154,7 +154,7 @@ export function SecurityGuardWeekView({ employeeId }) {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
-            {shiftsByDate.map(({ date, dateStr, shifts }) => {
+            {shiftsByDate.map(({ date, dateStr, shifts }: any) => {
               const isToday =
                 dateStr === new Date().toISOString().split("T")[0];
               const dayName = date.toLocaleDateString("nl-NL", {
@@ -191,7 +191,7 @@ export function SecurityGuardWeekView({ employeeId }) {
                         Vrij
                       </div>
                     ) : (
-                      shifts.map((shift) => (
+                      shifts.map((shift: any) => (
                         <button
                           key={shift.id}
                           onClick={() => openShiftDetail(shift)}
