@@ -1,8 +1,12 @@
 'use client';
 
-import { useIdleTimer } from 'react-idle-timer';
+import * as idleTimerPkg from 'react-idle-timer';
 
 export function useDevServerHeartbeat() {
+  const useIdleTimer = idleTimerPkg.useIdleTimer || (idleTimerPkg as any).default?.useIdleTimer || (idleTimerPkg as any);
+
+  if (typeof useIdleTimer !== 'function') return;
+
   useIdleTimer({
     throttle: 60_000 * 3,
     timeout: 60_000,

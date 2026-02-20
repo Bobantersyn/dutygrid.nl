@@ -1,0 +1,168 @@
+
+> build
+> react-router build
+
+vite v6.4.1 building for production...
+transforming...
+✓ 207 modules transformed.
+✗ Build failed in 937ms
+src/__create/useDevServerHeartbeat.ts (23:7): "default" is not exported by "node_modules/react-idle-timer/dist/index.esm.js", imported by "src/__create/useDevServerHeartbeat.ts".
+file: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/useDevServerHeartbeat.ts:23:7
+
+21:       }).catch((error) => {
+22:         // this is a no-op, we just want to keep the dev server alive
+23:       });
+           ^
+24:     },
+25:   });
+
+    at getRollupError (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/parseAst.js:402:41)
+    at error (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/parseAst.js:398:42)
+    at Module.error (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:17040:16)
+    at Module.traceVariable (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:17452:29)
+    at ModuleScope.findVariable (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:15070:39)
+    at FunctionScope.findVariable (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:5673:38)
+    at FunctionBodyScope.findVariable (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:5673:38)
+    at MemberExpression.bind (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:7392:49)
+    at LogicalExpression.bind (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:2829:23)
+    at LogicalExpression.bind (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:2829:23)
+    at VariableDeclarator.bind (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:2829:23)
+    at VariableDeclaration.bind (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:2825:28)
+    at BlockStatement.bind (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:2825:28)
+    at FunctionDeclaration.bind (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:2829:23)
+    at ExportNamedDeclaration.bind (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:12702:27)
+    at Program.bind (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:2825:28)
+    at Module.bindReferences (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:17019:18)
+    at Graph.sortAndBindModules (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:22843:20)
+    at Graph.build (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:22741:14)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:23432:13
+    at catchUnfinishedHookActions (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:22902:16)
+    at rollupInternal (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:23427:5)
+    at buildEnvironment (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:46235:14)
+    at buildEnvironment (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/cli/index.js:2025:5)
+    at viteBuild (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/cli/index.js:2056:3)
+    at build (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/cli/index.js:1922:10)
+    at build2 (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/cli/index.js:2260:5)
+    at run2 (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/cli/index.js:2565:7) {
+  binding: 'default',
+  code: 'MISSING_EXPORT',
+  exporter: '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react-idle-timer/dist/index.esm.js',
+  id: '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/useDevServerHeartbeat.ts',
+  url: 'https://rollupjs.org/troubleshooting/#error-name-is-not-exported-by-module',
+  pos: 366,
+  loc: {
+    column: 7,
+    file: '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/useDevServerHeartbeat.ts',
+    line: 23
+  },
+  frame: '21:       }).catch((error) => {\n' +
+    '22:         // this is a no-op, we just want to keep the dev server alive\n' +
+    '23:       });\n' +
+    '           ^\n' +
+    '24:     },\n' +
+    '25:   });',
+  watchFiles: [
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/__create/not-found.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/root.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/config/defaults/entry.client.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react/jsx-runtime.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react-dom/client.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react-router/dist/development/dom-export.mjs',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react/index.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react/cjs/react-jsx-runtime.production.min.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react-dom/index.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-4LKRSAEJ.mjs',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-JZWAC4HX.mjs',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react/cjs/react.production.min.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react-dom/cjs/react-dom.production.min.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react-router/node_modules/cookie/dist/index.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/set-cookie-parser/lib/set-cookie.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/package.json',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/scheduler/index.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/scheduler/cjs/scheduler.production.min.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/PolymorphicComponent.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/fetch.ts',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/useDevServerHeartbeat.ts',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/HotReload.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/hmr-sandbox-store.ts',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/global.css',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/@auth/create.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/dev-error-overlay.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/admin/users/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/assignments/[id]/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/assignments/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/audit/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/check/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/exceptions/batch/delete/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/exceptions/batch/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/exceptions/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/patterns/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/saved-patterns/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/week-overview/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/cao-types/[id]/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/cao-types/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/clients/[id]/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/clients/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/custom-auth/login/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/custom-auth/logout/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/custom-auth/session/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/debug-constraints/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/debug-schema/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/employees/[id]/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/employees/availability-overview/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/employees/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/hours/export/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/hours/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/leave/[id]/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/leave/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/migrations/run/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/notifications/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/notifications/unread-count/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/planning/availability-check/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/planning/suggest/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/planning-gaps/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/quick-login/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/reports/hours/export/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/reports/hours/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/shift-swaps/[id]/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/shift-swaps/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/shift-swaps/suggestions/[shift_id]/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/shifts/[id]/approve-override/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/shifts/[id]/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/shifts/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/system-settings/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/test-create-beveiliger/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/user-role/route.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/2fa-helper.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/audit-logger.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/distance.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/planning-helpers.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/rate-limiter.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/security-headers.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/sql.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/upload.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/ApiEndpoints.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/CaoRulesValidation.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/Changelog.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/DatabaseSchema.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/Features.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/FutureFeatures.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/PagesAndRoutes.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/SystemOverview.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/TechnicalDetails.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/UserFlows.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/UserRoles.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useCaoTypes.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useDashboardData.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeDetail.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeFileUpload.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeShifts.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/usePlanningData.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/usePlanningWeek.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useSecurityGuardWeek.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useSystemSettings.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useUserRole.js',
+    ... 251 more items
+  ],
+  [Symbol(augmented)]: true
+}
