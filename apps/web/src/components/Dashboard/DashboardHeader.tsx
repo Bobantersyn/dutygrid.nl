@@ -59,6 +59,16 @@ export function DashboardHeader({ isPlannerOrAdmin }) {
               Planning
             </a>
 
+            {isPlannerOrAdmin && (
+              <a
+                href="/planning/reports"
+                className="px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-colors flex items-center gap-2"
+              >
+                <FileText size={20} />
+                Rapportage
+              </a>
+            )}
+
             {!isPlannerOrAdmin && (
               <>
                 <a
