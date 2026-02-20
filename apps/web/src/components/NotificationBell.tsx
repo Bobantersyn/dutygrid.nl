@@ -72,7 +72,7 @@ export default function NotificationBell() {
             </button>
 
             {isOpen && (
-                <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 z-50 animate-in fade-in slide-in-from-top-2">
+                <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-xl ring-1 ring-black ring-opacity-10 z-50 animate-in fade-in slide-in-from-top-2">
                     <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50 rounded-t-xl">
                         <h3 className="font-semibold text-gray-900">Notificaties</h3>
                         {unreadCount > 0 && (
@@ -95,7 +95,7 @@ export default function NotificationBell() {
                                 {notifications.map((notif) => (
                                     <div
                                         key={notif.id}
-                                        className={`p-4 hover:bg-gray-50 transition-colors ${!notif.is_read ? 'bg-blue-50/50' : ''}`}
+                                        className={`p-4 hover:bg-gray-50 transition-colors cursor-pointer ${!notif.is_read ? 'bg-blue-50' : 'bg-white'}`}
                                         onClick={() => {
                                             if (!notif.is_read) markReadMutation.mutate({ id: notif.id });
                                         }}
@@ -119,7 +119,7 @@ export default function NotificationBell() {
                                             </div>
                                             {!notif.is_read && (
                                                 <div className="flex-shrink-0 self-center">
-                                                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                                                    <div className="w-3 h-3 bg-blue-600 rounded-full shadow-sm"></div>
                                                 </div>
                                             )}
                                         </div>
