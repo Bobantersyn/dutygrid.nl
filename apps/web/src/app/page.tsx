@@ -14,6 +14,7 @@ import { EmployeesModal } from "@/components/Dashboard/Modals/EmployeesModal";
 import { ShiftsModal } from "@/components/Dashboard/Modals/ShiftsModal";
 import { LeaveRequestsModal } from "@/components/Dashboard/Modals/LeaveRequestsModal";
 import { QuickPlanModal } from "@/components/Planning/QuickPlanModal";
+import { SecurityGuardWeekView } from "@/components/SecurityGuard/SecurityGuardWeekView";
 
 export default function HomePage() {
   const {
@@ -89,7 +90,7 @@ export default function HomePage() {
           title="Openstaande Diensten (7 dagen)"
           groupedByDate={true}
           onClose={() => setActiveModal(null)}
-          onEdit={(shift) => {
+          onEdit={(shift: any) => {
             setActiveModal(null);
             setEditingShift(shift);
           }}
@@ -100,7 +101,7 @@ export default function HomePage() {
         <ShiftsModal
           todayShifts={todayShifts}
           onClose={() => setActiveModal(null)}
-          onEdit={(shift) => {
+          onEdit={(shift: any) => {
             setActiveModal(null);
             setEditingShift(shift);
           }}
@@ -119,6 +120,8 @@ export default function HomePage() {
           shift={editingShift}
           onClose={() => setEditingShift(null)}
           onSuccess={() => { }}
+          employee={undefined}
+          prefilledDate={undefined}
         />
       )}
     </div>
