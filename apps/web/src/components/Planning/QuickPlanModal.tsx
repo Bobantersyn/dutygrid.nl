@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { X, Calendar, Clock, MapPin, Loader2, User, Trash2 } from "lucide-react";
+import { X, Calendar, Clock, MapPin, Loader2, User, Sparkles } from "lucide-react";
 
 export function QuickPlanModal({
   employee, // Optional: Pre-selected employee (for Drag & Drop)
@@ -23,6 +23,36 @@ export function QuickPlanModal({
     break_minutes: shift?.break_minutes || 30,
     notes: shift?.notes || "",
   });
+  const [isSuggesting, setIsSuggesting] = useState(false);
+  const [suggestionMsg, setSuggestionMsg] = useState("");
+
+  const handleMagicSuggest = async () => {
+    if (!formData.shift_date || !formData.start_time || !formData.end_time) {
+      setSuggestionMsg("Vul eerst een datum en tijd in.");
+      return;
+    }
+
+    setIsSuggesting(true);
+    setSuggestionMsg("");
+
+    try {
+      const res = await fetch(`/api/planning/suggest?date=${formData.shift_date}&start=${formData.start_time}&end=${formData.end_time}`);
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error);
+
+      if (data.suggestions && data.suggestions.length > 0) {
+        setFormData(prev => ({ ...prev, employee_id: data.suggestions[0].id.toString() }));
+        setSuggestionMsg(`✨ ${data.suggestions[0].name} is voorgesteld!`);
+      } else {
+        setSuggestionMsg("Geen beschikbare medewerkers gevonden.");
+      }
+    } catch (err) {
+      setSuggestionMsg("Fout bij zoeken: " + err.message);
+    } finally {
+      setIsSuggesting(false);
+    }
+  };
 
   // Fetch employees if not provided or for editing
   const { data: employeesData } = useQuery({
@@ -122,10 +152,22 @@ export function QuickPlanModal({
           {/* Employee Selection (if not fixed) */}
           {!employee && (
             <div>
-              <label className="flex items-center gap-2 text-sm font-semibold text-gray-900 mb-2">
-                <User size={16} className="text-blue-600" />
-                Medewerker
-              </label>
+              <div className="flex justify-between items-center mb-2">
+                <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
+                  <User size={16} className="text-blue-600" />
+                  Medewerker
+                </label>
+                <button
+                  type="button"
+                  onClick={handleMagicSuggest}
+                  disabled={isSuggesting}
+                  className="text-xs flex items-center gap-1 bg-purple-100 text-purple-700 hover:bg-purple-200 px-2 py-1 rounded font-medium transition-colors disabled:opacity-50"
+                  title="Zoek de beste medewerker op basis van beschikbaarheid"
+                >
+                  <Sparkles size={12} />
+                  {isSuggesting ? "Zoeken..." : "Smart Suggest"}
+                </button>
+              </div>
               <select
                 value={formData.employee_id}
                 onChange={(e) => setFormData({ ...formData, employee_id: e.target.value })}
@@ -136,6 +178,9 @@ export function QuickPlanModal({
                   <option key={emp.id} value={emp.id}>{emp.name}</option>
                 ))}
               </select>
+              {suggestionMsg && (
+                <p className="mt-2 text-sm text-purple-600 font-medium animate-pulse">{suggestionMsg}</p>
+              )}
             </div>
           )}
 

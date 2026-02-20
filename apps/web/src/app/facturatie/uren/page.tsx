@@ -12,17 +12,17 @@ export default function HoursPage() {
     const [editValues, setEditValues] = useState({});
     const queryClient = useQueryClient();
 
-    const { data: shifts, isLoading } = useQuery({
-        queryKey: ["hours", month],
+    const { data: reportData, isLoading } = useQuery({
+        queryKey: ["hours-report", month],
         queryFn: async () => {
-            const res = await fetch(`/api/hours?month=${month}`);
+            const res = await fetch(`/api/reports/hours?month=${month}`);
             if (!res.ok) throw new Error("Failed");
             return res.json();
         }
     });
 
     const updateMutation = useMutation({
-        mutationFn: async (data) => {
+        mutationFn: async (data: any) => {
             const res = await fetch("/api/hours", {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -32,41 +32,41 @@ export default function HoursPage() {
             return res.json();
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(["hours"]);
+            queryClient.invalidateQueries({ queryKey: ["hours-report"] });
             setEditingId(null);
         },
-        onError: (err) => {
+        onError: (err: Error) => {
             alert(`Fout bij opslaan: ${err.message}`);
         }
     });
 
-    const handleSave = (shift) => {
+    const handleSave = (record: any) => {
         // Construct timestamps
-        const date = new Date(shift.start_time).toISOString().split("T")[0];
-        const actualStart = editValues.actual_start ? `${date}T${editValues.actual_start}:00` : null;
-        const actualEnd = editValues.actual_end ? `${date}T${editValues.actual_end}:00` : null;
+        const date = new Date(record.start_time).toISOString().split("T")[0];
+        const actualStart = (editValues as any).actual_start ? `${date}T${(editValues as any).actual_start}:00` : null;
+        const actualEnd = (editValues as any).actual_end ? `${date}T${(editValues as any).actual_end}:00` : null;
         // Handle overnight for end time if needed (simplified here)
 
         updateMutation.mutate({
-            id: shift.id,
+            id: record.id,
             actual_start_time: actualStart,
             actual_end_time: actualEnd,
-            actual_break_minutes: parseInt(editValues.actual_break || 0),
+            actual_break_minutes: parseInt((editValues as any).actual_break || 0),
             status: 'verified' // Auto verify on save
-        });
+        } as any);
     };
 
-    const startEdit = (shift) => {
-        setEditingId(shift.id);
+    const startEdit = (record: any) => {
+        setEditingId(record.id);
         setEditValues({
-            actual_start: shift.actual_start_time ? new Date(shift.actual_start_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }) : new Date(shift.start_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }),
-            actual_end: shift.actual_end_time ? new Date(shift.actual_end_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }) : new Date(shift.end_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }),
-            actual_break: shift.actual_break_minutes ?? shift.break_minutes
+            actual_start: record.actual_start_time ? new Date(record.actual_start_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }) : new Date(record.start_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }),
+            actual_end: record.actual_end_time ? new Date(record.actual_end_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }) : new Date(record.end_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }),
+            actual_break: record.actual_break_minutes ?? record.break_minutes
         });
     };
 
     const handleExport = () => {
-        window.location.href = `/api/hours/export?month=${month}`;
+        window.location.href = `/api/reports/hours/export?month=${month}`;
     };
 
     return (
@@ -74,8 +74,8 @@ export default function HoursPage() {
             <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between items-center mb-8">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-900">Urenverantwoording</h1>
-                        <p className="text-gray-600">Controleer en fiatteer gewerkte uren</p>
+                        <h1 className="text-3xl font-bold text-gray-900">Urenverantwoording & Rapportage</h1>
+                        <p className="text-gray-600">Overzicht van ingeplande en gewerkte uren t.o.v. CAO</p>
                     </div>
                     <div className="flex gap-4">
                         <input
@@ -96,90 +96,32 @@ export default function HoursPage() {
 
                 <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                     {isLoading ? (
-                        <div className="p-8 text-center">Laden...</div>
+                        <div className="p-8 text-center text-gray-500">Gegevens laden...</div>
                     ) : (
                         <table className="w-full text-left text-sm">
                             <thead className="bg-gray-50 text-gray-700 font-semibold border-b">
                                 <tr>
-                                    <th className="px-4 py-3">Datum</th>
                                     <th className="px-4 py-3">Medewerker</th>
-                                    <th className="px-4 py-3">Gepland</th>
-                                    <th className="px-4 py-3">Werkelijk (Tijden)</th>
-                                    <th className="px-4 py-3">Pauze</th>
-                                    <th className="px-4 py-3">Totaal</th>
-                                    <th className="px-4 py-3">Status</th>
-                                    <th className="px-4 py-3 text-right">Actie</th>
+                                    <th className="px-4 py-3">Geplande Uren</th>
+                                    <th className="px-4 py-3">Gewerkte Uren</th>
+                                    <th className="px-4 py-3">Contract/Maand</th>
+                                    <th className="px-4 py-3">Overuren / Tekort</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-100">
-                                {shifts?.map(shift => {
-                                    const isEditing = editingId === shift.id;
-                                    const plannedStr = `${new Date(shift.start_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' })} - ${new Date(shift.end_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' })}`;
+                                {reportData?.map((record: any) => {
+                                    const isOvertime = parseFloat(record.overtime_hours) > 0;
 
                                     return (
-                                        <tr key={shift.id} className="hover:bg-gray-50">
-                                            <td className="px-4 py-3 whitespace-nowrap">
-                                                {new Date(shift.start_time).toLocaleDateString('nl-NL', { weekday: 'short', day: 'numeric', month: 'short' })}
-                                            </td>
-                                            <td className="px-4 py-3 font-medium text-gray-900">{shift.employee_name}</td>
-                                            <td className="px-4 py-3 text-gray-500">{plannedStr}</td>
-
-                                            {/* Actuals Input/Display */}
+                                        <tr key={record.employee_id} className="hover:bg-gray-50">
+                                            <td className="px-4 py-3 font-medium text-gray-900">{record.name}</td>
+                                            <td className="px-4 py-3 text-gray-600">{parseFloat(record.total_planned_hours).toFixed(2)}u</td>
+                                            <td className="px-4 py-3 font-semibold text-gray-900">{parseFloat(record.total_actual_hours).toFixed(2)}u</td>
+                                            <td className="px-4 py-3 text-gray-500">{parseFloat(record.expected_monthly_hours).toFixed(2)}u</td>
                                             <td className="px-4 py-3">
-                                                {isEditing ? (
-                                                    <div className="flex gap-1 items-center">
-                                                        <input
-                                                            type="time"
-                                                            value={editValues.actual_start}
-                                                            onChange={e => setEditValues({ ...editValues, actual_start: e.target.value })}
-                                                            className="w-20 border rounded px-1 py-0.5"
-                                                        />
-                                                        <span>-</span>
-                                                        <input
-                                                            type="time"
-                                                            value={editValues.actual_end}
-                                                            onChange={e => setEditValues({ ...editValues, actual_end: e.target.value })}
-                                                            className="w-20 border rounded px-1 py-0.5"
-                                                        />
-                                                    </div>
-                                                ) : (
-                                                    shift.actual_start_time ? (
-                                                        <span className={shift.actual_duration !== shift.planned_duration ? 'text-orange-600 font-medium' : 'text-green-600'}>
-                                                            {new Date(shift.actual_start_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' })} -
-                                                            {new Date(shift.actual_end_time).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' })}
-                                                        </span>
-                                                    ) : <span className="text-gray-400 italic">--:--</span>
-                                                )}
-                                            </td>
-
-                                            <td className="px-4 py-3">
-                                                {isEditing ? (
-                                                    <input
-                                                        type="number" className="w-12 border rounded px-1"
-                                                        value={editValues.actual_break}
-                                                        onChange={e => setEditValues({ ...editValues, actual_break: e.target.value })}
-                                                    />
-                                                ) : (shift.actual_break_minutes ?? shift.break_minutes)}m
-                                            </td>
-
-                                            <td className="px-4 py-3 font-medium">
-                                                {shift.actual_duration > 0 ? shift.actual_duration.toFixed(2) : shift.planned_duration.toFixed(2)}u
-                                            </td>
-
-                                            <td className="px-4 py-3">
-                                                <StatusBadge status={shift.status} />
-                                            </td>
-
-                                            <td className="px-4 py-3 text-right">
-                                                {isEditing ? (
-                                                    <button onClick={() => handleSave(shift)} className="text-green-600 hover:bg-green-50 p-1.5 rounded mr-1">
-                                                        <Save size={16} />
-                                                    </button>
-                                                ) : (
-                                                    <button onClick={() => startEdit(shift)} className="text-blue-600 hover:bg-blue-50 p-1.5 rounded mr-1">
-                                                        <Edit2 size={16} />
-                                                    </button>
-                                                )}
+                                                <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${isOvertime ? 'bg-orange-100 text-orange-800' : 'bg-green-100 text-green-800'}`}>
+                                                    {isOvertime ? '+' : ''}{parseFloat(record.overtime_hours).toFixed(2)}u
+                                                </span>
                                             </td>
                                         </tr>
                                     );
@@ -193,7 +135,7 @@ export default function HoursPage() {
     );
 }
 
-function StatusBadge({ status }) {
+function StatusBadge({ status }: { status: string }) {
     if (status === 'verified') return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800"><CheckCircle size={12} className="mr-1" />Geverifieerd</span>;
     if (status === 'completed') return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800"><Clock size={12} className="mr-1" />Gewerkt</span>;
     return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">Gepland</span>;
