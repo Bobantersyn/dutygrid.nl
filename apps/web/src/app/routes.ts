@@ -7,6 +7,7 @@ const routes: RouteConfigEntry[] = [
 	route("/account/signin", "./account/signin/page.tsx"),
 	route("/account/signup", "./account/signup/page.tsx"),
 	route("/admin/settings", "./admin/settings/page.tsx"),
+	route("/administratie", "./administratie/page.tsx"),
 	route("/assignments", "./assignments/page.tsx"),
 	route("/beschikbaarheid", "./beschikbaarheid/page.tsx"),
 	route("/beschikbaarheid-overzicht", "./beschikbaarheid-overzicht/page.tsx"),

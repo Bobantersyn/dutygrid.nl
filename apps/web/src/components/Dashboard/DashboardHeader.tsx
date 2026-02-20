@@ -38,34 +38,28 @@ export function DashboardHeader({ isPlannerOrAdmin }) {
           </div>
 
           {/* Zone 2: Navigation Buttons */}
-          <div className="flex-1 flex justify-start xl:justify-center w-full">
+          <div className="flex-1 flex justify-start xl:justify-end w-full">
             {isPlannerOrAdmin ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 w-full xl:w-auto">
-                {/* Row 1 */}
-                <a href="/clients" className="px-4 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm">
+              <div className="flex flex-wrap gap-2 sm:gap-3 w-full xl:w-auto xl:justify-end">
+                <a href="/clients" className="px-4 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm flex-1 sm:flex-none">
                   <Building2 size={18} />
                   <span>Klanten</span>
                 </a>
-                <a href="/assignments" className="px-4 py-2.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm">
+                <a href="/assignments" className="px-4 py-2.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm flex-1 sm:flex-none">
                   <MapPin size={18} />
                   <span>Opdrachten</span>
                 </a>
-                <a href="/employees" className="px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm">
+                <a href="/employees" className="px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm flex-1 sm:flex-none">
                   <Users size={18} />
                   <span>Medewerkers</span>
                 </a>
-                {/* Row 2 */}
-                <a href="/facturatie/uren" className="px-4 py-2.5 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm">
-                  <FileText size={18} />
-                  <span>Facturatie</span>
-                </a>
-                <a href="/planning" className="px-4 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm">
+                <a href="/planning" className="px-4 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm flex-1 sm:flex-none">
                   <Calendar size={18} />
                   <span>Planning</span>
                 </a>
-                <a href="/planning/reports" className="px-4 py-2.5 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm">
+                <a href="/administratie" className="px-4 py-2.5 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm w-full sm:w-auto">
                   <FileText size={18} />
-                  <span>Rapportage</span>
+                  <span>Administratie</span>
                 </a>
               </div>
             ) : (
