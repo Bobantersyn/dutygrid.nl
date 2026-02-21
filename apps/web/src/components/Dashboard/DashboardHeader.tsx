@@ -46,46 +46,41 @@ export function DashboardHeader({ isPlannerOrAdmin: initialIsPlannerOrAdmin }: {
 
   return (
     <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
-      <div className="max-w-[1440px] mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-4 h-20 flex items-center">
 
         {/* Left: Logo */}
-        <div className="flex-shrink-0">
-          <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-              D
-            </div>
-            <span className="text-xl font-bold tracking-tight text-gray-900 hidden sm:block">
-              DutyGrid
-            </span>
+        <div className="flex-shrink-0 mr-8">
+          <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
+            <img src="/logo.svg" alt="DutyGrid" className="h-16 w-auto drop-shadow-sm" />
           </a>
-
-          {/* Middle: Core Nav (Desktop) - Centered */}
-          <nav className="hidden lg:flex flex-1 justify-center items-center gap-2 px-8">
-            <NavItem href="/" icon={LayoutDashboard} label="Dashboard" active={currentPath === "/"} />
-            {isPlannerOrAdmin ? (
-              <>
-                <a
-                  href="/planning"
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 group ${currentPath === "/planning"
-                    ? "text-white bg-blue-600 font-bold shadow-md shadow-blue-200"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50/50"
-                    }`}
-                >
-                  <Calendar size={18} className={currentPath === "/planning" ? "text-white" : "text-gray-400 group-hover:text-blue-600"} />
-                  <span className="text-sm">Planning</span>
-                </a>
-                <NavItem href="/employees" icon={Users} label="Medewerkers" active={currentPath === "/employees"} />
-                <NavItem href="/clients" icon={Building2} label="Klanten" active={currentPath.startsWith("/clients") || currentPath.startsWith("/assignments")} />
-              </>
-            ) : (
-              <>
-                <NavItem href="/beschikbaarheid" icon={Clock} label="Beschikbaarheid" active={currentPath === "/beschikbaarheid"} />
-                <NavItem href="/diensten-ruilen" icon={ArrowLeftRight} label="Ruilen" active={currentPath === "/diensten-ruilen"} />
-                <NavItem href="/my-leave" icon={CalendarOff} label="Verlof" active={currentPath === "/my-leave"} />
-              </>
-            )}
-          </nav>
         </div>
+
+        {/* Middle: Core Nav (Desktop) - Centered */}
+        <nav className="hidden lg:flex flex-1 justify-center items-center gap-2 px-8">
+          <NavItem href="/" icon={LayoutDashboard} label="Dashboard" active={currentPath === "/"} />
+          {isPlannerOrAdmin ? (
+            <>
+              <a
+                href="/planning"
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 group ${currentPath === "/planning"
+                  ? "text-white bg-blue-600 font-bold shadow-md shadow-blue-200"
+                  : "text-gray-600 hover:text-blue-600 hover:bg-blue-50/50"
+                  }`}
+              >
+                <Calendar size={18} className={currentPath === "/planning" ? "text-white" : "text-gray-400 group-hover:text-blue-600"} />
+                <span className="text-sm">Planning</span>
+              </a>
+              <NavItem href="/employees" icon={Users} label="Medewerkers" active={currentPath === "/employees"} />
+              <NavItem href="/clients" icon={Building2} label="Klanten" active={currentPath.startsWith("/clients") || currentPath.startsWith("/assignments")} />
+            </>
+          ) : (
+            <>
+              <NavItem href="/beschikbaarheid" icon={Clock} label="Beschikbaarheid" active={currentPath === "/beschikbaarheid"} />
+              <NavItem href="/diensten-ruilen" icon={ArrowLeftRight} label="Ruilen" active={currentPath === "/diensten-ruilen"} />
+              <NavItem href="/my-leave" icon={CalendarOff} label="Verlof" active={currentPath === "/my-leave"} />
+            </>
+          )}
+        </nav>
 
         {/* Right: Actions & Profile */}
         <div className="flex items-center gap-3">

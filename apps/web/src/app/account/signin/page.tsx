@@ -77,6 +77,9 @@ export default function SignInPage() {
         className="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl border border-gray-200"
         autoComplete="on"
       >
+        <div className="flex justify-center mb-6">
+          <img src="/logo.svg" alt="DutyGrid" className="h-20 w-auto" />
+        </div>
         <h1 className="mb-2 text-center text-3xl font-bold text-gray-900">
           Welkom Terug
         </h1>
