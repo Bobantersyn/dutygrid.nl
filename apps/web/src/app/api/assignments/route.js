@@ -50,6 +50,8 @@ export async function POST(request) {
       description,
       hourly_rate,
       active,
+      postal_code,
+      city,
       object_labels = [], // Array of label IDs
     } = await request.json();
 
@@ -62,8 +64,8 @@ export async function POST(request) {
 
     const status_val = active !== false ? 'active' : 'inactive';
     const [assignment] = await sql`
-      INSERT INTO assignments (client_id, name, address, description, status)
-      VALUES (${client_id}, ${location_name}, ${location_address}, ${description || null}, ${status_val})
+      INSERT INTO assignments (client_id, name, address, postal_code, city, description, hourly_rate, status)
+      VALUES (${client_id}, ${location_name}, ${location_address}, ${postal_code || null}, ${city || null}, ${description || null}, ${hourly_rate || null}, ${status_val})
       RETURNING *
     `;
 
