@@ -75,7 +75,7 @@ export function DashboardHeader({ isPlannerOrAdmin: initialIsPlannerOrAdmin }: {
                   <span>Administratie</span>
                 </a>
                 {isAdmin && (
-                  <a href="/settings" className="px-4 py-2.5 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm w-full sm:w-auto">
+                  <a href="/admin/settings" className="px-4 py-2.5 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm w-full sm:w-auto">
                     <Settings size={18} />
                     <span>Systeeminstellingen</span>
                   </a>
