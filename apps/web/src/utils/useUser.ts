@@ -3,7 +3,7 @@ import * as React from 'react';
 
 
 const useUser = () => {
-  const [user, setUser] = React.useState(null);
+  const [user, setUser] = React.useState<any | null>(null);
   const [loading, setLoading] = React.useState(true);
 
   const fetchUser = React.useCallback(async () => {

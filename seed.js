@@ -3,7 +3,7 @@ require('dotenv').config({ path: 'apps/web/.env.production.local' });
 
 async function seed() {
   const client = new Client({
-    connectionString: process.env.DATABASE_URL + "?sslmode=require",
+    connectionString: process.env.DATABASE_URL,
   });
 
   try {
@@ -11,7 +11,7 @@ async function seed() {
     console.log("Connected to DB, seeding billing data for Feb 2026...");
 
     // Get a client and an assignment
-    let res = await client.query('SELECT id FROM clients LIMIT 1');
+    let res = await client.query("SELECT id FROM clients WHERE name = 'Jumbo Supermarkten' LIMIT 1");
     let clientId = res.rows[0]?.id;
 
     if (!clientId) {
@@ -24,8 +24,8 @@ async function seed() {
 
     if (res.rowCount === 0) {
       console.log("Creating assignments...");
-      await client.query("INSERT INTO assignments (client_id, location_name, location_address) VALUES ($1, 'Jumbo Amsterdam Centrum', 'Amsterdam')", [clientId]);
-      await client.query("INSERT INTO assignments (client_id, location_name, location_address) VALUES ($1, 'Jumbo Utrecht', 'Utrecht')", [clientId]);
+      await client.query("INSERT INTO assignments (client_id, name) VALUES ($1, 'Jumbo Amsterdam Centrum')", [clientId]);
+      await client.query("INSERT INTO assignments (client_id, name) VALUES ($1, 'Jumbo Utrecht')", [clientId]);
       res = await client.query('SELECT id FROM assignments WHERE client_id = $1 LIMIT 2', [clientId]);
     }
 

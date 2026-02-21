@@ -72,8 +72,26 @@ export async function POST(request) {
     // We assume the frontend passes the correct shift_id, but securely we should check if session.user.employee_id owns it.
     // For MVP: trusting the call logic or simple check.
 
-    const [shift] = await sql`SELECT employee_id FROM shifts WHERE id = ${shift_id}`;
+    const [shift] = await sql`SELECT employee_id, assignment_id FROM shifts WHERE id = ${shift_id}`;
     if (!shift) return Response.json({ error: "Shift not found" }, { status: 404 });
+
+    // Validate if target employee has all required object labels for the assignment
+    if (target_employee_id && shift.assignment_id) {
+      const assignmentLabels = await sql`
+        SELECT object_label_id FROM assignment_object_labels WHERE assignment_id = ${shift.assignment_id}
+      `;
+      if (assignmentLabels.length > 0) {
+        const employeeLabels = await sql`
+          SELECT object_label_id FROM employee_object_labels WHERE employee_id = ${target_employee_id}
+        `;
+        const employeeLabelIds = new Set(employeeLabels.map(l => l.object_label_id));
+        const hasAllLabels = assignmentLabels.every(l => employeeLabelIds.has(l.object_label_id));
+
+        if (!hasAllLabels) {
+          return Response.json({ error: "De geselecteerde medewerker heeft niet de vereiste object-labels voor deze dienst." }, { status: 400 });
+        }
+      }
+    }
 
     // Insert request
     const result = await sql`
@@ -122,6 +140,25 @@ export async function PUT(request) {
 
       // If approved, update the shift
       if (status === 'approved' && new_employee_id) {
+        // Validate object labels
+        const [shiftData] = await sql`SELECT assignment_id FROM shifts WHERE id = ${updatedRequest.shift_id}`;
+        if (shiftData?.assignment_id) {
+          const assignmentLabels = await sql`
+            SELECT object_label_id FROM assignment_object_labels WHERE assignment_id = ${shiftData.assignment_id}
+          `;
+          if (assignmentLabels.length > 0) {
+            const employeeLabels = await sql`
+              SELECT object_label_id FROM employee_object_labels WHERE employee_id = ${new_employee_id}
+            `;
+            const employeeLabelIds = new Set(employeeLabels.map(l => l.object_label_id));
+            const hasAllLabels = assignmentLabels.every(l => employeeLabelIds.has(l.object_label_id));
+
+            if (!hasAllLabels) {
+              throw new Error("De medewerker mist de vereiste object-labels om deze dienst te kunnen overnemen.");
+            }
+          }
+        }
+
         await sql`
             UPDATE shifts 
             SET employee_id = ${new_employee_id}

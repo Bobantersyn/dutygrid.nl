@@ -9,6 +9,7 @@ import {
   Euro,
   ToggleLeft,
   ToggleRight,
+  Tag,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -24,7 +25,18 @@ export default function AssignmentsPage() {
     hourly_rate: "",
     active: true,
   });
+  const [selectedLabels, setSelectedLabels] = useState([]);
   const [error, setError] = useState(null);
+
+  const { data: labelsData } = useQuery({
+    queryKey: ["object-labels"],
+    queryFn: async () => {
+      const response = await fetch("/api/object-labels");
+      if (!response.ok) throw new Error("Failed to fetch labels");
+      return response.json();
+    }
+  });
+  const objectLabels = labelsData?.labels || [];
 
   const { data: assignmentsData, isLoading } = useQuery({
     queryKey: ["assignments"],
@@ -68,6 +80,7 @@ export default function AssignmentsPage() {
         hourly_rate: "",
         active: true,
       });
+      setSelectedLabels([]);
       setError(null);
     },
     onError: (err) => {
@@ -116,6 +129,7 @@ export default function AssignmentsPage() {
       hourly_rate: formData.hourly_rate
         ? parseFloat(formData.hourly_rate)
         : null,
+      object_labels: selectedLabels,
     });
   };
 
@@ -245,6 +259,41 @@ export default function AssignmentsPage() {
                     placeholder="Nachtbewaking kantoorpand..."
                   />
                 </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    Vereiste Object Labels (Kwalificaties)
+                  </label>
+                  {objectLabels.length === 0 ? (
+                    <p className="text-sm text-gray-500 italic">Geen object labels ingesteld in het systeem.</p>
+                  ) : (
+                    <div className="flex flex-wrap gap-2">
+                      {objectLabels.map((label) => (
+                        <label
+                          key={label.id}
+                          className={`flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer transition-colors ${selectedLabels.includes(label.id)
+                              ? "border-orange-500 bg-orange-50 text-orange-700 font-medium"
+                              : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50"
+                            }`}
+                        >
+                          <input
+                            type="checkbox"
+                            className="sr-only"
+                            checked={selectedLabels.includes(label.id)}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setSelectedLabels([...selectedLabels, label.id]);
+                              } else {
+                                setSelectedLabels(selectedLabels.filter(id => id !== label.id));
+                              }
+                            }}
+                          />
+                          <Tag size={16} className={selectedLabels.includes(label.id) ? "text-orange-500" : "text-gray-400"} />
+                          {label.name}
+                        </label>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
               <div className="flex gap-3">
                 <button
@@ -260,6 +309,7 @@ export default function AssignmentsPage() {
                       hourly_rate: "",
                       active: true,
                     });
+                    setSelectedLabels([]);
                   }}
                   className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
                 >
@@ -297,11 +347,10 @@ export default function AssignmentsPage() {
             {assignments.map((assignment) => (
               <div
                 key={assignment.id}
-                className={`bg-white rounded-xl shadow-sm border-2 p-6 hover:shadow-md transition-shadow ${
-                  assignment.active
+                className={`bg-white rounded-xl shadow-sm border-2 p-6 hover:shadow-md transition-shadow ${assignment.active
                     ? "border-orange-200"
                     : "border-gray-200 opacity-60"
-                }`}
+                  }`}
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="bg-orange-100 p-3 rounded-lg">
@@ -360,6 +409,17 @@ export default function AssignmentsPage() {
                     <p className="text-sm text-gray-600">
                       {assignment.description}
                     </p>
+                  </div>
+                )}
+
+                {assignment.object_labels && assignment.object_labels.length > 0 && (
+                  <div className="flex flex-wrap gap-1 mt-3 pt-3 border-t border-gray-100">
+                    {assignment.object_labels.map((label) => (
+                      <span key={label.id} className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md">
+                        <Tag size={10} />
+                        {label.name}
+                      </span>
+                    ))}
                   </div>
                 )}
 

@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { ArrowLeft, Save, Upload, FileText, Image, Shield } from "lucide-react";
-import useUpload from "@/utils/useUpload";
+import { ArrowLeft, Save, Upload, FileText, Image, Shield, Tag } from "lucide-react";
+import { PhotoUpload } from "@/components/PhotoUpload";
 
 export default function NewEmployeePage() {
   const [formData, setFormData] = useState({
@@ -12,30 +12,31 @@ export default function NewEmployeePage() {
     email: "",
     phone: "",
     home_address: "",
-    cao_type: "Beveiliging", // Default to Beveiliging
-    max_hours_per_week: 60, // Default for Beveiliging
-    max_hours_per_day: 12, // Default for Beveiliging
     job_title: "Beveiliger",
     contract_type: "",
     pass_type: "geen",
-    active: true, // Default to active
+    is_flex: false,
+    active: true,
   });
   const [error, setError] = useState(null);
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [passportDoc, setPassportDoc] = useState(null);
   const [securityPass, setSecurityPass] = useState(null);
   const [uploadProgress, setUploadProgress] = useState({});
+  const [selectedLabels, setSelectedLabels] = useState([]);
+
+  const { data: labelsData } = useQuery({
+    queryKey: ["object-labels"],
+    queryFn: async () => {
+      const res = await fetch("/api/object-labels");
+      if (!res.ok) throw new Error("Failed to fetch labels");
+      return res.json();
+    }
+  });
+
+  const objectLabels = labelsData?.labels || [];
 
   const [upload, { loading: uploadLoading }] = useUpload();
-
-  const { data: caoData } = useQuery({
-    queryKey: ["cao-types"],
-    queryFn: async () => {
-      const response = await fetch("/api/cao-types");
-      if (!response.ok) throw new Error("Failed to fetch CAO types");
-      return response.json();
-    },
-  });
 
   const handleFileUpload = async (file, type) => {
     if (!file) return null;
@@ -79,20 +80,6 @@ export default function NewEmployeePage() {
     },
   });
 
-  const caoTypes = caoData?.caoTypes || [];
-
-  const handleCaoChange = (caoName) => {
-    const cao = caoTypes.find((c) => c.name === caoName);
-    if (cao) {
-      setFormData({
-        ...formData,
-        cao_type: caoName,
-        max_hours_per_week: cao.max_hours_per_week,
-        max_hours_per_day: cao.max_hours_per_day,
-      });
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -110,11 +97,10 @@ export default function NewEmployeePage() {
 
     createMutation.mutate({
       ...formData,
-      max_hours_per_week: parseInt(formData.max_hours_per_week),
-      max_hours_per_day: parseInt(formData.max_hours_per_day),
       profile_photo: profilePhotoUrl,
       passport_document: passportDocUrl,
       security_pass_document: securityPassUrl,
+      object_labels: selectedLabels,
     });
   };
 
@@ -302,6 +288,25 @@ export default function NewEmployeePage() {
 
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    Flexmedewerker
+                  </label>
+                  <select
+                    value={formData.is_flex ? "true" : "false"}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        is_flex: e.target.value === "true",
+                      })
+                    }
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+                  >
+                    <option value="false">Nee, Vaste Krijger</option>
+                    <option value="true">Ja, Flex-pool</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
                     Status
                   </label>
                   <select
@@ -312,7 +317,7 @@ export default function NewEmployeePage() {
                         active: e.target.value === "true",
                       })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
                   >
                     <option value="true">Actief</option>
                     <option value="false">Inactief</option>
@@ -329,32 +334,11 @@ export default function NewEmployeePage() {
 
               <div className="space-y-4">
                 {/* Profile Photo */}
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    <div className="flex items-center gap-2">
-                      <Image size={16} />
-                      Profielfoto
-                    </div>
-                  </label>
-                  <div className="flex items-center gap-3">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={(e) => setProfilePhoto(e.target.files[0])}
-                      className="flex-1 text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-                    />
-                    {uploadProgress.profile_photo && (
-                      <span className="text-sm text-green-600">
-                        {uploadProgress.profile_photo}
-                      </span>
-                    )}
-                  </div>
-                  {profilePhoto && (
-                    <p className="text-sm text-gray-600 mt-1">
-                      Geselecteerd: {profilePhoto.name}
-                    </p>
-                  )}
-                </div>
+                <PhotoUpload
+                  onPhotoCropped={(file) => setProfilePhoto(file)}
+                  initialPhotoUrl={null}
+                  label="Profielfoto (wordt 1:1 bijgesneden)"
+                />
 
                 {/* Passport Document */}
                 <div>
@@ -414,67 +398,7 @@ export default function NewEmployeePage() {
               </div>
             </div>
 
-            <div className="border-t border-gray-200 pt-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                CAO Informatie
-              </h3>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
-                  CAO Type
-                </label>
-                <div className="px-4 py-3 bg-blue-50 border border-blue-200 rounded-lg">
-                  <p className="font-semibold text-blue-900">
-                    ⚡ Beveiliging - CAO Particuliere Beveiliging
-                  </p>
-                  <p className="text-sm text-blue-700 mt-1">
-                    Standaard: 12 uur per dag, 60 uur per week
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Max uren per dag *
-                  </label>
-                  <input
-                    type="number"
-                    required
-                    min="1"
-                    max="24"
-                    value={formData.max_hours_per_day}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        max_hours_per_day: e.target.value,
-                      })
-                    }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Max uren per week *
-                  </label>
-                  <input
-                    type="number"
-                    required
-                    min="1"
-                    max="168"
-                    value={formData.max_hours_per_week}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        max_hours_per_week: e.target.value,
-                      })
-                    }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-              </div>
-            </div>
           </div>
 
           <div className="flex flex-col md:flex-row gap-3 mt-8">

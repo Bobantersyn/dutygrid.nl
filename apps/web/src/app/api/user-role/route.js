@@ -15,9 +15,23 @@ export async function GET(request) {
       return Response.json({ role: null, employee_id: null });
     }
 
+    let { role, employee_id } = rows[0];
+
+    // Lazy auto-link if no employee_id is set
+    if (!employee_id && (role === 'planner' || role === 'admin' || role === 'beveiliger' || role === 'beveiliger_extended')) {
+      const { email } = session.user;
+      if (email) {
+        const [emp] = await sql`SELECT id FROM employees WHERE email = ${email} LIMIT 1`;
+        if (emp?.id) {
+          employee_id = emp.id;
+          await sql`UPDATE user_roles SET employee_id = ${employee_id} WHERE user_id = ${session.user.id}`;
+        }
+      }
+    }
+
     return Response.json({
-      role: rows[0].role,
-      employee_id: rows[0].employee_id,
+      role,
+      employee_id,
     });
   } catch (error) {
     console.error("Error fetching user role:", error);

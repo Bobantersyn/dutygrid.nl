@@ -33,15 +33,15 @@ export async function PUT(request, { params }) {
     let paramCount = 1;
 
     if (body.active !== undefined) {
-      updates.push(`active = $${paramCount++}`);
-      values.push(body.active);
+      updates.push(`status = $${paramCount++}`);
+      values.push(body.active ? 'active' : 'inactive');
     }
     if (body.location_name !== undefined) {
-      updates.push(`location_name = $${paramCount++}`);
+      updates.push(`name = $${paramCount++}`);
       values.push(body.location_name);
     }
     if (body.location_address !== undefined) {
-      updates.push(`location_address = $${paramCount++}`);
+      updates.push(`address = $${paramCount++}`);
       values.push(body.location_address);
     }
     if (body.description !== undefined) {
@@ -65,6 +65,17 @@ export async function PUT(request, { params }) {
 
     if (!assignment) {
       return Response.json({ error: "Assignment not found" }, { status: 404 });
+    }
+
+    // Process object labels
+    if (body.object_labels !== undefined) {
+      // Delete old mapping
+      await sql`DELETE FROM assignment_object_labels WHERE assignment_id = ${id}`;
+      // Insert new mapping
+      if (body.object_labels.length > 0) {
+        const labelValues = body.object_labels.map(labelId => `(${id}, ${labelId})`).join(", ");
+        await sql(`INSERT INTO assignment_object_labels (assignment_id, object_label_id) VALUES ${labelValues}`);
+      }
     }
 
     return Response.json({ assignment });

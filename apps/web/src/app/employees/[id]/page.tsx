@@ -61,6 +61,7 @@ export default function EmployeeDetailPage({ params }) {
         ),
         can_manage_own_availability:
           formData.can_manage_own_availability !== false,
+        object_labels: formData.object_labels?.map(l => l.id) || [],
       },
       {
         onSuccess: () => {

@@ -4,8 +4,9 @@ import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
     Settings, Users, Palette, Save, Plus, Trash2,
-    Shield, Key, User
+    Shield, Key, User, Tag, ArrowLeft, Activity
 } from "lucide-react";
+import { ObjectLabelSettings } from "@/components/Admin/ObjectLabelSettings";
 
 export default function SettingsPage() {
     const [activeTab, setActiveTab] = useState("general");
@@ -14,6 +15,13 @@ export default function SettingsPage() {
         <div className="min-h-screen bg-gray-50">
             <div className="bg-white border-b border-gray-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                    <a
+                        href="/"
+                        className="text-blue-600 hover:text-blue-700 text-sm mb-4 inline-flex items-center gap-1"
+                    >
+                        <ArrowLeft size={16} />
+                        Terug naar Dashboard
+                    </a>
                     <h1 className="text-3xl font-bold text-gray-900">Systeeminstellingen</h1>
                     <p className="text-gray-600 mt-1">Beheer globale configuratie en gebruikers</p>
 
@@ -36,6 +44,18 @@ export default function SettingsPage() {
                             icon={<Palette size={18} />}
                             label="Thema"
                         />
+                        <TabButton
+                            active={activeTab === "labels"}
+                            onClick={() => setActiveTab("labels")}
+                            icon={<Tag size={18} />}
+                            label="Object Labels"
+                        />
+                        <TabButton
+                            active={activeTab === "logs"}
+                            onClick={() => setActiveTab("logs")}
+                            icon={<Activity size={18} />}
+                            label="Logboek"
+                        />
                     </div>
                 </div>
             </div>
@@ -44,18 +64,27 @@ export default function SettingsPage() {
                 {activeTab === "general" && <GeneralSettings />}
                 {activeTab === "users" && <UserManagement />}
                 {activeTab === "theme" && <ThemeSettings />}
+                {activeTab === "labels" && <ObjectLabelSettings />}
+                {activeTab === "logs" && <AuditLogView />}
             </div>
         </div>
     );
 }
 
-function TabButton({ active, onClick, icon, label }) {
+interface TabButtonProps {
+    active: boolean;
+    onClick: () => void;
+    icon: React.ReactNode;
+    label: string;
+}
+
+function TabButton({ active, onClick, icon, label }: TabButtonProps) {
     return (
         <button
             onClick={onClick}
             className={`flex items-center gap-2 pb-3 border-b-2 transition-colors ${active
-                    ? "border-blue-600 text-blue-600 font-medium"
-                    : "border-transparent text-gray-500 hover:text-gray-700"
+                ? "border-blue-600 text-blue-600 font-medium"
+                : "border-transparent text-gray-500 hover:text-gray-700"
                 }`}
         >
             {icon}
@@ -66,7 +95,7 @@ function TabButton({ active, onClick, icon, label }) {
 
 function GeneralSettings() {
     const queryClient = useQueryClient();
-    const [msg, setMsg] = useState(null);
+    const [msg, setMsg] = useState<string | null>(null);
 
     const { data: settings, isLoading } = useQuery({
         queryKey: ["system-settings"],
@@ -78,7 +107,7 @@ function GeneralSettings() {
     });
 
     const mutation = useMutation({
-        mutationFn: async ({ key, value }) => {
+        mutationFn: async ({ key, value }: { key: string; value: string }) => {
             const res = await fetch("/api/system-settings", {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -88,7 +117,7 @@ function GeneralSettings() {
             return res.json();
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(["system-settings"]);
+            queryClient.invalidateQueries({ queryKey: ["system-settings"] });
             setMsg("Instellingen opgeslagen!");
             setTimeout(() => setMsg(null), 3000);
         }
@@ -145,7 +174,7 @@ function UserManagement() {
     });
 
     const createMutation = useMutation({
-        mutationFn: async (data) => {
+        mutationFn: async (data: any) => {
             const res = await fetch("/api/admin/users", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -158,15 +187,15 @@ function UserManagement() {
             return res.json();
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(["admin-users"]);
+            queryClient.invalidateQueries({ queryKey: ["admin-users"] });
             setIsAdding(false);
             setFormData({ name: "", email: "", password: "", role: "beveiliger" });
             setError(null);
         },
-        onError: (err) => setError(err.message)
+        onError: (err: any) => setError(err.message)
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         createMutation.mutate(formData);
     };
@@ -255,7 +284,7 @@ function UserManagement() {
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                        {users.map(user => (
+                        {users.map((user: any) => (
                             <tr key={user.id} className="hover:bg-gray-50">
                                 <td className="px-6 py-4 font-medium text-gray-900 border-b border-gray-100">
                                     <div className="flex items-center gap-3">
@@ -286,13 +315,13 @@ function UserManagement() {
     );
 }
 
-function RoleIcon({ role }) {
+function RoleIcon({ role }: { role: string }) {
     if (role === 'admin') return <Shield size={14} className="mr-1" />;
     if (role === 'planner') return <Key size={14} className="mr-1" />;
     return <User size={14} className="mr-1" />;
 }
 
-function BadgeRole({ role }) {
+function BadgeRole({ role }: { role: string }) {
     let color = "bg-gray-100 text-gray-700";
     if (role === 'admin') color = "bg-purple-100 text-purple-700";
     if (role === 'planner') color = "bg-blue-100 text-blue-700";
@@ -328,6 +357,64 @@ function ThemeSettings() {
                     </div>
                 </label>
             </div>
+        </div>
+    );
+}
+
+function AuditLogView() {
+    const { data, isLoading } = useQuery({
+        queryKey: ["audit-logs"],
+        queryFn: async () => {
+            const res = await fetch("/api/audit?limit=50");
+            if (!res.ok) throw new Error("Failed to fetch logs");
+            return res.json();
+        }
+    });
+
+    if (isLoading) return <div>Laden...</div>;
+
+    const logs = data?.logs || [];
+
+    return (
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="p-6 border-b border-gray-200">
+                <h2 className="text-xl font-bold text-gray-900">Systeem Logboek</h2>
+                <p className="text-sm text-gray-500 mt-1">Recente acties en wijzigingen (Laatste 50)</p>
+            </div>
+            {logs.length === 0 ? (
+                <div className="p-6 text-center text-gray-500">Geen logs gevonden.</div>
+            ) : (
+                <table className="w-full text-left text-sm">
+                    <thead className="bg-gray-50 text-gray-600">
+                        <tr>
+                            <th className="px-6 py-3 font-semibold">Tijd</th>
+                            <th className="px-6 py-3 font-semibold">Actie</th>
+                            <th className="px-6 py-3 font-semibold">Entiteit</th>
+                            <th className="px-6 py-3 font-semibold">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                        {logs.map((log: any) => (
+                            <tr key={log.id} className="hover:bg-gray-50">
+                                <td className="px-6 py-3 whitespace-nowrap text-gray-500">
+                                    {new Date(log.created_at).toLocaleString('nl-NL', {
+                                        day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'
+                                    })}
+                                </td>
+                                <td className="px-6 py-3">
+                                    <span className="font-medium text-gray-900">{log.action}</span>
+                                </td>
+                                <td className="px-6 py-3 text-gray-600">
+                                    {log.entity_type} {log.entity_id ? `(#${log.entity_id})` : ''}
+                                </td>
+                                <td className="px-6 py-3 text-gray-500 max-w-md truncate">
+                                    {log.details ? JSON.stringify(log.details) : '-'}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            )}
         </div>
     );
 }

@@ -1,7 +1,10 @@
-import { Calendar, Users, Building2, MapPin, Clock, ArrowLeftRight, FileText, CalendarOff, LogOut } from "lucide-react";
+import { Calendar, Users, Building2, MapPin, Clock, ArrowLeftRight, FileText, CalendarOff, LogOut, RefreshCcw } from "lucide-react";
 import NotificationBell from "../NotificationBell";
+import { useUserRole } from "@/hooks/useUserRole";
 
-export function DashboardHeader({ isPlannerOrAdmin }) {
+export function DashboardHeader({ isPlannerOrAdmin: initialIsPlannerOrAdmin }: { isPlannerOrAdmin?: boolean }) {
+  const { hasMultipleRoles, viewAsEmployee, toggleViewAsEmployee, isPlannerOrAdmin: hookIsPlannerOrAdmin } = useUserRole();
+  const isPlannerOrAdmin = initialIsPlannerOrAdmin !== undefined ? (initialIsPlannerOrAdmin && !viewAsEmployee) : hookIsPlannerOrAdmin;
   return (
     <div className="bg-white border-b border-gray-200">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -24,6 +27,15 @@ export function DashboardHeader({ isPlannerOrAdmin }) {
 
             {/* Zone 3 (Mobile view): Systeem Acties */}
             <div className="flex xl:hidden flex-col items-end gap-3 shrink-0">
+              {hasMultipleRoles && (
+                <button
+                  onClick={toggleViewAsEmployee}
+                  className="p-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors shadow-sm flex items-center justify-center"
+                  title={viewAsEmployee ? "Wissel naar Planner weergave" : "Wissel naar Medewerker weergave"}
+                >
+                  <RefreshCcw size={20} strokeWidth={2.5} />
+                </button>
+              )}
               <a
                 href="/account/logout"
                 className="p-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors shadow-sm"
@@ -82,6 +94,15 @@ export function DashboardHeader({ isPlannerOrAdmin }) {
 
           {/* Zone 3 (Desktop view): Systeem Acties (Verticaal) */}
           <div className="hidden xl:flex flex-col items-end gap-3 shrink-0 min-w-[140px]">
+            {hasMultipleRoles && (
+              <button
+                onClick={toggleViewAsEmployee}
+                className="w-full px-5 py-2.5 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors shadow-sm text-sm font-medium flex justify-center items-center gap-2 border border-blue-200"
+              >
+                <RefreshCcw size={16} strokeWidth={2.5} />
+                <span>{viewAsEmployee ? "Planner View" : "Mijn Diensten"}</span>
+              </button>
+            )}
             <a
               href="/account/logout"
               className="w-full px-5 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-700 transition-colors shadow-sm text-sm font-medium flex justify-center items-center gap-2 border border-gray-200"

@@ -1,5 +1,29 @@
-import { User, Briefcase, Shield, Eye, CalendarClock } from "lucide-react";
+import { User, Briefcase, Shield, Eye, CalendarClock, Tag } from "lucide-react";
 import { Save } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+
+interface PersonalInfoFormData {
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  phone?: string;
+  home_address?: string;
+  job_title?: string;
+  contract_type?: string;
+  pass_type?: string;
+  active?: boolean;
+  planning_visibility_weeks?: number;
+  can_manage_own_availability?: boolean;
+  object_labels?: { id: number; name: string }[];
+}
+
+interface PersonalInfoFormProps {
+  formData: PersonalInfoFormData;
+  setFormData: (data: PersonalInfoFormData) => void;
+  isEditing: boolean;
+  onSubmit: (e: React.FormEvent) => void;
+  isSubmitting: boolean;
+}
 
 export function PersonalInfoForm({
   formData,
@@ -7,7 +31,19 @@ export function PersonalInfoForm({
   isEditing,
   onSubmit,
   isSubmitting,
-}) {
+}: PersonalInfoFormProps) {
+  const { data: labelsData } = useQuery({
+    queryKey: ["object-labels"],
+    queryFn: async () => {
+      const res = await fetch("/api/object-labels");
+      if (!res.ok) throw new Error("Failed to fetch labels");
+      return res.json();
+    }
+  });
+
+  const objectLabels = labelsData?.labels || [];
+  const selectedLabelIds = formData?.object_labels?.map(l => l.id) || [];
+
   return (
     <form
       onSubmit={onSubmit}
@@ -239,6 +275,47 @@ export function PersonalInfoForm({
                 </p>
               </div>
             </label>
+          </div>
+
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <label className="block text-sm font-semibold text-gray-900 mb-3 flex items-center gap-1">
+              <Tag size={16} className="text-blue-600" />
+              Object Labels (Kwalificaties / Restricties)
+            </label>
+            {objectLabels.length === 0 ? (
+              <p className="text-sm text-gray-500 italic">Geen object labels ingesteld in het systeem.</p>
+            ) : (
+              <div className="flex flex-wrap gap-2">
+                {objectLabels.map((label) => (
+                  <label
+                    key={label.id}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors ${!isEditing ? "opacity-75 cursor-default" : "cursor-pointer"
+                      } ${selectedLabelIds.includes(label.id)
+                        ? "border-blue-500 bg-blue-50 text-blue-700 font-medium"
+                        : "border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100"
+                      }`}
+                  >
+                    <input
+                      type="checkbox"
+                      disabled={!isEditing}
+                      className="sr-only"
+                      checked={selectedLabelIds.includes(label.id)}
+                      onChange={(e) => {
+                        let newLabels = formData.object_labels || [];
+                        if (e.target.checked) {
+                          newLabels = [...newLabels, { id: label.id, name: label.name }];
+                        } else {
+                          newLabels = newLabels.filter(l => l.id !== label.id);
+                        }
+                        setFormData({ ...formData, object_labels: newLabels });
+                      }}
+                    />
+                    <Tag size={16} className={selectedLabelIds.includes(label.id) ? "text-blue-500" : "text-gray-400"} />
+                    {label.name}
+                  </label>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 

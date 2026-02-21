@@ -14,7 +14,16 @@ export async function GET(request) {
     const caoType = searchParams.get("cao_type");
     const active = searchParams.get("active");
 
-    let query = "SELECT * FROM employees WHERE 1=1";
+    let query = `
+      SELECT e.*,
+        COALESCE(
+          (SELECT json_agg(json_build_object('id', ol.id, 'name', ol.name))
+           FROM employee_object_labels eol
+           JOIN object_labels ol ON eol.object_label_id = ol.id
+           WHERE eol.employee_id = e.id), 
+        '[]'::json) as object_labels
+      FROM employees e WHERE 1=1
+    `;
     const values = [];
     let paramIndex = 1;
 
@@ -65,32 +74,25 @@ export async function POST(request) {
     const {
       first_name,
       last_name,
-      name,
       email,
       phone,
       home_address,
       city,
       postal_code,
       date_of_birth,
-      cao_type,
-      max_hours_per_week,
-      max_hours_per_day,
       hourly_rate,
+      pass_type = 'geen',
+      is_flex = false,
+      profile_photo,
       active = true,
+      object_labels = [],
     } = body;
 
-    // Use provided name or construct from first/last
-    const finalName = name || `${first_name || ""} ${last_name || ""}`.trim();
+    const finalName = `${first_name || ""} ${last_name || ""}`.trim();
 
-    if (
-      !finalName ||
-      !email ||
-      !cao_type ||
-      !max_hours_per_week ||
-      !max_hours_per_day
-    ) {
+    if (!first_name || !last_name || !email) {
       return Response.json(
-        { error: "Missing required fields" },
+        { error: "Niet alle verplichte velden (Voornaam, Achternaam, Email) zijn ingevuld" },
         { status: 400 },
       );
     }
@@ -99,24 +101,32 @@ export async function POST(request) {
 
     const [employee] = await sql`
       INSERT INTO employees (
-        name, email, phone, address, city, postal_code, date_of_birth,
-        cao_type, max_hours_per_week, max_hours_per_day, hourly_rate, status
+        name, first_name, last_name, email, phone, address, city, postal_code, date_of_birth,
+        hourly_rate, status, pass_type, is_flex, profile_photo
       ) VALUES (
         ${finalName}, 
+        ${first_name},
+        ${last_name},
         ${email}, 
         ${phone || null}, 
         ${home_address || null}, 
         ${city || null},
         ${postal_code || null},
         ${date_of_birth || null},
-        ${cao_type}, 
-        ${max_hours_per_week}, 
-        ${max_hours_per_day},
         ${hourly_rate || null},
-        ${statusValue}
+        ${statusValue},
+        ${pass_type},
+        ${is_flex},
+        ${profile_photo || null}
       )
       RETURNING *
     `;
+
+    // Process object labels
+    if (object_labels.length > 0) {
+      const labelValues = object_labels.map(labelId => `(${employee.id}, ${labelId})`).join(", ");
+      await sql(`INSERT INTO employee_object_labels (employee_id, object_label_id) VALUES ${labelValues}`);
+    }
 
     return Response.json({ employee }, { status: 201 });
   } catch (error) {

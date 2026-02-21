@@ -48,23 +48,26 @@ export async function POST(request) {
       RETURNING id
     `;
 
-        // 2. Assign Role
-        if (role) {
-            await sql`
-        INSERT INTO user_roles (user_id, role)
-        VALUES (${user.id}, ${role})
-      `;
+        // 2. Try to find an existing employee with this email
+        const [existingEmployee] = await sql`SELECT id FROM employees WHERE email = ${email}`;
+        let linkedEmployeeId = existingEmployee ? existingEmployee.id : null;
+
+        // 3. If role is guard and no employee exists, create one
+        if (!linkedEmployeeId && (role === 'beveiliger' || role === 'beveiliger_extended')) {
+            const [newEmp] = await sql`
+                INSERT INTO employees (name, first_name, last_name, email, hourly_rate, active)
+                VALUES (${name}, split_part(${name}, ' ', 1), substring(${name} from position(' ' in ${name}) + 1), ${email}, 0, true)
+                RETURNING id
+            `;
+            linkedEmployeeId = newEmp?.id;
         }
 
-        // 3. If role is guard or planner, verify/create employee record?
-        // For now, we assume 'employees' table is sync-ed by email. 
-        // Ideally we should create an employee record if role is 'beveiliger'.
-        if (role === 'beveiliger' || role === 'beveiliger_extended') {
+        // 4. Assign Role
+        if (role) {
             await sql`
-         INSERT INTO employees (name, email, hourly_rate, status)
-         VALUES (${name}, ${email}, 0, 'active')
-         ON CONFLICT (email) DO NOTHING
-       `;
+                INSERT INTO user_roles (user_id, role, employee_id)
+                VALUES (${user.id}, ${role}, ${linkedEmployeeId})
+            `;
         }
 
         return Response.json({ success: true, userId: user.id });

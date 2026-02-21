@@ -7,7 +7,13 @@ export async function GET(request) {
     const clientId = searchParams.get("client_id");
 
     let query = `
-      SELECT a.*, c.name as client_name 
+      SELECT a.*, c.name as client_name,
+        COALESCE(
+          (SELECT json_agg(json_build_object('id', ol.id, 'name', ol.name))
+           FROM assignment_object_labels aol
+           JOIN object_labels ol ON aol.object_label_id = ol.id
+           WHERE aol.assignment_id = a.id), 
+        '[]'::json) as object_labels
       FROM assignments a 
       LEFT JOIN clients c ON a.client_id = c.id 
       WHERE 1=1
@@ -44,6 +50,7 @@ export async function POST(request) {
       description,
       hourly_rate,
       active,
+      object_labels = [], // Array of label IDs
     } = await request.json();
 
     if (!client_id || !location_name || !location_address) {
@@ -53,11 +60,18 @@ export async function POST(request) {
       );
     }
 
+    const status_val = active !== false ? 'active' : 'inactive';
     const [assignment] = await sql`
-      INSERT INTO assignments (client_id, location_name, location_address, description, hourly_rate, active)
-      VALUES (${client_id}, ${location_name}, ${location_address}, ${description || null}, ${hourly_rate || null}, ${active !== false})
+      INSERT INTO assignments (client_id, name, address, description, status)
+      VALUES (${client_id}, ${location_name}, ${location_address}, ${description || null}, ${status_val})
       RETURNING *
     `;
+
+    // Process object labels
+    if (object_labels.length > 0) {
+      const labelValues = object_labels.map(labelId => `(${assignment.id}, ${labelId})`).join(", ");
+      await sql(`INSERT INTO assignment_object_labels (assignment_id, object_label_id) VALUES ${labelValues}`);
+    }
 
     return Response.json({ assignment });
   } catch (error) {

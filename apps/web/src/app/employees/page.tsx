@@ -18,7 +18,7 @@ import { useState, useMemo } from "react";
 export default function EmployeesPage() {
   const queryClient = useQueryClient();
   const [searchTerm, setSearchTerm] = useState("");
-  const [caoFilter, setCaoFilter] = useState("all");
+  const [flexFilter, setFlexFilter] = useState("all");
   const [passFilter, setPassFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [jobFilter, setJobFilter] = useState("all");
@@ -33,17 +33,7 @@ export default function EmployeesPage() {
     },
   });
 
-  const { data: caoData } = useQuery({
-    queryKey: ["cao-types"],
-    queryFn: async () => {
-      const response = await fetch("/api/cao-types");
-      if (!response.ok) throw new Error("Failed to fetch CAO types");
-      return response.json();
-    },
-  });
-
   const employees = data?.employees || [];
-  const caoTypes = caoData?.caoTypes || [];
 
   // Get unique job titles
   const jobTitles = useMemo(() => {
@@ -70,7 +60,7 @@ export default function EmployeesPage() {
           searchTerm.toLowerCase(),
         );
 
-      const matchesCao = caoFilter === "all" || employee.cao_type === caoFilter;
+      const matchesFlex = flexFilter === "all" || (flexFilter === "flex" ? employee.is_flex : !employee.is_flex);
       const matchesPass =
         passFilter === "all" || employee.pass_type === passFilter;
       const matchesStatus =
@@ -81,13 +71,13 @@ export default function EmployeesPage() {
 
       return (
         matchesSearch &&
-        matchesCao &&
+        matchesFlex &&
         matchesPass &&
         matchesStatus &&
         matchesJob
       );
     });
-  }, [employees, searchTerm, caoFilter, passFilter, statusFilter, jobFilter]);
+  }, [employees, searchTerm, flexFilter, passFilter, statusFilter, jobFilter]);
 
   const PassBadge = ({ type }) => {
     if (type === "groen") {
@@ -109,6 +99,21 @@ export default function EmployeesPage() {
       <span className="inline-flex items-center gap-1 px-2 py-1 bg-gray-50 text-gray-500 text-xs rounded-full">
         <ShieldOff size={14} />
         Geen Pas
+      </span>
+    );
+  };
+
+  const FlexBadge = ({ isFlex }) => {
+    if (isFlex) {
+      return (
+        <span className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">
+          Flex-pool
+        </span>
+      );
+    }
+    return (
+      <span className="inline-flex items-center px-2 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-full">
+        Vast
       </span>
     );
   };
@@ -169,16 +174,13 @@ export default function EmployeesPage() {
             </div>
 
             <select
-              value={caoFilter}
-              onChange={(e) => setCaoFilter(e.target.value)}
+              value={flexFilter}
+              onChange={(e) => setFlexFilter(e.target.value)}
               className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
-              <option value="all">Alle CAO types</option>
-              {caoTypes.map((cao) => (
-                <option key={cao.id} value={cao.name}>
-                  {cao.name}
-                </option>
-              ))}
+              <option value="all">Alle contracten</option>
+              <option value="vaste">Vaste Krijger</option>
+              <option value="flex">Flex-pool</option>
             </select>
 
             <select
@@ -224,21 +226,19 @@ export default function EmployeesPage() {
             <div className="flex gap-2 border border-gray-300 rounded-lg p-1">
               <button
                 onClick={() => setViewMode("cards")}
-                className={`px-3 py-1 rounded transition-colors ${
-                  viewMode === "cards"
+                className={`px-3 py-1 rounded transition-colors ${viewMode === "cards"
                     ? "bg-blue-600 text-white"
                     : "text-gray-600 hover:bg-gray-100"
-                }`}
+                  }`}
               >
                 <Grid size={18} />
               </button>
               <button
                 onClick={() => setViewMode("table")}
-                className={`px-3 py-1 rounded transition-colors ${
-                  viewMode === "table"
+                className={`px-3 py-1 rounded transition-colors ${viewMode === "table"
                     ? "bg-blue-600 text-white"
                     : "text-gray-600 hover:bg-gray-100"
-                }`}
+                  }`}
               >
                 <List size={18} />
               </button>
@@ -332,22 +332,9 @@ export default function EmployeesPage() {
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-500">CAO Type</span>
-                        <span className="text-xs font-semibold text-purple-700 bg-purple-100 px-2 py-1 rounded-full">
-                          {employee.cao_type}
-                        </span>
+                        <span className="text-xs text-gray-500">Contract</span>
+                        <FlexBadge isFlex={employee.is_flex} />
                       </div>
-
-                      {employee.contract_type && (
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs text-gray-500">
-                            Contract
-                          </span>
-                          <span className="text-xs font-semibold text-gray-700">
-                            {employee.contract_type}
-                          </span>
-                        </div>
-                      )}
                     </div>
                   </div>
                 </a>
@@ -368,9 +355,6 @@ export default function EmployeesPage() {
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider">
                       Pas
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider">
-                      CAO Type
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider">
                       Contract
@@ -425,20 +409,14 @@ export default function EmployeesPage() {
                           <PassBadge type={employee.pass_type} />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">
-                            {employee.cao_type}
-                          </span>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                          {employee.contract_type || "-"}
+                          <FlexBadge isFlex={employee.is_flex} />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span
-                            className={`inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-full ${
-                              employee.active
+                            className={`inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-full ${employee.active
                                 ? "bg-green-100 text-green-700"
                                 : "bg-red-100 text-red-700"
-                            }`}
+                              }`}
                           >
                             <Circle
                               size={8}

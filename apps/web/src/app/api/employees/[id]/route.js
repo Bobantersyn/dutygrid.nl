@@ -5,7 +5,14 @@ export async function GET(request, { params }) {
   try {
     const { id } = params;
     const [employee] = await sql`
-      SELECT * FROM employees WHERE id = ${id}
+      SELECT e.*,
+        COALESCE(
+          (SELECT json_agg(json_build_object('id', ol.id, 'name', ol.name))
+           FROM employee_object_labels eol
+           JOIN object_labels ol ON eol.object_label_id = ol.id
+           WHERE eol.employee_id = e.id), 
+        '[]'::json) as object_labels
+      FROM employees e WHERE id = ${id}
     `;
 
     if (!employee) {
@@ -93,6 +100,17 @@ export async function PUT(request, { params }) {
 
     if (!employee) {
       return Response.json({ error: "Employee not found" }, { status: 404 });
+    }
+
+    // Process object labels
+    if (body.object_labels !== undefined) {
+      // Delete old mapping
+      await sql`DELETE FROM employee_object_labels WHERE employee_id = ${id}`;
+      // Insert new mapping
+      if (body.object_labels.length > 0) {
+        const labelValues = body.object_labels.map(labelId => `(${id}, ${labelId})`).join(", ");
+        await sql(`INSERT INTO employee_object_labels (employee_id, object_label_id) VALUES ${labelValues}`);
+      }
     }
 
     return Response.json({ employee });
