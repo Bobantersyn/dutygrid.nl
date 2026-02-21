@@ -15,7 +15,7 @@ export async function GET(request) {
         r.role as user_role,
         e.id as employee_id, e.hourly_rate
       FROM auth_users u
-      LEFT JOIN user_roles r ON u.id = r.user_id
+      LEFT JOIN user_roles r ON u.id = r.user_id::integer
       LEFT JOIN employees e ON u.email = e.email
       ORDER BY u.created_at DESC
     `;
