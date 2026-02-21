@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Login | DutyGrid</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0047AB",
+                        secondary: "#00C853",
+                        "bg-dark": "#0B0F1A",
+                        "card-dark": "#111827",
+                        "input-dark": "#0D1117",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .login-bg {
+            background: linear-gradient(180deg, rgba(11, 15, 26, 0.85) 0%, rgba(11, 15, 26, 0.92) 100%),
+                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: center bottom;
+        }
+    </style>
+</head>
+
+<body class="login-bg text-white min-h-screen flex flex-col items-center justify-center p-6">
+
+    <!-- Logo & Branding -->
+    <div class="text-center mb-8">
+        <div
+            class="mx-auto mb-4 w-20 h-20 bg-primary/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-primary/30 shadow-lg shadow-primary/20">
+            <div class="grid grid-cols-2 gap-1.5">
+                <div class="w-5 h-5 bg-primary rounded-md"></div>
+                <div class="w-5 h-5 bg-primary rounded-md"></div>
+                <div class="w-5 h-5 bg-primary rounded-md"></div>
+                <div class="w-5 h-5 bg-primary rounded-md"></div>
+            </div>
+        </div>
+        <h1 class="text-3xl font-extrabold tracking-tight">DutyGrid</h1>
+        <p class="text-slate-400 text-sm mt-1">Beveiligingsplanning</p>
+    </div>
+
+    <!-- Login Card -->
+    <div class="w-full max-w-sm bg-card-dark/80 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50 shadow-2xl">
+        <h2 class="text-xl font-bold text-center mb-8">Welkom terug</h2>
+
+        <form class="space-y-5" id="login-form">
+            <!-- Email -->
+            <div>
+                <label class="block text-sm font-semibold mb-2 text-slate-300" for="email">E-mailadres</label>
+                <div class="relative">
+                    <span
+                        class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-lg">mail</span>
+                    <input
+                        class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-input-dark border border-slate-700 text-white placeholder-slate-500 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm"
+                        id="email" placeholder="naam@bedrijf.nl" required type="email" />
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div>
+                <div class="flex items-center justify-between mb-2">
+                    <label class="block text-sm font-semibold text-slate-300" for="password">Wachtwoord</label>
+                    <a class="text-xs font-semibold text-primary hover:text-blue-400 transition-colors"
+                        href="#">Wachtwoord vergeten?</a>
+                </div>
+                <div class="relative">
+                    <span
+                        class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-lg">lock</span>
+                    <input
+                        class="w-full pl-10 pr-12 py-3.5 rounded-xl bg-input-dark border border-slate-700 text-white placeholder-slate-500 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm"
+                        id="password" placeholder="••••••••" required type="password" />
+                    <button type="button" id="toggle-password"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors">
+                        <span class="material-icons text-lg">visibility</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Remember Me -->
+            <div class="flex items-center">
+                <input
+                    class="h-4 w-4 text-primary bg-input-dark border-slate-600 rounded focus:ring-primary focus:ring-offset-0"
+                    id="remember" type="checkbox" />
+                <label class="ml-2 block text-sm text-slate-400" for="remember">Onthoud mij</label>
+            </div>
+
+            <!-- Submit -->
+            <button
+                class="w-full py-4 bg-primary hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-primary/30 active:scale-[0.98] flex items-center justify-center space-x-2 mt-2"
+                type="submit">
+                <span>Inloggen</span>
+                <span class="material-icons text-lg">arrow_forward</span>
+            </button>
+        </form>
+
+        <!-- Register Link -->
+        <div class="mt-8 pt-6 border-t border-slate-700/50 text-center">
+            <p class="text-sm text-slate-400">
+                Nog geen account?
+                <a class="font-bold text-primary hover:text-blue-400 transition-colors" href="#">Neem contact op</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <p
+        class="text-center text-[10px] text-slate-500 mt-8 uppercase tracking-widest font-semibold flex items-center space-x-3">
+        <span>© 2024 DUTYGRID</span>
+        <span>•</span>
+        <span>V2.4.0</span>
+        <span>•</span>
+        <span class="flex items-center space-x-1">
+            <span class="material-icons text-xs text-secondary">verified_user</span>
+            <span>SECURE</span>
+        </span>
+    </p>
+
+    <script>
+        // Toggle password visibility
+        const toggleBtn = document.getElementById('toggle-password');
+        const passwordInput = document.getElementById('password');
+        toggleBtn.addEventListener('click', () => {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            toggleBtn.querySelector('.material-icons').textContent = isPassword ? 'visibility_off' : 'visibility';
+        });
+
+        // Prevent form submit (demo)
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Login functionaliteit wordt gekoppeld aan DutyGrid backend.');
+        });
+    </script>
+</body>
+
+</html>

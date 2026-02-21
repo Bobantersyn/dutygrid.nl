@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="light" lang="nl"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DutyGrid | Beveiligingsplanning Eenvoudig Gemaakt</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0047AB", // Blue from Duty
+                        secondary: "#00C853", // Green from Grid
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0F172A",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hero-gradient {
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<nav class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-screen-xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<img alt="DutyGrid Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMV6JpGPeYSyelGkrbki9SUzHGQICJyGitn2F_-fJJabiTX-Wzckg4KOHq11U2C-LK24T7CCWND7DHB99y5jyzSG0iACFkeGVCxyE8qsCLmvQEoD_EVO4OwBZ39dwxXN_2XvVpWnXcJIz2DznhyIbYX_vBRSplEqQG6XTqhXH4vPN8n8V-scFppkXmuxtBARGXW3CH59KwewTBXNJd6-78nAbjtBCRDwIjKSIP-azy6M47Qq8ssTRKLHQFC2MqGO86dfM3_82Ur44"/>
+</div>
+<div class="flex items-center space-x-4">
+<a class="text-sm font-semibold text-primary dark:text-secondary" href="login.html">Inloggen</a>
+<button class="p-2 text-slate-600 dark:text-slate-400" id="menu-toggle">
+<span class="material-icons">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<div class="hidden fixed inset-0 z-40 bg-white dark:bg-background-dark pt-20 px-6" id="mobile-menu">
+<ul class="space-y-6 text-xl font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Functies</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Prijzen</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Over ons</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<section class="hero-gradient relative flex items-center justify-center py-24 px-6 text-center text-white">
+<div class="max-w-md">
+<img alt="DutyGrid Hero Logo" class="h-20 w-auto mx-auto mb-8 drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk2N8du1ndWVdMyWLR-SGUWqnjLxvOoG8uI52dg01O4myDi1WD7saowH__XCMejChjdW_WWEPysJNYwEkQkw3D63GNFWTnOmXRdfjgjej7OmdnH5TGPr6UmFPdcSZ6k6UiJMqytKh1CGcsnpHmjCH-DL68p3S0dCjNeY42jE6k_vKVLkKb_su4OlYNMnqAp-GyyhTiVFgha19F9fwIB9IJQz74AekHPQZtL3eikuMSMB8W-Zc7ISCuruE002pDLEbyUPFGtFcdoRQ"/>
+<h1 class="text-4xl font-extrabold tracking-tight mb-4">
+                Beveiligingsplanning <span class="text-secondary">Eenvoudig Gemaakt</span>
+</h1>
+<p class="text-lg text-slate-200 mb-8 leading-relaxed">
+                Optimaliseer uw beveiligingsoperaties met het meest intuïtieve planningsplatform voor professionele organisaties.
+            </p>
+<div class="flex flex-col space-y-3">
+<a class="bg-primary hover:bg-blue-800 text-white font-bold py-4 px-8 rounded-full transition-all shadow-lg active:scale-95" href="#">
+                    Start Gratis Proefperiode
+                </a>
+<a class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white font-semibold py-4 px-8 rounded-full transition-all" href="#">
+                    Bekijk Demo
+                </a>
+</div>
+</div>
+</section>
+<section class="py-16 px-6">
+<div class="max-w-md mx-auto">
+<h2 class="text-2xl font-bold mb-10 text-center">Waarom DutyGrid?</h2>
+<div class="space-y-6">
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-start space-x-4">
+<div class="bg-primary/10 p-3 rounded-xl">
+<span class="material-icons text-primary">schedule</span>
+</div>
+<div>
+<h3 class="font-bold mb-1">Slimme Planning</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Creëer complexe roosters in enkele minuten met AI-ondersteuning.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-start space-x-4">
+<div class="bg-secondary/10 p-3 rounded-xl">
+<span class="material-icons text-secondary">gps_fixed</span>
+</div>
+<div>
+<h3 class="font-bold mb-1">Live Tracking</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Volg uw personeel in real-time voor maximale veiligheid.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-start space-x-4">
+<div class="bg-primary/10 p-3 rounded-xl">
+<span class="material-icons text-primary">analytics</span>
+</div>
+<div>
+<h3 class="font-bold mb-1">Rapportage</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Genereer gedetailleerde incidentrapporten en urenoverzichten.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 px-6 bg-slate-100 dark:bg-slate-900/50">
+<div class="max-w-md mx-auto text-center">
+<h2 class="text-3xl font-bold mb-4">Kies Uw Plan</h2>
+<p class="text-slate-600 dark:text-slate-400 mb-12">Schalbare oplossingen voor elk type beveiligingsbedrijf.</p>
+<div class="space-y-8">
+<div class="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl text-left relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="text-slate-400 material-icons">business</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Basis</h3>
+<p class="text-primary font-bold text-3xl mb-4">€49 <span class="text-sm font-normal text-slate-500">/maand</span></p>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Ideaal voor kleine teams.</p>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center text-sm"><span class="material-icons text-secondary text-base mr-2">check_circle</span> 0-15 Beveiligers</li>
+<li class="flex items-center text-sm"><span class="material-icons text-secondary text-base mr-2">check_circle</span> Mobiele App voor guards</li>
+<li class="flex items-center text-sm"><span class="material-icons text-secondary text-base mr-2">check_circle</span> Basis Rapportage</li>
+</ul>
+<button class="w-full py-3 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 font-bold rounded-xl transition-colors">Start nu</button>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-3xl border-2 border-primary shadow-2xl text-left relative">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">POPULAIR</div>
+<h3 class="text-xl font-bold mb-2">Groeien</h3>
+<p class="text-primary font-bold text-3xl mb-4">€129 <span class="text-sm font-normal text-slate-500">/maand</span></p>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Voor groeiende organisaties.</p>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center text-sm"><span class="material-icons text-secondary text-base mr-2">check_circle</span> 15-50 Beveiligers</li>
+<li class="flex items-center text-sm"><span class="material-icons text-secondary text-base mr-2">check_circle</span> GPS Live Tracking</li>
+<li class="flex items-center text-sm"><span class="material-icons text-secondary text-base mr-2">check_circle</span> Geofencing &amp; Alerts</li>
+<li class="flex items-center text-sm"><span class="material-icons text-secondary text-base mr-2">check_circle</span> Prioriteit Support</li>
+</ul>
+<button class="w-full py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-blue-500/30">Kies Groeien</button>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl text-left">
+<h3 class="text-xl font-bold mb-2">Professioneel</h3>
+<p class="text-primary font-bold text-3xl mb-4">€249 <span class="text-sm font-normal text-slate-500">/maand</span></p>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Voor grote operaties.</p>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center text-sm"><span class="material-icons text-secondary text-base mr-2">check_circle</span> 50-100 Beveiligers</li>
+<li class="flex items-center text-sm"><span class="material-icons text-secondary text-base mr-2">check_circle</span> Volledige API toegang</li>
+<li class="flex items-center text-sm"><span class="material-icons text-secondary text-base mr-2">check_circle</span> Custom Integraties</li>
+</ul>
+<button class="w-full py-3 bg-slate-100 dark:bg-slate-700 font-bold rounded-xl">Kies Professioneel</button>
+</div>
+<div class="bg-slate-900 text-white p-8 rounded-3xl border border-slate-800 shadow-xl text-left relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-icons text-9xl">shield</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Enterprise</h3>
+<p class="text-secondary font-bold text-3xl mb-4">Maatwerk</p>
+<p class="text-sm text-slate-400 mb-6">Onbeperkte mogelijkheden.</p>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center text-sm"><span class="material-icons text-secondary text-base mr-2">check_circle</span> 100+ Beveiligers</li>
+<li class="flex items-center text-sm"><span class="material-icons text-secondary text-base mr-2">check_circle</span> Toegewezen Account Manager</li>
+<li class="flex items-center text-sm"><span class="material-icons text-secondary text-base mr-2">check_circle</span> On-premise Opties</li>
+</ul>
+<button class="w-full py-3 bg-secondary text-slate-900 font-bold rounded-xl transition-colors">Contact Sales</button>
+</div>
+</div>
+</div>
+</section>
+<footer class="py-12 px-6 bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-md mx-auto flex flex-col items-center">
+<img alt="DutyGrid Logo Footer" class="h-8 mb-6 grayscale opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC379L2hLpUDx57oFdVgASY3w2uBNwKRcyuReGaId2NCsSaaJDDXdknNuw7-7QAGSggeTmvw6R9vWk_glwr6vavXv2fPPt6d7088MTqdNKLTKNPl5ahnN85QGH8Dwa4CFzZMy9qWOVhd5Gynxr0oFyMcJxew7PQLkqvKan6Su2a0m65llvYK2ArOJvhVMkBpusxHL3bfxRlWhKN8e4CPfUhiLGYZMFChTdIc7Acdw3j0NqalgZylvMQ4NmkN7xxRlcnMwMTcUbcdfY"/>
+<div class="flex space-x-6 mb-8">
+<a class="text-slate-500 hover:text-primary" href="#"><span class="material-icons">facebook</span></a>
+<a class="text-slate-500 hover:text-primary" href="#"><svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg></a>
+<a class="text-slate-500 hover:text-primary" href="#"><span class="material-icons">language</span></a>
+</div>
+<p class="text-slate-500 text-xs text-center mb-4">
+                © 2023 DutyGrid. Alle rechten voorbehouden. <br/>
+                Ontworpen voor veiligheidsprofessionals.
+            </p>
+<div class="flex space-x-4 text-[10px] text-slate-400 uppercase tracking-widest font-semibold">
+<a href="#">Privacy</a>
+<a href="#">Voorwaarden</a>
+<a href="#">Cookies</a>
+</div>
+</div>
+</footer>
+<script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isOpen = false;
+        menuToggle.addEventListener('click', () => {
+            isOpen = !isOpen;
+            if (isOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuToggle.innerHTML = '<span class="material-icons">close</span>';
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuToggle.innerHTML = '<span class="material-icons">menu</span>';
+                document.body.style.overflow = '';
+            }
+        });
+        // Theme Switcher for testing (Auto-detection is better, but here's a toggle logic if needed)
+        const checkDarkMode = () => {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+            }
+        };
+        checkDarkMode();
+    </script>
+
+</body></html>
