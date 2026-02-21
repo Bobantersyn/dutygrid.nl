@@ -1,10 +1,11 @@
-import { Calendar, Users, Building2, MapPin, Clock, ArrowLeftRight, FileText, CalendarOff, LogOut, RefreshCcw } from "lucide-react";
+import { Calendar, Users, Building2, MapPin, Clock, ArrowLeftRight, FileText, CalendarOff, LogOut, RefreshCcw, Settings } from "lucide-react";
 import NotificationBell from "../NotificationBell";
 import { useUserRole } from "@/hooks/useUserRole";
 
 export function DashboardHeader({ isPlannerOrAdmin: initialIsPlannerOrAdmin }: { isPlannerOrAdmin?: boolean }) {
-  const { hasMultipleRoles, viewAsEmployee, toggleViewAsEmployee, isPlannerOrAdmin: hookIsPlannerOrAdmin } = useUserRole();
+  const { hasMultipleRoles, viewAsEmployee, toggleViewAsEmployee, isPlannerOrAdmin: hookIsPlannerOrAdmin, userRole } = useUserRole();
   const isPlannerOrAdmin = initialIsPlannerOrAdmin !== undefined ? (initialIsPlannerOrAdmin && !viewAsEmployee) : hookIsPlannerOrAdmin;
+  const isAdmin = userRole === "admin";
   return (
     <div className="bg-white border-b border-gray-200">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -73,6 +74,12 @@ export function DashboardHeader({ isPlannerOrAdmin: initialIsPlannerOrAdmin }: {
                   <FileText size={18} />
                   <span>Administratie</span>
                 </a>
+                {isAdmin && (
+                  <a href="/settings" className="px-4 py-2.5 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm w-full sm:w-auto">
+                    <Settings size={18} />
+                    <span>Systeeminstellingen</span>
+                  </a>
+                )}
               </div>
             ) : (
               <div className="flex flex-wrap gap-3 w-full xl:w-auto">
