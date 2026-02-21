@@ -1,7 +1,7 @@
 import { Providers } from "./providers";
 
 export const metadata = {
-  title: "Beveiligingsplanning",
+  title: "DutyGrid",
   description: "Planning systeem voor beveiligingspersoneel",
 };
 

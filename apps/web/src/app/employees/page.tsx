@@ -60,9 +60,9 @@ export default function EmployeesPage() {
           searchTerm.toLowerCase(),
         );
 
-      const matchesFlex = flexFilter === "all" || (flexFilter === "flex" ? employee.is_flex : !employee.is_flex);
+      const matchesFlex = flexFilter === "all" || (flexFilter === "flex" ? employee.is_flexible : !employee.is_flexible);
       const matchesPass =
-        passFilter === "all" || employee.pass_type === passFilter;
+        passFilter === "all" || employee.badge_type === passFilter;
       const matchesStatus =
         statusFilter === "all" ||
         (statusFilter === "active" ? employee.active : !employee.active);
@@ -227,8 +227,8 @@ export default function EmployeesPage() {
               <button
                 onClick={() => setViewMode("cards")}
                 className={`px-3 py-1 rounded transition-colors ${viewMode === "cards"
-                    ? "bg-blue-600 text-white"
-                    : "text-gray-600 hover:bg-gray-100"
+                  ? "bg-blue-600 text-white"
+                  : "text-gray-600 hover:bg-gray-100"
                   }`}
               >
                 <Grid size={18} />
@@ -236,8 +236,8 @@ export default function EmployeesPage() {
               <button
                 onClick={() => setViewMode("table")}
                 className={`px-3 py-1 rounded transition-colors ${viewMode === "table"
-                    ? "bg-blue-600 text-white"
-                    : "text-gray-600 hover:bg-gray-100"
+                  ? "bg-blue-600 text-white"
+                  : "text-gray-600 hover:bg-gray-100"
                   }`}
               >
                 <List size={18} />
@@ -328,12 +328,12 @@ export default function EmployeesPage() {
 
                     <div className="border-t border-gray-200 pt-4 space-y-3">
                       <div className="flex items-center justify-between">
-                        <PassBadge type={employee.pass_type} />
+                        <PassBadge type={employee.badge_type} />
                       </div>
 
                       <div className="flex items-center justify-between">
                         <span className="text-xs text-gray-500">Contract</span>
-                        <FlexBadge isFlex={employee.is_flex} />
+                        <FlexBadge isFlex={employee.is_flexible} />
                       </div>
                     </div>
                   </div>
@@ -406,16 +406,16 @@ export default function EmployeesPage() {
                           {employee.job_title || "-"}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <PassBadge type={employee.pass_type} />
+                          <PassBadge type={employee.badge_type} />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <FlexBadge isFlex={employee.is_flex} />
+                          <FlexBadge isFlex={employee.is_flexible} />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span
                             className={`inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-full ${employee.active
-                                ? "bg-green-100 text-green-700"
-                                : "bg-red-100 text-red-700"
+                              ? "bg-green-100 text-green-700"
+                              : "bg-red-100 text-red-700"
                               }`}
                           >
                             <Circle

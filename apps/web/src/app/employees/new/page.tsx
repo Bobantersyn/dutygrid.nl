@@ -14,8 +14,8 @@ export default function NewEmployeePage() {
     home_address: "",
     job_title: "Beveiliger",
     contract_type: "",
-    pass_type: "geen",
-    is_flex: false,
+    badge_type: "geen",
+    is_flexible: false,
     active: true,
   });
   const [error, setError] = useState<string | null>(null);
@@ -283,9 +283,9 @@ export default function NewEmployeePage() {
                     </div>
                   </label>
                   <select
-                    value={formData.pass_type}
+                    value={formData.badge_type}
                     onChange={(e) =>
-                      setFormData({ ...formData, pass_type: e.target.value })
+                      setFormData({ ...formData, badge_type: e.target.value })
                     }
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   >
@@ -300,11 +300,11 @@ export default function NewEmployeePage() {
                     Flexmedewerker
                   </label>
                   <select
-                    value={formData.is_flex ? "true" : "false"}
+                    value={formData.is_flexible ? "true" : "false"}
                     onChange={(e) =>
                       setFormData({
                         ...formData,
-                        is_flex: e.target.value === "true",
+                        is_flexible: e.target.value === "true",
                       })
                     }
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"

@@ -19,8 +19,7 @@
  * PLANNER/ADMIN TOEGANG
  * ---------------------
  * /                              - Dashboard
- * /clients                       - Klantenbeheer
- * /assignments                   - Opdrachtenbeheer
+ * /clients                       - Klanten & Opdrachtenbeheer
  * /employees                     - Medewerkers lijst
  * /employees/new                 - Nieuwe medewerker
  * /employees/[id]                - Medewerker detail

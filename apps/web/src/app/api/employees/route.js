@@ -81,8 +81,8 @@ export async function POST(request) {
       postal_code,
       date_of_birth,
       hourly_rate,
-      pass_type = 'geen',
-      is_flex = false,
+      badge_type = 'geen',
+      is_flexible = false,
       profile_photo,
       active = true,
       object_labels = [],
@@ -102,7 +102,7 @@ export async function POST(request) {
     const [employee] = await sql`
       INSERT INTO employees (
         name, first_name, last_name, email, phone, address, city, postal_code, date_of_birth,
-        hourly_rate, status, pass_type, is_flex, profile_photo
+        hourly_rate, status, badge_type, is_flexible, profile_photo
       ) VALUES (
         ${finalName}, 
         ${first_name},
@@ -115,8 +115,8 @@ export async function POST(request) {
         ${date_of_birth || null},
         ${hourly_rate || null},
         ${statusValue},
-        ${pass_type},
-        ${is_flex},
+        ${badge_type},
+        ${is_flexible},
         ${profile_photo || null}
       )
       RETURNING *

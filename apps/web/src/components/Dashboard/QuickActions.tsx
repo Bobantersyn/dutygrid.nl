@@ -1,89 +1,76 @@
-import { Plus, RefreshCw } from "lucide-react";
+import { Plus, RefreshCw, Calendar, Users, Building2, MapPin } from "lucide-react";
 
 export function QuickActions({ isPlannerOrAdmin }) {
+  const ActionCard = ({ href, icon: Icon, title, description, highlightColor = "blue" }: {
+    href: string,
+    icon: any,
+    title: string,
+    description: string,
+    highlightColor?: string
+  }) => (
+    <a
+      href={href}
+      className="flex items-center gap-4 p-4 border border-gray-100 rounded-xl hover:border-blue-300 hover:bg-blue-50/50 transition-all group bg-white shadow-sm"
+    >
+      <div className="bg-blue-50 p-3 rounded-lg group-hover:bg-blue-100 transition-colors">
+        <Icon className="text-blue-600" size={24} />
+      </div>
+      <div>
+        <h3 className="font-bold text-gray-900 text-sm group-hover:text-blue-700 transition-colors">{title}</h3>
+        <p className="text-xs text-gray-500">{description}</p>
+      </div>
+    </a>
+  );
+
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
-      <h2 className="text-xl font-bold text-gray-900 mb-4">Snelle Acties</h2>
-      <div
-        className={`grid grid-cols-1 ${isPlannerOrAdmin ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-1 lg:grid-cols-2 max-w-2xl mx-auto"} gap-4`}
-      >
-        {isPlannerOrAdmin && (
-          <>
-            <a
-              href="/clients"
-              className="flex items-center gap-4 p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all group"
-            >
-              <div className="bg-green-100 p-3 rounded-lg group-hover:bg-green-200 transition-colors">
-                <Plus className="text-green-600" size={24} />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900">Nieuwe Klant</h3>
-                <p className="text-sm text-gray-600">Voeg klant toe</p>
-              </div>
-            </a>
-
-            <a
-              href="/assignments"
-              className="flex items-center gap-4 p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-all group"
-            >
-              <div className="bg-orange-100 p-3 rounded-lg group-hover:bg-orange-200 transition-colors">
-                <Plus className="text-orange-600" size={24} />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900">Nieuwe Opdracht</h3>
-                <p className="text-sm text-gray-600">Voeg locatie toe</p>
-              </div>
-            </a>
-
-            <a
-              href="/employees/new"
-              className="flex items-center gap-4 p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-all group"
-            >
-              <div className="bg-blue-100 p-3 rounded-lg group-hover:bg-blue-200 transition-colors">
-                <Plus className="text-blue-600" size={24} />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900">
-                  Nieuwe Medewerker
-                </h3>
-                <p className="text-sm text-gray-600">Voeg medewerker toe</p>
-              </div>
-            </a>
-
-            <a
-              href="/planning/new"
-              className="flex items-center gap-4 p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-all group"
-            >
-              <div className="bg-purple-100 p-3 rounded-lg group-hover:bg-purple-200 transition-colors">
-                <Plus className="text-purple-600" size={24} />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900">Nieuwe Dienst</h3>
-                <p className="text-sm text-gray-600">Plan dienst in</p>
-              </div>
-            </a>
-          </>
-        )}
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-lg font-black text-gray-900 uppercase tracking-tight">Snelle Acties</h2>
+        <div className="h-px bg-gray-100 flex-1 ml-4"></div>
       </div>
 
-      {!isPlannerOrAdmin && (
-        <div className="mt-4">
-          <a
-            href="/diensten-ruilen"
-            className="flex items-center gap-4 p-4 border-2 border-cyan-300 bg-cyan-50 rounded-lg hover:border-cyan-500 hover:bg-cyan-100 transition-all group"
-          >
-            <div className="bg-cyan-100 p-3 rounded-lg group-hover:bg-cyan-200 transition-colors">
-              <RefreshCw className="text-cyan-600" size={24} />
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900">Diensten Ruilen</h3>
-              <p className="text-sm text-gray-600">
-                Bied je diensten aan of neem diensten over
-              </p>
-            </div>
-          </a>
-        </div>
-      )}
+      <div
+        className={`grid grid-cols-1 ${isPlannerOrAdmin ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-1 lg:grid-cols-2"} gap-4`}
+      >
+        {isPlannerOrAdmin ? (
+          <>
+            <ActionCard
+              href="/clients"
+              icon={Building2}
+              title="Nieuwe Klant"
+              description="Voeg klant toe"
+            />
+            <ActionCard
+              href="/clients"
+              icon={MapPin}
+              title="Nieuwe Opdracht"
+              description="Voeg locatie toe"
+            />
+            <ActionCard
+              href="/employees/new"
+              icon={Users}
+              title="Nieuwe Medewerker"
+              description="Voeg medewerker toe"
+            />
+            <ActionCard
+              href="/planning/new"
+              icon={Calendar}
+              title="Nieuwe Dienst"
+              description="Plan dienst in"
+            />
+          </>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full md:col-span-2">
+            <ActionCard
+              href="/diensten-ruilen"
+              icon={RefreshCw}
+              title="Diensten Ruilen"
+              description="Bied aan of neem over"
+            />
+            {/* Add more employee quick actions if needed */}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

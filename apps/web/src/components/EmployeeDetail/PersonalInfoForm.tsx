@@ -10,7 +10,7 @@ interface PersonalInfoFormData {
   home_address?: string;
   job_title?: string;
   contract_type?: string;
-  pass_type?: string;
+  badge_type?: string;
   active?: boolean;
   planning_visibility_weeks?: number;
   can_manage_own_availability?: boolean;
@@ -190,11 +190,11 @@ export function PersonalInfoForm({
               </label>
               <select
                 disabled={!isEditing}
-                value={formData?.pass_type || "geen"}
+                value={formData?.badge_type || "geen"}
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    pass_type: e.target.value,
+                    badge_type: e.target.value,
                   })
                 }
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 disabled:text-gray-600"

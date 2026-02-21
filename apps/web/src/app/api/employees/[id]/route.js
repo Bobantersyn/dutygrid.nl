@@ -54,10 +54,11 @@ export async function PUT(request, { params }) {
       "security_pass_document",
       "job_title",
       "contract_type",
-      "pass_type",
+      "badge_type",
+      "is_flexible",
       "active",
       "planning_visibility_weeks",
-      "can_manage_own_availability", // Add this field
+      "can_manage_own_availability",
     ];
 
     for (const field of allowedFields) {

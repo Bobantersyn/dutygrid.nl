@@ -33,6 +33,7 @@ import { useSandboxStore } from '../__create/hmr-sandbox-store';
 import type { Route } from './+types/root';
 import { useDevServerHeartbeat } from '../__create/useDevServerHeartbeat';
 import { Providers } from './providers';
+import { BottomNav } from '@/components/Navigation/BottomNav';
 
 export const links = () => [];
 
@@ -467,6 +468,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <body>
         <Providers>
           <ClientOnly loader={() => children} />
+          <BottomNav />
         </Providers>
         <HotReloadIndicator />
         <Toaster position="bottom-right" />

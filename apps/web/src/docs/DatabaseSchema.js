@@ -92,7 +92,8 @@
  * - home_address
  * - job_title
  * - contract_type
- * - pass_type (geen | VGB | VCA)
+ * - badge_type (geen | grijs | groen)
+ * - is_flexible (boolean, default: false)
  * - profile_photo (URL)
  * - passport_document (URL)
  * - security_pass_document (URL)

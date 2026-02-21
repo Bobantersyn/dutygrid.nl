@@ -1,23 +1,33 @@
 "use client";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Building2, Plus, Trash2, Mail, Phone, MapPin } from "lucide-react";
+import {
+  Building2, Plus, Trash2, Mail, Phone, MapPin,
+  Search, Filter, Euro, User as UserIcon, Tag,
+  LayoutGrid, List as ListIcon, ChevronRight,
+  MoreVertical, Edit2
+} from "lucide-react";
 import { useState } from "react";
+
+type TabType = "klanten" | "opdrachten" | "tarieven" | "contacten";
 
 export default function ClientsPage() {
   const queryClient = useQueryClient();
-  const [deleteId, setDeleteId] = useState(null);
-  const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({
+  const [activeTab, setActiveTab] = useState<TabType>("klanten");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Client Form State
+  const [showClientForm, setShowClientForm] = useState(false);
+  const [clientFormData, setClientFormData] = useState({
     name: "",
     contact_person: "",
     email: "",
     phone: "",
     address: "",
   });
-  const [error, setError] = useState(null);
 
-  const { data, isLoading } = useQuery({
+  // Queries
+  const { data: clientsData, isLoading: clientsLoading } = useQuery({
     queryKey: ["clients"],
     queryFn: async () => {
       const response = await fetch("/api/clients");
@@ -26,320 +36,231 @@ export default function ClientsPage() {
     },
   });
 
-  const createMutation = useMutation({
-    mutationFn: async (data) => {
-      const response = await fetch("/api/clients", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to create client");
-      }
+  const { data: assignmentsData, isLoading: assignmentsLoading } = useQuery({
+    queryKey: ["assignments"],
+    queryFn: async () => {
+      const response = await fetch("/api/assignments");
+      if (!response.ok) throw new Error("Failed to fetch assignments");
       return response.json();
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["clients"] });
-      setShowForm(false);
-      setFormData({
-        name: "",
-        contact_person: "",
-        email: "",
-        phone: "",
-        address: "",
-      });
-      setError(null);
-    },
-    onError: (err) => {
-      setError(err.message);
     },
   });
 
-  const deleteMutation = useMutation({
-    mutationFn: async (id) => {
-      const response = await fetch(`/api/clients/${id}`, {
-        method: "DELETE",
-      });
-      if (!response.ok) throw new Error("Failed to delete client");
-      return response.json();
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["clients"] });
-      setDeleteId(null);
-    },
-  });
+  const clients = clientsData?.clients || [];
+  const assignments = assignmentsData?.assignments || [];
 
-  const clients = data?.clients || [];
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError(null);
-    createMutation.mutate(formData);
-  };
+  // Tab Header Component
+  const TabButton = ({ id, label, icon: Icon }: { id: TabType, label: string, icon: any }) => (
+    <button
+      onClick={() => setActiveTab(id)}
+      className={`flex items-center gap-2 px-4 py-3 border-b-2 transition-all duration-200 ${activeTab === id
+          ? "border-blue-600 text-blue-600 font-semibold"
+          : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200"
+        }`}
+    >
+      <Icon size={18} />
+      <span className="text-sm">{label}</span>
+    </button>
+  );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Header Section */}
+      <div className="bg-white border-b border-gray-200 pt-8">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
             <div>
-              <a
-                href="/"
-                className="text-blue-600 hover:text-blue-700 text-sm mb-2 inline-block"
-              >
-                ← Terug naar Dashboard
-              </a>
-              <h1 className="text-3xl font-bold text-gray-900">Klanten</h1>
-              <p className="text-gray-600 mt-1">
-                Beheer je beveiligingsklanten
-              </p>
+              <h1 className="text-2xl font-bold text-gray-900">Klantbeheer</h1>
+              <p className="text-sm text-gray-500 mt-1">Centraal overzicht van al uw klanten en projectlocaties</p>
             </div>
-            <button
-              onClick={() => setShowForm(true)}
-              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2"
-            >
-              <Plus size={20} />
-              Nieuwe Klant
-            </button>
+            <div className="flex items-center gap-3">
+              <div className="relative">
+                <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Zoeken..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all w-64"
+                />
+              </div>
+              <button
+                onClick={() => setShowClientForm(true)}
+                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors shadow-sm"
+              >
+                <Plus size={18} />
+                Nieuwe Klant
+              </button>
+            </div>
+          </div>
+
+          {/* Tab Navigation */}
+          <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide">
+            <TabButton id="klanten" label="Klantenoverzicht" icon={Building2} />
+            <TabButton id="opdrachten" label="Objecten / Opdrachten" icon={MapPin} />
+            <TabButton id="tarieven" label="Tarieven" icon={Euro} />
+            <TabButton id="contacten" label="Contactpersonen" icon={UserIcon} />
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {isLoading ? (
-          <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto"></div>
-            <p className="text-gray-600 mt-4">Laden...</p>
-          </div>
-        ) : clients.length === 0 && !showForm ? (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
-            <Building2 className="mx-auto text-gray-400 mb-4" size={64} />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              Nog geen klanten
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Voeg je eerste klant toe om te beginnen
-            </p>
-            <button
-              onClick={() => setShowForm(true)}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-            >
-              <Plus size={20} />
-              Nieuwe Klant
-            </button>
-          </div>
-        ) : (
-          <>
-            {showForm && (
-              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">
-                  Nieuwe Klant Toevoegen
-                </h2>
-                {error && (
-                  <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
-                    {error}
-                  </div>
-                )}
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-900 mb-2">
-                        Bedrijfsnaam *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        placeholder="SecureCorp Nederland"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-900 mb-2">
-                        Contactpersoon
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.contact_person}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            contact_person: e.target.value,
-                          })
-                        }
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        placeholder="Jan de Vries"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-900 mb-2">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        placeholder="contact@securecorp.nl"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-900 mb-2">
-                        Telefoon
-                      </label>
-                      <input
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
-                        }
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        placeholder="020-1234567"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
-                      Adres
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.address}
-                      onChange={(e) =>
-                        setFormData({ ...formData, address: e.target.value })
-                      }
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="Amsterdam Centraal 1, 1012 AB Amsterdam"
-                    />
-                  </div>
-                  <div className="flex gap-3">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setShowForm(false);
-                        setError(null);
-                        setFormData({
-                          name: "",
-                          contact_person: "",
-                          email: "",
-                          phone: "",
-                          address: "",
-                        });
-                      }}
-                      className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-                    >
-                      Annuleren
-                    </button>
-                    <button
-                      type="submit"
-                      disabled={createMutation.isPending}
-                      className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50"
-                    >
-                      {createMutation.isPending ? "Opslaan..." : "Opslaan"}
-                    </button>
-                  </div>
-                </form>
-              </div>
-            )}
+      {/* Content Area */}
+      <main className="flex-1 max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {clients.map((client) => (
-                <div
-                  key={client.id}
-                  className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="bg-green-100 p-3 rounded-lg">
-                      <Building2 className="text-green-600" size={24} />
-                    </div>
-                    <button
-                      onClick={() => setDeleteId(client.id)}
-                      className="text-red-600 hover:bg-red-50 p-2 rounded-lg transition-colors"
-                    >
-                      <Trash2 size={18} />
-                    </button>
+        {/* Tab 1: Klantenoverzicht */}
+        {activeTab === "klanten" && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {clients.map((client: any) => (
+              <div key={client.id} className="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-lg transition-all duration-300 group relative">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                    <Building2 size={24} />
                   </div>
-
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">
-                    {client.name}
-                  </h3>
-
-                  <div className="space-y-2">
-                    {client.contact_person && (
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <div className="w-4 h-4 rounded-full bg-gray-200"></div>
-                        <span>{client.contact_person}</span>
-                      </div>
-                    )}
-                    {client.email && (
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <Mail size={16} />
-                        <span>{client.email}</span>
-                      </div>
-                    )}
-                    {client.phone && (
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <Phone size={16} />
-                        <span>{client.phone}</span>
-                      </div>
-                    )}
-                    {client.address && (
-                      <div className="flex items-start gap-2 text-sm text-gray-600">
-                        <MapPin size={16} className="flex-shrink-0 mt-0.5" />
-                        <span>{client.address}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <a
-                      href={`/clients/${client.id}/assignments`}
-                      className="text-sm text-green-600 hover:text-green-700 font-medium"
-                    >
-                      Bekijk opdrachten →
-                    </a>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-bold text-gray-900 truncate">{client.name}</h3>
+                    <p className="text-xs text-gray-500 truncate">{client.address || "Geen adres"}</p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
 
-      {deleteId && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">
-              Klant Verwijderen
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Weet je zeker dat je deze klant wilt verwijderen? Dit verwijdert
-              ook alle bijbehorende opdrachten.
-            </p>
-            <div className="flex gap-3">
-              <button
-                onClick={() => setDeleteId(null)}
-                className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-              >
-                Annuleren
-              </button>
-              <button
-                onClick={() => deleteMutation.mutate(deleteId)}
-                disabled={deleteMutation.isPending}
-                className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors disabled:opacity-50"
-              >
-                {deleteMutation.isPending ? "Verwijderen..." : "Verwijderen"}
-              </button>
-            </div>
+                <div className="space-y-2 mb-4">
+                  <div className="flex items-center justify-between text-xs text-gray-500">
+                    <span>Opdrachten</span>
+                    <span className="font-semibold text-gray-900">
+                      {assignments.filter((a: any) => a.client_id === client.id).length}
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
+                    <div className="bg-blue-500 h-full rounded-full" style={{ width: '60%' }}></div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 pt-4 border-t border-gray-50">
+                  <button className="flex-1 text-xs font-semibold py-2 rounded-lg bg-gray-50 text-gray-600 hover:bg-gray-100 transition-colors">
+                    Details
+                  </button>
+                  <button
+                    onClick={() => {
+                      setActiveTab("opdrachten");
+                      setSearchQuery(client.name);
+                    }}
+                    className="flex-1 text-xs font-semibold py-2 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
+                  >
+                    Opdrachten
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-      )}
+        )}
+
+        {/* Tab 2: Opdrachten */}
+        {activeTab === "opdrachten" && (
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            <table className="w-full text-left">
+              <thead className="bg-gray-50 border-b border-gray-100">
+                <tr>
+                  <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Locatie / Opdracht</th>
+                  <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Klant</th>
+                  <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Adres</th>
+                  <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Status</th>
+                  <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Acties</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-50">
+                {assignments
+                  .filter((a: any) =>
+                    a.location_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    a.client_name.toLowerCase().includes(searchQuery.toLowerCase())
+                  )
+                  .map((assignment: any) => (
+                    <tr key={assignment.id} className="hover:bg-gray-50/50 transition-colors">
+                      <td className="px-6 py-4">
+                        <div className="font-semibold text-gray-900">{assignment.location_name}</div>
+                        <div className="text-xs text-gray-500 truncate max-w-xs">{assignment.description}</div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-50 text-blue-700 rounded-md text-xs font-medium">
+                          <Building2 size={12} />
+                          {assignment.client_name}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="text-sm text-gray-600 flex items-center gap-1.5">
+                          <MapPin size={14} className="text-gray-400" />
+                          {assignment.location_address}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className={`px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${assignment.active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"
+                          }`}>
+                          {assignment.active ? "Actief" : "Inactief"}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        <button className="p-2 text-gray-400 hover:text-blue-600 transition-colors">
+                          <Edit2 size={16} />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {/* Tab 3: Tarieven */}
+        {activeTab === "tarieven" && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {assignments.map((assignment: any) => (
+              <div key={`rate-${assignment.id}`} className="bg-white border border-gray-100 rounded-xl p-6 flex items-center justify-between">
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-bold text-gray-900 truncate">{assignment.location_name}</h4>
+                  <p className="text-xs text-gray-500">{assignment.client_name}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-xs text-gray-400 uppercase font-bold tracking-widest mb-1">Uurtarief</p>
+                  <div className="flex items-center justify-end gap-1 text-lg font-black text-green-600">
+                    <Euro size={18} />
+                    <span>{parseFloat(assignment.hourly_rate || "0").toFixed(2)}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Tab 4: Contactpersonen */}
+        {activeTab === "contacten" && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {clients.map((client: any) => (
+              <div key={`contact-${client.id}`} className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-400">
+                    <UserIcon size={20} />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-gray-900">{client.contact_person || "Geen contactpersoon"}</h4>
+                    <p className="text-xs text-blue-600 font-medium">{client.name}</p>
+                  </div>
+                </div>
+
+                <div className="space-y-3 pt-3 border-t border-gray-50">
+                  <div className="flex items-center gap-3 text-sm text-gray-600">
+                    <Mail size={16} className="text-gray-400" />
+                    <span>{client.email || "Geen e-mail"}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-gray-600">
+                    <Phone size={16} className="text-gray-400" />
+                    <span>{client.phone || "Geen telefoon"}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+      </main>
+
+      {/* Simple Form Placeholders or Integrated Logic can go here */}
     </div>
   );
 }

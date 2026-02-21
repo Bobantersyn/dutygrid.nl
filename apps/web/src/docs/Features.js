@@ -13,8 +13,7 @@
  * - Diensten vandaag
  *
  * Quick Actions:
- * - Nieuwe klant toevoegen
- * - Nieuwe opdracht toevoegen
+ * - Nieuwe klant/opdracht toevoegen
  * - Nieuwe medewerker toevoegen
  * - Nieuwe dienst inplannen
  * - Diensten Ruilen (alleen voor medewerkers)
@@ -27,35 +26,16 @@
  * - Stats kaarten openen modals met details
  *
  *
- * FEATURE 2: KLANTENBEHEER (/clients)
- * ------------------------------------
+ * FEATURE 2: KLANTEN & OPDRACHTENBEHEER (/clients)
+ * -----------------------------------------------
  *
  * Functies:
  * - Lijst van alle klanten
  * - Klant toevoegen met contactgegevens
- * - Klant bewerken
- * - Klant verwijderen (cascade delete van opdrachten)
- * - Zoeken/filteren op naam
- *
- *
- * FEATURE 3: OPDRACHTENBEHEER (/assignments)
- * -------------------------------------------
- *
- * Functies:
- * - Lijst van alle opdrachten/locaties
+ * - Lijst van alle opdrachten/locaties (tabblad)
  * - Opdracht toevoegen (gekoppeld aan klant)
- * - Opdracht bewerken (locatie, adres, uurtarief)
- * - Opdracht actief/inactief zetten
- * - Filter op actief/inactief
- * - Opdracht verwijderen
- *
- * Velden:
- * - Klant (dropdown)
- * - Locatienaam
- * - Adres
- * - Beschrijving
- * - Uurtarief (€/uur)
- * - Actief status
+ * - Tarieven overzicht
+ * - Zoeken/filteren op naam/klant
  *
  *
  * FEATURE 4: CAO BEHEER (/cao-management)
@@ -90,7 +70,7 @@
  * - Functie informatie:
  *   - Job title
  *   - Contract type
- *   - Pass type (geen/VGB/VCA)
+ *   - Pass type (geen/grijs/groen)
  *
  * - CAO informatie:
  *   - CAO type

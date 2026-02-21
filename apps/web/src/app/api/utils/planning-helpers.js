@@ -165,7 +165,7 @@ export async function detectPlanningGaps(startDate, endDate) {
 async function findAvailableEmployees(date, assignmentAddress) {
   // Get all active employees
   const allEmployees = await sql`
-    SELECT id, name, cao_type, max_hours_per_day, max_hours_per_week, address as home_address, status
+    SELECT id, name, cao_type, max_hours_per_day, max_hours_per_week, address as home_address, status, badge_type, is_flexible
     FROM employees
     WHERE status = 'active'
   `;
@@ -285,17 +285,20 @@ async function findAvailableEmployees(date, assignmentAddress) {
       }
     }
 
-    /* Pass type check removed as column does not exist */
-    /*
-    // Check pass type (green pass gets priority)
-    if (employee.pass_type === "groen") {
+    // Check badge type (green badge gets priority)
+    if (employee.badge_type === "groen") {
       score += 10;
       reasons.push("Groene pas");
-    } else if (employee.pass_type === "grijs") {
+    } else if (employee.badge_type === "grijs") {
       score += 5;
       reasons.push("Grijze pas");
     }
-    */
+
+    // Small priority for flexible employees for short-notice gaps
+    if (employee.is_flexible) {
+      score += 5;
+      reasons.push("Flex-pool");
+    }
 
     // Check weekly hours
     const weeklyCheck = await checkWeeklyHours(

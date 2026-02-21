@@ -54,7 +54,8 @@ export default function EmployeeDetailPage({ params }) {
         max_hours_per_day: parseInt(formData.max_hours_per_day),
         job_title: formData.job_title,
         contract_type: formData.contract_type,
-        pass_type: formData.pass_type,
+        badge_type: formData.badge_type,
+        is_flexible: formData.is_flexible,
         active: formData.active,
         planning_visibility_weeks: parseInt(
           formData.planning_visibility_weeks || 1,

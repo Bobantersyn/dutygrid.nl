@@ -1,129 +1,185 @@
-import { Calendar, Users, Building2, MapPin, Clock, ArrowLeftRight, FileText, CalendarOff, LogOut, RefreshCcw, Settings } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import {
+  Calendar, Users, Building2, MapPin,
+  Clock, ArrowLeftRight, FileText,
+  CalendarOff, LogOut, RefreshCcw, Settings,
+  User as UserIcon, LayoutDashboard,
+  ChevronDown,
+  Bell
+} from "lucide-react";
 import NotificationBell from "../NotificationBell";
 import { useUserRole } from "@/hooks/useUserRole";
 
 export function DashboardHeader({ isPlannerOrAdmin: initialIsPlannerOrAdmin }: { isPlannerOrAdmin?: boolean }) {
-  const { hasMultipleRoles, viewAsEmployee, toggleViewAsEmployee, isPlannerOrAdmin: hookIsPlannerOrAdmin, userRole } = useUserRole();
+  const { hasMultipleRoles, viewAsEmployee, toggleViewAsEmployee, isPlannerOrAdmin: hookIsPlannerOrAdmin, userRole, user } = useUserRole();
   const isPlannerOrAdmin = initialIsPlannerOrAdmin !== undefined ? (initialIsPlannerOrAdmin && !viewAsEmployee) : hookIsPlannerOrAdmin;
   const isAdmin = userRole === "admin";
+
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsProfileOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const NavItem = ({ href, icon: Icon, label, active = false }: { href: string, icon: any, label: string, active?: boolean }) => (
+    <a
+      href={href}
+      className={`flex items-center gap-2 px-3 py-2 rounded-md transition-all duration-200 group ${active
+        ? "text-blue-600 bg-blue-50 font-semibold"
+        : "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
+        }`}
+    >
+      <Icon size={18} className={active ? "text-blue-600" : "text-gray-400 group-hover:text-blue-600"} />
+      <span className="text-sm">{label}</span>
+    </a>
+  );
+
   return (
-    <div className="bg-white border-b border-gray-200">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
+      <div className="max-w-[1440px] mx-auto px-4 h-16 flex items-center justify-between">
 
-        <div className="flex flex-col xl:flex-row gap-6 justify-between items-stretch xl:items-center w-full">
-
-          {/* Top bar on Mobile: Title + Systeem Acties */}
-          <div className="flex justify-between items-start w-full xl:w-auto">
-            {/* Zone 1: Title & Info */}
-            <div className="flex-shrink-0">
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
-                Beveiligingsplanning
-              </h1>
-              <p className="text-sm sm:text-base text-gray-600 mt-1">
-                {isPlannerOrAdmin
-                  ? "Beheer je personeel, klanten en roosters"
-                  : "Mijn Planning"}
-              </p>
+        {/* Left: Logo */}
+        <div className="flex-shrink-0">
+          <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+              D
             </div>
+            <span className="text-xl font-bold tracking-tight text-gray-900 hidden sm:block">
+              DutyGrid
+            </span>
+          </a>
 
-            {/* Zone 3 (Mobile view): Systeem Acties */}
-            <div className="flex xl:hidden flex-col items-end gap-3 shrink-0">
-              {hasMultipleRoles && (
-                <button
-                  onClick={toggleViewAsEmployee}
-                  className="p-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors shadow-sm flex items-center justify-center"
-                  title={viewAsEmployee ? "Wissel naar Planner weergave" : "Wissel naar Medewerker weergave"}
-                >
-                  <RefreshCcw size={20} strokeWidth={2.5} />
-                </button>
-              )}
-              <a
-                href="/account/logout"
-                className="p-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors shadow-sm"
-                title="Uitloggen"
-              >
-                <LogOut size={20} strokeWidth={2.5} />
-              </a>
-              <div className="bg-white p-1 rounded-full shadow-sm border border-gray-100">
-                <NotificationBell />
-              </div>
-            </div>
-          </div>
-
-          {/* Zone 2: Navigation Buttons */}
-          <div className="flex-1 flex justify-start xl:justify-end w-full">
+          {/* Middle: Core Nav (Desktop) - Centered */}
+          <nav className="hidden lg:flex flex-1 justify-center items-center gap-2 px-8">
+            <NavItem href="/" icon={LayoutDashboard} label="Dashboard" active={window.location.pathname === "/"} />
             {isPlannerOrAdmin ? (
-              <div className="flex flex-wrap gap-2 sm:gap-3 w-full xl:w-auto xl:justify-end">
-                <a href="/clients" className="px-4 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm flex-1 sm:flex-none">
-                  <Building2 size={18} />
-                  <span>Klanten</span>
+              <>
+                <a
+                  href="/planning"
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 group ${window.location.pathname === "/planning"
+                    ? "text-white bg-blue-600 font-bold shadow-md shadow-blue-200"
+                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50/50"
+                    }`}
+                >
+                  <Calendar size={18} className={window.location.pathname === "/planning" ? "text-white" : "text-gray-400 group-hover:text-blue-600"} />
+                  <span className="text-sm">Planning</span>
                 </a>
-                <a href="/assignments" className="px-4 py-2.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm flex-1 sm:flex-none">
-                  <MapPin size={18} />
-                  <span>Opdrachten</span>
-                </a>
-                <a href="/employees" className="px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm flex-1 sm:flex-none">
-                  <Users size={18} />
-                  <span>Medewerkers</span>
-                </a>
-                <a href="/planning" className="px-4 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm flex-1 sm:flex-none">
-                  <Calendar size={18} />
-                  <span>Planning</span>
-                </a>
-                <a href="/administratie" className="px-4 py-2.5 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm w-full sm:w-auto">
-                  <FileText size={18} />
-                  <span>Administratie</span>
-                </a>
-                {isAdmin && (
-                  <a href="/admin/settings" className="px-4 py-2.5 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm w-full sm:w-auto">
-                    <Settings size={18} />
-                    <span>Systeeminstellingen</span>
-                  </a>
-                )}
-              </div>
+                <NavItem href="/employees" icon={Users} label="Medewerkers" active={window.location.pathname === "/employees"} />
+                <NavItem href="/clients" icon={Building2} label="Klanten" active={window.location.pathname.startsWith("/clients") || window.location.pathname.startsWith("/assignments")} />
+              </>
             ) : (
-              <div className="flex flex-wrap gap-3 w-full xl:w-auto">
-                <a href="/beschikbaarheid" className="px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm flex-1 sm:flex-none">
-                  <Clock size={18} />
-                  <span>Beschikbaarheid</span>
-                </a>
-                <a href="/diensten-ruilen" className="px-4 py-2.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm flex-1 sm:flex-none">
-                  <ArrowLeftRight size={18} />
-                  <span>Ruilen</span>
-                </a>
-                <a href="/my-leave" className="px-4 py-2.5 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-all flex items-center justify-center gap-2 shadow-sm font-medium text-sm w-full sm:w-auto">
-                  <CalendarOff size={18} />
-                  <span>Verlof</span>
-                </a>
+              <>
+                <NavItem href="/beschikbaarheid" icon={Clock} label="Beschikbaarheid" active={window.location.pathname === "/beschikbaarheid"} />
+                <NavItem href="/diensten-ruilen" icon={ArrowLeftRight} label="Ruilen" active={window.location.pathname === "/diensten-ruilen"} />
+                <NavItem href="/my-leave" icon={CalendarOff} label="Verlof" active={window.location.pathname === "/my-leave"} />
+              </>
+            )}
+          </nav>
+        </div>
+
+        {/* Right: Actions & Profile */}
+        <div className="flex items-center gap-3">
+          {/* Notifications */}
+          <div className="relative group p-2 text-gray-400 hover:text-blue-600 transition-colors">
+            <NotificationBell />
+          </div>
+
+          <div className="h-6 w-px bg-gray-200 mx-1 hidden sm:block"></div>
+
+          {/* Profile Dropdown */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setIsProfileOpen(!isProfileOpen)}
+              className="flex items-center gap-2 p-1 pl-2 pr-1 rounded-full hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-200"
+            >
+              <div className="text-right hidden sm:block">
+                <p className="text-xs font-semibold text-gray-900 leading-none">{user?.name || "Gebruiker"}</p>
+                <p className="text-[10px] text-gray-500 mt-0.5 capitalize">{userRole?.replace("_", " ")}</p>
+              </div>
+              <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700">
+                <UserIcon size={18} />
+              </div>
+              <ChevronDown size={14} className={`text-gray-400 transition-transform duration-200 ${isProfileOpen ? "rotate-180" : ""}`} />
+            </button>
+
+            {/* Dropdown Menu */}
+            {isProfileOpen && (
+              <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 animate-in fade-in slide-in-from-top-2 duration-200 overflow-hidden">
+                <div className="px-4 py-3 border-b border-gray-50 lg:hidden">
+                  <p className="text-sm font-semibold text-gray-900">{user?.name}</p>
+                  <p className="text-xs text-gray-500 capitalize">{userRole?.replace("_", " ")}</p>
+                </div>
+
+                <div className="py-1">
+                  {hasMultipleRoles && (
+                    <button
+                      onClick={() => {
+                        toggleViewAsEmployee();
+                        setIsProfileOpen(false);
+                      }}
+                      className="w-full text-left px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 flex items-center gap-3 transition-colors"
+                    >
+                      <RefreshCcw size={16} />
+                      <span>{viewAsEmployee ? "Terug naar Planner" : "Wissel naar Medewerker"}</span>
+                    </button>
+                  )}
+
+                  {isPlannerOrAdmin && (
+                    <>
+                      <a
+                        href="/administratie"
+                        onClick={() => setIsProfileOpen(false)}
+                        className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                      >
+                        <FileText size={16} className="text-gray-400" />
+                        <span>Administratie</span>
+                      </a>
+                    </>
+                  )}
+
+                  {isAdmin && (
+                    <a
+                      href="/admin/settings"
+                      onClick={() => setIsProfileOpen(false)}
+                      className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                    >
+                      <Settings size={16} className="text-gray-400" />
+                      <span>Systeeminstellingen</span>
+                    </a>
+                  )}
+
+                  <a
+                    href="/account/profile"
+                    onClick={() => setIsProfileOpen(false)}
+                    className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                  >
+                    <UserIcon size={16} className="text-gray-400" />
+                    <span>Mijn Profiel</span>
+                  </a>
+                </div>
+
+                <div className="border-t border-gray-50 mt-1 pt-1">
+                  <a
+                    href="/account/logout"
+                    className="flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                  >
+                    <LogOut size={16} />
+                    <span>Uitloggen</span>
+                  </a>
+                </div>
               </div>
             )}
           </div>
-
-          {/* Zone 3 (Desktop view): Systeem Acties (Verticaal) */}
-          <div className="hidden xl:flex flex-col items-end gap-3 shrink-0 min-w-[140px]">
-            {hasMultipleRoles && (
-              <button
-                onClick={toggleViewAsEmployee}
-                className="w-full px-5 py-2.5 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors shadow-sm text-sm font-medium flex justify-center items-center gap-2 border border-blue-200"
-              >
-                <RefreshCcw size={16} strokeWidth={2.5} />
-                <span>{viewAsEmployee ? "Planner View" : "Mijn Diensten"}</span>
-              </button>
-            )}
-            <a
-              href="/account/logout"
-              className="w-full px-5 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-700 transition-colors shadow-sm text-sm font-medium flex justify-center items-center gap-2 border border-gray-200"
-            >
-              <LogOut size={16} strokeWidth={2.5} />
-              <span>Uitloggen</span>
-            </a>
-            <div className="px-2 py-1 bg-gray-50 rounded-xl border border-gray-200 shadow-sm flex items-center justify-center min-w-full">
-              <NotificationBell />
-            </div>
-          </div>
-
         </div>
       </div>
-    </div>
+    </header>
   );
 }
