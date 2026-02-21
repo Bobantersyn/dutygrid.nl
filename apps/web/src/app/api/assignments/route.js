@@ -69,8 +69,11 @@ export async function POST(request) {
 
     // Process object labels
     if (object_labels.length > 0) {
-      const labelValues = object_labels.map(labelId => `(${assignment.id}, ${labelId})`).join(", ");
-      await sql(`INSERT INTO assignment_object_labels (assignment_id, object_label_id) VALUES ${labelValues}`);
+      await Promise.all(
+        object_labels.map((labelId) =>
+          sql`INSERT INTO assignment_object_labels (assignment_id, object_label_id) VALUES (${assignment.id}, ${labelId})`
+        )
+      );
     }
 
     return Response.json({ assignment });
