@@ -17,9 +17,11 @@ export function DashboardHeader({ isPlannerOrAdmin: initialIsPlannerOrAdmin }: {
 
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [currentPath, setCurrentPath] = useState<string>("");
 
   // Close dropdown when clicking outside
   useEffect(() => {
+    setCurrentPath(window.location.pathname);
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsProfileOpen(false);
@@ -59,27 +61,27 @@ export function DashboardHeader({ isPlannerOrAdmin: initialIsPlannerOrAdmin }: {
 
           {/* Middle: Core Nav (Desktop) - Centered */}
           <nav className="hidden lg:flex flex-1 justify-center items-center gap-2 px-8">
-            <NavItem href="/" icon={LayoutDashboard} label="Dashboard" active={window.location.pathname === "/"} />
+            <NavItem href="/" icon={LayoutDashboard} label="Dashboard" active={currentPath === "/"} />
             {isPlannerOrAdmin ? (
               <>
                 <a
                   href="/planning"
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 group ${window.location.pathname === "/planning"
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 group ${currentPath === "/planning"
                     ? "text-white bg-blue-600 font-bold shadow-md shadow-blue-200"
                     : "text-gray-600 hover:text-blue-600 hover:bg-blue-50/50"
                     }`}
                 >
-                  <Calendar size={18} className={window.location.pathname === "/planning" ? "text-white" : "text-gray-400 group-hover:text-blue-600"} />
+                  <Calendar size={18} className={currentPath === "/planning" ? "text-white" : "text-gray-400 group-hover:text-blue-600"} />
                   <span className="text-sm">Planning</span>
                 </a>
-                <NavItem href="/employees" icon={Users} label="Medewerkers" active={window.location.pathname === "/employees"} />
-                <NavItem href="/clients" icon={Building2} label="Klanten" active={window.location.pathname.startsWith("/clients") || window.location.pathname.startsWith("/assignments")} />
+                <NavItem href="/employees" icon={Users} label="Medewerkers" active={currentPath === "/employees"} />
+                <NavItem href="/clients" icon={Building2} label="Klanten" active={currentPath.startsWith("/clients") || currentPath.startsWith("/assignments")} />
               </>
             ) : (
               <>
-                <NavItem href="/beschikbaarheid" icon={Clock} label="Beschikbaarheid" active={window.location.pathname === "/beschikbaarheid"} />
-                <NavItem href="/diensten-ruilen" icon={ArrowLeftRight} label="Ruilen" active={window.location.pathname === "/diensten-ruilen"} />
-                <NavItem href="/my-leave" icon={CalendarOff} label="Verlof" active={window.location.pathname === "/my-leave"} />
+                <NavItem href="/beschikbaarheid" icon={Clock} label="Beschikbaarheid" active={currentPath === "/beschikbaarheid"} />
+                <NavItem href="/diensten-ruilen" icon={ArrowLeftRight} label="Ruilen" active={currentPath === "/diensten-ruilen"} />
+                <NavItem href="/my-leave" icon={CalendarOff} label="Verlof" active={currentPath === "/my-leave"} />
               </>
             )}
           </nav>

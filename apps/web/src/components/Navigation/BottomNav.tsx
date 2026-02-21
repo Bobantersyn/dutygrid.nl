@@ -19,11 +19,12 @@ export function BottomNav() {
     const isAdmin = userRole === "admin";
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
+    const [currentPath, setCurrentPath] = useState<string>("");
 
-    if (userLoading || !user) return null;
-
-    // Close menu when clicking outside
+    // Handle hydration-safe pathname and close menu when clicking outside
     useEffect(() => {
+        setCurrentPath(window.location.pathname);
+
         function handleClickOutside(event: MouseEvent) {
             if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
                 setIsMenuOpen(false);
@@ -32,6 +33,8 @@ export function BottomNav() {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
+
+    if (userLoading || !user) return null;
 
     const NavItem = ({ href, icon: Icon, label, active = false, onClick }: { href?: string, icon: any, label: string, active?: boolean, onClick?: () => void }) => {
         const content = (
@@ -97,17 +100,17 @@ export function BottomNav() {
 
             {/* Main Bar */}
             <nav className="bg-white/80 backdrop-blur-lg border-t border-gray-100 h-16 px-2 pb-safe flex items-center justify-around shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
-                <NavItem href="/" icon={LayoutDashboard} label="Home" active={window.location.pathname === "/"} />
+                <NavItem href="/" icon={LayoutDashboard} label="Home" active={currentPath === "/"} />
 
                 {isPlannerOrAdmin ? (
                     <>
-                        <NavItem href="/planning" icon={Calendar} label="Planning" active={window.location.pathname === "/planning"} />
-                        <NavItem href="/employees" icon={Users} label="Medewerkers" active={window.location.pathname === "/employees"} />
+                        <NavItem href="/planning" icon={Calendar} label="Planning" active={currentPath === "/planning"} />
+                        <NavItem href="/employees" icon={Users} label="Medewerkers" active={currentPath === "/employees"} />
                     </>
                 ) : (
                     <>
-                        <NavItem href="/beschikbaarheid" icon={Clock} label="Uren" active={window.location.pathname === "/beschikbaarheid"} />
-                        <NavItem href="/diensten-ruilen" icon={ArrowLeftRight} label="Ruilen" active={window.location.pathname === "/diensten-ruilen"} />
+                        <NavItem href="/beschikbaarheid" icon={Clock} label="Uren" active={currentPath === "/beschikbaarheid"} />
+                        <NavItem href="/diensten-ruilen" icon={ArrowLeftRight} label="Ruilen" active={currentPath === "/diensten-ruilen"} />
                     </>
                 )}
 
