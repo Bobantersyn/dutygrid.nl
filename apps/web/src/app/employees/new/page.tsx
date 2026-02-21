@@ -18,12 +18,12 @@ export default function NewEmployeePage() {
     is_flex: false,
     active: true,
   });
-  const [error, setError] = useState(null);
-  const [profilePhoto, setProfilePhoto] = useState(null);
-  const [passportDoc, setPassportDoc] = useState(null);
-  const [securityPass, setSecurityPass] = useState(null);
-  const [uploadProgress, setUploadProgress] = useState({});
-  const [selectedLabels, setSelectedLabels] = useState([]);
+  const [error, setError] = useState<string | null>(null);
+  const [profilePhoto, setProfilePhoto] = useState<File | null>(null);
+  const [passportDoc, setPassportDoc] = useState<File | null>(null);
+  const [securityPass, setSecurityPass] = useState<File | null>(null);
+  const [uploadProgress, setUploadProgress] = useState<Record<string, string | null>>({});
+  const [selectedLabels, setSelectedLabels] = useState<number[]>([]);
 
   const { data: labelsData } = useQuery({
     queryKey: ["object-labels"],
@@ -36,31 +36,33 @@ export default function NewEmployeePage() {
 
   const objectLabels = labelsData?.labels || [];
 
-  const [upload, { loading: uploadLoading }] = useUpload();
+  const [isUploading, setIsUploading] = useState(false);
 
-  const handleFileUpload = async (file, type) => {
+  const handleFileUpload = async (file: File, type: string) => {
     if (!file) return null;
 
     setUploadProgress((prev) => ({ ...prev, [type]: "Uploaden..." }));
 
-    const { url, error: uploadError } = await upload({ file });
-
-    if (uploadError) {
-      setError(`Fout bij uploaden ${type}: ${uploadError}`);
-      setUploadProgress((prev) => ({ ...prev, [type]: null }));
-      return null;
-    }
-
-    setUploadProgress((prev) => ({ ...prev, [type]: "Voltooid!" }));
-    setTimeout(() => {
-      setUploadProgress((prev) => ({ ...prev, [type]: null }));
-    }, 2000);
-
-    return url;
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setUploadProgress((prev) => ({ ...prev, [type]: "Voltooid!" }));
+        setTimeout(() => {
+          setUploadProgress((prev) => ({ ...prev, [type]: null }));
+        }, 2000);
+        resolve(reader.result);
+      };
+      reader.onerror = () => {
+        setError(`Fout bij uploaden ${type}`);
+        setUploadProgress((prev) => ({ ...prev, [type]: null }));
+        resolve(null);
+      };
+      reader.readAsDataURL(file);
+    });
   };
 
   const createMutation = useMutation({
-    mutationFn: async (data) => {
+    mutationFn: async (data: any) => {
       const response = await fetch("/api/employees", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -77,31 +79,38 @@ export default function NewEmployeePage() {
     },
     onError: (err) => {
       setError(err.message);
+      setIsUploading(false);
     },
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    setIsUploading(true);
 
-    // Upload files first
-    const profilePhotoUrl = profilePhoto
-      ? await handleFileUpload(profilePhoto, "profile_photo")
-      : null;
-    const passportDocUrl = passportDoc
-      ? await handleFileUpload(passportDoc, "passport_document")
-      : null;
-    const securityPassUrl = securityPass
-      ? await handleFileUpload(securityPass, "security_pass_document")
-      : null;
+    try {
+      // Upload files first
+      const profilePhotoUrl = profilePhoto
+        ? await handleFileUpload(profilePhoto, "profile_photo")
+        : null;
+      const passportDocUrl = passportDoc
+        ? await handleFileUpload(passportDoc, "passport_document")
+        : null;
+      const securityPassUrl = securityPass
+        ? await handleFileUpload(securityPass, "security_pass_document")
+        : null;
 
-    createMutation.mutate({
-      ...formData,
-      profile_photo: profilePhotoUrl,
-      passport_document: passportDocUrl,
-      security_pass_document: securityPassUrl,
-      object_labels: selectedLabels,
-    });
+      createMutation.mutate({
+        ...formData,
+        profile_photo: profilePhotoUrl,
+        passport_document: passportDocUrl,
+        security_pass_document: securityPassUrl,
+        object_labels: selectedLabels,
+      });
+    } catch (err) {
+      setError("Fout bij converteren van bestand.");
+      setIsUploading(false);
+    }
   };
 
   return (
@@ -335,7 +344,7 @@ export default function NewEmployeePage() {
               <div className="space-y-4">
                 {/* Profile Photo */}
                 <PhotoUpload
-                  onPhotoCropped={(file) => setProfilePhoto(file)}
+                  onPhotoCropped={(file: File) => setProfilePhoto(file)}
                   initialPhotoUrl={null}
                   label="Profielfoto (wordt 1:1 bijgesneden)"
                 />
@@ -352,7 +361,7 @@ export default function NewEmployeePage() {
                     <input
                       type="file"
                       accept="image/*,.pdf"
-                      onChange={(e) => setPassportDoc(e.target.files[0])}
+                      onChange={(e) => setPassportDoc(e.target.files?.[0] || null)}
                       className="flex-1 text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
                     />
                     {uploadProgress.passport_document && (
@@ -380,7 +389,7 @@ export default function NewEmployeePage() {
                     <input
                       type="file"
                       accept="image/*,.pdf"
-                      onChange={(e) => setSecurityPass(e.target.files[0])}
+                      onChange={(e) => setSecurityPass(e.target.files?.[0] || null)}
                       className="flex-1 text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100"
                     />
                     {uploadProgress.security_pass_document && (
@@ -410,11 +419,11 @@ export default function NewEmployeePage() {
             </a>
             <button
               type="submit"
-              disabled={createMutation.isPending || uploadLoading}
+              disabled={createMutation.isPending || isUploading}
               className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
             >
               <Save size={20} />
-              {createMutation.isPending || uploadLoading
+              {createMutation.isPending || isUploading
                 ? "Opslaan..."
                 : "Opslaan"}
             </button>

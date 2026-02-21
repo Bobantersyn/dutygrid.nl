@@ -45,14 +45,39 @@ export async function PUT(request, { params }) {
       );
     }
 
-    // Reuse validation logic if needed...
-    if (employee_id) {
+    // Fetch old shift to compare changes & for validation
+    const [oldShift] = await sql`SELECT * FROM shifts WHERE id = ${id}`;
+    if (!oldShift) return Response.json({ error: "Shift not found" }, { status: 404 });
+
+    const final_employee_id = employee_id !== undefined ? employee_id : oldShift.employee_id;
+    const final_assignment_id = assignment_id !== undefined ? assignment_id : oldShift.assignment_id;
+
+    if (final_employee_id) {
       // Validate employee exists
       const [employee] =
-        await sql`SELECT * FROM employees WHERE id = ${employee_id}`;
+        await sql`SELECT * FROM employees WHERE id = ${final_employee_id}`;
+      if (!employee) return Response.json({ error: "Employee not found" }, { status: 404 });
 
-      // Perform checks if needed (warnings only)
-      // For now we assume planner knows best, as per POST
+      // Check Object Labels requirement (Hard block)
+      if (final_assignment_id) {
+        const missingLabels = await sql`
+          SELECT ol.name 
+          FROM assignment_object_labels aol
+          JOIN object_labels ol ON aol.object_label_id = ol.id
+          WHERE aol.assignment_id = ${final_assignment_id}
+          AND aol.object_label_id NOT IN (
+            SELECT object_label_id FROM employee_object_labels WHERE employee_id = ${final_employee_id}
+          )
+        `;
+
+        if (missingLabels.length > 0) {
+          const names = missingLabels.map(l => l.name).join(', ');
+          return Response.json(
+            { error: `Medewerker mist verplichte kwalificaties voor deze locatie: ${names}` },
+            { status: 400 }
+          );
+        }
+      }
     }
 
     const startTimestamp = `${shift_date}T${start_time}:00`;
@@ -64,10 +89,6 @@ export async function PUT(request, { params }) {
       d.setDate(d.getDate() + 1);
       endTimestamp = `${d.toISOString().split("T")[0]}T${end_time}:00`;
     }
-
-    // Fetch old shift to compare changes
-    const [oldShift] = await sql`SELECT * FROM shifts WHERE id = ${id}`;
-    if (!oldShift) return Response.json({ error: "Shift not found" }, { status: 404 });
 
     // Update query
     const [shift] = await sql`

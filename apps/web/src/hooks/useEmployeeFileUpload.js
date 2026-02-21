@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useUpload } from "@/utils/useUpload";
+
 
 export function useEmployeeFileUpload(updateMutation, setError) {
-  const [upload] = useUpload();
   const [uploadingField, setUploadingField] = useState(null);
 
   const handleFileUpload = async (field, files) => {
@@ -10,13 +9,16 @@ export function useEmployeeFileUpload(updateMutation, setError) {
 
     setUploadingField(field);
     try {
-      const { url, error: uploadError } = await upload({ file: files[0] });
-      if (uploadError) {
-        setError(`Fout bij uploaden: ${uploadError}`);
-        return;
-      }
-      if (url) {
-        const updates = { [field]: url };
+      const file = files[0];
+      const base64Url = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = () => reject(new Error("Fout bij inlezen bestand"));
+        reader.readAsDataURL(file);
+      });
+
+      if (base64Url) {
+        const updates = { [field]: base64Url };
         await updateMutation.mutateAsync(updates);
       }
     } catch (error) {

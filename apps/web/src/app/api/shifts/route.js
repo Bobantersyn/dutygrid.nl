@@ -171,6 +171,27 @@ export async function POST(request) {
         return Response.json({ error: "Employee not found" }, { status: 404 });
       }
 
+      // Check Object Labels requirement (Hard block)
+      if (assignment_id) {
+        const missingLabels = await sql`
+          SELECT ol.name 
+          FROM assignment_object_labels aol
+          JOIN object_labels ol ON aol.object_label_id = ol.id
+          WHERE aol.assignment_id = ${assignment_id}
+          AND aol.object_label_id NOT IN (
+            SELECT object_label_id FROM employee_object_labels WHERE employee_id = ${employee_id}
+          )
+        `;
+
+        if (missingLabels.length > 0) {
+          const names = missingLabels.map(l => l.name).join(', ');
+          return Response.json(
+            { error: `Medewerker mist verplichte kwalificaties voor deze locatie: ${names}` },
+            { status: 400 }
+          );
+        }
+      }
+
       // Check max uren per dag (Non-blocking)
       if (shiftHours > employee.max_hours_per_day) {
         console.warn(`Warning: Shift exceeds daily limit of ${employee.max_hours_per_day} hours`);
