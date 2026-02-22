@@ -123,6 +123,7 @@ export default function PlanningPage() {
   };
 
   const handleSwapAction = (action) => {
+    // @ts-ignore - mutationFn typed in .js hook
     swapActionMutation.mutate(
       {
         swapId: selectedSwap.id,
@@ -290,6 +291,9 @@ export default function PlanningPage() {
                           onEmployeeClick={(id) => {
                             setSelectedEmployeeId(id);
                             setIsMobileSidebarOpen(false);
+                          }}
+                          onEmployeeDragStart={(employee) => {
+                            console.log("Dragging:", employee.name);
                           }}
                         />
                       </div>

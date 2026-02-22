@@ -42,7 +42,7 @@ export default function WeekPattern({ employeeId }) {
 
     // Save mutation
     const saveMutation = useMutation({
-        mutationFn: async (newPatterns) => {
+        mutationFn: async (newPatterns: any) => {
             const payload = {
                 employee_id: employeeId,
                 patterns: Object.values(newPatterns)
@@ -56,7 +56,7 @@ export default function WeekPattern({ employeeId }) {
             return res.json();
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(['availability-patterns', employeeId]);
+            queryClient.invalidateQueries({ queryKey: ['availability-patterns', employeeId] });
             setIsDirty(false);
             alert('Beschikbaarheid opgeslagen!');
         }

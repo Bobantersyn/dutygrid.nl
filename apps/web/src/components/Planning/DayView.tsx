@@ -17,6 +17,8 @@ export function DayView({
   onEditShift,
   onNewShift,
   onEmployeeClick, // New prop
+  onEmployeeDrop, // Add missing prop
+  useEmployeeAvailability, // Availability system flag
 }) {
   const [isDragOver, setIsDragOver] = useState(false);
   const [outsideAvailability, setOutsideAvailability] = useState({});

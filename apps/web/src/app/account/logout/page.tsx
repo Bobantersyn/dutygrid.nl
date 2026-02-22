@@ -6,10 +6,8 @@ export default function LogoutPage() {
   const { signOut } = useAuth();
 
   const handleSignOut = async () => {
-    await signOut({
-      callbackUrl: "/account/signin",
-      redirect: true,
-    });
+    await signOut();
+    window.location.href = "/account/signin";
   };
 
   return (

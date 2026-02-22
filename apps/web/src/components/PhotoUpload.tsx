@@ -21,8 +21,8 @@ function centerAspectCrop(mediaWidth, mediaHeight, aspect) {
 
 export function PhotoUpload({ onPhotoCropped, initialPhotoUrl, label = "Profielfoto" }) {
     const [imgSrc, setImgSrc] = useState('');
-    const [crop, setCrop] = useState();
-    const [completedCrop, setCompletedCrop] = useState();
+    const [crop, setCrop] = useState<any>();
+    const [completedCrop, setCompletedCrop] = useState<any>();
     const [showModal, setShowModal] = useState(false);
     const imgRef = useRef(null);
     const [previewUrl, setPreviewUrl] = useState(initialPhotoUrl);
@@ -46,7 +46,7 @@ export function PhotoUpload({ onPhotoCropped, initialPhotoUrl, label = "Profielf
 
     async function handleComplete() {
         if (completedCrop?.width && completedCrop?.height && imgRef.current) {
-            const croppedImage = await getCroppedImg(imgRef.current, completedCrop, 'profile_cropped.jpeg');
+            const croppedImage: any = await getCroppedImg(imgRef.current, completedCrop, 'profile_cropped.jpeg');
             setPreviewUrl(croppedImage.url);
             onPhotoCropped(croppedImage.file);
             setShowModal(false);
@@ -159,7 +159,7 @@ function getCroppedImg(image, crop, fileName) {
                 reject(new Error('Canvas is empty'));
                 return;
             }
-            blob.name = fileName;
+            (blob as any).name = fileName;
             const fileUrl = window.URL.createObjectURL(blob);
             const file = new File([blob], fileName, { type: 'image/jpeg', lastModified: Date.now() });
             resolve({ file, url: fileUrl });

@@ -15,7 +15,7 @@ import useUpload from "@/utils/useUpload";
 
 export default function CaoManagementPage() {
   const queryClient = useQueryClient();
-  const [upload] = useUpload();
+  const upload: any = useUpload();
   const [isAdding, setIsAdding] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [deleteWizard, setDeleteWizard] = useState(null);
@@ -38,7 +38,7 @@ export default function CaoManagementPage() {
   });
 
   const createMutation = useMutation({
-    mutationFn: async (data) => {
+    mutationFn: async (data: any) => {
       const response = await fetch("/api/cao-types", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -51,7 +51,7 @@ export default function CaoManagementPage() {
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["cao-types"]);
+      queryClient.invalidateQueries({ queryKey: ["cao-types"] });
       setIsAdding(false);
       setFormData({
         name: "",
@@ -67,7 +67,7 @@ export default function CaoManagementPage() {
   });
 
   const updateMutation = useMutation({
-    mutationFn: async ({ id, data }) => {
+    mutationFn: async ({ id, data }: any) => {
       const response = await fetch(`/api/cao-types/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -80,8 +80,8 @@ export default function CaoManagementPage() {
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["cao-types"]);
-      queryClient.invalidateQueries(["employees"]);
+      queryClient.invalidateQueries({ queryKey: ["cao-types"] });
+      queryClient.invalidateQueries({ queryKey: ["employees"] });
       setEditingId(null);
       setError(null);
     },
@@ -91,7 +91,7 @@ export default function CaoManagementPage() {
   });
 
   const deleteMutation = useMutation({
-    mutationFn: async (id) => {
+    mutationFn: async (id: any) => {
       const response = await fetch(`/api/cao-types/${id}`, {
         method: "DELETE",
       });
@@ -102,8 +102,8 @@ export default function CaoManagementPage() {
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["cao-types"]);
-      queryClient.invalidateQueries(["employees"]);
+      queryClient.invalidateQueries({ queryKey: ["cao-types"] });
+      queryClient.invalidateQueries({ queryKey: ["employees"] });
       setDeleteWizard(null);
       setError(null);
     },
@@ -626,56 +626,56 @@ export default function CaoManagementPage() {
                 <div className="space-y-3">
                   {caoTypes.filter((c) => c.id !== deleteWizard.caoId).length >
                     0 && (
-                    <div className="border border-gray-200 rounded-lg p-4 hover:border-blue-500 transition-colors">
-                      <label className="flex items-start gap-3 cursor-pointer">
-                        <input
-                          type="radio"
-                          name="deleteOption"
-                          checked={deleteWizard.replacementCao !== null}
-                          onChange={() => {
-                            const firstOtherCao = caoTypes.find(
-                              (c) => c.id !== deleteWizard.caoId,
-                            );
-                            setDeleteWizard({
-                              ...deleteWizard,
-                              replacementCao: firstOtherCao?.name,
-                            });
-                          }}
-                          className="mt-1"
-                        />
-                        <div className="flex-1">
-                          <div className="font-semibold text-gray-900 mb-2">
-                            Medewerkers verplaatsen naar ander CAO type
-                          </div>
-                          <select
-                            value={deleteWizard.replacementCao || ""}
-                            onChange={(e) =>
+                      <div className="border border-gray-200 rounded-lg p-4 hover:border-blue-500 transition-colors">
+                        <label className="flex items-start gap-3 cursor-pointer">
+                          <input
+                            type="radio"
+                            name="deleteOption"
+                            checked={deleteWizard.replacementCao !== null}
+                            onChange={() => {
+                              const firstOtherCao = caoTypes.find(
+                                (c) => c.id !== deleteWizard.caoId,
+                              );
                               setDeleteWizard({
                                 ...deleteWizard,
-                                replacementCao: e.target.value,
-                              })
-                            }
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                            disabled={deleteWizard.replacementCao === null}
-                          >
-                            {caoTypes
-                              .filter((c) => c.id !== deleteWizard.caoId)
-                              .map((cao) => (
-                                <option key={cao.id} value={cao.name}>
-                                  {cao.name} ({cao.max_hours_per_day}u/dag,{" "}
-                                  {cao.max_hours_per_week}u/week)
-                                </option>
-                              ))}
-                          </select>
-                          <p className="text-xs text-gray-500 mt-1">
-                            Alle {deleteWizard.linkedEmployees.length}{" "}
-                            medewerker(s) krijgen automatisch de uren van het
-                            nieuwe CAO type
-                          </p>
-                        </div>
-                      </label>
-                    </div>
-                  )}
+                                replacementCao: firstOtherCao?.name,
+                              });
+                            }}
+                            className="mt-1"
+                          />
+                          <div className="flex-1">
+                            <div className="font-semibold text-gray-900 mb-2">
+                              Medewerkers verplaatsen naar ander CAO type
+                            </div>
+                            <select
+                              value={deleteWizard.replacementCao || ""}
+                              onChange={(e) =>
+                                setDeleteWizard({
+                                  ...deleteWizard,
+                                  replacementCao: e.target.value,
+                                })
+                              }
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                              disabled={deleteWizard.replacementCao === null}
+                            >
+                              {caoTypes
+                                .filter((c) => c.id !== deleteWizard.caoId)
+                                .map((cao) => (
+                                  <option key={cao.id} value={cao.name}>
+                                    {cao.name} ({cao.max_hours_per_day}u/dag,{" "}
+                                    {cao.max_hours_per_week}u/week)
+                                  </option>
+                                ))}
+                            </select>
+                            <p className="text-xs text-gray-500 mt-1">
+                              Alle {deleteWizard.linkedEmployees.length}{" "}
+                              medewerker(s) krijgen automatisch de uren van het
+                              nieuwe CAO type
+                            </p>
+                          </div>
+                        </label>
+                      </div>
+                    )}
 
                   <div className="border border-gray-200 rounded-lg p-4 hover:border-red-500 transition-colors">
                     <label className="flex items-start gap-3 cursor-pointer">

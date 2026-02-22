@@ -42,6 +42,7 @@ export default function EmployeeDetailPage({ params }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError(null);
+    // @ts-ignore - mutationFn typed in .js hook
     updateMutation.mutate(
       {
         first_name: formData.first_name,

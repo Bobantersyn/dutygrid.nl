@@ -35,8 +35,8 @@ export default function SwapRequestModal({ open, onOpenChange, shift }) {
             if (!res.ok) throw new Error('Failed');
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(['my-shifts']);
-            queryClient.invalidateQueries(['swap-requests']);
+            queryClient.invalidateQueries({ queryKey: ['my-shifts'] });
+            queryClient.invalidateQueries({ queryKey: ['swap-requests'] });
             onOpenChange(false);
             alert('Aanvraag ingediend!');
         }

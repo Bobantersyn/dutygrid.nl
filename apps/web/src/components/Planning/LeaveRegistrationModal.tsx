@@ -33,7 +33,7 @@ export function LeaveRegistrationModal({ isOpen, onClose, employee, onSuccess, i
 
     // Mutation to save batch exceptions
     const saveBatchMutation = useMutation({
-        mutationFn: async (data) => {
+        mutationFn: async (data: any) => {
             const response = await fetch('/api/availability/exceptions/batch', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -53,8 +53,8 @@ export function LeaveRegistrationModal({ isOpen, onClose, employee, onSuccess, i
             return response.json();
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(['availability']);
-            queryClient.invalidateQueries(['week-overview']);
+            queryClient.invalidateQueries({ queryKey: ['availability'] });
+            queryClient.invalidateQueries({ queryKey: ['week-overview'] });
             if (onSuccess) onSuccess();
             onClose();
             // Reset form
@@ -96,8 +96,8 @@ export function LeaveRegistrationModal({ isOpen, onClose, employee, onSuccess, i
             return response.json();
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(['availability']);
-            queryClient.invalidateQueries(['week-overview']);
+            queryClient.invalidateQueries({ queryKey: ['availability'] });
+            queryClient.invalidateQueries({ queryKey: ['week-overview'] });
             if (onSuccess) onSuccess();
             onClose();
             setError(null);

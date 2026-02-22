@@ -32,7 +32,7 @@ export default function MyLeavePage() {
     });
 
     const createMutation = useMutation({
-        mutationFn: async (data) => {
+        mutationFn: async (data: any) => {
             const res = await fetch("/api/leave", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -42,7 +42,7 @@ export default function MyLeavePage() {
             return res.json();
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(["my-leave"]);
+            queryClient.invalidateQueries({ queryKey: ["my-leave"] });
             setIsModalOpen(false);
             setFormData({ start_date: "", end_date: "", type: "vakantie", note: "" });
             setError("");

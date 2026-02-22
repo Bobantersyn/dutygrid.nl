@@ -42,7 +42,7 @@ export function EmployeeDetailDrawer({ employeeId, weekStart, onClose, isPlanner
     });
 
     const deleteExceptionMutation = useMutation({
-        mutationFn: async (date) => {
+        mutationFn: async (date: any) => {
             // Find exception ID
             const exceptionsResponse = await fetch(
                 `/api/availability/exceptions?employee_id=${employeeId}`,
@@ -63,18 +63,20 @@ export function EmployeeDetailDrawer({ employeeId, weekStart, onClose, isPlanner
             return data;
         },
         onSuccess: () => {
-            queryClient.invalidateQueries([
-                "availability-detail",
-                employeeId,
-                weekStart,
-            ]);
-            queryClient.invalidateQueries(["availability-week-overview", weekStart]);
-            queryClient.invalidateQueries(["planning-availability"]); // Update main view counts
+            queryClient.invalidateQueries({
+                queryKey: [
+                    "availability-detail",
+                    employeeId,
+                    weekStart,
+                ]
+            });
+            queryClient.invalidateQueries({ queryKey: ["availability-week-overview", weekStart] });
+            queryClient.invalidateQueries({ queryKey: ["planning-availability"] }); // Update main view counts
         },
     });
 
     const addExceptionMutation = useMutation({
-        mutationFn: async (exception) => {
+        mutationFn: async (exception: any) => {
             const response = await fetch("/api/availability/exceptions", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -90,13 +92,15 @@ export function EmployeeDetailDrawer({ employeeId, weekStart, onClose, isPlanner
             return data;
         },
         onSuccess: () => {
-            queryClient.invalidateQueries([
-                "availability-detail",
-                employeeId,
-                weekStart,
-            ]);
-            queryClient.invalidateQueries(["availability-week-overview", weekStart]);
-            queryClient.invalidateQueries(["planning-availability"]);
+            queryClient.invalidateQueries({
+                queryKey: [
+                    "availability-detail",
+                    employeeId,
+                    weekStart,
+                ]
+            });
+            queryClient.invalidateQueries({ queryKey: ["availability-week-overview", weekStart] });
+            queryClient.invalidateQueries({ queryKey: ["planning-availability"] });
             setNewException({ date: "", reason: "", is_available: false });
             setShowAddException(false);
         },
@@ -127,7 +131,7 @@ export function EmployeeDetailDrawer({ employeeId, weekStart, onClose, isPlanner
             } else {
                 // Check if consecutive (difference of 1 day)
                 const prevDate = new Date(currentGroup.endDate);
-                const diffTime = Math.abs(date - prevDate);
+                const diffTime = Math.abs(date.getTime() - prevDate.getTime());
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
                 if (diffDays <= 1 && leave.reason === currentGroup.reason) {
@@ -579,8 +583,8 @@ export function EmployeeDetailDrawer({ employeeId, weekStart, onClose, isPlanner
                 initialData={selectedLeave}
                 onSuccess={() => {
                     // Refresh data
-                    queryClient.invalidateQueries(["availability-detail", employeeId, weekStart]);
-                    queryClient.invalidateQueries(["availability-week-overview", weekStart]);
+                    queryClient.invalidateQueries({ queryKey: ["availability-detail", employeeId, weekStart] });
+                    queryClient.invalidateQueries({ queryKey: ["availability-week-overview", weekStart] });
                 }}
             />
         </div>

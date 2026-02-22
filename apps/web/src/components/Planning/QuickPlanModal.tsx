@@ -78,7 +78,7 @@ export function QuickPlanModal({
 
   // Create/Update shift mutation
   const saveShiftMutation = useMutation({
-    mutationFn: async (data) => {
+    mutationFn: async (data: any) => {
       const url = isEditing ? `/api/shifts/${shift.id}` : "/api/shifts";
       const method = isEditing ? "PUT" : "POST";
 
@@ -95,8 +95,8 @@ export function QuickPlanModal({
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["shifts"]);
-      queryClient.invalidateQueries(["planning-availability"]);
+      queryClient.invalidateQueries({ queryKey: ["shifts"] });
+      queryClient.invalidateQueries({ queryKey: ["planning-availability"] });
       onSuccess?.();
       onClose();
     },

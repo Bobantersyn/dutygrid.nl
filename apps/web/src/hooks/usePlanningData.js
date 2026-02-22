@@ -71,7 +71,7 @@ export function usePlanningData(currentWeek, userRole) {
   });
 
   const swapActionMutation = useMutation({
-    mutationFn: async ({ swapId, action, message, newEmployeeId }) => {
+    mutationFn: async ({ swapId, action, message, newEmployeeId }/** @type {any} */) => {
       // Logic converts 'approve'/'reject' to status
       const status = action === 'approve' ? 'approved' : 'rejected';
 
@@ -98,7 +98,7 @@ export function usePlanningData(currentWeek, userRole) {
   });
 
   const deleteShiftMutation = useMutation({
-    mutationFn: async (shiftId) => {
+    mutationFn: async (shiftId/** @type {any} */) => {
       const response = await fetch(`/api/shifts/${shiftId}`, {
         method: "DELETE",
       });

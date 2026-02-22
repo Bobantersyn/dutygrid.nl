@@ -22,7 +22,7 @@ export function useEmployeeDetail(id) {
   });
 
   const updateMutation = useMutation({
-    mutationFn: async (data) => {
+    mutationFn: async (data/** @type {any} */) => {
       const response = await fetch(`/api/employees/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

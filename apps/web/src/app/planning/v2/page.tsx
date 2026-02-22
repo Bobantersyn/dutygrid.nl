@@ -170,7 +170,7 @@ export default function PlanningV2Page() {
     if (prevShift) {
       const prevEnd = new Date(`${prevShift.shift_date}T${prevShift.end_time}`);
       const currentStart = new Date(`${shift.shift_date}T${shift.start_time}`);
-      const restHours = (currentStart - prevEnd) / (1000 * 60 * 60);
+      const restHours = (currentStart.getTime() - prevEnd.getTime()) / (1000 * 60 * 60);
       if (restHours < 12) return true;
     }
 
@@ -263,21 +263,19 @@ export default function PlanningV2Page() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => setViewMode("day")}
-                      className={`flex-1 px-4 py-2 rounded-lg font-semibold transition-colors ${
-                        viewMode === "day"
+                      className={`flex-1 px-4 py-2 rounded-lg font-semibold transition-colors ${viewMode === "day"
                           ? "bg-blue-600 text-white"
                           : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                      }`}
+                        }`}
                     >
                       Dag
                     </button>
                     <button
                       onClick={() => setViewMode("week")}
-                      className={`flex-1 px-4 py-2 rounded-lg font-semibold transition-colors ${
-                        viewMode === "week"
+                      className={`flex-1 px-4 py-2 rounded-lg font-semibold transition-colors ${viewMode === "week"
                           ? "bg-blue-600 text-white"
                           : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                      }`}
+                        }`}
                     >
                       Week
                     </button>
@@ -320,12 +318,12 @@ export default function PlanningV2Page() {
                     <p className="font-semibold text-purple-900">
                       {viewMode === "day"
                         ? currentDate.toLocaleDateString("nl-NL", {
-                            weekday: "long",
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric",
-                          })
-                        : `Week ${Math.ceil((currentDate - new Date(currentDate.getFullYear(), 0, 1)) / (7 * 24 * 60 * 60 * 1000))}, ${currentDate.getFullYear()}`}
+                          weekday: "long",
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })
+                        : `Week ${Math.ceil((currentDate.getTime() - new Date(currentDate.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}, ${currentDate.getFullYear()}`}
                     </p>
                   </div>
                 </div>
@@ -451,9 +449,8 @@ export default function PlanningV2Page() {
               return (
                 <div
                   key={idx}
-                  className={`p-4 text-center border-r border-gray-200 ${
-                    isToday ? "bg-blue-50" : ""
-                  }`}
+                  className={`p-4 text-center border-r border-gray-200 ${isToday ? "bg-blue-50" : ""
+                    }`}
                 >
                   <div
                     className={`font-bold ${isToday ? "text-blue-600" : "text-gray-900"}`}
@@ -516,11 +513,10 @@ export default function PlanningV2Page() {
                               return (
                                 <div
                                   key={shift.id}
-                                  className={`p-2 rounded-lg text-xs ${
-                                    hasWarning
+                                  className={`p-2 rounded-lg text-xs ${hasWarning
                                       ? "bg-red-100 border border-red-300"
                                       : "bg-purple-100 border border-purple-200"
-                                  }`}
+                                    }`}
                                 >
                                   {hasWarning && (
                                     <div className="flex items-center gap-1 text-red-700 mb-1">

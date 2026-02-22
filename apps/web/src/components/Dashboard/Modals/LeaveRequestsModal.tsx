@@ -5,7 +5,7 @@ export function LeaveRequestsModal({ requests = [], onClose }) {
     const queryClient = useQueryClient();
 
     const updateMutation = useMutation({
-        mutationFn: async ({ id, status }) => {
+        mutationFn: async ({ id, status }: any) => {
             const res = await fetch(`/api/leave/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -15,8 +15,8 @@ export function LeaveRequestsModal({ requests = [], onClose }) {
             return res.json();
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(["leave-requests"]);
-            queryClient.invalidateQueries(["dashboard-stats"]); // If we add a count there
+            queryClient.invalidateQueries({ queryKey: ["leave-requests"] });
+            queryClient.invalidateQueries({ queryKey: ["dashboard-stats"] }); // If we add a count there
         },
     });
 

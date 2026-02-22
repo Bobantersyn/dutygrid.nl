@@ -42,7 +42,7 @@ export default function NotificationBell() {
 
     // Mark read mutation
     const markReadMutation = useMutation({
-        mutationFn: async ({ id, markAllRead }) => {
+        mutationFn: async ({ id, markAllRead }: any) => {
             await fetch('/api/notifications', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
@@ -50,8 +50,8 @@ export default function NotificationBell() {
             });
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(['notifications-unread']);
-            queryClient.invalidateQueries(['notifications-list']);
+            queryClient.invalidateQueries({ queryKey: ['notifications-unread'] });
+            queryClient.invalidateQueries({ queryKey: ['notifications-list'] });
         }
     });
 

@@ -22,7 +22,7 @@ export function ObjectLabelSettings() {
     const labels = labelsData?.labels || [];
 
     const createMutation = useMutation({
-        mutationFn: async (data) => {
+        mutationFn: async (data: any) => {
             const res = await fetch("/api/object-labels", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -35,7 +35,7 @@ export function ObjectLabelSettings() {
             return res.json();
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(["object-labels"]);
+            queryClient.invalidateQueries({ queryKey: ["object-labels"] });
             setIsAdding(false);
             setFormData({ name: "", description: "" });
             setError(null);

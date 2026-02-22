@@ -91,7 +91,7 @@ export default function NewShiftPage() {
   };
 
   const createMutation = useMutation({
-    mutationFn: async (data) => {
+    mutationFn: async (data: any) => {
       const response = await fetch("/api/shifts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -143,7 +143,7 @@ export default function NewShiftPage() {
       assignment_id: formData.assignment_id
         ? parseInt(formData.assignment_id)
         : null,
-      break_minutes: parseInt(formData.break_minutes) || 0,
+      break_minutes: parseInt(String(formData.break_minutes)) || 0,
       shift_type: formData.shift_type, // Include shift_type
     });
   };
@@ -344,7 +344,7 @@ export default function NewShiftPage() {
                 min="0"
                 value={formData.break_minutes}
                 onChange={(e) =>
-                  setFormData({ ...formData, break_minutes: e.target.value })
+                  setFormData({ ...formData, break_minutes: Number(e.target.value) })
                 }
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               />

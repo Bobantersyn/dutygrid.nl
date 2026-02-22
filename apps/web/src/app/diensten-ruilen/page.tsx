@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import SwapRequestModal from '@/components/ShiftSwaps/SwapRequestModal';
 
 export default function DienstenRuilenPage() {
-  const { user, userRole, employeeId, loading } = useUserRole();
+  const { user, userRole, employeeId, roleLoading: loading } = useUserRole();
   const [selectedShift, setSelectedShift] = useState(null);
 
   // Queries

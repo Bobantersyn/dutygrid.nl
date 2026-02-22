@@ -31,7 +31,7 @@ export function AvailabilityDetailPopup({ employeeId, weekStart, onClose, isPlan
   });
 
   const deleteExceptionMutation = useMutation({
-    mutationFn: async (date) => {
+    mutationFn: async (date: any) => {
       // Find exception ID
       const exceptionsResponse = await fetch(
         `/api/availability/exceptions?employee_id=${employeeId}`,
@@ -51,17 +51,19 @@ export function AvailabilityDetailPopup({ employeeId, weekStart, onClose, isPlan
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries([
-        "availability-detail",
-        employeeId,
-        weekStart,
-      ]);
-      queryClient.invalidateQueries(["availability-week-overview", weekStart]);
+      queryClient.invalidateQueries({
+        queryKey: [
+          "availability-detail",
+          employeeId,
+          weekStart,
+        ]
+      });
+      queryClient.invalidateQueries({ queryKey: ["availability-week-overview", weekStart] });
     },
   });
 
   const addExceptionMutation = useMutation({
-    mutationFn: async (exception) => {
+    mutationFn: async (exception: any) => {
       const response = await fetch("/api/availability/exceptions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -76,12 +78,14 @@ export function AvailabilityDetailPopup({ employeeId, weekStart, onClose, isPlan
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries([
-        "availability-detail",
-        employeeId,
-        weekStart,
-      ]);
-      queryClient.invalidateQueries(["availability-week-overview", weekStart]);
+      queryClient.invalidateQueries({
+        queryKey: [
+          "availability-detail",
+          employeeId,
+          weekStart,
+        ]
+      });
+      queryClient.invalidateQueries({ queryKey: ["availability-week-overview", weekStart] });
       setNewException({ date: "", reason: "", is_available: false });
       setShowAddException(false);
     },

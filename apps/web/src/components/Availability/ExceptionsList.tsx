@@ -32,17 +32,17 @@ export default function ExceptionsList({ employeeId }) {
             if (!res.ok) throw new Error('Failed');
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(['availability-exceptions', employeeId]);
+            queryClient.invalidateQueries({ queryKey: ['availability-exceptions', employeeId] });
             setNewDate('');
             setReason('');
         }
     });
 
     const deleteMutation = useMutation({
-        mutationFn: async (id) => {
+        mutationFn: async (id: any) => {
             await fetch(`/api/availability/exceptions?id=${id}`, { method: 'DELETE' });
         },
-        onSuccess: () => queryClient.invalidateQueries(['availability-exceptions', employeeId])
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: ['availability-exceptions', employeeId] })
     });
 
     return (

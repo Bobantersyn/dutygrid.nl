@@ -6,7 +6,7 @@ import ExceptionsList from '@/components/Availability/ExceptionsList';
 import { useState } from 'react';
 
 export default function AvailabilityPage() {
-  const { user, userRole, employeeId, loading } = useUserRole();
+  const { user, userRole, employeeId, roleLoading: loading } = useUserRole();
   const [activeTab, setActiveTab] = useState('pattern');
 
   if (loading) return <div className="p-8">Laden...</div>;

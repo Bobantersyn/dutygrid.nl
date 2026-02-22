@@ -22,7 +22,11 @@ export function useUserRole() {
       if (userLoading) return;
 
       if (!user) {
-        window.location.href = "/account/signin";
+        // Don't redirect if already on an auth page (prevents infinite loop)
+        const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
+        if (!pathname.startsWith('/account/')) {
+          window.location.href = "/account/signin";
+        }
         return;
       }
 
