@@ -9,7 +9,14 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-export function AvailabilityDetailPopup({ employeeId, weekStart, onClose, isPlannerOrAdmin }) {
+interface AvailabilityDetailPopupProps {
+  employeeId: string | number;
+  weekStart: string;
+  onClose: () => void;
+  isPlannerOrAdmin?: boolean;
+}
+
+export function AvailabilityDetailPopup({ employeeId, weekStart, onClose, isPlannerOrAdmin }: AvailabilityDetailPopupProps) {
   const queryClient = useQueryClient();
   const [showAddException, setShowAddException] = useState(false);
   const [newException, setNewException] = useState({
@@ -38,7 +45,7 @@ export function AvailabilityDetailPopup({ employeeId, weekStart, onClose, isPlan
       );
       const exceptionsData = await exceptionsResponse.json();
       const exception = exceptionsData.exceptions.find(
-        (ex) => ex.exception_date.split("T")[0] === date,
+        (ex: any) => ex.exception_date.split("T")[0] === date,
       );
 
       if (!exception) throw new Error("Exception not found");
@@ -141,7 +148,7 @@ export function AvailabilityDetailPopup({ employeeId, weekStart, onClose, isPlan
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-6">
           <div className="space-y-3">
-            {week.map((day) => {
+            {week.map((day: any) => {
               const isException = day.source === "exception";
               const canDelete = isException && !isPlannerOrAdmin;
 
@@ -251,7 +258,7 @@ export function AvailabilityDetailPopup({ employeeId, weekStart, onClose, isPlan
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
                       >
                         <option value="">Selecteer datum...</option>
-                        {week.map((day) => (
+                        {week.map((day: any) => (
                           <option key={day.date} value={day.date}>
                             {day.day} {new Date(day.date).getDate()}/
                             {new Date(day.date).getMonth() + 1}

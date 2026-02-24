@@ -8,6 +8,19 @@ import {
 } from "@/utils/shiftValidation";
 import { useState, useEffect } from "react";
 
+interface DayViewProps {
+  currentDate: Date;
+  shifts: any[];
+  searchQuery?: string;
+  onDeleteShift?: (id: number) => void;
+  isPlannerOrAdmin?: boolean;
+  onEditShift?: (shift: any) => void;
+  onNewShift?: (dateStr: string) => void;
+  onEmployeeClick?: (employeeId: number) => void;
+  onEmployeeDrop?: (data: any, dateStr: string) => void;
+  useEmployeeAvailability?: boolean;
+}
+
 export function DayView({
   currentDate,
   shifts,
@@ -19,10 +32,10 @@ export function DayView({
   onEmployeeClick, // New prop
   onEmployeeDrop, // Add missing prop
   useEmployeeAvailability, // Availability system flag
-}) {
+}: DayViewProps) {
   const [isDragOver, setIsDragOver] = useState(false);
-  const [outsideAvailability, setOutsideAvailability] = useState({});
-  const [overrideShift, setOverrideShift] = useState(null);
+  const [outsideAvailability, setOutsideAvailability] = useState<Record<number, boolean>>({});
+  const [overrideShift, setOverrideShift] = useState<any | null>(null);
 
   const dateStr = formatLocalDate(currentDate);
   const dayShifts = shifts.filter((s) => s.shift_date === dateStr);
@@ -32,7 +45,7 @@ export function DayView({
     const checkAvailability = async () => {
       if (!dayShifts || dayShifts.length === 0 || !isPlannerOrAdmin) return;
 
-      const checks = {};
+      const checks: Record<string, boolean> = {};
       for (const shift of dayShifts) {
         if (!shift.employee_id) continue; // Skip open shifts
 
@@ -63,17 +76,17 @@ export function DayView({
     window.location.reload();
   };
 
-  const handleDragOver = (e) => {
+  const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = "move";
     setIsDragOver(true);
   };
 
-  const handleDragLeave = (e) => {
+  const handleDragLeave = (e: React.DragEvent) => {
     setIsDragOver(false);
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragOver(false);
 
@@ -88,7 +101,7 @@ export function DayView({
   };
 
   // Allow clicking on background to create new shift
-  const handleBackgroundClick = (e) => {
+  const handleBackgroundClick = (e: React.MouseEvent) => {
     // Only if not prevented by child (ShiftCard already stops propagation)
     if (isPlannerOrAdmin && onNewShift) {
       onNewShift(dateStr);
@@ -145,7 +158,7 @@ export function DayView({
                   onEdit={isPlannerOrAdmin ? onEditShift : undefined}
                   isPlannerOrAdmin={isPlannerOrAdmin}
                   outsideAvailability={outsideAvailability[shift.id]}
-                  onApproveOverride={(shift) => setOverrideShift(shift)}
+                  onApproveOverride={(shift: any) => setOverrideShift(shift)}
                   onEmployeeClick={onEmployeeClick}
                 />
               );

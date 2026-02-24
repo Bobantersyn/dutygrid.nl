@@ -57,7 +57,9 @@ export async function POST(request) {
             VALUES (${sessionToken}, ${user.id}, ${expires})
         `;
 
-        // Return success with token
+        const isProduction = process.env.NODE_ENV === 'production';
+        const secureFlag = isProduction ? 'Secure;' : '';
+
         return Response.json(
             {
                 success: true,
@@ -72,7 +74,7 @@ export async function POST(request) {
             {
                 status: 200,
                 headers: {
-                    'Set-Cookie': `session=${sessionToken}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${durationSeconds}; Secure`,
+                    'Set-Cookie': `session=${sessionToken}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${durationSeconds}; ${secureFlag}`,
                 },
             }
         );

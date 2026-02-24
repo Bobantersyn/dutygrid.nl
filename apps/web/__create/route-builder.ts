@@ -99,8 +99,10 @@ async function registerRoutes() {
   for (const filePath of routePaths) {
     try {
       // Import the module
+      console.log(`[route-builder] importing ${filePath}`);
       const routeImport = routeModules[filePath];
       const route: any = await routeImport();
+      console.log(`[route-builder] successfully imported ${filePath}`);
 
       const methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'];
       for (const method of methods) {
@@ -132,14 +134,16 @@ async function registerRoutes() {
 }
 
 // Execute registration
+console.log('--- STARTING REGISTER ROUTES ---');
 await registerRoutes();
+console.log('--- FINISHED REGISTER ROUTES ---');
 
 // HMR logic for Dev (optional, Vite handles basic module reloading)
-if (import.meta.env.DEV && import.meta.hot) {
-  import.meta.hot.accept((newModule) => {
-    // Simple reload logic if needed
-    // Since we await at top level, full reload might happen anyway, which is fine.
-  });
-}
+// if (import.meta.env.DEV && import.meta.hot) {
+//   import.meta.hot.accept((newModule) => {
+//     // Simple reload logic if needed
+//     // Since we await at top level, full reload might happen anyway, which is fine.
+//   });
+// }
 
 export { api, API_BASENAME_LOCAL as API_BASENAME };

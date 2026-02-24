@@ -57,6 +57,7 @@ export default function SignInPage() {
         } else {
           localStorage.removeItem("remembered_email");
         }
+        console.log("Redirecting to / after successful login...");
         window.location.href = "/";
       } else {
         setError(result.error || "Onjuist e-mailadres of wachtwoord");

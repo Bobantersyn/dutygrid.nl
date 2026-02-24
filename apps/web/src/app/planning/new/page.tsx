@@ -134,7 +134,7 @@ export default function NewShiftPage() {
   const showTravelInfo =
     selectedEmployee?.home_address && selectedAssignment?.location_address;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     createMutation.mutate({

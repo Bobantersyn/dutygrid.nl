@@ -1,41 +1,16 @@
-import * as React from 'react';
-
-
+import { useAuthContext } from "@/providers/AuthProvider";
 
 const useUser = () => {
-  const [user, setUser] = React.useState<any | null>(null);
-  const [loading, setLoading] = React.useState(true);
-
-  const fetchUser = React.useCallback(async () => {
-    try {
-      const res = await fetch('/api/custom-auth/session');
-      if (res.ok) {
-        const data = await res.json();
-        setUser(data.user);
-      } else {
-        setUser(null);
-      }
-    } catch (error) {
-      console.error('Failed to fetch user:', error);
-      setUser(null);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  React.useEffect(() => {
-    fetchUser();
-  }, [fetchUser]);
+  const context = useAuthContext();
 
   return {
-    user,
-    data: user,
-    loading,
-    refetch: fetchUser,
-    isAuthenticated: !!user
+    user: context.user,
+    data: context.user,
+    loading: context.userLoading,
+    refetch: context.refetchUser,
+    isAuthenticated: !!context.user
   };
 };
 
 export { useUser };
-
 export default useUser;

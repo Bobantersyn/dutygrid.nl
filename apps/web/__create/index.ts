@@ -1,4 +1,5 @@
 import { AsyncLocalStorage } from 'node:async_hooks';
+console.log('--- STARTING EVALUATION OF __create/index.ts ---');
 import nodeConsole from 'node:console';
 import { skipCSRFCheck } from '@auth/core';
 import Credentials from '@auth/core/providers/credentials';
@@ -40,13 +41,24 @@ const pool = new Pool({
 });
 const adapter = NeonAdapter(pool);
 
+console.log('--- __create/index.ts initialized ---');
 const app = new Hono();
+
+app.use('*', async (c, next) => {
+  console.log(`[Hono] Request started: ${c.req.method} ${c.req.path}`);
+  await next();
+  console.log(`[Hono] Request finished: ${c.req.method} ${c.req.path}`);
+});
 
 app.use('*', requestId());
 
 app.use('*', (c, next) => {
   const requestId = c.get('requestId');
-  return als.run({ requestId }, () => next());
+  // console.log(`[Hono] als.run start for ${requestId}`);
+  return als.run({ requestId }, () => {
+    // console.log(`[Hono] Inside als.run for ${requestId}`);
+    return next();
+  });
 });
 
 app.use(contextStorage());
