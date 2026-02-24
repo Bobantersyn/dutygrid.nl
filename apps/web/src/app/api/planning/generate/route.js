@@ -1,6 +1,6 @@
 import { getSession } from "@/utils/session";
 import sql from "@/app/api/utils/sql";
-import { detectPlanningGaps } from "../utils/planning-helpers.js";
+import { detectPlanningGaps } from "../../utils/planning-helpers.js";
 
 export async function POST(request) {
     try {
