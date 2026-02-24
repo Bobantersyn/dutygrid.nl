@@ -57,15 +57,15 @@ export function TopNavigation() {
 
     return (
         <header className="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
-            <div className="max-w-[1440px] mx-auto px-4 lg:px-6 h-[160px] flex items-center justify-between">
+            <div className="max-w-[1440px] mx-auto px-4 lg:px-6 h-[180px] flex items-center justify-between">
 
                 {/* Left: Enlarge Logo (clickable -> Dashboard) */}
                 <div className="flex-shrink-0 mr-8 py-2">
                     <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
                         <img
-                            src="/logo.svg"
+                            src="/logo.png"
                             alt="DutyGrid Dashboard"
-                            className="h-[140px] w-auto drop-shadow-sm min-w-[350px] object-contain transform origin-left"
+                            className="h-[160px] w-auto drop-shadow-sm object-contain transform origin-left"
                         />
                     </a>
                 </div>

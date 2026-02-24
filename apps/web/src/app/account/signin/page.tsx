@@ -79,7 +79,7 @@ export default function SignInPage() {
         autoComplete="on"
       >
         <div className="flex justify-center mb-6">
-          <img src="/logo.svg" alt="DutyGrid" className="h-20 w-auto" />
+          <img src="/logo.png" alt="DutyGrid" className="h-[120px] w-auto drop-shadow-sm" />
         </div>
         <h1 className="mb-2 text-center text-3xl font-bold text-gray-900">
           Welkom Terug
