@@ -14,7 +14,7 @@ import {
     User,
     ArrowLeft
 } from "lucide-react";
-import { DashboardHeader } from "@/components/Dashboard/DashboardHeader";
+
 import { LoadingState } from "@/components/Dashboard/LoadingState";
 
 export default function ReportsPage() {
@@ -48,7 +48,7 @@ export default function ReportsPage() {
 
     return (
         <div className="min-h-screen bg-slate-50">
-            <DashboardHeader isPlannerOrAdmin={true} />
+
 
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {/* Navigation & Header */}

@@ -2,7 +2,7 @@
 
 import { useUserRole } from "@/hooks/useUserRole";
 import { LoadingState } from "@/components/Dashboard/LoadingState";
-import { DashboardHeader } from "@/components/Dashboard/DashboardHeader";
+
 import { FileText, Building2, Users } from "lucide-react";
 
 export default function AdministratiePage() {
@@ -33,7 +33,7 @@ export default function AdministratiePage() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <DashboardHeader isPlannerOrAdmin={isPlannerOrAdmin} />
+
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="mb-8">

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useUserRole } from "@/hooks/useUserRole";
 import { useDashboardData } from "@/hooks/useDashboardData";
 import { LoadingState } from "@/components/Dashboard/LoadingState";
-import { DashboardHeader } from "@/components/Dashboard/DashboardHeader";
+
 import { StatsCards } from "@/components/Dashboard/StatsCards";
 import { QuickActions } from "@/components/Dashboard/QuickActions";
 import { TodayShifts } from "@/components/Dashboard/TodayShifts";
@@ -43,7 +43,7 @@ export default function HomePage() {
   // Planners and admins see dashboard
   return (
     <div className="min-h-screen bg-gray-50">
-      <DashboardHeader isPlannerOrAdmin={isPlannerOrAdmin} />
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <StatsCards

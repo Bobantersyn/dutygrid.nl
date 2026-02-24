@@ -1,0 +1,105 @@
+
+> dev
+> react-router dev --port 3000
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://192.168.0.201:3000/
+  ➜  press h + enter to show help
+--- STARTING REGISTER ROUTES ---
+[route-builder] importing ../src/app/api/availability/exceptions/batch/delete/route.js
+[route-builder] successfully imported ../src/app/api/availability/exceptions/batch/delete/route.js
+[route-builder] importing ../src/app/api/shift-swaps/suggestions/[shift_id]/route.js
+[route-builder] successfully imported ../src/app/api/shift-swaps/suggestions/[shift_id]/route.js
+[route-builder] importing ../src/app/api/employees/availability-overview/route.js
+[route-builder] successfully imported ../src/app/api/employees/availability-overview/route.js
+[route-builder] importing ../src/app/api/availability/exceptions/batch/route.js
+[route-builder] successfully imported ../src/app/api/availability/exceptions/batch/route.js
+[route-builder] importing ../src/app/api/shifts/[id]/approve-override/route.js
+[route-builder] successfully imported ../src/app/api/shifts/[id]/approve-override/route.js
+[route-builder] importing ../src/app/api/availability/saved-patterns/route.js
+[route-builder] successfully imported ../src/app/api/availability/saved-patterns/route.js
+[route-builder] importing ../src/app/api/planning/availability-check/route.js
+[route-builder] successfully imported ../src/app/api/planning/availability-check/route.js
+[route-builder] importing ../src/app/api/availability/week-overview/route.js
+[route-builder] successfully imported ../src/app/api/availability/week-overview/route.js
+[route-builder] importing ../src/app/api/notifications/unread-count/route.js
+[route-builder] successfully imported ../src/app/api/notifications/unread-count/route.js
+[route-builder] importing ../src/app/api/availability/exceptions/route.js
+[route-builder] successfully imported ../src/app/api/availability/exceptions/route.js
+[route-builder] importing ../src/app/api/test-create-beveiliger/route.js
+[route-builder] successfully imported ../src/app/api/test-create-beveiliger/route.js
+[route-builder] importing ../src/app/api/reports/billing/export/route.js
+[route-builder] successfully imported ../src/app/api/reports/billing/export/route.js
+[route-builder] importing ../src/app/api/availability/patterns/route.js
+[route-builder] successfully imported ../src/app/api/availability/patterns/route.js
+[route-builder] importing ../src/app/api/reports/hours/export/route.js
+[route-builder] successfully imported ../src/app/api/reports/hours/export/route.js
+[route-builder] importing ../src/app/api/custom-auth/session/route.js
+[route-builder] successfully imported ../src/app/api/custom-auth/session/route.js
+[route-builder] importing ../src/app/api/availability/check/route.js
+[route-builder] successfully imported ../src/app/api/availability/check/route.js
+[route-builder] importing ../src/app/api/custom-auth/logout/route.js
+[route-builder] successfully imported ../src/app/api/custom-auth/logout/route.js
+[route-builder] importing ../src/app/api/debug-constraints/route.js
+[route-builder] successfully imported ../src/app/api/debug-constraints/route.js
+[route-builder] importing ../src/app/api/custom-auth/login/route.js
+[route-builder] successfully imported ../src/app/api/custom-auth/login/route.js
+[route-builder] importing ../src/app/api/assignments/[id]/route.js
+[route-builder] successfully imported ../src/app/api/assignments/[id]/route.js
+[route-builder] importing ../src/app/api/planning/suggest/route.js
+[route-builder] successfully imported ../src/app/api/planning/suggest/route.js
+[route-builder] importing ../src/app/api/shift-swaps/[id]/route.js
+[route-builder] successfully imported ../src/app/api/shift-swaps/[id]/route.js
+[route-builder] importing ../src/app/api/system-settings/route.js
+[route-builder] successfully imported ../src/app/api/system-settings/route.js
+[route-builder] importing ../src/app/api/reports/billing/route.js
+[route-builder] successfully imported ../src/app/api/reports/billing/route.js
+[route-builder] importing ../src/app/api/cao-types/[id]/route.js
+[route-builder] successfully imported ../src/app/api/cao-types/[id]/route.js
+[route-builder] importing ../src/app/api/employees/[id]/route.js
+[route-builder] successfully imported ../src/app/api/employees/[id]/route.js
+[route-builder] importing ../src/app/api/migrations/run/route.js
+[route-builder] successfully imported ../src/app/api/migrations/run/route.js
+[route-builder] importing ../src/app/api/notifications/route.js
+[route-builder] successfully imported ../src/app/api/notifications/route.js
+[route-builder] importing ../src/app/api/planning-gaps/route.js
+[route-builder] successfully imported ../src/app/api/planning-gaps/route.js
+[route-builder] importing ../src/app/api/reports/hours/route.js
+[route-builder] successfully imported ../src/app/api/reports/hours/route.js
+[route-builder] importing ../src/app/api/debug-schema/route.js
+[route-builder] successfully imported ../src/app/api/debug-schema/route.js
+[route-builder] importing ../src/app/api/clients/[id]/route.js
+[route-builder] successfully imported ../src/app/api/clients/[id]/route.js
+[route-builder] importing ../src/app/api/hours/export/route.js
+[route-builder] successfully imported ../src/app/api/hours/export/route.js
+[route-builder] importing ../src/app/api/assignments/route.js
+[route-builder] successfully imported ../src/app/api/assignments/route.js
+[route-builder] importing ../src/app/api/quick-login/route.js
+[route-builder] successfully imported ../src/app/api/quick-login/route.js
+[route-builder] importing ../src/app/api/shift-swaps/route.js
+[route-builder] successfully imported ../src/app/api/shift-swaps/route.js
+[route-builder] importing ../src/app/api/admin/users/route.js
+[route-builder] successfully imported ../src/app/api/admin/users/route.js
+[route-builder] importing ../src/app/api/shifts/[id]/route.js
+[route-builder] successfully imported ../src/app/api/shifts/[id]/route.js
+[route-builder] importing ../src/app/api/leave/[id]/route.js
+[route-builder] successfully imported ../src/app/api/leave/[id]/route.js
+[route-builder] importing ../src/app/api/cao-types/route.js
+[route-builder] successfully imported ../src/app/api/cao-types/route.js
+[route-builder] importing ../src/app/api/employees/route.js
+[route-builder] successfully imported ../src/app/api/employees/route.js
+[route-builder] importing ../src/app/api/user-role/route.js
+[route-builder] successfully imported ../src/app/api/user-role/route.js
+[route-builder] importing ../src/app/api/clients/route.js
+[route-builder] successfully imported ../src/app/api/clients/route.js
+[route-builder] importing ../src/app/api/shifts/route.js
+[route-builder] successfully imported ../src/app/api/shifts/route.js
+[route-builder] importing ../src/app/api/audit/route.js
+[route-builder] successfully imported ../src/app/api/audit/route.js
+[route-builder] importing ../src/app/api/hours/route.js
+[route-builder] successfully imported ../src/app/api/hours/route.js
+[route-builder] importing ../src/app/api/leave/route.js
+[route-builder] successfully imported ../src/app/api/leave/route.js
+--- FINISHED REGISTER ROUTES ---
+--- STARTING EVALUATION OF __create/index.ts ---
+--- __create/index.ts initialized ---

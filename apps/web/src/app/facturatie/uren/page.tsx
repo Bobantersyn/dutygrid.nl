@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
     FileDown, CheckCircle, Clock, Building2, MapPin, ChevronDown, ChevronRight, ArrowLeft
 } from "lucide-react";
-import { DashboardHeader } from "@/components/Dashboard/DashboardHeader";
+
 import { LoadingState } from "@/components/Dashboard/LoadingState";
 
 export default function BillingPage() {
@@ -39,7 +39,7 @@ export default function BillingPage() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <DashboardHeader isPlannerOrAdmin={true} />
+
 
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {/* Header Section */}

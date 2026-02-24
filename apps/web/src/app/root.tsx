@@ -33,8 +33,7 @@ import { useSandboxStore } from '../__create/hmr-sandbox-store';
 import type { Route } from './+types/root';
 import { useDevServerHeartbeat } from '../__create/useDevServerHeartbeat';
 import { Providers } from './providers';
-import { BottomNav } from '@/components/Navigation/BottomNav';
-
+import { TopNavigation } from '@/components/Navigation/TopNavigation';
 export const links = () => [];
 
 if (globalThis.window && globalThis.window !== undefined) {
@@ -467,8 +466,12 @@ export function Layout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <Providers>
-          <ClientOnly loader={() => children} />
-          <BottomNav />
+          <ClientOnly loader={() => (
+            <>
+              <TopNavigation />
+              {children}
+            </>
+          )} />
         </Providers>
         <HotReloadIndicator />
         <Toaster position="bottom-right" />
