@@ -1,0 +1,24 @@
+Vercel CLI 50.23.2
+Retrieving project…
+Deploying bobantersyns-projects/anything
+Uploading [--------------------] (0.0B/1.8MB)
+Uploading [=====---------------] (465.5KB/1.8MB)
+Uploading [==========----------] (925.2KB/1.8MB)
+Uploading [===============-----] (1.4MB/1.8MB)
+Uploading [====================] (1.8MB/1.8MB)
+Inspect: https://vercel.com/bobantersyns-projects/anything/8W6VUdfLJJKNuo4qQajxPmmTsGwa [4s]
+Production: https://anything-lskum9a6l-bobantersyns-projects.vercel.app [4s]
+https://anything-lskum9a6l-bobantersyns-projects.vercel.appBuilding...
+Building...
+Building: Running build in Washington, D.C., USA (East) – iad1
+Building: Build machine configuration: 2 cores, 8 GB
+Building: Retrieving list of deployment files...
+Building: Previous build caches not available.
+Building: Downloading 559 deployment files...
+Building: Running "vercel build"
+Building: Vercel CLI 50.23.2
+Building: Build Completed in /vercel/output [403ms]
+Building: Deploying outputs...
+[2K[1A[2K[GProduction: https://anything-lskum9a6l-bobantersyns-projects.vercel.app [16s]
+Completing...
+Aliased: https://anything-ochre.vercel.app [16s]

@@ -30,7 +30,6 @@ export function MarketingNavbar() {
                 <div className="m-navbar-inner">
                     <a href="/" className="m-navbar-logo">
                         <img src="/logo.png" alt="DutyGrid" />
-                        <span>DutyGrid</span>
                     </a>
 
                     <ul className="m-navbar-links">

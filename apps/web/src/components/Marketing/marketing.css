@@ -8,14 +8,14 @@
 /* ── CSS Variables ── */
 :root {
   --marketing-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  
+
   /* Colors */
   --m-primary: #137fec;
   --m-primary-dark: #0e6bc9;
   --m-primary-light: #3d9af0;
   --m-accent: #10b981;
   --m-accent-dark: #059669;
-  
+
   /* Dark theme */
   --m-bg-dark: #0a0f1c;
   --m-bg-dark-2: #0f172a;
@@ -24,17 +24,17 @@
   --m-bg-card-hover: rgba(255, 255, 255, 0.08);
   --m-glass: rgba(255, 255, 255, 0.08);
   --m-glass-border: rgba(255, 255, 255, 0.12);
-  
+
   /* Text */
   --m-text-primary: #ffffff;
   --m-text-secondary: #94a3b8;
   --m-text-muted: #64748b;
-  
+
   /* Sizing */
   --m-max-width: 1200px;
   --m-section-padding: 80px 24px;
   --m-nav-height: 72px;
-  
+
   /* Transitions */
   --m-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --m-transition-fast: all 0.15s ease;
@@ -278,8 +278,14 @@
 }
 
 .m-navbar-logo img {
-  height: 40px;
+  height: 56px;
   width: auto;
+}
+
+@media (min-width: 768px) {
+  .m-navbar-logo img {
+    height: 64px;
+  }
 }
 
 .m-navbar-links {
@@ -421,7 +427,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
+  background:
     radial-gradient(circle at 20% 50%, rgba(19, 127, 236, 0.08) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 40%);
   pointer-events: none;
@@ -435,9 +441,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
@@ -1051,6 +1057,7 @@ textarea.m-contact-input {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1058,8 +1065,13 @@ textarea.m-contact-input {
 }
 
 @keyframes m-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .m-animate {
@@ -1067,11 +1079,25 @@ textarea.m-contact-input {
   animation: m-fade-in-up 0.6s ease-out forwards;
 }
 
-.m-animate-delay-1 { animation-delay: 0.1s; }
-.m-animate-delay-2 { animation-delay: 0.2s; }
-.m-animate-delay-3 { animation-delay: 0.3s; }
-.m-animate-delay-4 { animation-delay: 0.4s; }
-.m-animate-delay-5 { animation-delay: 0.5s; }
+.m-animate-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.m-animate-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.m-animate-delay-3 {
+  animation-delay: 0.3s;
+}
+
+.m-animate-delay-4 {
+  animation-delay: 0.4s;
+}
+
+.m-animate-delay-5 {
+  animation-delay: 0.5s;
+}
 
 /* ── Feature detail section (alternating) ── */
 .m-feature-detail {
@@ -1085,7 +1111,7 @@ textarea.m-contact-input {
   direction: rtl;
 }
 
-.m-feature-detail.reverse > * {
+.m-feature-detail.reverse>* {
   direction: ltr;
 }
 
@@ -1143,8 +1169,13 @@ textarea.m-contact-input {
     --m-section-padding: 60px 20px;
   }
 
-  .m-h1 { font-size: 2rem; }
-  .m-h2 { font-size: 1.75rem; }
+  .m-h1 {
+    font-size: 2rem;
+  }
+
+  .m-h2 {
+    font-size: 1.75rem;
+  }
 
   .m-features-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1185,17 +1216,38 @@ textarea.m-contact-input {
     --m-nav-height: 64px;
   }
 
-  .m-h1 { font-size: 1.75rem; }
-  .m-h2 { font-size: 1.5rem; }
-  .m-h3 { font-size: 1.125rem; }
-  .m-body-lg { font-size: 1rem; }
+  .m-h1 {
+    font-size: 1.75rem;
+  }
 
-  .m-container { padding: 0 16px; }
+  .m-h2 {
+    font-size: 1.5rem;
+  }
+
+  .m-h3 {
+    font-size: 1.125rem;
+  }
+
+  .m-body-lg {
+    font-size: 1rem;
+  }
+
+  .m-container {
+    padding: 0 16px;
+  }
 
   /* Navbar mobile */
-  .m-navbar-links { display: none; }
-  .m-navbar-cta .m-btn { display: none; }
-  .m-hamburger { display: flex; }
+  .m-navbar-links {
+    display: none;
+  }
+
+  .m-navbar-cta .m-btn {
+    display: none;
+  }
+
+  .m-hamburger {
+    display: flex;
+  }
 
   /* Hero */
   .m-hero {
