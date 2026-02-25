@@ -77,7 +77,7 @@ export function TopNavigation() {
                     <nav className="hidden lg:flex items-center gap-2">
                         {isPlannerOrAdmin ? (
                             <>
-                                <NavItem href="/dashboard" icon={LayoutGrid} label="Dashboard" active={currentPath === "/dashboard" || currentPath === "/"} />
+                                <NavItem href="/" icon={LayoutGrid} label="Dashboard" active={currentPath === "/"} />
                                 <NavItem href="/planning" icon={Calendar} label="Planning" active={currentPath.startsWith("/planning")} />
                                 <NavItem href="/employees" icon={Users} label="Medewerkers" active={currentPath.startsWith("/employees")} />
                                 {/* Clients & Assignments united into 1 logical block visually */}
