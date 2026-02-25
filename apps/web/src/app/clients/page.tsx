@@ -5,7 +5,7 @@ import {
   Building2, Plus, Trash2, Mail, Phone, MapPin,
   Search, Filter, Euro, User as UserIcon, Tag,
   LayoutGrid, List as ListIcon, ChevronRight,
-  MoreVertical, Edit2, X
+  MoreVertical, Edit2, X, AlertCircle
 } from "lucide-react";
 import { useState } from "react";
 
@@ -25,6 +25,9 @@ export default function ClientsPage() {
     phone: "",
     address: "",
   });
+
+  // Assignment Edit State
+  const [editAssignment, setEditAssignment] = useState<any>(null);
 
   // Queries
   const { data: clientsData, isLoading: clientsLoading } = useQuery({
@@ -62,9 +65,43 @@ export default function ClientsPage() {
     },
   });
 
+  const updateAssignmentMutation = useMutation({
+    mutationFn: async ({ id, data }: { id: string, data: any }) => {
+      const response = await fetch(`/api/assignments/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) throw new Error("Failed to update assignment");
+      return response.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["assignments"] });
+      setEditAssignment(null);
+    },
+  });
+
   const handleCreateClient = (e: React.FormEvent) => {
     e.preventDefault();
     createClientMutation.mutate(clientFormData);
+  };
+
+  const handleUpdateAssignment = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editAssignment) return;
+    updateAssignmentMutation.mutate({
+      id: editAssignment.id,
+      data: {
+        location_name: editAssignment.location_name,
+        description: editAssignment.description,
+        location_address: editAssignment.location_address,
+        hourly_rate: editAssignment.hourly_rate
+      }
+    });
+  };
+
+  const toggleAssignmentStatus = (id: string, currentStatus: boolean) => {
+    updateAssignmentMutation.mutate({ id, data: { active: !currentStatus } });
   };
 
   const clients = clientsData?.clients || [];
@@ -73,7 +110,10 @@ export default function ClientsPage() {
   // Tab Header Component
   const TabButton = ({ id, label, icon: Icon }: { id: TabType, label: string, icon: any }) => (
     <button
-      onClick={() => setActiveTab(id)}
+      onClick={() => {
+        setActiveTab(id);
+        if (searchQuery && id === "klanten") setSearchQuery(""); // auto clear search when clicking main clients tab
+      }}
       className={`flex items-center gap-2 px-4 py-3 border-b-2 transition-all duration-200 ${activeTab === id
         ? "border-blue-600 text-blue-600 font-semibold"
         : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200"
@@ -127,6 +167,25 @@ export default function ClientsPage() {
 
       {/* Content Area */}
       <main className="flex-1 max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+
+        {/* Helper Context Banner when filtered from external click */}
+        {searchQuery && activeTab !== "klanten" && (
+          <div className="mb-6 flex items-center justify-between bg-blue-50 border border-blue-100 p-3 rounded-lg text-blue-700">
+            <div className="flex items-center gap-2 text-sm font-medium">
+              <Filter size={16} />
+              Je bekijkt nu resultaten gefilterd op: <strong>&quot;{searchQuery}&quot;</strong>
+            </div>
+            <button
+              onClick={() => {
+                setSearchQuery("");
+                setActiveTab("klanten");
+              }}
+              className="text-xs font-bold uppercase tracking-wider hover:text-blue-900 underline flex items-center gap-1"
+            >
+              <X size={14} /> Terug naar alle Klanten
+            </button>
+          </div>
+        )}
 
         {/* Tab 1: Klantenoverzicht */}
         {activeTab === "klanten" && (
@@ -220,13 +279,22 @@ export default function ClientsPage() {
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <span className={`px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${assignment.active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"
-                          }`}>
+                        <button
+                          onClick={() => toggleAssignmentStatus(assignment.id, assignment.active)}
+                          className={`px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer border ${assignment.active
+                              ? "bg-green-50 text-green-700 border-green-200 hover:bg-red-50 hover:text-red-700 hover:border-red-200"
+                              : "bg-gray-50 text-gray-500 border-gray-200 hover:bg-green-50 hover:text-green-700 hover:border-green-200"
+                            }`}
+                          title={`Klik om dit object ${assignment.active ? 'inactief' : 'actief'} te maken`}
+                        >
                           {assignment.active ? "Actief" : "Inactief"}
-                        </span>
+                        </button>
                       </td>
                       <td className="px-6 py-4">
-                        <button className="p-2 text-gray-400 hover:text-blue-600 transition-colors">
+                        <button
+                          onClick={() => setEditAssignment({ ...assignment })}
+                          className="p-2 text-gray-400 hover:bg-gray-100 rounded-lg hover:text-blue-600 transition-colors"
+                        >
                           <Edit2 size={16} />
                         </button>
                       </td>
@@ -291,6 +359,94 @@ export default function ClientsPage() {
         )}
 
       </main>
+
+      {/* Edit Assignment Modal */}
+      {editAssignment && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
+              <h3 className="text-lg font-bold text-gray-900">Opdracht Bewerken</h3>
+              <button
+                onClick={() => setEditAssignment(null)}
+                className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <form onSubmit={handleUpdateAssignment} className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Locatienaam / Opdracht</label>
+                <input
+                  type="text"
+                  required
+                  value={editAssignment.location_name}
+                  onChange={(e) => setEditAssignment({ ...editAssignment, location_name: e.target.value })}
+                  className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Beschrijving</label>
+                <textarea
+                  rows={2}
+                  value={editAssignment.description || ""}
+                  onChange={(e) => setEditAssignment({ ...editAssignment, description: e.target.value })}
+                  className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all resize-none"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Adres</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <MapPin size={16} className="text-gray-400" />
+                  </div>
+                  <input
+                    type="text"
+                    value={editAssignment.location_address || ""}
+                    onChange={(e) => setEditAssignment({ ...editAssignment, location_address: e.target.value })}
+                    className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Uurtarief (€)</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Euro size={16} className="text-gray-400" />
+                  </div>
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={editAssignment.hourly_rate || ""}
+                    onChange={(e) => setEditAssignment({ ...editAssignment, hourly_rate: e.target.value })}
+                    className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all"
+                  />
+                </div>
+              </div>
+
+              <div className="mt-6 flex justify-end gap-3 pt-4 border-t border-gray-50">
+                <button
+                  type="button"
+                  onClick={() => setEditAssignment(null)}
+                  className="px-4 py-2 text-sm font-semibold text-gray-600 hover:text-gray-900 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  Annuleren
+                </button>
+                <button
+                  type="submit"
+                  disabled={updateAssignmentMutation.isPending}
+                  className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg shadow-sm transition-colors"
+                >
+                  {updateAssignmentMutation.isPending ? "Opslaan..." : "Wijzigingen Opslaan"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Client Modal */}
       {showClientForm && (
