@@ -78,7 +78,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 // Prevent redirect loop: only redirect to signin if we are NOT on an auth page, landing page, or public routes.
                 // Assuming we want to protect all routes except /account/... and maybe the landing page /
                 const pathname = typeof window !== "undefined" ? window.location.pathname : "";
-                if (!pathname.startsWith("/account/") && pathname !== "/") {
+                const publicRoutes = ["/", "/functies", "/prijzen", "/contact"];
+                const isPublicRoute = pathname.startsWith("/account/") || publicRoutes.includes(pathname);
+                if (!isPublicRoute) {
                     window.location.href = "/account/signin";
                 }
                 return;

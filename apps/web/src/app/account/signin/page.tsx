@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, ArrowRight } from "lucide-react";
+import "@/components/Marketing/marketing.css";
 
 export default function SignInPage() {
   const [error, setError] = useState<string | null>(null);
@@ -30,15 +31,10 @@ export default function SignInPage() {
       return;
     }
 
-    console.log("Attempting sign in for:", email);
-
     try {
-      // Call our custom login API
-      const response = await fetch('/api/custom-auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const response = await fetch("/api/custom-auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: email.trim(),
           password,
@@ -48,16 +44,12 @@ export default function SignInPage() {
 
       const result = await response.json();
 
-      console.log("Sign in result:", result);
-
       if (response.ok && result.success) {
-        console.log("Login successful, redirecting...");
         if (rememberMe) {
           localStorage.setItem("remembered_email", email.trim());
         } else {
           localStorage.removeItem("remembered_email");
         }
-        console.log("Redirecting to / after successful login...");
         window.location.href = "/";
       } else {
         setError(result.error || "Onjuist e-mailadres of wachtwoord");
@@ -71,32 +63,30 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 p-4">
-      <form
-        noValidate
-        onSubmit={onSubmit}
-        className="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl border border-gray-200"
-        autoComplete="on"
-      >
-        <div className="flex justify-center mb-6">
-          <img src="/logo.png" alt="DutyGrid" className="h-[120px] w-auto drop-shadow-sm" />
+    <div className="m-login-page">
+      <div className="m-login-card">
+        {/* Logo */}
+        <div className="m-login-logo">
+          <img src="/logo.png" alt="DutyGrid" />
+          <span>BEVEILIGINGSPLANNING</span>
         </div>
-        <h1 className="mb-2 text-center text-3xl font-bold text-gray-900">
-          Welkom Terug
-        </h1>
-        <p className="text-center text-gray-600 mb-8">Log in op je account</p>
 
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <label
-              className="block text-sm font-semibold text-gray-700"
-              htmlFor="email"
-            >
-              E-mailadres
-            </label>
-            <div className="overflow-hidden rounded-lg border border-gray-300 bg-white px-4 py-3 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-200">
+        {/* Title */}
+        <h1 className="m-login-title">Welkom terug</h1>
+
+        {/* Error */}
+        {error && <div className="m-login-error">{error}</div>}
+
+        {/* Form */}
+        <form onSubmit={onSubmit} autoComplete="on" noValidate>
+          {/* Email */}
+          <div className="m-login-field">
+            <div className="m-login-label">
+              <span>E-mailadres</span>
+            </div>
+            <div className="m-login-input-wrap">
+              <Mail size={18} />
               <input
-                required
                 id="email"
                 name="email"
                 type="email"
@@ -104,79 +94,75 @@ export default function SignInPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="voorbeeld@bedrijf.nl"
-                className="w-full bg-transparent text-base outline-none"
+                required
               />
             </div>
           </div>
-          <div className="space-y-2">
-            <label
-              className="block text-sm font-semibold text-gray-700"
-              htmlFor="password"
-            >
-              Wachtwoord
-            </label>
-            <div className="overflow-hidden rounded-lg border border-gray-300 bg-white px-4 py-3 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-200 flex items-center gap-2">
+
+          {/* Password */}
+          <div className="m-login-field">
+            <div className="m-login-label">
+              <span>Wachtwoord</span>
+            </div>
+            <div className="m-login-input-wrap">
+              <Lock size={18} />
               <input
-                required
                 id="password"
                 name="password"
                 type={showPassword ? "text" : "password"}
                 autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="flex-1 bg-transparent text-base outline-none"
                 placeholder="Voer je wachtwoord in"
+                required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="text-gray-500 hover:text-gray-700 transition-colors p-1"
-                aria-label={
-                  showPassword ? "Verberg wachtwoord" : "Toon wachtwoord"
-                }
+                aria-label={showPassword ? "Verberg wachtwoord" : "Toon wachtwoord"}
               >
-                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
           </div>
 
-          {error && (
-            <div className="rounded-lg bg-red-50 border border-red-200 p-3 text-sm text-red-700">
-              {error}
-            </div>
-          )}
-
-          <div className="flex items-center justify-between">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-                className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
-              />
-              <span className="text-sm text-gray-600">Mij onthouden</span>
-            </label>
+          {/* Remember me */}
+          <div className="m-login-remember">
+            <input
+              type="checkbox"
+              id="remember"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+            />
+            <label htmlFor="remember">Mij onthouden</label>
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-lg bg-blue-600 px-4 py-3 text-base font-semibold text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
-          >
-            {loading ? "Bezig met inloggen..." : "Inloggen"}
+          {/* Submit */}
+          <button type="submit" className="m-login-submit" disabled={loading}>
+            {loading ? (
+              "Bezig met inloggen..."
+            ) : (
+              <>
+                Inloggen
+                <ArrowRight size={18} />
+              </>
+            )}
           </button>
-          <p className="text-center text-sm text-gray-600">
-            Nog geen account?{" "}
-            <a
-              href={`/account/signup${typeof window !== "undefined" ? window.location.search : ""
-                }`}
-              className="text-blue-600 hover:text-blue-700 font-semibold"
-            >
-              Registreer je hier
-            </a>
-          </p>
+        </form>
+
+        {/* Footer link */}
+        <div className="m-login-footer">
+          Nog geen account?{" "}
+          <a href="/contact">Neem contact op</a>
         </div>
-      </form>
+      </div>
+
+      {/* Page footer */}
+      <div className="m-login-page-footer">
+        <span>© {new Date().getFullYear()} DutyGrid</span>
+        <span>·</span>
+        <span>Beveiligingsplanning Platform</span>
+      </div>
     </div>
   );
 }

@@ -2,6 +2,9 @@ import { type RouteConfigEntry, route } from '@react-router/dev/routes';
 
 const routes: RouteConfigEntry[] = [
 	route("/", "./page.tsx"),
+	route("/functies", "./functies/page.tsx"),
+	route("/prijzen", "./prijzen/page.tsx"),
+	route("/contact", "./contact/page.tsx"),
 	route("/(app)/my-leave", "./(app)/my-leave/page.tsx"),
 	route("/account/logout", "./account/logout/page.tsx"),
 	route("/account/signin", "./account/signin/page.tsx"),

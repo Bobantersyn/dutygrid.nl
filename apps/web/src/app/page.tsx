@@ -1,10 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import { useAuthContext } from "@/providers/AuthProvider";
 import { useUserRole } from "@/hooks/useUserRole";
 import { useDashboardData } from "@/hooks/useDashboardData";
-import { LoadingState } from "@/components/Dashboard/LoadingState";
 
+// Marketing components
+import "@/components/Marketing/marketing.css";
+import { MarketingNavbar } from "@/components/Marketing/MarketingNavbar";
+import { MarketingFooter } from "@/components/Marketing/MarketingFooter";
+import { HeroSection } from "@/components/Marketing/HeroSection";
+import { FeaturesGrid } from "@/components/Marketing/FeaturesGrid";
+import { CTABanner } from "@/components/Marketing/CTABanner";
+
+// Dashboard components
+import { LoadingState } from "@/components/Dashboard/LoadingState";
 import { StatsCards } from "@/components/Dashboard/StatsCards";
 import { QuickActions } from "@/components/Dashboard/QuickActions";
 import { TodayShifts } from "@/components/Dashboard/TodayShifts";
@@ -16,11 +26,24 @@ import { LeaveRequestsModal } from "@/components/Dashboard/Modals/LeaveRequestsM
 import { QuickPlanModal } from "@/components/Planning/QuickPlanModal";
 import { SecurityGuardWeekView } from "@/components/SecurityGuard/SecurityGuardWeekView";
 
-export default function HomePage() {
+function MarketingHome() {
+  return (
+    <div className="marketing-page">
+      <MarketingNavbar />
+      <main>
+        <HeroSection />
+        <FeaturesGrid />
+        <CTABanner />
+      </main>
+      <MarketingFooter />
+    </div>
+  );
+}
+
+function Dashboard() {
   const {
-    userLoading,
-    roleLoading,
     userRole,
+    roleLoading,
     employeeId,
     isPlannerOrAdmin,
     isSecurityGuard,
@@ -31,20 +54,12 @@ export default function HomePage() {
   const { employees, todayShifts, openShiftsWeek, clients, activeAssignments, pendingLeaveRequests } =
     useDashboardData({ userRole, roleLoading, isPlannerOrAdmin, employeeId });
 
-  if (userLoading || roleLoading) {
-    return <LoadingState />;
-  }
-
-  // Security guards see week view
   if (isSecurityGuard) {
     return <SecurityGuardWeekView employeeId={employeeId} />;
   }
 
-  // Planners and admins see dashboard
   return (
     <div className="min-h-screen bg-gray-50">
-
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <StatsCards
           isPlannerOrAdmin={isPlannerOrAdmin}
@@ -56,9 +71,7 @@ export default function HomePage() {
           pendingLeaveRequests={pendingLeaveRequests}
           onCardClick={setActiveModal}
         />
-
         <QuickActions isPlannerOrAdmin={isPlannerOrAdmin} />
-
         <TodayShifts
           isPlannerOrAdmin={isPlannerOrAdmin}
           todayShifts={todayShifts}
@@ -69,21 +82,18 @@ export default function HomePage() {
       {activeModal === "clients" && (
         <ClientsModal clients={clients} onClose={() => setActiveModal(null)} />
       )}
-
       {activeModal === "assignments" && (
         <AssignmentsModal
           activeAssignments={activeAssignments}
           onClose={() => setActiveModal(null)}
         />
       )}
-
       {activeModal === "employees" && (
         <EmployeesModal
           employees={employees}
           onClose={() => setActiveModal(null)}
         />
       )}
-
       {activeModal === "open-shifts" && (
         <ShiftsModal
           todayShifts={openShiftsWeek}
@@ -96,7 +106,6 @@ export default function HomePage() {
           }}
         />
       )}
-
       {activeModal === "shifts" && (
         <ShiftsModal
           todayShifts={todayShifts}
@@ -107,14 +116,12 @@ export default function HomePage() {
           }}
         />
       )}
-
       {activeModal === "leave-requests" && (
         <LeaveRequestsModal
           requests={pendingLeaveRequests}
           onClose={() => setActiveModal(null)}
         />
       )}
-
       {editingShift && (
         <QuickPlanModal
           shift={editingShift}
@@ -126,4 +133,21 @@ export default function HomePage() {
       )}
     </div>
   );
+}
+
+export default function HomePage() {
+  const { user, userLoading } = useAuthContext();
+
+  // Show loading state while checking auth
+  if (userLoading) {
+    return <LoadingState />;
+  }
+
+  // Not logged in → show marketing website
+  if (!user) {
+    return <MarketingHome />;
+  }
+
+  // Logged in → show dashboard
+  return <Dashboard />;
 }
