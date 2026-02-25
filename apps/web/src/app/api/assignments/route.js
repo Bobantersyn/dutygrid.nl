@@ -7,7 +7,10 @@ export async function GET(request) {
     const clientId = searchParams.get("client_id");
 
     let query = `
-      SELECT a.*, c.name as client_name,
+      SELECT a.*, 
+        c.name as client_name,
+        a.name as location_name, 
+        a.address as location_address,
         COALESCE(
           (SELECT json_agg(json_build_object('id', ol.id, 'name', ol.name))
            FROM assignment_object_labels aol
