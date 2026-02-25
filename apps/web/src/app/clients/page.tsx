@@ -5,7 +5,7 @@ import {
   Building2, Plus, Trash2, Mail, Phone, MapPin,
   Search, Filter, Euro, User as UserIcon, Tag,
   LayoutGrid, List as ListIcon, ChevronRight,
-  MoreVertical, Edit2
+  MoreVertical, Edit2, X
 } from "lucide-react";
 import { useState } from "react";
 
@@ -45,6 +45,28 @@ export default function ClientsPage() {
     },
   });
 
+  const createClientMutation = useMutation({
+    mutationFn: async (newClient: any) => {
+      const response = await fetch("/api/clients", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newClient),
+      });
+      if (!response.ok) throw new Error("Failed to create client");
+      return response.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["clients"] });
+      setShowClientForm(false);
+      setClientFormData({ name: "", contact_person: "", email: "", phone: "", address: "" });
+    },
+  });
+
+  const handleCreateClient = (e: React.FormEvent) => {
+    e.preventDefault();
+    createClientMutation.mutate(clientFormData);
+  };
+
   const clients = clientsData?.clients || [];
   const assignments = assignmentsData?.assignments || [];
 
@@ -53,8 +75,8 @@ export default function ClientsPage() {
     <button
       onClick={() => setActiveTab(id)}
       className={`flex items-center gap-2 px-4 py-3 border-b-2 transition-all duration-200 ${activeTab === id
-          ? "border-blue-600 text-blue-600 font-semibold"
-          : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200"
+        ? "border-blue-600 text-blue-600 font-semibold"
+        : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200"
         }`}
     >
       <Icon size={18} />
@@ -109,46 +131,54 @@ export default function ClientsPage() {
         {/* Tab 1: Klantenoverzicht */}
         {activeTab === "klanten" && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {clients.map((client: any) => (
-              <div key={client.id} className="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-lg transition-all duration-300 group relative">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                    <Building2 size={24} />
+            {clients
+              .filter((c: any) => (c.name || "").toLowerCase().includes(searchQuery.toLowerCase()))
+              .map((client: any) => (
+                <div key={client.id} className="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-lg transition-all duration-300 group relative">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                      <Building2 size={24} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-gray-900 truncate">{client.name}</h3>
+                      <p className="text-xs text-gray-500 truncate">{client.address || "Geen adres"}</p>
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-gray-900 truncate">{client.name}</h3>
-                    <p className="text-xs text-gray-500 truncate">{client.address || "Geen adres"}</p>
-                  </div>
-                </div>
 
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center justify-between text-xs text-gray-500">
-                    <span>Opdrachten</span>
-                    <span className="font-semibold text-gray-900">
-                      {assignments.filter((a: any) => a.client_id === client.id).length}
-                    </span>
+                  <div className="space-y-2 mb-4">
+                    <div className="flex items-center justify-between text-xs text-gray-500">
+                      <span>Opdrachten</span>
+                      <span className="font-semibold text-gray-900">
+                        {assignments.filter((a: any) => a.client_id === client.id).length}
+                      </span>
+                    </div>
+                    <div className="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
+                      <div className="bg-blue-500 h-full rounded-full" style={{ width: '60%' }}></div>
+                    </div>
                   </div>
-                  <div className="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
-                    <div className="bg-blue-500 h-full rounded-full" style={{ width: '60%' }}></div>
-                  </div>
-                </div>
 
-                <div className="flex items-center gap-2 pt-4 border-t border-gray-50">
-                  <button className="flex-1 text-xs font-semibold py-2 rounded-lg bg-gray-50 text-gray-600 hover:bg-gray-100 transition-colors">
-                    Details
-                  </button>
-                  <button
-                    onClick={() => {
-                      setActiveTab("opdrachten");
-                      setSearchQuery(client.name);
-                    }}
-                    className="flex-1 text-xs font-semibold py-2 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
-                  >
-                    Opdrachten
-                  </button>
+                  <div className="flex items-center gap-2 pt-4 border-t border-gray-50">
+                    <button
+                      onClick={() => {
+                        setActiveTab("contacten");
+                        setSearchQuery(client.name);
+                      }}
+                      className="flex-1 text-xs font-semibold py-2 rounded-lg bg-gray-50 text-gray-600 hover:bg-gray-100 transition-colors"
+                    >
+                      Details
+                    </button>
+                    <button
+                      onClick={() => {
+                        setActiveTab("opdrachten");
+                        setSearchQuery(client.name);
+                      }}
+                      className="flex-1 text-xs font-semibold py-2 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
+                    >
+                      Opdrachten
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         )}
 
@@ -168,8 +198,8 @@ export default function ClientsPage() {
               <tbody className="divide-y divide-gray-50">
                 {assignments
                   .filter((a: any) =>
-                    a.location_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                    a.client_name.toLowerCase().includes(searchQuery.toLowerCase())
+                    (a.location_name || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    (a.client_name || "").toLowerCase().includes(searchQuery.toLowerCase())
                   )
                   .map((assignment: any) => (
                     <tr key={assignment.id} className="hover:bg-gray-50/50 transition-colors">
@@ -231,36 +261,155 @@ export default function ClientsPage() {
         {/* Tab 4: Contactpersonen */}
         {activeTab === "contacten" && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {clients.map((client: any) => (
-              <div key={`contact-${client.id}`} className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-400">
-                    <UserIcon size={20} />
+            {clients
+              .filter((c: any) => (c.name || "").toLowerCase().includes(searchQuery.toLowerCase()))
+              .map((client: any) => (
+                <div key={`contact-${client.id}`} className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-400">
+                      <UserIcon size={20} />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-bold text-gray-900">{client.contact_person || "Geen contactpersoon"}</h4>
+                      <p className="text-xs text-blue-600 font-medium">{client.name}</p>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h4 className="font-bold text-gray-900">{client.contact_person || "Geen contactpersoon"}</h4>
-                    <p className="text-xs text-blue-600 font-medium">{client.name}</p>
-                  </div>
-                </div>
 
-                <div className="space-y-3 pt-3 border-t border-gray-50">
-                  <div className="flex items-center gap-3 text-sm text-gray-600">
-                    <Mail size={16} className="text-gray-400" />
-                    <span>{client.email || "Geen e-mail"}</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-sm text-gray-600">
-                    <Phone size={16} className="text-gray-400" />
-                    <span>{client.phone || "Geen telefoon"}</span>
+                  <div className="space-y-3 pt-3 border-t border-gray-50">
+                    <div className="flex items-center gap-3 text-sm text-gray-600">
+                      <Mail size={16} className="text-gray-400" />
+                      <span>{client.email || "Geen e-mail"}</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm text-gray-600">
+                      <Phone size={16} className="text-gray-400" />
+                      <span>{client.phone || "Geen telefoon"}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         )}
 
       </main>
 
-      {/* Simple Form Placeholders or Integrated Logic can go here */}
+      {/* Client Modal */}
+      {showClientForm && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
+              <h3 className="text-lg font-bold text-gray-900">Nieuwe Klant Toevoegen</h3>
+              <button
+                onClick={() => setShowClientForm(false)}
+                className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <form onSubmit={handleCreateClient} className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Bedrijfsnaam *</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Building2 size={16} className="text-gray-400" />
+                  </div>
+                  <input
+                    type="text"
+                    required
+                    value={clientFormData.name}
+                    onChange={(e) => setClientFormData({ ...clientFormData, name: e.target.value })}
+                    className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all"
+                    placeholder="Bv. Example Corp"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Contactpersoon</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <UserIcon size={16} className="text-gray-400" />
+                  </div>
+                  <input
+                    type="text"
+                    value={clientFormData.contact_person}
+                    onChange={(e) => setClientFormData({ ...clientFormData, contact_person: e.target.value })}
+                    className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all"
+                    placeholder="Bv. John Doe"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Telefoon</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <Phone size={16} className="text-gray-400" />
+                    </div>
+                    <input
+                      type="tel"
+                      value={clientFormData.phone}
+                      onChange={(e) => setClientFormData({ ...clientFormData, phone: e.target.value })}
+                      className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all"
+                      placeholder="06 12345678"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">E-mailadres</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <Mail size={16} className="text-gray-400" />
+                    </div>
+                    <input
+                      type="email"
+                      value={clientFormData.email}
+                      onChange={(e) => setClientFormData({ ...clientFormData, email: e.target.value })}
+                      className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all"
+                      placeholder="info@bedrijf.nl"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Adresgegevens</label>
+                <div className="relative">
+                  <div className="absolute top-2.5 left-3 pointer-events-none">
+                    <MapPin size={16} className="text-gray-400" />
+                  </div>
+                  <textarea
+                    rows={2}
+                    value={clientFormData.address}
+                    onChange={(e) => setClientFormData({ ...clientFormData, address: e.target.value })}
+                    className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all resize-none"
+                    placeholder="Straat 123, 1000 AA Amsterdam"
+                  />
+                </div>
+              </div>
+
+              <div className="mt-6 flex justify-end gap-3 pt-4 border-t border-gray-50">
+                <button
+                  type="button"
+                  onClick={() => setShowClientForm(false)}
+                  className="px-4 py-2 text-sm font-semibold text-gray-600 hover:text-gray-900 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  Annuleren
+                </button>
+                <button
+                  type="submit"
+                  disabled={createClientMutation.isPending}
+                  className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg shadow-sm transition-colors flex items-center gap-2"
+                >
+                  {createClientMutation.isPending ? "Opslaan..." : "Klant Aanmaken"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
