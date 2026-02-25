@@ -26,6 +26,16 @@ export default function ClientsPage() {
     address: "",
   });
 
+  // Assignment Form State
+  const [showAssignmentForm, setShowAssignmentForm] = useState(false);
+  const [assignmentFormData, setAssignmentFormData] = useState({
+    client_id: "",
+    location_name: "",
+    location_address: "",
+    description: "",
+    hourly_rate: "",
+  });
+
   // Assignment Edit State
   const [editAssignment, setEditAssignment] = useState<any>(null);
 
@@ -65,6 +75,23 @@ export default function ClientsPage() {
     },
   });
 
+  const createAssignmentMutation = useMutation({
+    mutationFn: async (newAssignment: any) => {
+      const response = await fetch("/api/assignments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newAssignment),
+      });
+      if (!response.ok) throw new Error("Failed to create assignment");
+      return response.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["assignments"] });
+      setShowAssignmentForm(false);
+      setAssignmentFormData({ client_id: "", location_name: "", location_address: "", description: "", hourly_rate: "" });
+    },
+  });
+
   const updateAssignmentMutation = useMutation({
     mutationFn: async ({ id, data }: { id: string, data: any }) => {
       const response = await fetch(`/api/assignments/${id}`, {
@@ -84,6 +111,11 @@ export default function ClientsPage() {
   const handleCreateClient = (e: React.FormEvent) => {
     e.preventDefault();
     createClientMutation.mutate(clientFormData);
+  };
+
+  const handleCreateAssignment = (e: React.FormEvent) => {
+    e.preventDefault();
+    createAssignmentMutation.mutate(assignmentFormData);
   };
 
   const handleUpdateAssignment = (e: React.FormEvent) => {
@@ -145,13 +177,22 @@ export default function ClientsPage() {
                   className="pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all w-64"
                 />
               </div>
-              <button
-                onClick={() => setShowClientForm(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors shadow-sm"
-              >
-                <Plus size={18} />
-                Nieuwe Klant
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setShowClientForm(true)}
+                  className="flex items-center justify-center gap-2 px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-lg text-sm font-semibold hover:bg-gray-50 transition-colors shadow-sm"
+                >
+                  <Building2 size={18} />
+                  <span className="hidden sm:inline">Nieuwe Klant</span>
+                </button>
+                <button
+                  onClick={() => setShowAssignmentForm(true)}
+                  className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors shadow-sm"
+                >
+                  <Plus size={18} />
+                  <span className="hidden sm:inline">Nieuwe Opdracht</span>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -280,14 +321,14 @@ export default function ClientsPage() {
                       </td>
                       <td className="px-6 py-4">
                         <button
-                          onClick={() => toggleAssignmentStatus(assignment.id, assignment.active)}
-                          className={`px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer border ${assignment.active
-                              ? "bg-green-50 text-green-700 border-green-200 hover:bg-red-50 hover:text-red-700 hover:border-red-200"
-                              : "bg-gray-50 text-gray-500 border-gray-200 hover:bg-green-50 hover:text-green-700 hover:border-green-200"
+                          onClick={() => toggleAssignmentStatus(assignment.id, assignment.status === 'active')}
+                          className={`px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer border ${assignment.status === 'active'
+                            ? "bg-green-50 text-green-700 border-green-200 hover:bg-red-50 hover:text-red-700 hover:border-red-200"
+                            : "bg-gray-50 text-gray-500 border-gray-200 hover:bg-green-50 hover:text-green-700 hover:border-green-200"
                             }`}
-                          title={`Klik om dit object ${assignment.active ? 'inactief' : 'actief'} te maken`}
+                          title={`Klik om dit object ${assignment.status === 'active' ? 'inactief' : 'actief'} te maken`}
                         >
-                          {assignment.active ? "Actief" : "Inactief"}
+                          {assignment.status === 'active' ? "Actief" : "Inactief"}
                         </button>
                       </td>
                       <td className="px-6 py-4">
@@ -560,6 +601,103 @@ export default function ClientsPage() {
                   className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg shadow-sm transition-colors flex items-center gap-2"
                 >
                   {createClientMutation.isPending ? "Opslaan..." : "Klant Aanmaken"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* New Assignment Modal */}
+      {showAssignmentForm && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
+              <h3 className="text-lg font-bold text-gray-900">Nieuwe Opdracht Toevoegen</h3>
+              <button
+                onClick={() => setShowAssignmentForm(false)}
+                className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <form onSubmit={handleCreateAssignment} className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Klant *</label>
+                <select
+                  required
+                  value={assignmentFormData.client_id}
+                  onChange={(e) => setAssignmentFormData({ ...assignmentFormData, client_id: e.target.value })}
+                  className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                >
+                  <option value="" disabled>Selecteer een klant...</option>
+                  {clients.map((c: any) => (
+                    <option key={c.id} value={c.id}>{c.name}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Locatienaam / Object *</label>
+                <input
+                  type="text"
+                  required
+                  value={assignmentFormData.location_name}
+                  onChange={(e) => setAssignmentFormData({ ...assignmentFormData, location_name: e.target.value })}
+                  className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                  placeholder="Bijv. Hoofdkantoor Amsterdam"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Adres *</label>
+                <input
+                  type="text"
+                  required
+                  value={assignmentFormData.location_address}
+                  onChange={(e) => setAssignmentFormData({ ...assignmentFormData, location_address: e.target.value })}
+                  className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                  placeholder="Straat en huisnummer, Postcode Plaats"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Korte Beschrijving</label>
+                <textarea
+                  value={assignmentFormData.description}
+                  onChange={(e) => setAssignmentFormData({ ...assignmentFormData, description: e.target.value })}
+                  className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all min-h-[80px]"
+                  placeholder="Optionele details (bijv. specifieke instructies)"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Uurtarief (€)</label>
+                <input
+                  type="number"
+                  step="0.01"
+                  value={assignmentFormData.hourly_rate}
+                  onChange={(e) => setAssignmentFormData({ ...assignmentFormData, hourly_rate: e.target.value })}
+                  className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                  placeholder="0.00"
+                />
+              </div>
+
+              <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
+                <button
+                  type="button"
+                  onClick={() => setShowAssignmentForm(false)}
+                  className="px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"
+                >
+                  Annuleren
+                </button>
+                <button
+                  type="submit"
+                  disabled={createAssignmentMutation.isPending}
+                  className="px-6 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50"
+                >
+                  {createAssignmentMutation.isPending ? "Toevoegen..." : "Opdracht Toevoegen"}
                 </button>
               </div>
             </form>
