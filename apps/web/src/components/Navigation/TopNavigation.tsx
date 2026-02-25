@@ -58,7 +58,7 @@ export function TopNavigation() {
 
     return (
         <header className="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
-            <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between">
+            <div className="w-full px-4 sm:px-6 lg:px-8 h-[80px] flex items-center justify-between">
 
                 {/* Left: Logo */}
                 <div className="flex items-center">
@@ -66,7 +66,7 @@ export function TopNavigation() {
                         <img
                             src="/logo.png"
                             alt="DutyGrid Dashboard"
-                            className="h-12 md:h-[54px] w-auto object-contain"
+                            className="h-[48px] md:h-[60px] w-auto object-contain"
                         />
                     </a>
                 </div>
