@@ -660,21 +660,9 @@
   max-width: var(--m-max-width);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 48px;
   margin-bottom: 48px;
-}
-
-.m-footer-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.m-footer-brand img {
-  width: auto;
-  max-width: 110px;
-  height: auto;
 }
 
 .m-footer-col {
@@ -686,7 +674,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   color: #ffffff;
   opacity: 0.95;
 }
@@ -697,7 +685,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .m-footer-col li {
@@ -735,6 +723,30 @@
   margin: 0;
 }
 
+.m-footer-bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.m-footer-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.m-footer-legal-links a {
+  font-size: 0.8125rem;
+  color: var(--m-text-muted);
+  text-decoration: none;
+  transition: var(--m-transition-fast);
+}
+
+.m-footer-legal-links a:hover {
+  color: var(--m-text-primary);
+}
+
 /* 📱 Mobile Footer overrides */
 @media (max-width: 767px) {
   .m-footer {
@@ -748,18 +760,6 @@
     margin: 0 auto 48px;
   }
 
-  .m-footer-brand {
-    margin-bottom: 0px;
-    /* Gap handles the spacing between sections now, but design asks for specific logo margin */
-  }
-
-  .m-footer-brand img {
-    width: 90px;
-    max-width: none;
-    margin-bottom: 8px;
-    /* combined with gap for 32px */
-  }
-
   .m-footer-col a {
     min-height: 44px;
     display: flex;
@@ -767,11 +767,21 @@
     padding: 0;
   }
 
-  .m-footer-bottom {
+  .m-footer-bottom-left {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
-    padding-top: 24px;
+  }
+
+  .m-footer-legal-links {
+    margin-top: 4px;
+  }
+
+  .m-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding-top: 32px;
     margin-top: 16px;
   }
 }

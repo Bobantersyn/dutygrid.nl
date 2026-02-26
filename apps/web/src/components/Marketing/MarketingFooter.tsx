@@ -2,10 +2,6 @@ export function MarketingFooter() {
     return (
         <footer className="m-footer">
             <div className="m-footer-grid">
-                <div className="m-footer-brand">
-                    <img src="/logo.png" alt="DutyGrid" />
-                </div>
-
                 <div className="m-footer-col">
                     <h4>Product</h4>
                     <ul>
@@ -32,7 +28,13 @@ export function MarketingFooter() {
             </div>
 
             <div className="m-footer-bottom">
-                <p>© {new Date().getFullYear()} DutyGrid. Alle rechten voorbehouden.</p>
+                <div className="m-footer-bottom-left">
+                    <p>© {new Date().getFullYear()} DutyGrid</p>
+                    <div className="m-footer-legal-links">
+                        <a href="/privacy">Privacybeleid</a>
+                        <a href="/voorwaarden">Algemene voorwaarden</a>
+                    </div>
+                </div>
                 <p>Made in the Netherlands 🇳🇱</p>
             </div>
         </footer>
