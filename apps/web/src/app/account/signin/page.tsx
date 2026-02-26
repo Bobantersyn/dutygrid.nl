@@ -63,7 +63,7 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="m-login-page">
+    <div className="marketing-page m-login-page">
       <div className="m-login-card">
         {/* Logo */}
         <div className="m-login-logo">
