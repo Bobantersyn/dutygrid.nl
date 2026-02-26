@@ -668,50 +668,53 @@
 .m-footer-brand {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  align-items: flex-start;
 }
 
 .m-footer-brand img {
-  height: 40px;
   width: auto;
-  align-self: flex-start;
+  max-width: 110px;
+  height: auto;
 }
 
-.m-footer-brand p {
-  color: var(--m-text-muted);
-  font-size: 0.875rem;
-  line-height: 1.6;
-  max-width: 280px;
+.m-footer-col {
+  text-align: left;
 }
 
 .m-footer-col h4 {
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 20px;
-  color: var(--m-text-primary);
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+  color: #ffffff;
+  opacity: 0.95;
 }
 
 .m-footer-col ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .m-footer-col li {
-  margin-bottom: 12px;
+  margin: 0;
 }
 
 .m-footer-col a {
-  color: var(--m-text-muted);
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 15px;
   transition: var(--m-transition-fast);
+  padding: 4px 0;
 }
 
 .m-footer-col a:hover {
-  color: var(--m-text-primary);
+  color: #ffffff;
 }
 
 .m-footer-bottom {
@@ -722,11 +725,55 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .m-footer-bottom p {
   font-size: 0.8125rem;
   color: var(--m-text-muted);
+  margin: 0;
+}
+
+/* 📱 Mobile Footer overrides */
+@media (max-width: 767px) {
+  .m-footer {
+    padding: 64px 24px 32px;
+  }
+
+  .m-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 480px;
+    margin: 0 auto 48px;
+  }
+
+  .m-footer-brand {
+    margin-bottom: 0px;
+    /* Gap handles the spacing between sections now, but design asks for specific logo margin */
+  }
+
+  .m-footer-brand img {
+    width: 90px;
+    max-width: none;
+    margin-bottom: 8px;
+    /* combined with gap for 32px */
+  }
+
+  .m-footer-col a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+
+  .m-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding-top: 24px;
+    margin-top: 16px;
+  }
 }
 
 /* ── Login Page ── */

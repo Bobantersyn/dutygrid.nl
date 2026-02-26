@@ -4,9 +4,6 @@ export function MarketingFooter() {
             <div className="m-footer-grid">
                 <div className="m-footer-brand">
                     <img src="/logo.png" alt="DutyGrid" />
-                    <p>
-                        Het slimme platform voor beveiligingsplanning. Van roosters tot rapportages — alles in één overzicht.
-                    </p>
                 </div>
 
                 <div className="m-footer-col">
@@ -22,7 +19,7 @@ export function MarketingFooter() {
                     <h4>Platform</h4>
                     <ul>
                         <li><a href="/account/signin">Inloggen</a></li>
-                        <li><a href="/contact">Demo Aanvragen</a></li>
+                        <li><a href="/contact">Demo aanvragen</a></li>
                     </ul>
                 </div>
 
