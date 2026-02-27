@@ -115,9 +115,15 @@ export function WeekView({
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-x-auto">
-      {/* Week Header - Now Clickable */}
-      <div className="grid grid-cols-7 border-b border-gray-200 bg-gray-50 min-w-[700px]">
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+      {/* 
+        Responsive Layout Strategy:
+        - Mobile (default): Stacked blocks (grid-cols-1). No horizontal scroll. The header is integrated within each day block.
+        - Desktop (lg:): 7 columns (grid-cols-7). The global header row is visible. 
+      */}
+
+      {/* Global Header Row - Desktop Only */}
+      <div className="hidden lg:grid grid-cols-7 border-b border-gray-200 bg-gray-50 min-w-[700px]">
         {currentWeek.dates.map((date, idx) => {
           const isToday = date === formatLocalDate(new Date());
           const availability = getAvailabilityForDate(date);
@@ -174,8 +180,8 @@ export function WeekView({
         })}
       </div>
 
-      {/* Week Content */}
-      <div className="grid grid-cols-7 min-w-[700px]">
+      {/* Week Content Grid: 1 col on Mobile, 7 cols on Desktop */}
+      <div className="grid grid-cols-1 lg:grid-cols-7 lg:min-w-[700px]">
         {currentWeek.dates.map((date, idx) => {
           const dayShifts = shifts.filter((s) => s.shift_date === date);
           const availability = getAvailabilityForDate(date);
@@ -184,6 +190,7 @@ export function WeekView({
             availability.available_count > 0 &&
             availability.shifts_scheduled < availability.available_count * 0.5;
           const isDragOver = dragOverDate === date;
+          const isToday = date === formatLocalDate(new Date());
 
           return (
             <div
@@ -191,52 +198,80 @@ export function WeekView({
               onDragOver={(e) => handleDragOver(e, date)}
               onDragLeave={handleDragLeave}
               onDrop={(e) => handleDrop(e, date)}
-              className={`p-3 border-r border-gray-200 min-h-[200px] transition-all ${hasLowCoverage ? "bg-yellow-50" : ""
-                } ${isDragOver ? "ring-2 ring-green-400 bg-green-50" : ""}`}
+              className={`flex flex-col border-b lg:border-b-0 border-r-0 lg:border-r border-gray-200 min-h-[200px] transition-all relative ${hasLowCoverage ? "bg-yellow-50" : ""
+                } ${isDragOver ? "ring-2 ring-inset ring-green-400 bg-green-50 z-10" : ""}`}
             >
-              {dayShifts.length > 0 ? (
-                <div className="space-y-2">
-                  {dayShifts.map((shift) => {
-                    const hasWarning = shift.can_manage_own_availability !== false && hasRestTimeWarning(shift, shifts);
-                    return (
-                      <ShiftCardCompact
-                        key={shift.id}
-                        shift={shift}
-                        hasWarning={hasWarning}
-                        onDelete={isPlannerOrAdmin ? onDeleteShift : undefined}
-                        onEdit={isPlannerOrAdmin ? onEditShift : undefined}
-                        isPlannerOrAdmin={isPlannerOrAdmin}
-                        outsideAvailability={outsideAvailability[shift.id]}
-                        onApproveOverride={(shift) => setOverrideShift(shift)}
-                        useEmployeeAvailability={useEmployeeAvailability}
-                        onEmployeeClick={onEmployeeClick}
-                      />
-                    );
-                  })}
+              {/* Mobile Integrated Header (Visible only on small screens) */}
+              <div className={`lg:hidden flex items-center justify-between p-3 border-b border-gray-100 ${isToday ? "bg-blue-50" : "bg-gray-50"}`}>
+                <div>
+                  <span className={`font-bold mr-2 ${isToday ? "text-blue-600" : "text-gray-900"}`}>{dayNames[idx]}</span>
+                  <span className={`text-sm ${isToday ? "text-blue-600" : "text-gray-600"}`}>
+                    {new Date(date).getDate()}/{new Date(date).getMonth() + 1}
+                  </span>
                 </div>
-              ) : (
-                <div className="h-full flex items-center justify-center">
-                  {isPlannerOrAdmin ? (
-                    <button
-                      onClick={() => onNewShift?.(date)}
-                      className="text-gray-400 hover:text-purple-600 hover:bg-purple-50 p-4 rounded-lg transition-all group w-full h-full flex items-center justify-center"
-                      title="Nieuwe dienst toevoegen"
-                    >
-                      <Plus
-                        size={24}
-                        className="group-hover:scale-110 transition-transform"
-                      />
-                    </button>
-                  ) : (
-                    <span className="text-xs text-gray-400">-</span>
-                  )}
-                </div>
-              )}
+
+                {/* Compact Mobile Availability Info */}
+                {isPlannerOrAdmin && availability && (
+                  <div className="flex gap-3">
+                    <div className="flex items-center gap-1 text-xs" title="Beschikbaar">
+                      <Users size={12} className="text-green-600" />
+                      <span className="font-semibold text-green-600">{availability.available_count || 0}</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-xs" title="Ingepland">
+                      <CheckCircle size={12} className="text-blue-600" />
+                      <span className="font-semibold text-blue-600">{availability.shifts_scheduled || 0}</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Day Shifts Area */}
+              <div className="flex-1 p-3">
+                {dayShifts.length > 0 ? (
+                  <div className="space-y-2">
+                    {dayShifts.map((shift) => {
+                      const hasWarning = shift.can_manage_own_availability !== false && hasRestTimeWarning(shift, shifts);
+                      return (
+                        <ShiftCardCompact
+                          key={shift.id}
+                          shift={shift}
+                          hasWarning={hasWarning}
+                          onDelete={isPlannerOrAdmin ? onDeleteShift : undefined}
+                          onEdit={isPlannerOrAdmin ? onEditShift : undefined}
+                          isPlannerOrAdmin={isPlannerOrAdmin}
+                          outsideAvailability={outsideAvailability[shift.id]}
+                          onApproveOverride={(shift) => setOverrideShift(shift)}
+                          useEmployeeAvailability={useEmployeeAvailability}
+                          onEmployeeClick={onEmployeeClick}
+                        />
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="h-full flex items-center justify-center min-h-[100px] lg:min-h-0">
+                    {isPlannerOrAdmin ? (
+                      <button
+                        onClick={() => onNewShift?.(date)}
+                        className="text-gray-400 hover:text-purple-600 hover:bg-purple-50 p-4 rounded-lg transition-all group w-full h-full flex flex-col items-center justify-center gap-2"
+                        title="Nieuwe dienst toevoegen"
+                      >
+                        <Plus
+                          size={24}
+                          className="group-hover:scale-110 transition-transform"
+                        />
+                        <span className="text-sm lg:hidden group-hover:text-purple-600">Voeg een dienst toe</span>
+                      </button>
+                    ) : (
+                      <span className="text-xs text-gray-400 italic">Geen diensten</span>
+                    )}
+                  </div>
+                )}
+              </div>
 
               {isDragOver && (
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
                   <div className="bg-green-500 text-white px-4 py-2 rounded-lg font-bold shadow-lg">
-                    Loslaten om in te plannen
+                    Hier inplannen
                   </div>
                 </div>
               )}

@@ -20,6 +20,8 @@ import { AvailabilitySidebar } from "@/components/Planning/AvailabilitySidebar";
 import { EmployeeDetailDrawer } from "@/components/Planning/EmployeeDetailDrawer";
 import { QuickPlanModal } from "@/components/Planning/QuickPlanModal";
 import { AvailabilityStatusModal } from "@/components/Planning/AvailabilityStatusModal";
+import { MobileFilterSheet } from "@/components/Planning/MobileFilterSheet";
+import { MonthView } from "@/components/Planning/MonthView";
 
 export default function PlanningPage() {
   const { data: user, loading: userLoading } = useUser();
@@ -51,6 +53,7 @@ export default function PlanningPage() {
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
 
   // Handle Default View 
   useEffect(() => {
@@ -179,25 +182,45 @@ export default function PlanningPage() {
               isCollapsed={isCollapsed}
               onToggleCollapse={() => setIsCollapsed(!isCollapsed)}
               onOpenAvailabilityStatus={() => setShowAvailabilityStatus(true)}
+              onOpenMobileFilters={() => setIsMobileFiltersOpen(true)}
             />
 
             {!isCollapsed && (
-              <PlanningControls
-                searchQuery={searchQuery}
-                onSearchChange={setSearchQuery}
-                filteredShiftsCount={filteredShifts.length}
-                gridView={gridView}
-                onGridViewChange={setGridView}
-                currentWeek={currentWeek}
-                currentDate={currentDate}
-                onPreviousWeek={previousWeek}
-                onNextWeek={nextWeek}
-                onPreviousDay={previousDay}
-                onNextDay={nextDay}
-                isPlannerOrAdmin={isPlannerOrAdmin}
-              />
+              <div className="hidden lg:block">
+                <PlanningControls
+                  searchQuery={searchQuery}
+                  onSearchChange={setSearchQuery}
+                  filteredShiftsCount={filteredShifts.length}
+                  gridView={gridView}
+                  onGridViewChange={setGridView}
+                  currentWeek={currentWeek}
+                  currentDate={currentDate}
+                  onPreviousWeek={previousWeek}
+                  onNextWeek={nextWeek}
+                  onPreviousDay={previousDay}
+                  onNextDay={nextDay}
+                  isPlannerOrAdmin={isPlannerOrAdmin}
+                />
+              </div>
             )}
           </div>
+
+          <MobileFilterSheet
+            isOpen={isMobileFiltersOpen}
+            onClose={() => setIsMobileFiltersOpen(false)}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            filteredShiftsCount={filteredShifts.length}
+            gridView={gridView}
+            onGridViewChange={setGridView}
+            currentWeek={currentWeek}
+            currentDate={currentDate}
+            onPreviousWeek={previousWeek}
+            onNextWeek={nextWeek}
+            onPreviousDay={previousDay}
+            onNextDay={nextDay}
+            isPlannerOrAdmin={isPlannerOrAdmin}
+          />
 
           {isPlannerOrAdmin && (
             <>
@@ -227,7 +250,7 @@ export default function PlanningPage() {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             <div className="lg:col-span-3">
-              {gridView === "day" ? (
+              {gridView === "day" && (
                 <DayView
                   currentDate={currentDate}
                   shifts={filteredShifts}
@@ -240,7 +263,8 @@ export default function PlanningPage() {
                   useEmployeeAvailability={useEmployeeAvailability}
                   onEmployeeClick={setSelectedEmployeeId}
                 />
-              ) : (
+              )}
+              {gridView === "week" && (
                 <WeekView
                   currentWeek={currentWeek}
                   shifts={filteredShifts}
@@ -253,6 +277,15 @@ export default function PlanningPage() {
                   onNewShift={handleNewShift}
                   useEmployeeAvailability={useEmployeeAvailability}
                   onEmployeeClick={setSelectedEmployeeId}
+                />
+              )}
+              {gridView === "month" && (
+                <MonthView
+                  currentDate={currentDate}
+                  selectedDate={selectedDate}
+                  onDaySelect={handleDaySelect}
+                  shifts={filteredShifts}
+                  isPlannerOrAdmin={isPlannerOrAdmin}
                 />
               )}
             </div>

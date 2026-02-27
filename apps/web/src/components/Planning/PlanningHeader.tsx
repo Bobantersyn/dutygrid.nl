@@ -1,7 +1,7 @@
 import { Plus, BarChart2, Filter } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
-export function PlanningHeader({ isCollapsed, onToggleCollapse, onOpenAvailabilityStatus }) {
+export function PlanningHeader({ isCollapsed, onToggleCollapse, onOpenAvailabilityStatus, onOpenMobileFilters }) {
   return (
     <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
       <div className="flex flex-col sm:flex-row sm:items-center gap-3">
@@ -22,21 +22,32 @@ export function PlanningHeader({ isCollapsed, onToggleCollapse, onOpenAvailabili
         </button>
       </div>
 
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
+        {/* Desktop Filter Toggle */}
         <Button
           variant="secondary"
           onClick={onToggleCollapse}
-          className="bg-white border-gray-200 text-gray-700 hover:bg-gray-50"
+          className="bg-white border-gray-200 text-gray-700 hover:bg-gray-50 hidden lg:flex flex-1 md:flex-none justify-center"
         >
           <Filter size={16} className="mr-2 text-gray-500" />
           {isCollapsed ? "Filters Tonen" : "Filters Verbergen"}
+        </Button>
+
+        {/* Mobile Filter Sheet Toggle */}
+        <Button
+          variant="secondary"
+          onClick={onOpenMobileFilters}
+          className="bg-white border-gray-200 text-gray-700 hover:bg-gray-50 lg:hidden flex-1 justify-center"
+        >
+          <Filter size={16} className="mr-2 text-gray-500" />
+          Weergave / Filters
         </Button>
 
         {/* The single primary CTA for this page */}
         <Button
           variant="primary"
           onClick={() => window.location.href = "/planning/new"}
-          className="bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
+          className="bg-blue-600 hover:bg-blue-700 text-white shadow-sm flex-1 md:flex-none justify-center"
         >
           <Plus size={16} className="mr-2" />
           Nieuwe Dienst
