@@ -15,8 +15,9 @@ import {
     FileText,
     LayoutGrid
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import NotificationBell from "../NotificationBell";
-import { useUserRole } from "@/hooks/useUserRole";
+import { useUserRole } from "../../hooks/useUserRole";
 
 export function TopNavigation() {
     const { hasMultipleRoles, viewAsEmployee, toggleViewAsEmployee, isPlannerOrAdmin, userRole, user, userLoading } = useUserRole();
@@ -166,23 +167,23 @@ export function TopNavigation() {
                                                 </button>
                                             )}
 
-                                            <a href="/account/profile" onClick={() => setIsProfileOpen(false)} className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                                            <Link to="/account/profile" onClick={() => setIsProfileOpen(false)} className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
                                                 <UserIcon size={16} className="text-gray-400" />
                                                 <span>Mijn Profiel</span>
-                                            </a>
+                                            </Link>
 
                                             {isPlannerOrAdmin && (
-                                                <a href="/administratie" onClick={() => setIsProfileOpen(false)} className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors mt-1">
+                                                <Link to="/administratie" onClick={() => setIsProfileOpen(false)} className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors mt-1">
                                                     <FileText size={16} className="text-gray-400" />
                                                     <span>Administratie</span>
-                                                </a>
+                                                </Link>
                                             )}
 
                                             {isAdmin && (
-                                                <a href="/admin/settings" onClick={() => setIsProfileOpen(false)} className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                                                <Link to="/admin/settings" onClick={() => setIsProfileOpen(false)} className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
                                                     <Settings size={16} className="text-gray-400" />
                                                     <span>Systeeminstellingen</span>
-                                                </a>
+                                                </Link>
                                             )}
                                         </div>
 

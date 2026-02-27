@@ -7,6 +7,7 @@ const routes: RouteConfigEntry[] = [
 	route("/contact", "./contact/page.tsx"),
 	route("/(app)/my-leave", "./(app)/my-leave/page.tsx"),
 	route("/account/logout", "./account/logout/page.tsx"),
+	route("/account/profile", "./account/profile/page.tsx"),
 	route("/account/signin", "./account/signin/page.tsx"),
 	route("/account/signup", "./account/signup/page.tsx"),
 	route("/admin/settings", "./admin/settings/page.tsx"),
