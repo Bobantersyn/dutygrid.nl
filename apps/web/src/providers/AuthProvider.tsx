@@ -177,6 +177,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
     }, []);
 
+    // 15-Minute Auto-Logout Timer (900,000 ms)
+    useEffect(() => {
+        if (!user) return; // Only track inactivity if user is logged in
+
+        let timeout: ReturnType<typeof setTimeout>;
+
+        const handleActivity = () => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                console.log("User inactive for 15 minutes, logging out...");
+                signOut();
+            }, 15 * 60 * 1000); // 15 minutes
+        };
+
+        // Initialize the first timer
+        handleActivity();
+
+        // Listeners for user activity
+        const events = ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'];
+        events.forEach(event => window.addEventListener(event, handleActivity));
+
+        // Cleanup
+        return () => {
+            clearTimeout(timeout);
+            events.forEach(event => window.removeEventListener(event, handleActivity));
+        };
+    }, [user, signOut]);
+
     const value = {
         user,
         userLoading,
