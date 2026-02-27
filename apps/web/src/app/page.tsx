@@ -148,6 +148,12 @@ export default function HomePage() {
     return <MarketingHome />;
   }
 
-  // Logged in → show dashboard
+  // Action-based mobile routing
+  if (typeof window !== "undefined" && window.innerWidth < 768) {
+    window.location.replace("/planning?view=today");
+    return <LoadingState />;
+  }
+
+  // Logged in → show dashboard on desktop
   return <Dashboard />;
 }

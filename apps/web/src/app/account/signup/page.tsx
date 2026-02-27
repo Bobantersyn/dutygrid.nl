@@ -36,7 +36,11 @@ export default function SignUpPage() {
       const result = await response.json();
 
       if (response.ok && result.success) {
-        window.location.href = "/";
+        if (typeof window !== "undefined" && window.innerWidth < 768) {
+          window.location.href = "/planning?view=today";
+        } else {
+          window.location.href = "/";
+        }
       } else {
         setError(result.error || "Er is een fout opgetreden bij het aanmelden.");
         setLoading(false);
