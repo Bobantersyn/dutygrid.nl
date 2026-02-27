@@ -10,13 +10,12 @@ export function HeroSection() {
                 </div>
 
                 <h1 className="m-h1 m-animate m-animate-delay-1">
-                    Beveiligingsplanning{" "}
-                    <span className="m-gradient-text">Eenvoudig Gemaakt.</span>
+                    Het operationele platform voor{" "}
+                    <span className="m-gradient-text">beveiligingsbedrijven.</span>
                 </h1>
 
-                <p className="m-body-lg m-animate m-animate-delay-2">
-                    Versterk uw team met DutyGrid. Het meest complete platform voor
-                    beveiligingsplanning, personeelsbeheer en realtime rapportages.
+                <p className="m-body-lg m-animate m-animate-delay-2" style={{ maxWidth: "600px", margin: "0 auto 40px auto" }}>
+                    Niet een tool. Niet een experiment. Maar een systeem.
                 </p>
 
                 <div className="m-hero-buttons m-animate m-animate-delay-3">
@@ -24,12 +23,9 @@ export function HeroSection() {
                         Start 14 dagen gratis
                         <ArrowRight size={18} />
                     </a>
-                    <a href="/account/signin" className="m-btn m-btn-secondary m-btn-lg">
-                        Inloggen
-                    </a>
                 </div>
                 <div className="m-hero-subtext m-animate m-animate-delay-3" style={{ marginTop: '16px', fontSize: '0.875rem', color: 'var(--m-text-muted)', textAlign: 'center' }}>
-                    Geen creditcard nodig · Direct toegang · Volledige functionaliteit
+                    14 dagen gratis · Geen creditcard · Direct toegang
                 </div>
 
                 <div className="m-hero-stats m-animate m-animate-delay-4">

@@ -3,55 +3,59 @@ import { Check } from "lucide-react";
 const plans = [
     {
         name: "Starter",
-        price: "€49",
+        price: "€79",
         period: "/mnd",
-        subtitle: "1-5 beveiligers · 1 locatie",
+        subtitle: "Voor zzp & kleine teams (1–5 medewerkers)",
         popular: false,
         features: [
-            "Basisplanning & roosters",
+            "Planning & roosters",
             "Urenregistratie",
-            "Basis rapportages",
-            "E-mail support",
+            "Basisrapportages",
+            "1 locatie",
             "1 beheerder",
+            "Mobiele toegang",
+            "E-mail support",
         ],
-        cta: "Start gratis proefperiode",
+        cta: "Start 14 dagen gratis",
         ctaStyle: "m-btn m-btn-secondary",
         href: "/account/signup",
     },
     {
         name: "Professional",
-        price: "€149",
+        price: "€249",
         period: "/mnd",
-        subtitle: "5-25 beveiligers · Onbeperkte locaties",
+        subtitle: "Basisprijs (tot 50 medewerkers)",
         popular: true,
+        extraCost: "+ €6 per extra medewerker/mnd",
         features: [
             "Alles in Starter, plus:",
+            "Volledige facturatiemodule",
             "GPS tracking & geofencing",
-            "Shift swaps & beschikbaarheid",
-            "Geavanceerde rapportages",
-            "Urenexport & facturatie",
             "Incidentrapportage",
             "Klantenportaal",
+            "Geavanceerde rapportages",
+            "Meerdere locaties & 3 beheerders",
             "Prioriteit support",
         ],
-        cta: "Start gratis proefperiode",
+        cta: "Start 14 dagen gratis",
         ctaStyle: "m-btn m-btn-primary",
         href: "/account/signup",
     },
     {
         name: "Enterprise",
-        price: "Op maat",
-        period: "",
-        subtitle: "25+ beveiligers · Volledig maatwerk",
+        price: "Vanaf €399",
+        period: "/mnd",
+        subtitle: "50+ medewerkers & complexe operaties",
         popular: false,
+        extraCost: "+ €6 per extra medewerker/mnd",
         features: [
             "Alles in Professional, plus:",
-            "API-toegang & integraties",
+            "API & integraties",
             "Single Sign-On (SSO)",
-            "Dedicated accountmanager",
-            "Custom features & branding",
-            "SLA garantie",
-            "Onboarding & training",
+            "SLA garanties",
+            "Dedicated onboarding",
+            "Onbeperkte beheerders",
+            "Maatwerk ontwikkeling",
         ],
         cta: "Contact Sales",
         ctaStyle: "m-btn m-btn-accent",
@@ -65,9 +69,9 @@ export function PricingCards() {
             <div className="m-container">
                 <div className="m-section-header">
                     <div className="m-badge">Prijzen</div>
-                    <h2 className="m-h2">Eenvoudige, Transparante Prijzen</h2>
+                    <h2 className="m-h2">Transparant Modulair Groeien</h2>
                     <p className="m-body">
-                        Probeer DutyGrid 14 dagen gratis. Kies daarna het plan dat bij jouw organisatie past.
+                        Ontworpen voor beveiligingsbedrijven die hun planning, uren en facturatie professioneel willen organiseren.
                     </p>
                 </div>
 
@@ -79,7 +83,7 @@ export function PricingCards() {
                             style={{ animationDelay: `${index * 0.15}s` }}
                         >
                             {plan.popular && (
-                                <div className="m-pricing-popular-badge">Meest Populair</div>
+                                <div className="m-pricing-popular-badge">Beste keuze voor groeiende beveiligingsbedrijven</div>
                             )}
 
                             <h3 className="m-h3">{plan.name}</h3>
@@ -92,6 +96,12 @@ export function PricingCards() {
                             </div>
 
                             <div className="m-pricing-subtitle">{plan.subtitle}</div>
+
+                            {plan.extraCost && (
+                                <div className="m-pricing-extra-cost" style={{ fontSize: '0.875rem', color: 'var(--m-primary)', marginTop: '-8px', marginBottom: '16px', fontWeight: 500 }}>
+                                    {plan.extraCost}
+                                </div>
+                            )}
 
                             <ul className="m-pricing-features">
                                 {plan.features.map((feature) => (

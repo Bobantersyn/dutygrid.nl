@@ -6,10 +6,10 @@ export function CTABanner() {
             <div className="m-container">
                 <div className="m-cta-inner">
                     <h2 className="m-h2">
-                        Klaar om uw beveiligingsplanning te <span className="m-gradient-text">optimaliseren?</span>
+                        Klaar voor het operationele <span className="m-gradient-text">systeem?</span>
                     </h2>
                     <p className="m-body-lg">
-                        Start vandaag nog met DutyGrid en ervaar hoe eenvoudig beveiligingsplanning kan zijn.
+                        14 dagen gratis · Geen creditcard · Direct toegang
                     </p>
                     <a href="/account/signup" className="m-btn m-btn-primary m-btn-lg">
                         Start 14 dagen gratis
