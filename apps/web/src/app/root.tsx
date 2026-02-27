@@ -34,6 +34,8 @@ import type { Route } from './+types/root';
 import { useDevServerHeartbeat } from '../__create/useDevServerHeartbeat';
 import { Providers } from './providers';
 import { TopNavigation } from '@/components/Navigation/TopNavigation';
+import { MobileBottomNav } from '@/components/Navigation/MobileBottomNav';
+import { useAuthContext, AuthProvider } from '@/providers/AuthProvider';
 export const links = () => [];
 
 if (globalThis.window && globalThis.window !== undefined) {
@@ -469,7 +471,10 @@ export function Layout({ children }: { children: ReactNode }) {
           <ClientOnly loader={() => (
             <>
               <TopNavigation />
-              {children}
+              <div className="pb-20 lg:pb-0">
+                {children}
+              </div>
+              <MobileBottomNav />
             </>
           )} />
         </Providers>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Users, X } from "lucide-react";
+import { Users, X, Plus } from "lucide-react";
 import useUser from "@/utils/useUser";
 import { useUserRole } from "@/hooks/useUserRole";
 import { usePlanningWeek } from "@/hooks/usePlanningWeek";
@@ -52,10 +52,22 @@ export default function PlanningPage() {
   const [selectedDate, setSelectedDate] = useState(null);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
-  // Force Day View on mobile
+  // Handle Default View 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.innerWidth < 1024) {
-      setGridView("day");
+    if (typeof window !== "undefined") {
+      const searchParams = new URLSearchParams(window.location.search);
+      const requestedView = searchParams.get("view");
+
+      if (requestedView === "today" || requestedView === "day") {
+        setGridView("day");
+      } else if (requestedView === "week") {
+        setGridView("week");
+      } else if (requestedView === "month") {
+        setGridView("month");
+      } else if (window.innerWidth < 1024) {
+        // Force Day View on mobile by default
+        setGridView("day");
+      }
     }
   }, []);
 
@@ -353,6 +365,18 @@ export default function PlanningPage() {
       {showAvailabilityStatus && (
         <AvailabilityStatusModal onClose={() => setShowAvailabilityStatus(false)} />
       )}
+
+      {/* Mobile Floating Action Button (FAB) for new shifts */}
+      {isPlannerOrAdmin && (
+        <button
+          onClick={() => handleNewShift(currentDate)}
+          className="lg:hidden fixed bottom-[84px] right-4 z-[40] w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-xl shadow-blue-600/30 flex items-center justify-center transition-transform active:scale-95"
+          aria-label="Nieuwe dienst"
+        >
+          <Plus size={28} />
+        </button>
+      )}
     </div>
   );
 }
+
