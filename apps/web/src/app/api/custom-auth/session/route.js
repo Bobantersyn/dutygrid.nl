@@ -27,7 +27,7 @@ export async function GET(request) {
 
         // Get session from database
         const sessions = await sql`
-      SELECT s.*, u.id, u.email, u.name, u.image
+      SELECT s.*, u.id, u.email, u.name, u.image, u."company_name", u.subscription_status, u.trial_starts_at, u.trial_ends_at
       FROM auth_sessions s
       JOIN auth_users u ON s."userId" = u.id
       WHERE s."sessionToken" = ${sessionToken}
@@ -48,6 +48,10 @@ export async function GET(request) {
                 email: session.email,
                 name: session.name,
                 image: session.image,
+                company_name: session.company_name,
+                subscription_status: session.subscription_status,
+                trial_starts_at: session.trial_starts_at,
+                trial_ends_at: session.trial_ends_at
             },
         }, { status: 200 });
 

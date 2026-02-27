@@ -790,9 +790,10 @@
 .m-login-page {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 48px 24px 100px 24px;
   background: linear-gradient(135deg, var(--m-bg-dark) 0%, var(--m-bg-dark-2) 50%, var(--m-bg-dark-3) 100%);
   position: relative;
   overflow: hidden;
@@ -860,12 +861,12 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--m-text-primary);
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   text-align: center;
 }
 
 .m-login-field {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .m-login-label {
@@ -881,14 +882,14 @@
   color: var(--m-text-secondary);
 }
 
-.m-login-label a {
+.m-login-forgot-inline {
   font-size: 0.8125rem;
   color: var(--m-primary-light);
   text-decoration: none;
   transition: var(--m-transition-fast);
 }
 
-.m-login-label a:hover {
+.m-login-forgot-inline:hover {
   color: var(--m-primary);
 }
 
@@ -945,7 +946,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .m-login-remember input[type="checkbox"] {
@@ -978,6 +979,7 @@
   justify-content: center;
   gap: 8px;
   min-height: 48px;
+  margin-bottom: 16px;
 }
 
 .m-login-submit:hover:not(:disabled) {
@@ -990,6 +992,13 @@
   cursor: not-allowed;
 }
 
+.m-login-security {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--m-text-muted);
+  margin-top: 0;
+}
+
 .m-login-error {
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.25);
@@ -997,7 +1006,7 @@
   padding: 12px 16px;
   border-radius: 12px;
   font-size: 0.875rem;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .m-login-footer {
@@ -1005,6 +1014,8 @@
   margin-top: 24px;
   font-size: 0.8125rem;
   color: var(--m-text-muted);
+  position: relative;
+  z-index: 10;
 }
 
 .m-login-footer a {
@@ -1025,10 +1036,8 @@
   text-align: center;
   font-size: 0.75rem;
   color: var(--m-text-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ── Contact Form ── */
@@ -1300,6 +1309,10 @@ textarea.m-contact-input {
 
   .m-navbar-cta .m-btn {
     display: none;
+  }
+
+  .m-hidden-mobile {
+    display: none !important;
   }
 
   .m-hamburger {

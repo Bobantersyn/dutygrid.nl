@@ -1,26 +1,26 @@
 Vercel CLI 50.23.2
 Retrieving project…
 Deploying bobantersyns-projects/web
-Uploading [--------------------] (0.0B/26.1KB)
-Uploading [============--------] (16.0KB/26.1KB)
-Uploading [==================--] (24.6KB/26.1KB)
-Uploading [====================] (26.1KB/26.1KB)
-Inspect: https://vercel.com/bobantersyns-projects/web/F6rQ6N1o4oUzWV3fojtU8THukCWF [2s]
-Production: https://web-45qtpuc1y-bobantersyns-projects.vercel.app [2s]
-https://web-45qtpuc1y-bobantersyns-projects.vercel.appBuilding...
+Uploading [--------------------] (0.0B/29.6KB)
+Uploading [==========----------] (16.0KB/29.6KB)
+Uploading [================----] (24.7KB/29.6KB)
+Uploading [====================] (29.6KB/29.6KB)
+Inspect: https://vercel.com/bobantersyns-projects/web/Cb8Qwmi9JXxyduo5Ryw1auHBdLuJ [2s]
+Production: https://web-qvqyng39l-bobantersyns-projects.vercel.app [2s]
+https://web-qvqyng39l-bobantersyns-projects.vercel.appBuilding...
 Building...
 Building: Running build in Washington, D.C., USA (East) – iad1
 Building: Build machine configuration: 2 cores, 8 GB
 Building: Retrieving list of deployment files...
 Building: Downloading 458 deployment files...
-Building: Restored build cache from previous deployment (F8DDnR9YydHsTMv3AFgNAxcPwCfh)
+Building: Restored build cache from previous deployment (F6rQ6N1o4oUzWV3fojtU8THukCWF)
 Building: Running "vercel build"
 Building: Vercel CLI 50.23.2
 Building: Installing dependencies...
-Building: npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 Building: npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
-Building: npm warn deprecated npmlog@5.0.1: This package is no longer supported.
+Building: npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 Building: npm warn deprecated are-we-there-yet@2.0.0: This package is no longer supported.
+Building: npm warn deprecated npmlog@5.0.1: This package is no longer supported.
 Building: npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
 Building: npm warn deprecated gauge@3.0.2: This package is no longer supported.
 Building: up to date in 7s
@@ -36,7 +36,7 @@ Building: rendering chunks...
 Building: computing gzip size...
 Building: build/client/.vite/manifest.json                    30.14 kB │ gzip:  3.11 kB
 Building: build/client/assets/page-JOTqagGk.css                6.17 kB │ gzip:  1.28 kB
-Building: build/client/assets/marketing-BBa9RYMe.css          18.97 kB │ gzip:  4.12 kB
+Building: build/client/assets/marketing-CpKlUBqt.css          19.06 kB │ gzip:  4.14 kB
 Building: build/client/assets/root-DC3BJbi8.css               56.92 kB │ gzip:  9.17 kB
 Building: build/client/assets/index-BBR7LY95.js                0.20 kB │ gzip:  0.16 kB
 Building: build/client/assets/api._-BBR7LY95.js                0.20 kB │ gzip:  0.16 kB
@@ -68,7 +68,7 @@ Building: build/client/assets/image-Bm3XwkBF.js                0.47 kB │ gzip:
 Building: build/client/assets/triangle-alert-CBK3Zh0E.js       0.47 kB │ gzip:  0.34 kB
 Building: build/client/assets/shield-BGDxdrxP.js               0.48 kB │ gzip:  0.36 kB
 Building: build/client/assets/save-CVHLiMNJ.js                 0.49 kB │ gzip:  0.34 kB
-Building: build/client/assets/MarketingLayout-CQG4yigG.js      0.49 kB │ gzip:  0.34 kB
+Building: build/client/assets/MarketingLayout-CLmB_xJt.js      0.49 kB │ gzip:  0.34 kB
 Building: build/client/assets/users-BSFw2UQZ.js                0.51 kB │ gzip:  0.35 kB
 Building: build/client/assets/tag-BzSr8uD-.js                  0.53 kB │ gzip:  0.37 kB
 Building: build/client/assets/file-text-BrnJSQ3c.js            0.54 kB │ gzip:  0.34 kB
@@ -89,18 +89,18 @@ Building: build/client/assets/page-Q2VXpYut.js                 2.71 kB │ gzip:
 Building: build/client/assets/AuthProvider-DzFLrQaK.js         2.77 kB │ gzip:  1.26 kB
 Building: build/client/assets/MarketingFooter-D345FFVu.js      3.22 kB │ gzip:  1.06 kB
 Building: build/client/assets/page-2rel9EhT.js                 3.81 kB │ gzip:  1.43 kB
-Building: build/client/assets/page-CytK_c2w.js                 3.84 kB │ gzip:  1.59 kB
+Building: build/client/assets/page-BZxhq1N9.js                 3.85 kB │ gzip:  1.60 kB
 Building: build/client/assets/page-D6CqW9hp.js                 3.87 kB │ gzip:  1.60 kB
 Building: build/client/assets/page-DmM0sw3s.js                 4.23 kB │ gzip:  1.51 kB
 Building: build/client/assets/page-CjUq4_PX.js                 4.52 kB │ gzip:  1.65 kB
-Building: build/client/assets/page-DERGlFWA.js                 4.79 kB │ gzip:  1.63 kB
+Building: build/client/assets/page-C4dYusaB.js                 4.79 kB │ gzip:  1.63 kB
 Building: build/client/assets/page-CjD2T70w.js                 4.83 kB │ gzip:  1.97 kB
 Building: build/client/assets/NotificationBell-B1S6Zoxe.js     4.84 kB │ gzip:  1.88 kB
 Building: build/client/assets/not-found-Cmod4jhW.js            4.90 kB │ gzip:  1.84 kB
 Building: build/client/assets/page-ENK4wIrf.js                 5.98 kB │ gzip:  2.08 kB
-Building: build/client/assets/page-Bpo_cq1D.js                 6.10 kB │ gzip:  2.43 kB
+Building: build/client/assets/page-CjNFhV0z.js                 6.10 kB │ gzip:  2.43 kB
 Building: build/client/assets/page-BsF4g21L.js                 6.15 kB │ gzip:  1.83 kB
-Building: build/client/assets/page-B76F-dsf.js                 6.15 kB │ gzip:  1.99 kB
+Building: build/client/assets/page-BFT0l1Qh.js                 6.15 kB │ gzip:  1.99 kB
 Building: build/client/assets/useMutation-CdfKhFRd.js          6.17 kB │ gzip:  1.89 kB
 Building: build/client/assets/AvailabilityPopup-BET2yIlh.js    6.20 kB │ gzip:  2.02 kB
 Building: build/client/assets/page-7SkQZ0Ig.js                 6.67 kB │ gzip:  2.42 kB
@@ -120,51 +120,51 @@ Building: build/client/assets/page-D5axx5uF.js                23.82 kB │ gzip:
 Building: build/client/assets/index-DjftkTcN.js               26.33 kB │ gzip:  7.54 kB
 Building: build/client/assets/page-CjPf2EGf.js                29.50 kB │ gzip:  7.95 kB
 Building: build/client/assets/page-CkpAT5qF.js                29.76 kB │ gzip:  6.54 kB
-Building: build/client/assets/page-D1yBOE7a.js                41.71 kB │ gzip:  9.12 kB
+Building: build/client/assets/page-BJR4QJbH.js                41.71 kB │ gzip:  9.12 kB
 Building: build/client/assets/page-BGR0JokA.js                82.08 kB │ gzip: 17.89 kB
 Building: build/client/assets/page-CUvMYt-e.js               103.25 kB │ gzip: 30.62 kB
 Building: build/client/assets/root-CQwfMuC8.js               112.19 kB │ gzip: 31.97 kB
 Building: build/client/assets/chunk-JZWAC4HX-D7aui3N0.js     124.38 kB │ gzip: 41.70 kB
 Building: build/client/assets/index-CDPfn9Bt.js              135.05 kB │ gzip: 43.32 kB
-Building: ✓ built in 9.34s
+Building: ✓ built in 9.40s
 Building: vite v6.4.1 building SSR bundle for production...
 Building: transforming...
 Building: src/app/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/test-login/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/beschikbaarheid/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/administratie/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/contact/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/cao-management/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/diensten-ruilen/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/beschikbaarheid-overzicht/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/clients/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/dev-login/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/employees/[id]/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/account/signup/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
 Building: src/app/test-setup/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/admin/settings/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/docs/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/employees/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/quick-login/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/planning/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/account/signin/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
 Building: src/app/(app)/my-leave/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
 Building: src/app/account/logout/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/account/signin/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/account/signup/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/admin/settings/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/employees/[id]/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/employees/new/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/planning/new/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/facturatie/uren/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/employees/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/planning/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/quick-login/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/test-login/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
 Building: src/app/setup-role/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/dev-login/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/diensten-ruilen/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/cao-management/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/beschikbaarheid-overzicht/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/docs/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/contact/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/employees/new/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/planning/edit/[id]/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/facturatie/uren/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/app/planning/new/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
 Building: src/app/planning/reports/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
 Building: src/app/planning/v2/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/administratie/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/clients/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/beschikbaarheid/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/app/planning/edit/[id]/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/components/Marketing/MarketingNavbar.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
 Building: src/providers/AuthProvider.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/components/Planning/QuickPlanModal.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/components/Admin/ObjectLabelSettings.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/components/Dashboard/AvailabilityPopup.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
-Building: src/components/ShiftSwaps/SwapRequestModal.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/components/Marketing/MarketingNavbar.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
 Building: src/components/Availability/WeekPattern.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
 Building: src/components/Availability/ExceptionsList.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/components/Planning/QuickPlanModal.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/components/Dashboard/AvailabilityPopup.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/components/Admin/ObjectLabelSettings.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+Building: src/components/ShiftSwaps/SwapRequestModal.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
 Building: src/app/providers.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
 Building: src/components/Navigation/TopNavigation.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
 Building: src/__create/useDevServerHeartbeat.ts (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
@@ -176,7 +176,7 @@ Building: "jwtVerify" is imported from external module "jose" but never used in 
 Building: ✓ 173 modules transformed.
 Building: rendering chunks...
 Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/.vite/manifest.json                   15.60 kB
-Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/server-build-CseOi9RD.css      82.06 kB
+Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/server-build-S2In1Bo3.css      82.14 kB
 Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/route-DHPVCRO1.js               0.42 kB
 Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/route-KIlOPd2Q.js               0.49 kB
 Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/sql-BfhTxwII.js                 0.51 kB
@@ -228,16 +228,14 @@ Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/route-fxs9fvMx.
 Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/route-5EX0mc6U.js               9.49 kB
 Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/route-jlgthWjB.js               9.55 kB
 Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/planning-helpers-CP9owtGb.js   13.94 kB
-Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js                             740.78 kB
+Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js                             740.80 kB
 Building: ✓ 1 asset cleaned from React Router server build.
-Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/server-build-CseOi9RD.css
-Building: ✓ built in 1.91s
+Building: build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/server-build-S2In1Bo3.css
+Building: ✓ built in 1.83s
 Building: WARN: Failed to resolve dependency "utf-8-validate"
 Building: WARN: Failed to resolve dependency "bufferutil"
-Building: Build Completed in /vercel/output [29s]
+Building: Build Completed in /vercel/output [28s]
 Building: Deploying outputs...
-Building: Deployment completed
-Building: Creating build cache...
-[2K[1A[2K[GProduction: https://web-45qtpuc1y-bobantersyns-projects.vercel.app [56s]
+[2K[1A[2K[GProduction: https://web-qvqyng39l-bobantersyns-projects.vercel.app [56s]
 Completing...
 Aliased: https://dutygrid.nl [56s]

@@ -26,6 +26,10 @@ export async function POST(request) {
         }
         const user = users[0];
 
+        if (!user.password) {
+            return Response.json({ error: 'Account has no password. Please sign up again or reset your password.' }, { status: 401 });
+        }
+
         const isValid = await verify(user.password, password);
         if (!isValid) {
             return Response.json({ error: 'Invalid email or password' }, { status: 401 });
@@ -81,7 +85,7 @@ export async function POST(request) {
     } catch (error) {
         console.error('[Login API] Error:', error);
         return Response.json(
-            { error: 'Internal server error' },
+            { error: 'Internal server error', details: error.message, stack: error.stack },
             { status: 500 }
         );
     }

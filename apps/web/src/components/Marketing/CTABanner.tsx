@@ -11,8 +11,8 @@ export function CTABanner() {
                     <p className="m-body-lg">
                         Start vandaag nog met DutyGrid en ervaar hoe eenvoudig beveiligingsplanning kan zijn.
                     </p>
-                    <a href="/contact" className="m-btn m-btn-primary m-btn-lg">
-                        Vraag een Gratis Demo Aan
+                    <a href="/account/signup" className="m-btn m-btn-primary m-btn-lg">
+                        Start 14 dagen gratis
                         <ArrowRight size={18} />
                     </a>
                 </div>

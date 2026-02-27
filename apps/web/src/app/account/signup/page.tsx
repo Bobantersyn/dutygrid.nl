@@ -1,154 +1,184 @@
 "use client";
 
 import { useState } from "react";
-import useAuth from "@/utils/useAuth";
+import { Eye, EyeOff, Mail, Lock, Building2, User, ArrowRight } from "lucide-react";
+import "@/components/Marketing/marketing.css";
 
 export default function SignUpPage() {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [formData, setFormData] = useState({
+    company: "",
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
 
-  const { signUpWithCredentials } = useAuth();
-
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
-    if (!email || !password || !name) {
+    if (!formData.company || !formData.name || !formData.email || !formData.password) {
       setError("Vul alle velden in");
       setLoading(false);
       return;
     }
 
     try {
-      await signUpWithCredentials({
-        email: email.trim(),
-        password,
-        name: name.trim(),
-        callbackUrl: "/setup-role",
-        redirect: true,
+      const response = await fetch("/api/custom-auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-    } catch (err) {
-      const errorMessages = {
-        EmailCreateAccount: "Dit e-mailadres is al in gebruik",
-      };
 
-      setError(
-        errorMessages[err.message] || "Er is iets misgegaan. Probeer opnieuw.",
-      );
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        window.location.href = "/";
+      } else {
+        setError(result.error || "Er is een fout opgetreden bij het aanmelden.");
+        setLoading(false);
+      }
+    } catch (err) {
+      console.error("Sign up error:", err);
+      setError("Er is iets misgegaan. Probeer opnieuw.");
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 p-4">
-      <form
-        noValidate
-        onSubmit={onSubmit}
-        className="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl border border-gray-200"
-        autoComplete="on"
-      >
-        <h1 className="mb-2 text-center text-3xl font-bold text-gray-900">
-          Account Aanmaken
-        </h1>
-        <p className="text-center text-gray-600 mb-8">
-          Welkom bij het planningssysteem
-        </p>
+    <div className="marketing-page m-login-page">
+      <div className="m-login-card">
+        {/* Logo */}
+        <div className="m-login-logo">
+          <a href="/">
+            <img src="/logo.png" alt="DutyGrid" />
+          </a>
+        </div>
 
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <label
-              className="block text-sm font-semibold text-gray-700"
-              htmlFor="name"
-            >
-              Naam
-            </label>
-            <div className="overflow-hidden rounded-lg border border-gray-300 bg-white px-4 py-3 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-200">
+        {/* Title */}
+        <h1 className="m-login-title">Start 14 dagen gratis</h1>
+
+        {/* Error */}
+        {error && <div className="m-login-error">{error}</div>}
+
+        {/* Form */}
+        <form onSubmit={onSubmit} autoComplete="on" noValidate>
+          {/* Company */}
+          <div className="m-login-field">
+            <div className="m-login-label">
+              <span>Bedrijfsnaam</span>
+            </div>
+            <div className="m-login-input-wrap">
+              <Building2 size={18} />
               <input
+                id="company"
+                name="company"
+                type="text"
+                value={formData.company}
+                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                placeholder="Naam van uw beveiligingsbedrijf"
                 required
+              />
+            </div>
+          </div>
+
+          {/* Name */}
+          <div className="m-login-field">
+            <div className="m-login-label">
+              <span>Uw naam</span>
+            </div>
+            <div className="m-login-input-wrap">
+              <User size={18} />
+              <input
                 id="name"
                 name="name"
                 type="text"
                 autoComplete="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Je volledige naam"
-                className="w-full bg-transparent text-base outline-none"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                placeholder="Voor- en achternaam"
+                required
               />
             </div>
           </div>
-          <div className="space-y-2">
-            <label
-              className="block text-sm font-semibold text-gray-700"
-              htmlFor="email"
-            >
-              E-mailadres
-            </label>
-            <div className="overflow-hidden rounded-lg border border-gray-300 bg-white px-4 py-3 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-200">
+
+          {/* Email */}
+          <div className="m-login-field">
+            <div className="m-login-label">
+              <span>E-mailadres</span>
+            </div>
+            <div className="m-login-input-wrap">
+              <Mail size={18} />
               <input
-                required
                 id="email"
                 name="email"
                 type="email"
                 autoComplete="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="voorbeeld@bedrijf.nl"
-                className="w-full bg-transparent text-base outline-none"
+                required
               />
             </div>
           </div>
-          <div className="space-y-2">
-            <label
-              className="block text-sm font-semibold text-gray-700"
-              htmlFor="password"
-            >
-              Wachtwoord
-            </label>
-            <div className="overflow-hidden rounded-lg border border-gray-300 bg-white px-4 py-3 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-200">
+
+          {/* Password */}
+          <div className="m-login-field" style={{ marginBottom: "24px" }}>
+            <div className="m-login-label">
+              <span>Wachtwoord</span>
+            </div>
+            <div className="m-login-input-wrap">
+              <Lock size={18} />
               <input
-                required
                 id="password"
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 autoComplete="new-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-lg bg-transparent text-base outline-none"
-                placeholder="Kies een sterk wachtwoord"
+                value={formData.password}
+                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                placeholder="Kies een veilig wachtwoord"
+                required
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? "Verberg wachtwoord" : "Toon wachtwoord"}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
             </div>
           </div>
 
-          {error && (
-            <div className="rounded-lg bg-red-50 border border-red-200 p-3 text-sm text-red-700">
-              {error}
-            </div>
-          )}
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-lg bg-blue-600 px-4 py-3 text-base font-semibold text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
-          >
-            {loading ? "Bezig met registreren..." : "Account Aanmaken"}
+          {/* Submit */}
+          <button type="submit" className="m-login-submit" disabled={loading}>
+            {loading ? (
+              "Account aanmaken..."
+            ) : (
+              <>
+                Start mijn gratis proefperiode
+                <ArrowRight size={18} />
+              </>
+            )}
           </button>
-          <p className="text-center text-sm text-gray-600">
-            Al een account?{" "}
-            <a
-              href={`/account/signin${
-                typeof window !== "undefined" ? window.location.search : ""
-              }`}
-              className="text-blue-600 hover:text-blue-700 font-semibold"
-            >
-              Log hier in
-            </a>
-          </p>
-        </div>
-      </form>
+
+          <div className="m-login-security">
+            ✨ Geen creditcard vereist
+          </div>
+        </form>
+      </div>
+
+      {/* Footer link outside card */}
+      <div className="m-login-footer">
+        Al een account? <a href="/account/signin">Inloggen</a>
+      </div>
+
+      {/* Page footer */}
+      <div className="m-login-page-footer">
+        © {new Date().getFullYear()} DutyGrid · Beveiligingsplanning Platform
+      </div>
     </div>
   );
 }

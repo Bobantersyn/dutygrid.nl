@@ -76,13 +76,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 setEmployeeId(null);
 
                 // Prevent redirect loop: only redirect to signin if we are NOT on an auth page, landing page, or public routes.
-                // Assuming we want to protect all routes except /account/... and maybe the landing page /
                 const pathname = typeof window !== "undefined" ? window.location.pathname : "";
                 const publicRoutes = ["/", "/functies", "/prijzen", "/contact"];
                 const isPublicRoute = pathname.startsWith("/account/") || publicRoutes.includes(pathname);
                 if (!isPublicRoute) {
                     window.location.href = "/account/signin";
                 }
+                return;
+            }
+
+            // TRIAL LOCKOUT LOGIC
+            const isTrial = user.subscription_status === 'trialing';
+            let trialExpired = false;
+
+            if (isTrial && user.trial_ends_at) {
+                const endDate = new Date(user.trial_ends_at);
+                if (new Date() > endDate) {
+                    trialExpired = true;
+                }
+            }
+
+            const pathname = typeof window !== "undefined" ? window.location.pathname : "";
+
+            if (trialExpired && !pathname.startsWith('/account/') && !["/", "/functies", "/prijzen", "/contact"].includes(pathname)) {
+                // If trial is expired, force redirect to lockout page, unless they are already on auth or public pages.
+                window.location.href = "/account/trial-expired";
                 return;
             }
 
@@ -93,7 +111,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     const data = await response.json();
                     if (!data.role) {
                         // User is logged in but has no role
-                        const pathname = typeof window !== "undefined" ? window.location.pathname : "";
                         if (pathname !== "/setup-role") {
                             window.location.href = "/setup-role";
                         }

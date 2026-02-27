@@ -45,9 +45,12 @@ export function MarketingNavbar() {
                         ))}
                     </ul>
 
-                    <div className="m-navbar-cta">
-                        <a href="/account/signin" className="m-btn m-btn-primary m-btn-sm">
+                    <div className="m-navbar-cta" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                        <a href="/account/signin" style={{ color: 'var(--m-text-primary)', textDecoration: 'none', fontSize: '0.9375rem', fontWeight: 500 }} className="m-hidden-mobile">
                             Inloggen
+                        </a>
+                        <a href="/account/signup" className="m-btn m-btn-primary m-btn-sm">
+                            Start 14 dagen gratis
                         </a>
                         <button
                             className={`m-hamburger ${mobileOpen ? "open" : ""}`}
@@ -69,9 +72,14 @@ export function MarketingNavbar() {
                         {link.label}
                     </a>
                 ))}
-                <a href="/account/signin" className="m-btn m-btn-primary">
-                    Inloggen →
-                </a>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '16px' }}>
+                    <a href="/account/signup" className="m-btn m-btn-primary" style={{ justifyContent: 'center' }}>
+                        Start 14 dagen gratis
+                    </a>
+                    <a href="/account/signin" className="m-btn m-btn-secondary" style={{ justifyContent: 'center' }}>
+                        Inloggen
+                    </a>
+                </div>
             </div>
         </>
     );

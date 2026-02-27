@@ -20,13 +20,16 @@ export function HeroSection() {
                 </p>
 
                 <div className="m-hero-buttons m-animate m-animate-delay-3">
-                    <a href="/contact" className="m-btn m-btn-primary m-btn-lg">
-                        Vraag een Demo Aan
+                    <a href="/account/signup" className="m-btn m-btn-primary m-btn-lg">
+                        Start 14 dagen gratis
                         <ArrowRight size={18} />
                     </a>
-                    <a href="/functies" className="m-btn m-btn-secondary m-btn-lg">
-                        Bekijk Functies
+                    <a href="/account/signin" className="m-btn m-btn-secondary m-btn-lg">
+                        Inloggen
                     </a>
+                </div>
+                <div className="m-hero-subtext m-animate m-animate-delay-3" style={{ marginTop: '16px', fontSize: '0.875rem', color: 'var(--m-text-muted)', textAlign: 'center' }}>
+                    Geen creditcard nodig · Direct toegang · Volledige functionaliteit
                 </div>
 
                 <div className="m-hero-stats m-animate m-animate-delay-4">

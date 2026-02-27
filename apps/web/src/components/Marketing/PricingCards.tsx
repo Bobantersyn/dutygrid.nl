@@ -14,8 +14,9 @@ const plans = [
             "E-mail support",
             "1 beheerder",
         ],
-        cta: "Neem Contact Op",
+        cta: "Start gratis proefperiode",
         ctaStyle: "m-btn m-btn-secondary",
+        href: "/account/signup",
     },
     {
         name: "Professional",
@@ -33,8 +34,9 @@ const plans = [
             "Klantenportaal",
             "Prioriteit support",
         ],
-        cta: "Kies Professional",
+        cta: "Start gratis proefperiode",
         ctaStyle: "m-btn m-btn-primary",
+        href: "/account/signup",
     },
     {
         name: "Enterprise",
@@ -53,6 +55,7 @@ const plans = [
         ],
         cta: "Contact Sales",
         ctaStyle: "m-btn m-btn-accent",
+        href: "/contact",
     },
 ];
 
@@ -64,7 +67,7 @@ export function PricingCards() {
                     <div className="m-badge">Prijzen</div>
                     <h2 className="m-h2">Eenvoudige, Transparante Prijzen</h2>
                     <p className="m-body">
-                        Kies het plan dat bij uw organisatie past. Geen verborgen kosten, altijd maandelijks opzegbaar.
+                        Probeer DutyGrid 14 dagen gratis. Kies daarna het plan dat bij jouw organisatie past.
                     </p>
                 </div>
 
@@ -99,7 +102,7 @@ export function PricingCards() {
                                 ))}
                             </ul>
 
-                            <a href="/contact" className={plan.ctaStyle}>
+                            <a href={plan.href} className={plan.ctaStyle}>
                                 {plan.cta}
                             </a>
                         </div>

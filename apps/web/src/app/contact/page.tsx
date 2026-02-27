@@ -39,7 +39,7 @@ export default function ContactPage() {
                             Neem <span className="m-gradient-text">Contact Op</span>
                         </h1>
                         <p className="m-body-lg">
-                            Heeft u vragen over DutyGrid of wilt u een demo aanvragen? Wij helpen u graag verder.
+                            Heeft u vragen over DutyGrid? Vul het formulier in en wij helpen u graag verder.
                         </p>
                     </div>
                 </div>
@@ -148,9 +148,13 @@ export default function ContactPage() {
                             </div>
 
                             <div className="m-glass-card">
-                                <h3 className="m-h3" style={{ marginBottom: "12px" }}>Demo Aanvragen</h3>
+                                <h3 className="m-h3" style={{ marginBottom: "12px" }}>Direct Starten</h3>
                                 <p className="m-body">
-                                    Wilt u DutyGrid in actie zien? Plan een gratis demo en ontdek hoe wij uw beveiligingsoperatie kunnen verbeteren.
+                                    Klaar om DutyGrid in actie te zien?{" "}
+                                    <a href="/account/signup" style={{ color: "var(--m-primary)", textDecoration: "none", fontWeight: 500 }}>
+                                        Maak direct een account aan
+                                    </a>{" "}
+                                    en start uw 14 dagen gratis proefperiode.
                                 </p>
                             </div>
                         </div>

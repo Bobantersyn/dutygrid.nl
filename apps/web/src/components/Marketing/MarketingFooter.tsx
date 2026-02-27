@@ -15,7 +15,7 @@ export function MarketingFooter() {
                     <h4>Platform</h4>
                     <ul>
                         <li><a href="/account/signin">Inloggen</a></li>
-                        <li><a href="/contact">Demo aanvragen</a></li>
+                        <li><a href="/account/signup">Start 14 dagen gratis</a></li>
                     </ul>
                 </div>
 

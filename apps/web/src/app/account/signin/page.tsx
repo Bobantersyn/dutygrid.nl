@@ -67,8 +67,9 @@ export default function SignInPage() {
       <div className="m-login-card">
         {/* Logo */}
         <div className="m-login-logo">
-          <img src="/logo.png" alt="DutyGrid" />
-          <span>BEVEILIGINGSPLANNING</span>
+          <a href="/">
+            <img src="/logo.png" alt="DutyGrid" />
+          </a>
         </div>
 
         {/* Title */}
@@ -103,6 +104,7 @@ export default function SignInPage() {
           <div className="m-login-field">
             <div className="m-login-label">
               <span>Wachtwoord</span>
+              <a href="/contact" className="m-login-forgot-inline">Wachtwoord vergeten?</a>
             </div>
             <div className="m-login-input-wrap">
               <Lock size={18} />
@@ -148,20 +150,21 @@ export default function SignInPage() {
               </>
             )}
           </button>
-        </form>
 
-        {/* Footer link */}
-        <div className="m-login-footer">
-          Nog geen account?{" "}
-          <a href="/contact">Neem contact op</a>
-        </div>
+          <div className="m-login-security">
+            🔒 Uw gegevens worden veilig versleuteld
+          </div>
+        </form>
+      </div>
+
+      {/* Footer link outside card */}
+      <div className="m-login-footer">
+        Nog geen account? <a href="/account/signup">Start 14 dagen gratis</a>
       </div>
 
       {/* Page footer */}
       <div className="m-login-page-footer">
-        <span>© {new Date().getFullYear()} DutyGrid</span>
-        <span>·</span>
-        <span>Beveiligingsplanning Platform</span>
+        © {new Date().getFullYear()} DutyGrid · Beveiligingsplanning Platform
       </div>
     </div>
   );
