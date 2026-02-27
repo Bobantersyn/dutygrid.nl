@@ -7,7 +7,7 @@ import {
   LayoutGrid, List as ListIcon, ChevronRight,
   MoreVertical, Edit2, X, AlertCircle
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type TabType = "klanten" | "opdrachten" | "tarieven" | "contacten";
 
@@ -15,6 +15,17 @@ export default function ClientsPage() {
   const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState<TabType>("klanten");
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Read URL params on mount to set initial tab
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const searchParams = new URLSearchParams(window.location.search);
+      const tabParam = searchParams.get("tab");
+      if (tabParam === "opdrachten" || tabParam === "klanten" || tabParam === "tarieven" || tabParam === "contacten") {
+        setActiveTab(tabParam as TabType);
+      }
+    }
+  }, []);
 
   // Client Form State
   const [showClientForm, setShowClientForm] = useState(false);

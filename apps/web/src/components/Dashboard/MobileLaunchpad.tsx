@@ -66,7 +66,7 @@ export default function MobileLaunchpad() {
                         </a>
 
                         <a
-                            href="/assignments"
+                            href="/clients?tab=opdrachten"
                             className="flex flex-col justify-between p-4 bg-white rounded-2xl shadow-sm border border-gray-100 aspect-square group active:scale-95 transition-all"
                         >
                             <div className="w-10 h-10 bg-amber-50 rounded-full flex items-center justify-center mb-4">
