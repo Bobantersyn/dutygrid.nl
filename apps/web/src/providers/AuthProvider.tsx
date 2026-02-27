@@ -166,11 +166,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             });
             const data = await res.json();
             if (res.ok && data.success) {
-                if (typeof window !== "undefined" && window.innerWidth < 768) {
-                    window.location.href = "/planning?view=today";
-                } else {
-                    window.location.href = "/";
-                }
+                window.location.href = "/";
                 return { ok: true };
             } else {
                 return { error: data.error || "Login failed", ok: false };

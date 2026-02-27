@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useAuthContext } from "@/providers/AuthProvider";
 import { useUserRole } from "@/hooks/useUserRole";
 import { useDashboardData } from "@/hooks/useDashboardData";
+
 
 // Marketing components
 import "@/components/Marketing/marketing.css";
@@ -25,6 +26,7 @@ import { ShiftsModal } from "@/components/Dashboard/Modals/ShiftsModal";
 import { LeaveRequestsModal } from "@/components/Dashboard/Modals/LeaveRequestsModal";
 import { QuickPlanModal } from "@/components/Planning/QuickPlanModal";
 import { SecurityGuardWeekView } from "@/components/SecurityGuard/SecurityGuardWeekView";
+import MobileLaunchpad from "@/components/Dashboard/MobileLaunchpad";
 
 function MarketingHome() {
   return (
@@ -135,8 +137,16 @@ function Dashboard() {
   );
 }
 
-export default function HomePage() {
+function HomeContent() {
   const { user, userLoading } = useAuthContext();
+  const [showStats, setShowStats] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const searchParams = new URLSearchParams(window.location.search);
+      setShowStats(searchParams.get("view") === "stats");
+    }
+  }, []);
 
   // Show loading state while checking auth
   if (userLoading) {
@@ -148,12 +158,25 @@ export default function HomePage() {
     return <MarketingHome />;
   }
 
-  // Action-based mobile routing
-  if (typeof window !== "undefined" && window.innerWidth < 768) {
-    window.location.replace("/planning?view=today");
-    return <LoadingState />;
-  }
+  // Logged in → show dashboard on desktop, launchpad on mobile (unless viewing stats)
+  return (
+    <>
+      <div className={`${showStats ? "block" : "hidden lg:block"} w-full`}>
+        <Dashboard />
+      </div>
+      {!showStats && (
+        <div className="block lg:hidden w-full max-w-full overflow-hidden">
+          <MobileLaunchpad />
+        </div>
+      )}
+    </>
+  );
+}
 
-  // Logged in → show dashboard on desktop
-  return <Dashboard />;
+export default function HomePage() {
+  return (
+    <Suspense fallback={<LoadingState />}>
+      <HomeContent />
+    </Suspense>
+  );
 }
