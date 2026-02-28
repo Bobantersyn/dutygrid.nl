@@ -9,15 +9,22 @@ const JWT_SECRET = new TextEncoder().encode(
 export async function POST(request) {
     try {
         const body = await request.json();
-        const { company, name, email, password } = body;
+        const { company, name, email, password, kvk, company_size } = body;
 
         // Validation
-        if (!company || !name || !email || !password) {
+        if (!company || !name || !email || !password || !kvk || !company_size) {
             return Response.json(
-                { error: 'Alle velden zijn verplicht.' },
+                { error: 'Alle velden inclusief KvK en bedrijfsgrootte zijn verplicht.' },
                 { status: 400 }
             );
         }
+
+        // Free email detection
+        const freeEmailDomains = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com', 'live.com', 'live.nl', 'hotmail.nl', 'icloud.com', 'msn.com'];
+        const domain = email.split('@')[1]?.toLowerCase();
+        const isFreeEmail = freeEmailDomains.includes(domain);
+        const lowPriority = isFreeEmail;
+
 
         if (password.length < 8) {
             return Response.json(
@@ -27,10 +34,17 @@ export async function POST(request) {
         }
 
         // Check if user already exists
-        const existingUsers = await sql`SELECT id FROM auth_users WHERE email = ${email} LIMIT 1`;
+        const existingUsers = await sql`SELECT id, subscription_status, trial_ends_at FROM auth_users WHERE email = ${email} OR kvk_number = ${kvk} LIMIT 1`;
         if (existingUsers.length > 0) {
+            const existing = existingUsers[0];
+            if (existing.subscription_status === 'deleted_retention') {
+                return Response.json(
+                    { error: 'Dit bedrijf of e-mailadres is geblokkeerd voor nieuwe proefperiodes (90 dagen cooldown).' },
+                    { status: 403 }
+                );
+            }
             return Response.json(
-                { error: 'Er bestaat al een account met dit e-mailadres.' },
+                { error: 'Er bestaat al een account met dit e-mailadres of KvK-nummer.' },
                 { status: 409 }
             );
         }
@@ -40,9 +54,9 @@ export async function POST(request) {
 
         // Insert new user as trialing
         const insertedUser = await sql`
-            INSERT INTO auth_users (email, name, "company_name", password, subscription_status)
-            VALUES (${email}, ${name}, ${company}, ${hashedPassword}, 'trialing')
-            RETURNING id, email, name, "company_name", trial_ends_at
+            INSERT INTO auth_users (email, name, "company_name", password, subscription_status, kvk_number, company_size, is_free_email, low_priority_support)
+            VALUES (${email}, ${name}, ${company}, ${hashedPassword}, 'trialing', ${kvk}, ${company_size}, ${isFreeEmail}, ${lowPriority})
+            RETURNING id, email, name, "company_name", kvk_number, company_size, trial_ends_at
         `;
 
         const user = insertedUser[0];

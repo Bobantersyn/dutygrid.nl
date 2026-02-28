@@ -1,4 +1,5 @@
 import sql from "@/app/api/utils/sql";
+import { getSession } from "@/utils/session";
 
 // Haal alle opdrachten op
 export async function GET(request) {
@@ -57,6 +58,33 @@ export async function POST(request) {
       city,
       object_labels = [], // Array of label IDs
     } = await request.json();
+
+    const session = await getSession(request);
+    if (!session?.user?.id) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    // --- SaaS Tier & Trial Limits Logic ---
+    try {
+      const users = await sql`SELECT subscription_status FROM auth_users WHERE id = ${session.user.id}`;
+      if (users.length > 0) {
+        const subStatus = users[0].subscription_status || 'trialing';
+
+        if (subStatus === 'trialing' || subStatus === 'starter') {
+          const countRes = await sql`SELECT COUNT(*) as count FROM assignments WHERE status = 'active'`;
+          const activeCount = parseInt(countRes[0].count, 10);
+
+          if (activeCount >= 1) {
+            const tierName = subStatus === 'trialing' ? 'Trial' : 'Starter';
+            return Response.json({ error: `${tierName} limiet bereikt (max 1 locatie). Upgrade je account om meer opdrachten toe te voegen.` }, { status: 403 });
+          }
+        }
+      }
+    } catch (err) {
+      console.error("Error checking subscription limits:", err);
+    }
+    // ----------------------------------------
+
 
     if (!client_id || !location_name || !location_address) {
       return Response.json(

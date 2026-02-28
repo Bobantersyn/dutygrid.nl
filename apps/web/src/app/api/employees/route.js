@@ -99,6 +99,34 @@ export async function POST(request) {
 
     const statusValue = active ? "active" : "inactive";
 
+    // --- SaaS Tier & Trial Limits Logic ---
+    try {
+      // Haal subscription status van de ingelogde gebruiker/bedrijf op
+      const users = await sql`SELECT subscription_status FROM auth_users WHERE id = ${session.user.id}`;
+      if (users.length > 0) {
+        const subStatus = users[0].subscription_status || 'trialing';
+
+        // Tel actieve medewerkers
+        const countRes = await sql`SELECT COUNT(*) as count FROM employees WHERE status = 'active'`;
+        const activeCount = parseInt(countRes[0].count, 10);
+
+        if (subStatus === 'trialing' && activeCount >= 20) {
+          return Response.json({ error: "Trial limiet bereikt (max 20 medewerkers). Upgrade je account om meer toe te voegen." }, { status: 403 });
+        }
+        if (subStatus === 'starter' && activeCount >= 5) {
+          return Response.json({ error: "Starter limiet bereikt (max 5 medewerkers). Upgrade naar Growth." }, { status: 403 });
+        }
+        if (subStatus === 'growth' && activeCount >= 25) {
+          return Response.json({ error: "Growth limiet bereikt (max 25 medewerkers). Upgrade naar Professional." }, { status: 403 });
+        }
+      }
+    } catch (err) {
+      console.error("Error checking subscription limits:", err);
+      // Failsafe continue
+    }
+    // ----------------------------------------
+
+
     const [employee] = await sql`
       INSERT INTO employees (
         name, first_name, last_name, email, phone, address, city, postal_code, date_of_birth,

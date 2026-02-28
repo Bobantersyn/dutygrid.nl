@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Eye, EyeOff, Mail, Lock, Building2, User, ArrowRight } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, Building2, User, Users, ArrowRight } from "lucide-react";
 import "@/components/Marketing/marketing.css";
 
 export default function SignUpPage() {
@@ -12,6 +12,8 @@ export default function SignUpPage() {
     name: "",
     email: "",
     password: "",
+    kvk: "",
+    company_size: "",
   });
   const [showPassword, setShowPassword] = useState(false);
 
@@ -20,7 +22,7 @@ export default function SignUpPage() {
     setLoading(true);
     setError(null);
 
-    if (!formData.company || !formData.name || !formData.email || !formData.password) {
+    if (!formData.company || !formData.name || !formData.email || !formData.password || !formData.kvk || !formData.company_size) {
       setError("Vul alle velden in");
       setLoading(false);
       return;
@@ -85,6 +87,57 @@ export default function SignUpPage() {
               />
             </div>
           </div>
+
+          {/* KvK */}
+          <div className="m-login-field">
+            <div className="m-login-label">
+              <span>KvK-nummer</span>
+            </div>
+            <div className="m-login-input-wrap">
+              <Building2 size={18} />
+              <input
+                id="kvk"
+                name="kvk"
+                type="text"
+                value={formData.kvk}
+                onChange={(e) => setFormData({ ...formData, kvk: e.target.value })}
+                placeholder="KvK-nummer"
+                required
+              />
+            </div>
+          </div>
+
+          {/* Company Size */}
+          <div className="m-login-field">
+            <div className="m-login-label">
+              <span>Aantal medewerkers</span>
+            </div>
+            <div className="m-login-input-wrap">
+              <Users size={18} />
+              <select
+                id="company_size"
+                name="company_size"
+                value={formData.company_size}
+                onChange={(e) => setFormData({ ...formData, company_size: e.target.value })}
+                required
+                style={{
+                  width: '100%',
+                  background: 'transparent',
+                  border: 'none',
+                  outline: 'none',
+                  color: 'inherit',
+                  fontSize: '15px'
+                }}
+              >
+                <option value="" disabled>Selecteer aantal</option>
+                <option value="1-5" style={{ color: 'initial' }}>1 - 5 medewerkers</option>
+                <option value="6-25" style={{ color: 'initial' }}>6 - 25 medewerkers</option>
+                <option value="26-50" style={{ color: 'initial' }}>26 - 50 medewerkers</option>
+                <option value="50+" style={{ color: 'initial' }}>50+ medewerkers</option>
+              </select>
+            </div>
+          </div>
+
 
           {/* Name */}
           <div className="m-login-field">
