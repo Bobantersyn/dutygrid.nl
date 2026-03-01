@@ -8,6 +8,7 @@ const routes: RouteConfigEntry[] = [
 	route("/(app)/my-leave", "./(app)/my-leave/page.tsx"),
 	route("/account/logout", "./account/logout/page.tsx"),
 	route("/account/profile", "./account/profile/page.tsx"),
+	route("/account/subscription", "./(dashboard)/account/subscription/page.tsx"),
 	route("/account/signin", "./account/signin/page.tsx"),
 	route("/account/signup", "./account/signup/page.tsx"),
 	route("/admin/settings", "./admin/settings/page.tsx"),
@@ -23,8 +24,11 @@ const routes: RouteConfigEntry[] = [
 	route("/employees/[id]", "./employees/[id]/page.tsx"),
 	route("/employees/new", "./employees/new/page.tsx"),
 	route("/facturatie/uren", "./facturatie/uren/page.tsx"),
+	route("/incidenten", "./incidenten/page.tsx"),
+	route("/incidenten/beheer", "./incidenten/beheer/page.tsx"),
 	route("/migrations", "./migrations/page.tsx"),
 	route("/planning", "./planning/page.tsx"),
+	route("/planning/afwijkingen", "./planning/afwijkingen/page.tsx"),
 	route("/planning/edit/[id]", "./planning/edit/[id]/page.tsx"),
 	route("/planning/new", "./planning/new/page.tsx"),
 	route("/planning/reports", "./planning/reports/page.tsx"),
@@ -33,6 +37,8 @@ const routes: RouteConfigEntry[] = [
 	route("/setup-role", "./setup-role/page.tsx"),
 	route("/test-login", "./test-login/page.tsx"),
 	route("/test-setup", "./test-setup/page.tsx"),
+	route("/superadmin", "./superadmin/page.tsx"),
+	route("/superadmin/*", "./superadmin/page.tsx"),
 	route("/api/*", "./api.$.tsx"),
 	route("*", "./__create/not-found.tsx")
 ];

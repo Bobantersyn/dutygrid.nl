@@ -43,11 +43,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }, []);
 
     const fetchUser = useCallback(async () => {
+        console.log("[AuthProvider] fetchUser started");
         setUserLoading(true);
         try {
             const res = await fetch("/api/custom-auth/session", { credentials: "include" });
+            console.log("[AuthProvider] session fetch responded", res.status);
             if (res.ok) {
                 const data = await res.json();
+                console.log("[AuthProvider] session data", data.user?.email);
                 setUser(data.user || null);
             } else {
                 setUser(null);
@@ -56,29 +59,35 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             console.error("Failed to fetch user session:", error);
             setUser(null);
         } finally {
+            console.log("[AuthProvider] fetchUser finally completed");
             setUserLoading(false);
         }
     }, []);
 
     // Check Session initially
     useEffect(() => {
+        console.log("[AuthProvider] Mount / initial useEffect");
         fetchUser();
     }, [fetchUser]);
 
     // Check Role whenever user changes
     useEffect(() => {
+        console.log("[AuthProvider] Role effect triggered. userLoading:", userLoading, "user:", user?.email);
         const fetchRole = async () => {
+            console.log("[AuthProvider] inside fetchRole, checking userLoading:", userLoading);
             if (userLoading) return;
 
+            console.log("[AuthProvider] userLoading is false. user:", user);
             if (!user) {
+                console.log("[AuthProvider] no user, setting roleLoading to false");
                 setRoleLoading(false);
                 setUserRole(null);
                 setEmployeeId(null);
 
                 // Prevent redirect loop: only redirect to signin if we are NOT on an auth page, landing page, or public routes.
                 const pathname = typeof window !== "undefined" ? window.location.pathname : "";
-                const publicRoutes = ["/", "/functies", "/prijzen", "/contact"];
-                const isPublicRoute = pathname.startsWith("/account/") || publicRoutes.includes(pathname);
+                const publicRoutes = ["/", "/functies", "/prijzen", "/contact", "/superadmin"];
+                const isPublicRoute = pathname.startsWith("/account/") || pathname.startsWith("/superadmin") || publicRoutes.includes(pathname);
                 if (!isPublicRoute) {
                     window.location.href = "/account/signin";
                 }
@@ -98,12 +107,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
             const pathname = typeof window !== "undefined" ? window.location.pathname : "";
 
-            if (trialExpired && !pathname.startsWith('/account/') && !["/", "/functies", "/prijzen", "/contact"].includes(pathname)) {
+            if (trialExpired && !pathname.startsWith('/account/') && !pathname.startsWith("/superadmin") && !["/", "/functies", "/prijzen", "/contact"].includes(pathname)) {
                 // If trial is expired, force redirect to lockout page, unless they are already on auth or public pages.
                 window.location.href = "/account/trial-expired";
                 return;
             }
 
+            console.log("[AuthProvider] about to fetch /api/user-role");
             setRoleLoading(true);
             try {
                 const response = await fetch("/api/user-role");
