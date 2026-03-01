@@ -92,36 +92,27 @@ function getHonoPath(filePath: string): string {
   return path;
 }
 
+let registered = false;
+let failedImports: string[] = [];
+
 async function registerRoutes() {
   const routePaths = Object.keys(routeModules);
-
-  // Sort by path length descending (same logic as before)
-  // so nested routes are checked before parent routes?
-  // Actually, simple string length sort usually puts longer paths first.
   routePaths.sort((a, b) => b.length - a.length);
 
   for (const filePath of routePaths) {
     try {
-      // Import the module
-      console.log(`[route-builder] importing ${filePath}`);
       const routeImport = routeModules[filePath];
       const route: any = await routeImport();
-      console.log(`[route-builder] successfully imported ${filePath}`);
 
       const methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'];
       for (const method of methods) {
         if (route[method]) {
           const honoPath = getHonoPath(filePath);
-
-          // Create handler
           const handler: Handler = async (c) => {
             const params = c.req.param();
-            // We directly call the route handler
             return await route[method](c.req.raw, { params });
           };
-
           const methodLower = method.toLowerCase();
-
           switch (methodLower) {
             case 'get': api.get(honoPath, handler); break;
             case 'post': api.post(honoPath, handler); break;
@@ -131,24 +122,28 @@ async function registerRoutes() {
           }
         }
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(`Error registering route ${filePath}:`, error);
+      failedImports.push(`${filePath}: ${error.message || String(error)}`);
     }
   }
 }
 
-let registered = false;
-
-// Execute registration lazily on first request to prevent Vite Dev Server deadlocks 
-// caused by top-level await and dynamic imports.
+// Execute registration lazily on first request
 api.use('*', async (c, next) => {
   if (!registered) {
-    console.log('--- STARTING LAZY REGISTER ROUTES ---');
     await registerRoutes();
     registered = true;
-    console.log('--- FINISHED LAZY REGISTER ROUTES ---');
   }
   return next();
+});
+
+api.get('/debug-routes', (c) => {
+  return c.json({
+    routes: Object.keys(routeModules),
+    failed: failedImports,
+    registered: registered
+  });
 });
 
 // HMR logic for Dev (optional, Vite handles basic module reloading)
