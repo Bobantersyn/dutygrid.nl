@@ -1,6 +1,10 @@
 {
     "rewrites": [
         {
+            "source": "/api/(.*)",
+            "destination": "/api/index.ts"
+        },
+        {
             "source": "/superadmin",
             "destination": "https://dutygrid-superadmin.vercel.app/"
         },
