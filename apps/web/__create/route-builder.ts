@@ -94,6 +94,7 @@ function getHonoPath(filePath: string): string {
 
 let registered = false;
 let failedImports: string[] = [];
+let moduleExports: Record<string, string[]> = {};
 
 async function registerRoutes() {
   const routePaths = Object.keys(routeModules);
@@ -103,6 +104,8 @@ async function registerRoutes() {
     try {
       const routeImport = routeModules[filePath];
       const route: any = await routeImport();
+
+      moduleExports[filePath] = Object.keys(route);
 
       const methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'];
       for (const method of methods) {
@@ -142,9 +145,11 @@ api.get('/debug-routes', (c) => {
   return c.json({
     routes: Object.keys(routeModules),
     failed: failedImports,
+    exports: moduleExports,
     registered: registered
   });
 });
+
 
 // HMR logic for Dev (optional, Vite handles basic module reloading)
 // if (import.meta.env.DEV && import.meta.hot) {
