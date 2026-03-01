@@ -1,0 +1,16 @@
+{
+    "rewrites": [
+        {
+            "source": "/superadmin",
+            "destination": "https://dutygrid-superadmin.vercel.app/"
+        },
+        {
+            "source": "/superadmin/assets/(.*)",
+            "destination": "https://dutygrid-superadmin.vercel.app/assets/$1"
+        },
+        {
+            "source": "/superadmin/(.*)",
+            "destination": "https://dutygrid-superadmin.vercel.app/$1"
+        }
+    ]
+}
