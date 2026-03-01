@@ -58,7 +58,11 @@ const routeModules: Record<string, () => Promise<any>> = {
   "../src/app/api/shifts/[id]/approve-override/route.js": () => import("../src/app/api/shifts/[id]/approve-override/route.js"),
   "../src/app/api/availability/exceptions/batch/delete/route.js": () => import("../src/app/api/availability/exceptions/batch/delete/route.js"),
   "../src/app/api/reports/billing/route.js": () => import("../src/app/api/reports/billing/route.js"),
-  "../src/app/api/reports/billing/export/route.js": () => import("../src/app/api/reports/billing/export/route.js")
+  "../src/app/api/reports/billing/export/route.js": () => import("../src/app/api/reports/billing/export/route.js"),
+  "../src/app/api/internal/companies/route.js": () => import("../src/app/api/internal/companies/route.js"),
+  "../src/app/api/internal/companies/[id]/route.js": () => import("../src/app/api/internal/companies/[id]/route.js"),
+  "../src/app/api/internal/impersonate/route.js": () => import("../src/app/api/internal/impersonate/route.js"),
+  "../src/app/api/internal/login/route.js": () => import("../src/app/api/internal/login/route.js")
 };
 
 function getHonoPath(filePath: string): string {
