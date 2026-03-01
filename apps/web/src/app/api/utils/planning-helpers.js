@@ -165,7 +165,7 @@ export async function detectPlanningGaps(startDate, endDate) {
 async function findAvailableEmployees(date, assignmentAddress) {
   // Get all active employees
   const allEmployees = await sql`
-    SELECT id, name, cao_type, max_hours_per_day, max_hours_per_week, address as home_address, status, badge_type, is_flexible
+    SELECT id, name, max_hours_per_day, max_hours_per_week, address as home_address, status, badge_type, is_flexible
     FROM employees
     WHERE status = 'active'
   `;
@@ -328,7 +328,6 @@ async function findAvailableEmployees(date, assignmentAddress) {
     available.push({
       id: employee.id,
       name: displayName,
-      cao_type: employee.cao_type,
       score,
       reasons,
       warnings,

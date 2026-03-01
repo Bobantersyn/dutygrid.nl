@@ -1,5 +1,6 @@
 import { getSession } from "@/utils/session";
 import sql from "@/app/api/utils/sql";
+import { hasFeatureAccess } from "@/utils/feature-flags";
 
 export async function GET(request) {
     const session = await getSession(request);
@@ -13,6 +14,13 @@ export async function GET(request) {
     }
 
     try {
+        const users = await sql`SELECT subscription_status FROM auth_users WHERE id = ${session.user.id}`;
+        const subStatus = users[0]?.subscription_status || 'trialing';
+
+        if (!hasFeatureAccess(subStatus, 'export_csv_excel')) {
+            return Response.json({ error: "Upgrade vereist voor CSV export" }, { status: 403 });
+        }
+
         const report = await sql`
             WITH employee_hours AS (
                 SELECT 

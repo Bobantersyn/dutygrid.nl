@@ -20,10 +20,34 @@ export async function GET(request) {
             })
         );
 
-        const sessionToken = cookies.session;
+        const sessionToken = cookies.session || cookies['dutygrid-session'];
         if (!sessionToken) {
             return Response.json({ user: null }, { status: 200 });
         }
+
+        // --- IMPERSONATION JWT CHECK ---
+        // If it's a JWT (usually 3 parts)
+        if (sessionToken.split('.').length === 3) {
+            try {
+                const { payload } = await jwtVerify(sessionToken, JWT_SECRET);
+                if (payload.is_impersonating) {
+                    const dbUserObj = await sql`SELECT id, email, name, image, "company_name", subscription_status, trial_starts_at, trial_ends_at FROM auth_users WHERE id = ${payload.userId} LIMIT 1`;
+                    if (dbUserObj.length > 0) {
+                        return Response.json({
+                            user: {
+                                ...dbUserObj[0],
+                                is_impersonating: true,
+                                real_admin_id: payload.real_admin_id
+                            }
+                        }, { status: 200 });
+                    }
+                }
+            } catch (err) {
+                console.log('[Session API] JWT check failed', err.message);
+                return Response.json({ user: null }, { status: 200 });
+            }
+        }
+        // --------------------------------
 
         // Get session from database
         const sessions = await sql`

@@ -1,5 +1,17 @@
 import { getSession } from "@/utils/session";
 import sql from "@/app/api/utils/sql";
+import { hasFeatureAccess } from "@/utils/feature-flags";
+
+function getDistanceFromLatLonInM(lat1, lon1, lat2, lon2) {
+    const R = 6371e3; // Radius of the earth in m
+    const dLat = (lat2 - lat1) * (Math.PI / 180);
+    const dLon = (lon2 - lon1) * (Math.PI / 180);
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return Math.round(R * c);
+}
 
 export async function GET(request) {
     const session = await getSession(request);
@@ -20,6 +32,7 @@ export async function GET(request) {
         s.start_time as shift_date, -- Alias for frontend compatibility
         s.actual_start_time, s.actual_end_time, s.actual_break_minutes,
         s.status, s.notes, s.admin_notes,
+        s.is_geofence_violation, s.geofence_violation_details,
         e.id as employee_id, e.name as employee_name, e.hourly_rate,
         a.name as location_name
       FROM shifts s
@@ -80,9 +93,46 @@ export async function PUT(request) {
     try {
         const body = await request.json();
         console.log("PUT /api/hours body:", body);
-        const { id, actual_start_time, actual_end_time, actual_break_minutes, status, admin_notes } = body;
+        const { id, actual_start_time, actual_end_time, actual_break_minutes, status, admin_notes, clock_in_lat, clock_in_lng, clock_out_lat, clock_out_lng } = body;
 
         if (!id) return Response.json({ error: "ID required" }, { status: 400 });
+
+        // Retrieve subscription status for feature flag check
+        const users = await sql`SELECT subscription_status FROM auth_users WHERE id = ${session.user.id}`;
+        const subStatus = users[0]?.subscription_status || 'trialing';
+
+        let is_geofence_violation = false;
+        let geofence_violation_details = null;
+
+        if (hasFeatureAccess(subStatus, 'gps_tracking_geofencing')) {
+            // Check assignment location to validate geofence
+            const shiftInfo = await sql`
+                SELECT s.assignment_id, a.latitude as a_lat, a.longitude as a_lng, a.geofence_radius_meters as a_radius 
+                FROM shifts s LEFT JOIN assignments a ON s.assignment_id = a.id 
+                WHERE s.id = ${id}
+            `;
+            const assignment = shiftInfo[0];
+
+            if (assignment && assignment.a_lat && assignment.a_lng) {
+                // If clocking in with location
+                if (clock_in_lat && clock_in_lng) {
+                    const distIn = getDistanceFromLatLonInM(clock_in_lat, clock_in_lng, assignment.a_lat, assignment.a_lng);
+                    if (distIn > (assignment.a_radius || 100)) {
+                        is_geofence_violation = true;
+                        geofence_violation_details = `Inklok locatie was ${distIn}m verwijderd van toegestane zone.`;
+                    }
+                }
+                // If clocking out with location
+                if (clock_out_lat && clock_out_lng) {
+                    const distOut = getDistanceFromLatLonInM(clock_out_lat, clock_out_lng, assignment.a_lat, assignment.a_lng);
+                    if (distOut > (assignment.a_radius || 100)) {
+                        is_geofence_violation = true;
+                        geofence_violation_details = (geofence_violation_details ? geofence_violation_details + " " : "") +
+                            `Uitklok locatie was ${distOut}m verwijderd.`;
+                    }
+                }
+            }
+        }
 
         const [updatedShift] = await sql`
       UPDATE shifts
@@ -91,7 +141,13 @@ export async function PUT(request) {
         actual_end_time = ${actual_end_time || null},
         actual_break_minutes = ${actual_break_minutes || 0},
         status = ${status || 'planned'},
-        admin_notes = ${admin_notes || null}
+        admin_notes = ${admin_notes || null},
+        clock_in_lat = ${clock_in_lat || null},
+        clock_in_lng = ${clock_in_lng || null},
+        clock_out_lat = ${clock_out_lat || null},
+        clock_out_lng = ${clock_out_lng || null},
+        is_geofence_violation = ${is_geofence_violation},
+        geofence_violation_details = ${geofence_violation_details || null}
       WHERE id = ${id}
       RETURNING *
     `;

@@ -133,10 +133,19 @@ async function registerRoutes() {
   }
 }
 
-// Execute registration
-console.log('--- STARTING REGISTER ROUTES ---');
-await registerRoutes();
-console.log('--- FINISHED REGISTER ROUTES ---');
+let registered = false;
+
+// Execute registration lazily on first request to prevent Vite Dev Server deadlocks 
+// caused by top-level await and dynamic imports.
+api.use('*', async (c, next) => {
+  if (!registered) {
+    console.log('--- STARTING LAZY REGISTER ROUTES ---');
+    await registerRoutes();
+    registered = true;
+    console.log('--- FINISHED LAZY REGISTER ROUTES ---');
+  }
+  return next();
+});
 
 // HMR logic for Dev (optional, Vite handles basic module reloading)
 // if (import.meta.env.DEV && import.meta.hot) {

@@ -1,10 +1,12 @@
 "use client";
 
-import { CalendarClock, Users, Building, Briefcase, BarChart3, ChevronRight } from "lucide-react";
+import { CalendarClock, Users, Building, Briefcase, BarChart3, ChevronRight, AlertTriangle } from "lucide-react";
 import { useUserRole } from "@/hooks/useUserRole";
+import { FeatureGate } from "@/components/ui/FeatureGate";
+import { GuardClockIn } from "@/components/Dashboard/GuardClockIn";
 
 export default function MobileLaunchpad() {
-    const { isPlannerOrAdmin, isSecurityGuard, user } = useUserRole();
+    const { isPlannerOrAdmin, isSecurityGuard, user, employeeId } = useUserRole();
 
     if (!user) return null;
 
@@ -94,6 +96,12 @@ export default function MobileLaunchpad() {
                 </>
             ) : isSecurityGuard ? (
                 <>
+                    {/* Guard Clock-in Widget (Fetching actual ID via a small API or prop - for now we use employeeId if attached!) */}
+                    {/* Wait, useUserRole returns employeeId if attached! */}
+                    {employeeId ? (
+                        <GuardClockIn employeeId={employeeId} />
+                    ) : null}
+
                     {/* Hero Action for Guards */}
                     <a
                         href="/planning"
@@ -125,6 +133,26 @@ export default function MobileLaunchpad() {
                                 <p className="text-xs text-gray-500 mt-1">Uren & declaraties</p>
                             </div>
                         </a>
+
+                        {/* FeatureGated Incidenten */}
+                        <FeatureGate
+                            feature="incident_reporting"
+                            title="Niet Beschikbaar"
+                            description="Jouw bedrijf gebruikt momenteel geen incidentenrapportage in DutyGrid."
+                        >
+                            <a
+                                href="/incidenten"
+                                className="flex flex-col justify-between p-4 bg-white rounded-2xl shadow-sm border border-gray-100 aspect-square group active:scale-95 transition-all w-full h-full"
+                            >
+                                <div className="w-10 h-10 bg-red-50 rounded-full flex items-center justify-center mb-4">
+                                    <AlertTriangle size={20} className="text-red-500" />
+                                </div>
+                                <div>
+                                    <h3 className="font-semibold text-gray-900">Incidenten</h3>
+                                    <p className="text-xs text-gray-500 mt-1">Melding maken</p>
+                                </div>
+                            </a>
+                        </FeatureGate>
                     </div>
                 </>
             ) : null}

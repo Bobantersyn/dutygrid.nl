@@ -22,6 +22,7 @@ import { useUserRole } from "../../hooks/useUserRole";
 export function TopNavigation() {
     const { hasMultipleRoles, viewAsEmployee, toggleViewAsEmployee, isPlannerOrAdmin, userRole, user, userLoading } = useUserRole();
     const isAdmin = userRole === "admin";
+    const isImpersonating = user?.is_impersonating;
 
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -69,6 +70,22 @@ export function TopNavigation() {
 
     return (
         <div className="flex flex-col w-full">
+            {/* Impersonation Banner */}
+            {isImpersonating && (
+                <div className="w-full py-2 px-4 text-center text-sm font-semibold bg-red-600 text-white flex items-center justify-center gap-3 z-50 shadow-md">
+                    <span>⚠️ Je bent momenteel ingelogd als {user?.company_name || "Klant"}. Alle acties worden geregistreerd in de audit log.</span>
+                    <button
+                        onClick={() => {
+                            // Clear consumer session cookie and go back to admin portal
+                            document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                            window.location.href = "http://localhost:4002/companies"; // Development port for admin
+                        }}
+                        className="bg-white text-red-600 px-3 py-1 rounded shadow text-xs hover:bg-gray-100 transition"
+                    >
+                        Stop Impersonation
+                    </button>
+                </div>
+            )}
             {/* Trial Banner */}
             {isTrial && isAdmin && !viewAsEmployee && (
                 <div className={`w-full py-2 px-4 text-center text-sm font-medium ${daysRemaining <= 3 ? 'bg-orange-100 text-orange-800' : 'bg-blue-600 text-white'} flex items-center justify-center gap-2`}>
@@ -170,6 +187,11 @@ export function TopNavigation() {
                                             <Link to="/account/profile" onClick={() => setIsProfileOpen(false)} className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
                                                 <UserIcon size={16} className="text-gray-400" />
                                                 <span>Mijn Profiel</span>
+                                            </Link>
+
+                                            <Link to="/account/subscription" onClick={() => setIsProfileOpen(false)} className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors mt-1">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4" /><path d="M14 2v4a2 2 0 0 0 2 2h4" /><path d="M6 14a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z" /><path d="M14 14a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z" /></svg>
+                                                <span>Abonnement</span>
                                             </Link>
 
                                             {isPlannerOrAdmin && (

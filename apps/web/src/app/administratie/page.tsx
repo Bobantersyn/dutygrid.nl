@@ -3,7 +3,7 @@
 import { useUserRole } from "@/hooks/useUserRole";
 import { LoadingState } from "@/components/Dashboard/LoadingState";
 
-import { FileText, Building2, Users } from "lucide-react";
+import { FileText, Building2, Users, AlertTriangle, MapPin } from "lucide-react";
 
 export default function AdministratiePage() {
     const { userLoading, roleLoading, isPlannerOrAdmin } = useUserRole();
@@ -78,6 +78,46 @@ export default function AdministratiePage() {
                         </p>
                         <div className="flex items-center text-purple-600 font-semibold group-hover:translate-x-1 transition-transform">
                             Open Rapportages
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                            </svg>
+                        </div>
+                    </a>
+
+                    {/* Incidenten Card */}
+                    <a
+                        href="/incidenten/beheer"
+                        className="group flex flex-col bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-md hover:border-red-300 transition-all text-left"
+                    >
+                        <div className="w-14 h-14 bg-red-50 text-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <AlertTriangle size={28} />
+                        </div>
+                        <h2 className="text-xl font-bold text-slate-900 mb-3">Incidentenbeheer</h2>
+                        <p className="text-slate-600 leading-relaxed mb-6 flex-grow">
+                            Bekijk alle digitaal gemelde incidenten en onregelmatigheden via de mobiele app. Inclusief foto's en tijdstempels.
+                        </p>
+                        <div className="flex items-center text-red-600 font-semibold group-hover:translate-x-1 transition-transform">
+                            Open Incidenten
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                            </svg>
+                        </div>
+                    </a>
+
+                    {/* Geofence Afwijkingen Card */}
+                    <a
+                        href="/planning/afwijkingen"
+                        className="group flex flex-col bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-md hover:border-orange-300 transition-all text-left"
+                    >
+                        <div className="w-14 h-14 bg-orange-50 text-orange-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <MapPin size={28} />
+                        </div>
+                        <h2 className="text-xl font-bold text-slate-900 mb-3">Geofence Afwijkingen</h2>
+                        <p className="text-slate-600 leading-relaxed mb-6 flex-grow">
+                            Bekijk inkloktijden die buiten de ingestelde radius van de locatie (geofence) vielen. Controleer afwijkingen direct.
+                        </p>
+                        <div className="flex items-center text-orange-500 font-semibold group-hover:translate-x-1 transition-transform">
+                            Bekijk Meldingen
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                                 <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                             </svg>

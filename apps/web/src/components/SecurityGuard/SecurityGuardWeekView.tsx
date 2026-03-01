@@ -13,10 +13,12 @@ import { ShiftDetailModal } from "./ShiftDetailModal";
 import NotificationBell from "../NotificationBell";
 
 export function SecurityGuardWeekView({ employeeId }: { employeeId: string | number }) {
+  console.log("[SecurityGuardWeekView] Rendered with employeeId:", employeeId);
   const [selectedShift, setSelectedShift] = useState<any>(null);
 
   const { formatWeekRange, navigateWeek, shiftsByDate, isLoading } =
     useSecurityGuardWeek(employeeId);
+  console.log("[SecurityGuardWeekView] isLoading:", isLoading);
 
   // Fetch employee data to check can_manage_own_availability
   const { data: employeeData } = useQuery({

@@ -12,10 +12,13 @@ import {
     TrendingUp,
     Clock,
     User,
-    ArrowLeft
+    ArrowLeft,
+    Printer,
+    Lock
 } from "lucide-react";
 
 import { LoadingState } from "@/components/Dashboard/LoadingState";
+import { FeatureGate } from "@/components/ui/FeatureGate";
 
 export default function ReportsPage() {
     const [currentDate, setCurrentDate] = useState(new Date());
@@ -54,7 +57,7 @@ export default function ReportsPage() {
                 {/* Navigation & Header */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
                     <div className="flex items-center gap-4">
-                        <a href="/" className="p-2 hover:bg-white rounded-full transition-colors border border-transparent hover:border-slate-200">
+                        <a href="/" className="p-2 hover:bg-white rounded-full transition-colors border border-transparent hover:border-slate-200 print:hidden">
                             <ArrowLeft size={20} className="text-slate-600" />
                         </a>
                         <div>
@@ -66,32 +69,52 @@ export default function ReportsPage() {
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-3 bg-white p-1 rounded-xl shadow-sm border border-slate-200">
+                    <div className="flex items-center gap-3 bg-white p-1 rounded-xl shadow-sm border border-slate-200 print:shadow-none print:border-transparent print:p-0">
                         <button
                             onClick={() => navigateMonth(-1)}
-                            className="p-2 hover:bg-slate-50 rounded-lg transition-colors text-slate-600"
+                            className="p-2 hover:bg-slate-50 rounded-lg transition-colors text-slate-600 print:hidden"
                         >
                             <ChevronLeft size={20} />
                         </button>
-                        <div className="px-4 font-semibold text-slate-900 flex items-center gap-2 min-w-[150px] justify-center">
+                        <div className="px-4 font-semibold text-slate-900 flex items-center gap-2 min-w-[150px] justify-center print:px-0">
                             <Calendar size={18} className="text-blue-500" />
                             {monthLabel}
                         </div>
                         <button
                             onClick={() => navigateMonth(1)}
-                            className="p-2 hover:bg-slate-50 rounded-lg transition-colors text-slate-600"
+                            className="p-2 hover:bg-slate-50 rounded-lg transition-colors text-slate-600 print:hidden"
                         >
                             <ChevronRight size={20} />
                         </button>
                     </div>
 
-                    <button
-                        onClick={handleExport}
-                        className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl shadow-md transition-all active:scale-95"
-                    >
-                        <Download size={18} />
-                        <span>Exporteer CSV</span>
-                    </button>
+                    <div className="flex items-center gap-3 print:hidden">
+                        <button
+                            onClick={() => window.print()}
+                            className="flex items-center gap-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-5 py-2.5 rounded-xl shadow-sm transition-all active:scale-95"
+                        >
+                            <Printer size={18} />
+                            <span>Print / PDF</span>
+                        </button>
+
+                        <FeatureGate
+                            feature="export_csv_excel"
+                            fallback={
+                                <button disabled className="flex items-center gap-2 bg-slate-200 text-slate-500 px-5 py-2.5 rounded-xl cursor-not-allowed opacity-80" title="Upgrade naar Growth voor CSV export">
+                                    <Lock size={18} />
+                                    <span>Exporteer CSV</span>
+                                </button>
+                            }
+                        >
+                            <button
+                                onClick={handleExport}
+                                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl shadow-md transition-all active:scale-95"
+                            >
+                                <Download size={18} />
+                                <span>Exporteer CSV</span>
+                            </button>
+                        </FeatureGate>
+                    </div>
                 </div>
 
                 {error ? (

@@ -102,7 +102,26 @@ function SharedErrorBoundary({
  * React-router will mount this one
  */
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  return <SharedErrorBoundary isOpen={true} />;
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <SharedErrorBoundary isOpen={true}>
+          <div className="mt-4 p-4 bg-red-900/20 rounded border border-red-500/30 font-mono text-xs overflow-auto max-h-[300px]">
+            {error instanceof Error ? error.message : "Unknown error occurred"}
+            <br />
+            {error instanceof Error && error.stack}
+          </div>
+        </SharedErrorBoundary>
+        <Scripts />
+      </body>
+    </html>
+  );
 }
 
 function InternalErrorBoundary({ error: errorArg }: Route.ErrorBoundaryProps) {
@@ -214,7 +233,15 @@ class ErrorBoundaryWrapper extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
   render() {
     if (this.state.hasError) {
-      return <InternalErrorBoundary error={this.state.error} params={{}} />;
+      return (
+        <div style={{ padding: 40, background: '#990000', color: 'white', zIndex: 99999, position: 'fixed', inset: 0, overflow: 'auto' }}>
+          <h1>App Crashed!</h1>
+          <p>{this.state.error instanceof Error ? this.state.error.toString() : 'Unknown error'}</p>
+          <pre style={{ color: 'white', whiteSpace: 'pre-wrap', marginTop: 20 }}>
+            {this.state.error instanceof Error ? this.state.error.stack : ''}
+          </pre>
+        </div>
+      );
     }
     return this.props.children;
   }
@@ -423,6 +450,7 @@ export const useHandleScreenshotRequest = () => {
   }, []);
 };
 export function Layout({ children }: { children: ReactNode }) {
+  console.log("[root.tsx] Layout rendered");
   useHandshakeParent();
   useCodeGen();
   useRefresh();
@@ -468,15 +496,13 @@ export function Layout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <Providers>
-          <ClientOnly loader={() => (
-            <>
-              <TopNavigation />
-              <div className="pb-20 lg:pb-0">
-                {children}
-              </div>
-              <MobileBottomNav />
-            </>
-          )} />
+          <>
+            <TopNavigation />
+            <div className="pb-20 lg:pb-0">
+              {children}
+            </div>
+            <MobileBottomNav />
+          </>
         </Providers>
         <HotReloadIndicator />
         <Toaster position="bottom-right" />
@@ -489,6 +515,8 @@ export function Layout({ children }: { children: ReactNode }) {
 }
 
 export default function App() {
+  const loc = useLocation();
+  console.log("[root.tsx] App Component rendered! Outlet follows. Location:", loc.pathname);
   return (
     <Outlet />
   );

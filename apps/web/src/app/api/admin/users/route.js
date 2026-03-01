@@ -1,6 +1,7 @@
 import { getSession } from "@/utils/session";
 import sql from "@/app/api/utils/sql";
 import { hash } from "argon2";
+import { getAdminLimit } from "@/utils/feature-flags";
 
 // GET: List all users
 export async function GET(request) {
@@ -39,35 +40,57 @@ export async function POST(request) {
             return Response.json({ error: "Missing fields" }, { status: 400 });
         }
 
-        // 1. Create Auth User
+        // 1. Enforce Admin Limits
+        if (role === 'admin' || role === 'planner') {
+            try {
+                // Get current user's subscription status
+                const currentUsers = await sql`SELECT subscription_status FROM auth_users WHERE id = ${session.user.id}`;
+                const subStatus = currentUsers[0]?.subscription_status || 'trialing';
+                const limit = getAdminLimit(subStatus);
+
+                // Count existing admins and planners
+                const countRes = await sql`SELECT COUNT(*) as count FROM user_roles WHERE role IN ('admin', 'planner')`;
+                const adminCount = parseInt(countRes[0].count, 10);
+
+                if (adminCount >= limit) {
+                    return Response.json({
+                        error: `Beheerderslimiet bereikt. Jouw pakket (${subStatus}) staat maximaal ${limit} beheerder(s) toe. Upgrade om meer beheerders toe te voegen.`
+                    }, { status: 403 });
+                }
+            } catch (err) {
+                console.error("Error checking admin limits:", err);
+            }
+        }
+
+        // 2. Create Auth User
         const hashedPassword = await hash(password);
 
         const [user] = await sql`
-      INSERT INTO auth_users (name, email, password, created_at, updated_at)
-      VALUES (${name}, ${email}, ${hashedPassword}, NOW(), NOW())
+      INSERT INTO auth_users(name, email, password, created_at, updated_at)
+      VALUES(${name}, ${email}, ${hashedPassword}, NOW(), NOW())
       RETURNING id
-    `;
+                        `;
 
-        // 2. Try to find an existing employee with this email
+        // 3. Try to find an existing employee with this email
         const [existingEmployee] = await sql`SELECT id FROM employees WHERE email = ${email}`;
         let linkedEmployeeId = existingEmployee ? existingEmployee.id : null;
 
-        // 3. If role is guard and no employee exists, create one
+        // 4. If role is guard and no employee exists, create one
         if (!linkedEmployeeId && (role === 'beveiliger' || role === 'beveiliger_extended')) {
             const [newEmp] = await sql`
-                INSERT INTO employees (name, first_name, last_name, email, hourly_rate, active)
-                VALUES (${name}, split_part(${name}, ' ', 1), substring(${name} from position(' ' in ${name}) + 1), ${email}, 0, true)
+                INSERT INTO employees(name, first_name, last_name, email, hourly_rate, active)
+                VALUES(${name}, split_part(${name}, ' ', 1), substring(${name} from position(' ' in ${name}) + 1), ${email}, 0, true)
                 RETURNING id
-            `;
+                        `;
             linkedEmployeeId = newEmp?.id;
         }
 
-        // 4. Assign Role
+        // 5. Assign Role
         if (role) {
             await sql`
-                INSERT INTO user_roles (user_id, role, employee_id)
-                VALUES (${user.id}, ${role}, ${linkedEmployeeId})
-            `;
+                INSERT INTO user_roles(user_id, role, employee_id)
+                VALUES(${user.id}, ${role}, ${linkedEmployeeId})
+                            `;
         }
 
         return Response.json({ success: true, userId: user.id });

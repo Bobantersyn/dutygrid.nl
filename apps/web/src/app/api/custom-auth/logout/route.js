@@ -15,7 +15,7 @@ export async function POST(request) {
             })
         );
 
-        const sessionToken = cookies.session;
+        const sessionToken = cookies.session || cookies['dutygrid-session'];
         if (sessionToken) {
             // Delete session from database
             await sql`
@@ -24,16 +24,15 @@ export async function POST(request) {
       `;
         }
 
+        const headers = new Headers();
+        headers.append('Set-Cookie', 'session=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0; Secure');
+        headers.append('Set-Cookie', 'dutygrid-session=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0; Secure');
+
         // Clear cookie
-        return Response.json(
-            { success: true },
-            {
-                status: 200,
-                headers: {
-                    'Set-Cookie': 'session=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0; Secure',
-                },
-            }
-        );
+        return new Response(JSON.stringify({ success: true }), {
+            status: 200,
+            headers,
+        });
     } catch (error) {
         console.error('[Logout API] Error:', error);
         return Response.json(

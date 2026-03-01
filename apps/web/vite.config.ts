@@ -7,7 +7,6 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import { addRenderIds } from './plugins/addRenderIds';
 import { aliases } from './plugins/aliases';
 import consoleToParent from './plugins/console-to-parent';
-import { layoutWrapperPlugin } from './plugins/layouts';
 import { loadFontsFromTailwindSource } from './plugins/loadFontsFromTailwindSource';
 import { nextPublicProcessEnv } from './plugins/nextPublicProcessEnv';
 import { restart } from './plugins/restart';
@@ -35,10 +34,10 @@ export default defineConfig({
   plugins: [
     nextPublicProcessEnv(),
     restartEnvFileChange(),
-    // !process.env.VERCEL ? reactRouterHonoServer({
-    //   serverEntryPoint: './__create/server.ts',
-    //   runtime: 'node',
-    // }) : null,
+    !process.env.VERCEL ? reactRouterHonoServer({
+      serverEntryPoint: './__create/server.ts',
+      runtime: 'node',
+    }) : null,
     babel({
       include: ['src/**/*.{js,jsx,ts,tsx}'], // or RegExp: /src\/.*\.[tj]sx?$/
       exclude: /node_modules/, // skip everything else
@@ -64,7 +63,6 @@ export default defineConfig({
     reactRouter(),
     tsconfigPaths(),
     aliases(),
-    layoutWrapperPlugin(),
   ],
   resolve: {
     alias: {
@@ -84,7 +82,7 @@ export default defineConfig({
   server: {
     allowedHosts: true,
     host: '0.0.0.0',
-    port: 4000,
+    port: 5005,
     hmr: {
       overlay: false,
     },

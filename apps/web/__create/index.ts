@@ -23,18 +23,7 @@ neonConfig.webSocketConstructor = ws;
 
 const als = new AsyncLocalStorage<{ requestId: string }>();
 
-for (const method of ['log', 'info', 'warn', 'error', 'debug'] as const) {
-  const original = nodeConsole[method].bind(console);
-
-  console[method] = (...args: unknown[]) => {
-    const requestId = als.getStore()?.requestId;
-    if (requestId) {
-      original(`[traceId:${requestId}]`, ...args);
-    } else {
-      original(...args);
-    }
-  };
-}
+// console overrides removed to prevent Vite HMR infinite call stacks
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,

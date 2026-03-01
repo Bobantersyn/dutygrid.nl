@@ -1,5 +1,7 @@
 "use client";
 
+console.log("[page.tsx] MODULE EVALUATED!");
+
 import { useState, useEffect, Suspense } from "react";
 import { useAuthContext } from "@/providers/AuthProvider";
 import { useUserRole } from "@/hooks/useUserRole";
@@ -43,6 +45,7 @@ function MarketingHome() {
 }
 
 function Dashboard() {
+  console.log("[page.tsx] Dashboard rendered");
   const {
     userRole,
     roleLoading,
@@ -139,6 +142,7 @@ function Dashboard() {
 
 function HomeContent() {
   const { user, userLoading } = useAuthContext();
+  console.log("[page.tsx] HomeContent rendered. userLoading:", userLoading, "user:", user?.email);
   const [showStats, setShowStats] = useState(false);
 
   useEffect(() => {
@@ -173,10 +177,41 @@ function HomeContent() {
   );
 }
 
+import React, { Component } from 'react';
+
+class LocalErrorBoundary extends Component<{ children: React.ReactNode }, { hasError: boolean, error: any }> {
+  constructor(props: any) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error: any) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: any, errorInfo: any) {
+    console.error("Dashboard Crash:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: 40, background: '#990000', color: 'white', zIndex: 99999, position: 'fixed', inset: 0, overflow: 'auto' }}>
+          <h1>Dashboard Crashed!</h1>
+          <p>{this.state.error?.toString()}</p>
+          <pre style={{ color: 'white', whiteSpace: 'pre-wrap', marginTop: 20 }}>{this.state.error?.stack}</pre>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 export default function HomePage() {
+  console.log("[page.tsx] HomePage rendered");
   return (
-    <Suspense fallback={<LoadingState />}>
+    <LocalErrorBoundary>
       <HomeContent />
-    </Suspense>
+    </LocalErrorBoundary>
   );
 }

@@ -28,7 +28,10 @@ export function MobileFilterSheet({
             ></div>
 
             {/* Bottom Sheet Slider */}
-            <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-2xl p-6 animate-in slide-in-from-bottom duration-300">
+            <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-2xl p-6 pb-10 animate-in slide-in-from-bottom duration-300">
+                {/* Drag Handle Indicator */}
+                <div className="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6" />
+
                 <div className="flex items-center justify-between mb-6">
                     <h3 className="text-xl font-bold text-gray-900">Weergave & Filters</h3>
                     <button

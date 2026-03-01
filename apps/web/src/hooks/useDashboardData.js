@@ -38,6 +38,7 @@ export function useDashboardData({
     queryKey: ["week-shifts"],
     queryFn: async () => {
       // Calculate today and today + 7 days
+      const today = new Date();
       const nextWeek = new Date(today);
       nextWeek.setDate(today.getDate() + 7);
 
