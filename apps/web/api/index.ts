@@ -52,9 +52,9 @@ for (const method of ['post', 'put', 'patch'] as const) {
 
 if (process.env.AUTH_SECRET) {
     app.use(
-        '*',
+        '/api/auth/*',
         initAuthConfig((c) => ({
-            secret: c.env.AUTH_SECRET,
+            secret: process.env.AUTH_SECRET,
             pages: { signIn: '/account/signin', signOut: '/account/logout' },
             skipCSRFCheck,
             session: { strategy: 'jwt' },
