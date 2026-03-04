@@ -75,6 +75,6 @@ export async function POST(request) {
 
     } catch (error) {
         console.error('[Impersonate API] Error:', error);
-        return Response.json({ error: 'Internal server error' }, { status: 500 });
+        return Response.json({ error: 'Internal server error', details: error.message, stack: String(error.stack) }, { status: 500 });
     }
 }
