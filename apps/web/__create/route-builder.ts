@@ -62,7 +62,14 @@ const routeModules: Record<string, () => Promise<any>> = {
   "../src/app/api/internal/companies/route.js": () => import("../src/app/api/internal/companies/route.js"),
   "../src/app/api/internal/companies/[id]/route.js": () => import("../src/app/api/internal/companies/[id]/route.js"),
   "../src/app/api/internal/impersonate/route.js": () => import("../src/app/api/internal/impersonate/route.js"),
-  "../src/app/api/internal/login/route.js": () => import("../src/app/api/internal/login/route.js")
+  "../src/app/api/internal/login/route.js": () => import("../src/app/api/internal/login/route.js"),
+  "../src/app/api/internal/staging-tools/create-company/route.js": () => import("../src/app/api/internal/staging-tools/create-company/route.js"),
+  "../src/app/api/internal/staging-tools/generate-demo-data/route.js": () => import("../src/app/api/internal/staging-tools/generate-demo-data/route.js"),
+  "../src/app/api/internal/staging-tools/impersonate/route.js": () => import("../src/app/api/internal/staging-tools/impersonate/route.js"),
+  "../src/app/api/internal/staging-tools/simulate-billing/route.js": () => import("../src/app/api/internal/staging-tools/simulate-billing/route.js"),
+  "../src/app/api/internal/staging-tools/reset-company/route.js": () => import("../src/app/api/internal/staging-tools/reset-company/route.js"),
+  "../src/app/api/internal/staging-tools/mail-sink/route.js": () => import("../src/app/api/internal/staging-tools/mail-sink/route.js"),
+  "../src/app/api/internal/staging-tools/simulate-signup/route.js": () => import("../src/app/api/internal/staging-tools/simulate-signup/route.js")
 };
 
 function getHonoPath(filePath: string): string {
@@ -97,6 +104,8 @@ let failedImports: string[] = [];
 let moduleExports: Record<string, string[]> = {};
 
 async function registerRoutes() {
+  if (registered) return;
+
   const routePaths = Object.keys(routeModules);
   routePaths.sort((a, b) => b.length - a.length);
 
@@ -130,16 +139,22 @@ async function registerRoutes() {
       failedImports.push(`${filePath}: ${error.message || String(error)}`);
     }
   }
+  registered = true;
 }
 
-// Execute registration lazily on first request
-api.use('*', async (c, next) => {
-  if (!registered) {
-    await registerRoutes();
-    registered = true;
-  }
-  return next();
-});
+if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
+  await registerRoutes();
+} else {
+  // Execute registration lazily on first request in dev
+  api.use('*', async (c, next) => {
+    if (!registered) {
+      await registerRoutes();
+    }
+    // Note: the very first request in dev might still 404 due to Hono radix compilation lock, 
+    // but subsequent requests usually work in dev, or dev doesn't use static compilation strictly.
+    return next();
+  });
+}
 
 api.get('/debug-routes', (c) => {
   return c.json({
