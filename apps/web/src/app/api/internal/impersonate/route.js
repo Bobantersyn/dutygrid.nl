@@ -75,6 +75,7 @@ export async function POST(request) {
 
     } catch (error) {
         console.error('[Impersonate API] Error:', error);
-        return Response.json({ error: 'Internal server error', details: error.message, stack: String(error.stack) }, { status: 500 });
+        // FORCE the message into the primary error field so the old frontend shows it
+        return Response.json({ error: `INTERNAL CRASH: ${error.message}`, details: error.message, stack: String(error.stack) }, { status: 500 });
     }
 }
