@@ -2,9 +2,12 @@
 	"name": "web",
 	"private": true,
 	"type": "module",
+	"engines": {
+		"node": "20.x"
+	},
 	"scripts": {
 		"dev": "react-router dev",
-		"build": "react-router build && cp -a .vercel/output ../../.vercel/output",
+		"build": "react-router build",
 		"start": "react-router-serve ./build/server/index.js",
 		"typecheck": "react-router typegen && tsc --noEmit"
 	},
