@@ -14,7 +14,11 @@ export async function POST(request) {
         }
 
         const body = await request.json();
-        const { target_user_id } = body;
+        const target_user_id = body.target_user_id;
+
+        if (!target_user_id) {
+            return Response.json({ error: 'Target user ID is missing' }, { status: 400 });
+        }
 
         // Verify target exists
         const targetUsers = await sql`SELECT id, email, name FROM auth_users WHERE id = ${target_user_id} LIMIT 1`;
@@ -26,8 +30,16 @@ export async function POST(request) {
         const targetUser = targetUsers[0];
 
         // Ensure target user is actually an admin or planner to impersonate correctly
-        const targetRoles = await sql`SELECT role FROM user_roles WHERE user_id = ${targetUser.id.toString()} LIMIT 1`;
-        const role = targetRoles[0]?.role || 'admin';
+        // Safety: Pass the ID natively, do not force .toString() if Drizzle ORM/driver rejects it natively
+        let role = 'admin';
+        try {
+            const targetRoles = await sql`SELECT role FROM user_roles WHERE user_id = ${targetUser.id} LIMIT 1`;
+            if (targetRoles.length > 0 && targetRoles[0].role) {
+                role = targetRoles[0].role;
+            }
+        } catch (roleErr) {
+            console.warn('[Impersonate API] user_roles query failed, skipping role verification:', roleErr);
+        }
 
         // 1. Log the impersonation event (gracefully handle if table doesn't exist yet)
         try {
