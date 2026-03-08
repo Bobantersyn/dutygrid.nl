@@ -17,8 +17,8 @@ export async function POST(request) {
             return Response.json({ error: 'Admin email is required.' }, { status: 400 });
         }
 
-        // 1. Fetch the user ID from the admin email (DutyGrid uses auth_users ID as the pseudo tenant_id)
-        const users = await sql`SELECT id, company_name FROM auth_users WHERE email = ${email}`;
+        // 1. Fetch the user ID from the admin email
+        const users = await sql`SELECT id FROM auth_users WHERE email = ${email}`;
         if (users.length === 0) {
             return Response.json({ error: 'Bedrijf niet gevonden op basis van email.' }, { status: 404 });
         }
@@ -66,43 +66,37 @@ export async function POST(request) {
             RETURNING id
         `;
 
-        // 3. Reset the Trial clock and subscription status directly on auth_users
-        const trialStartsAt = new Date();
-        const trialEndsAt = new Date();
-        trialEndsAt.setDate(trialEndsAt.getDate() + 14);
-
+        // 3. Delete the Auth Users (Planner & Guard use the staging domain, Admin uses the core email)
         await sql`
-            UPDATE auth_users 
-            SET 
-                trial_starts_at = ${trialStartsAt.toISOString()},
-                trial_ends_at = ${trialEndsAt.toISOString()},
-                subscription_status = 'trialing',
-                stripe_customer_id = NULL,
-                stripe_subscription_id = NULL,
-                current_period_end = NULL
-            WHERE id = ${userId}
+            DELETE FROM auth_users
+            WHERE email = ${email} OR email LIKE ${targetDomainPattern}
         `;
 
-        // 4. Log Audit Event
+        // Also clean up any loose references in audit_log
+        await sql`
+            DELETE FROM audit_logs
+            WHERE user_id = ${userId}
+        `;
+
         if (session?.user?.id) {
             await logAudit(
                 session,
-                'UPDATE',
+                'DELETE',
                 'staging_environment',
                 userId,
+                { adminEmail: email, domain: targetDomainPattern },
                 null,
-                { action: 'reset', targetDomainPattern },
                 request
             );
         }
 
         return Response.json({
             success: true,
-            message: `Bedrijf succesvol gereset. ${deletedEmployees.length} mock medewerkers (en bijbehorende diensten) zijn verwijderd. De proefperiode staat weer op 14 dagen.`
+            message: `Bedrijf en alle accounttoegang succesvol verwijderd. ${deletedEmployees.length} mock medewerkers zijn opgeschoond.`
         });
 
     } catch (error) {
-        console.error('[ResetCompany API] Error:', error);
-        return Response.json({ error: 'De reset is mislukt vanwege een serverfout.' }, { status: 500 });
+        console.error('[DeleteCompany API] Error:', error);
+        return Response.json({ error: 'Het verwijderen is mislukt vanwege een serverfout.' }, { status: 500 });
     }
 }

@@ -81,18 +81,35 @@ export default function StagingTools() {
                                 <p className="text-xs text-slate-500">Klant wilt inloggen met wachtwoord? Wachtwoord voor alle 3 is: <span className="font-mono bg-white px-1 py-0.5 rounded border">{companyData.password}</span></p>
 
                                 {/* Danger Zone: Reset testdata */}
-                                <button
-                                    onClick={async () => {
-                                        if (!window.confirm("Weet je zeker dat je de test data voor dit bedrijf wilt wissen? Dit kan niet ongedaan worden gemaakt.")) return;
-                                        try {
-                                            const r = await fetch('/api/internal/staging-tools/reset-company', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: companyData.adminEmail }) });
-                                            if (r.ok) { const d = await r.json(); alert(d.message); }
-                                        } catch (e) { }
-                                    }}
-                                    className="text-xs text-red-500 hover:text-red-700 underline font-medium"
-                                >
-                                    Wis testdata voor account
-                                </button>
+                                <div className="flex items-center gap-3">
+                                    <button
+                                        onClick={async () => {
+                                            if (!window.confirm("Weet je zeker dat je de test data voor dit bedrijf wilt wissen? Dit kan niet ongedaan worden gemaakt.")) return;
+                                            try {
+                                                const r = await fetch('/api/internal/staging-tools/reset-company', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: companyData.adminEmail }) });
+                                                if (r.ok) { const d = await r.json(); alert(d.message); }
+                                            } catch (e) { }
+                                        }}
+                                        className="text-xs text-red-500 hover:text-red-700 underline font-medium"
+                                    >
+                                        Wis testdata (Behoud account)
+                                    </button>
+
+                                    <span className="text-slate-200">|</span>
+
+                                    <button
+                                        onClick={async () => {
+                                            if (!window.confirm("CRITISCHE ACTIE! Weet je zeker dat je dit HELE COMMANDO BEDRIJF (inclusief login accounts) wilt verwijderen?")) return;
+                                            try {
+                                                const r = await fetch('/api/internal/staging-tools/delete-company', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: companyData.adminEmail }) });
+                                                if (r.ok) { const d = await r.json(); alert(d.message); setCompanyData(null); }
+                                            } catch (e) { }
+                                        }}
+                                        className="text-xs text-red-600 hover:text-red-800 underline font-bold"
+                                    >
+                                        Delete Test Company
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     )}
@@ -246,6 +263,27 @@ export default function StagingTools() {
                                 </ul>
                             )}
                         </div>
+                    </div>
+
+                    {/* Nuke Everything Button */}
+                    <div className="mt-12 text-center relative z-10 border-t border-red-100 pt-8 pb-12">
+                        <button
+                            onClick={async () => {
+                                const confirm1 = window.confirm("WAARSCHUWING! Je staat op het punt om ALLE gegenereerde testbedrijven en mock-datarecords permanent te verwijderen uit de database. Doorgaan?");
+                                if (!confirm1) return;
+                                const confirm2 = window.prompt("Type 'NUKE' om deze destructieve actie te bevestigen.");
+                                if (confirm2 !== 'NUKE') { alert('Actie geannuleerd.'); return; }
+
+                                try {
+                                    const r = await fetch('/api/internal/staging-tools/nuke-companies', { method: 'POST' });
+                                    if (r.ok) { const d = await r.json(); alert(d.message); setCompanyData(null); }
+                                    else { alert('Fout bij uitvoeren nucleaire actie'); }
+                                } catch (e) { alert('Netwerk fout'); }
+                            }}
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-red-50 text-red-600 border border-red-200 rounded-lg hover:bg-red-600 hover:text-white transition-colors text-sm font-bold shadow-sm"
+                        >
+                            <span className="text-lg">☢️</span> Nuke ALL Test Companies
+                        </button>
                     </div>
                 </div>
             </div>

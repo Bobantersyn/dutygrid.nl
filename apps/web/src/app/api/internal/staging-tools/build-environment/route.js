@@ -1,16 +1,22 @@
 import sql from '@/app/api/utils/sql';
 import { hash } from 'argon2';
 import { requireStagingEnvironment } from '../guard.js';
+import { getSession } from '@/utils/session';
+import { logAudit } from '@/app/api/utils/audit-logger';
 
 export async function POST(request) {
     try {
         requireStagingEnvironment(); console.log("START API");
+        const session = await getSession(request);
 
         const body = await request.json();
-        const config = body; console.log("BODY PARSED", config.company.name); // the TestEnvironmentConfig payload
+        const config = body; console.log("BODY PARSED", config.company?.name); // the TestEnvironmentConfig payload
 
         const companyName = config.company?.name || 'Test Sandbox';
-        const adminEmail = config.company?.email || 'test+1@dutygrid.test';
+        const rawAdminEmail = config.company?.email || 'test+1@dutygrid.test';
+        // Intercept logic: Ensure all subsequent generated elements share the staging domain marker
+        const adminEmail = rawAdminEmail; // The core admin keeps their memorable email for login.
+        const stagingDomain = 'dutygrid-staging.local';
 
         let password = 'TestPassword123!';
         const hashedPassword = await hash(password);
@@ -41,7 +47,7 @@ export async function POST(request) {
             await sql`INSERT INTO user_roles (user_id, role) VALUES (${adminUser.id}, 'admin')`;
 
             // 2. Create the Planner
-            const plannerEmail = adminEmail.replace('@', '+planner@');
+            const plannerEmail = `planner@${adminUser.id}.${stagingDomain}`;
             const [plannerUser] = await sql`
                 INSERT INTO auth_users (email, name, "company_name", password, subscription_status, kvk_number, company_size, trial_ends_at, created_at)
                 VALUES (${plannerEmail}, 'Sandbox Planner', ${companyName}, ${hashedPassword}, ${currentPlan}, '12345678', ${companySize}, ${trialEndsAt}, ${now})
@@ -51,7 +57,7 @@ export async function POST(request) {
             await sql`INSERT INTO user_roles (user_id, role) VALUES (${plannerUser.id}, 'planner')`;
 
             // 3. Create the Guard (Medewerker)
-            const guardEmail = adminEmail.replace('@', '+guard@');
+            const guardEmail = `medewerker@${adminUser.id}.${stagingDomain}`;
             const [guardUser] = await sql`
                 INSERT INTO auth_users (email, name, "company_name", password, subscription_status, kvk_number, company_size, trial_ends_at, created_at)
                 VALUES (${guardEmail}, 'Sandbox Medewerker', ${companyName}, ${hashedPassword}, ${currentPlan}, '12345678', ${companySize}, ${trialEndsAt}, ${now})
@@ -86,7 +92,7 @@ export async function POST(request) {
                 if (seed.clients) {
                     const [client] = await sql`
                         INSERT INTO clients (name, email, city, status) 
-                        VALUES (${'Client ' + companyName}, 'contact@democlient.com', 'Utrecht', 'active')
+                        VALUES (${'Client ' + companyName}, ${`client@${adminUser.id}.${stagingDomain}`}, 'Utrecht', 'active')
                         RETURNING id
                     `;
                     clientId = client.id;
@@ -104,7 +110,7 @@ export async function POST(request) {
                     const extraEmpCount = config.mode === 'preset_pro' ? 38 : config.mode === 'preset_growth' ? 13 : 3;
                     const promises = Array.from({ length: extraEmpCount }).map((_, i) => sql`
                         INSERT INTO employees (name, first_name, last_name, email, hourly_rate, status)
-                        VALUES (${"Guard " + i}, 'Guard', ${i.toString()}, ${`guard${i}@test.com`}, 20.00, 'active')
+                        VALUES (${"Guard " + i}, 'Guard', ${i.toString()}, ${`guard${i}@${adminUser.id}.${stagingDomain}`}, 20.00, 'active')
                         RETURNING id
                     `);
                     const results = await Promise.all(promises);
@@ -139,6 +145,19 @@ export async function POST(request) {
                     `);
                     await Promise.all(incidentPromises);
                 }
+            }
+
+            // 6. Log Audit Event
+            if (session?.user?.id) {
+                await logAudit(
+                    session,
+                    'CREATE',
+                    'staging_environment',
+                    adminUser.id,
+                    null,
+                    { companyName, mode: config.mode, adminEmail },
+                    request
+                );
             }
 
             // Return success
