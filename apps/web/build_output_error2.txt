@@ -1,0 +1,278 @@
+
+> build
+> react-router build
+
+vite v6.4.1 building for production...
+transforming...
+✓ 3773 modules transformed.
+rendering chunks...
+computing gzip size...
+build/client/.vite/manifest.json                       36.04 kB │ gzip:  3.61 kB
+build/client/assets/page-JOTqagGk.css                   6.17 kB │ gzip:  1.28 kB
+build/client/assets/marketing-BsuawenR.css             19.60 kB │ gzip:  4.26 kB
+build/client/assets/root-C3d5sV98.css                  62.90 kB │ gzip:  9.96 kB
+build/client/assets/api._-BBR7LY95.js                   0.20 kB │ gzip:  0.16 kB
+build/client/assets/check-QWKEwIIY.js                   0.33 kB │ gzip:  0.26 kB
+build/client/assets/chevron-down-DrqU-SzR.js            0.34 kB │ gzip:  0.27 kB
+build/client/assets/chevron-up-CePrmRph.js              0.34 kB │ gzip:  0.27 kB
+build/client/assets/chevron-left-DZEKIgW-.js            0.34 kB │ gzip:  0.27 kB
+build/client/assets/chevron-right-CaZTVFR1.js           0.34 kB │ gzip:  0.27 kB
+build/client/assets/plus-BR0zTNXz.js                    0.36 kB │ gzip:  0.27 kB
+build/client/assets/x-kuevDIpM.js                       0.36 kB │ gzip:  0.27 kB
+build/client/assets/pen-BwHRf4f7.js                     0.37 kB │ gzip:  0.29 kB
+build/client/assets/filter-H1PunCzO.js                  0.37 kB │ gzip:  0.29 kB
+build/client/assets/arrow-right-BHwoJLB6.js             0.37 kB │ gzip:  0.29 kB
+build/client/assets/arrow-left-CW314TtR.js              0.37 kB │ gzip:  0.28 kB
+build/client/assets/send-WhCdrhTw.js                    0.38 kB │ gzip:  0.29 kB
+build/client/assets/search-D5-eURUN.js                  0.38 kB │ gzip:  0.29 kB
+build/client/assets/circle-check-Bq_pRD6w.js            0.39 kB │ gzip:  0.29 kB
+build/client/assets/useUser-BIboyE7a.js                 0.39 kB │ gzip:  0.27 kB
+build/client/assets/clock-BmCFr0ID.js                   0.39 kB │ gzip:  0.30 kB
+build/client/assets/circle-check-big-rwpMw87v.js        0.41 kB │ gzip:  0.31 kB
+build/client/assets/user-BghtlKw8.js                    0.41 kB │ gzip:  0.31 kB
+build/client/assets/eye-BW4ZDAdu.js                     0.41 kB │ gzip:  0.31 kB
+build/client/assets/map-pin-DGErrr3u.js                 0.41 kB │ gzip:  0.32 kB
+build/client/assets/circle-x-Dv3UpRf_.js                0.42 kB │ gzip:  0.30 kB
+build/client/assets/lock-DNzsQ7mr.js                    0.42 kB │ gzip:  0.31 kB
+build/client/assets/mail-BtsZA2Rm.js                    0.43 kB │ gzip:  0.33 kB
+build/client/assets/bar-chart-3-9JtD4EY2.js             0.44 kB │ gzip:  0.31 kB
+build/client/assets/circle-alert-1HXS_0Mz.js            0.46 kB │ gzip:  0.31 kB
+build/client/assets/upload-BXkz2TMu.js                  0.47 kB │ gzip:  0.34 kB
+build/client/assets/calendar-CbKOYrrA.js                0.47 kB │ gzip:  0.33 kB
+build/client/assets/image-VVRaW7DN.js                   0.47 kB │ gzip:  0.34 kB
+build/client/assets/triangle-alert-C-qSU92K.js          0.47 kB │ gzip:  0.34 kB
+build/client/assets/shield-BwiZIXUY.js                  0.48 kB │ gzip:  0.36 kB
+build/client/assets/save-Dt33enMF.js                    0.49 kB │ gzip:  0.34 kB
+build/client/assets/users-DP-cWHSU.js                   0.51 kB │ gzip:  0.35 kB
+build/client/assets/tag-BzuKhKTC.js                     0.53 kB │ gzip:  0.37 kB
+build/client/assets/file-text-Cmd2Z0QE.js               0.54 kB │ gzip:  0.34 kB
+build/client/assets/trash-2-OWL4p9YI.js                 0.56 kB │ gzip:  0.37 kB
+build/client/assets/useUserRole-DJdniWC_.js             0.59 kB │ gzip:  0.34 kB
+build/client/assets/phone-Bw7xL1de.js                   0.60 kB │ gzip:  0.38 kB
+build/client/assets/eye-off-7uxngIJ_.js                 0.61 kB │ gzip:  0.40 kB
+build/client/assets/MarketingLayout-DAeU-TRG.js         0.61 kB │ gzip:  0.40 kB
+build/client/assets/building-2-Bspq3srC.js              0.65 kB │ gzip:  0.38 kB
+build/client/assets/LoadingState-V-WnN_DJ.js            0.83 kB │ gzip:  0.49 kB
+build/client/assets/settings-B4w32gyd.js                0.94 kB │ gzip:  0.47 kB
+build/client/assets/calendar-clock-CVzl4I3G.js          0.96 kB │ gzip:  0.46 kB
+build/client/assets/CTABanner-e2VgjyeB.js               1.14 kB │ gzip:  0.59 kB
+build/client/assets/not-found-AqUbZ60m.js               1.27 kB │ gzip:  0.68 kB
+build/client/assets/createLucideIcon-B1yPfWRs.js        1.66 kB │ gzip:  0.70 kB
+build/client/assets/page-CGI4jQQ8.js                    2.06 kB │ gzip:  0.91 kB
+build/client/assets/page-HWXNpFFY.js                    3.22 kB │ gzip:  1.44 kB
+build/client/assets/FeatureGate-BrP6lhUD.js             3.30 kB │ gzip:  1.37 kB
+build/client/assets/page-Uf6hp579.js                    3.38 kB │ gzip:  1.40 kB
+build/client/assets/PolymorphicComponent-C4vmnFbQ.js    3.70 kB │ gzip:  1.38 kB
+build/client/assets/AuthProvider-DjmkCipK.js            4.10 kB │ gzip:  1.71 kB
+build/client/assets/page-CBPwGLZ-.js                    4.56 kB │ gzip:  1.85 kB
+build/client/assets/page-BHrydXqj.js                    4.60 kB │ gzip:  1.83 kB
+build/client/assets/page-EOszACzK.js                    4.73 kB │ gzip:  1.50 kB
+build/client/assets/page-DGhqvVYi.js                    5.34 kB │ gzip:  1.84 kB
+build/client/assets/MarketingFooter-ChSyVRKV.js         5.36 kB │ gzip:  1.70 kB
+build/client/assets/page-BIJZ6vlk.js                    5.62 kB │ gzip:  2.22 kB
+build/client/assets/page-CkXkyaYc.js                    6.10 kB │ gzip:  2.03 kB
+build/client/assets/useMutation-Wx3SRlia.js             6.17 kB │ gzip:  1.89 kB
+build/client/assets/NotificationBell-DVZB05fX.js        6.19 kB │ gzip:  2.23 kB
+build/client/assets/nl-DC0uupxd.js                      6.30 kB │ gzip:  2.01 kB
+build/client/assets/page-DRpNHcfE.js                    6.72 kB │ gzip:  2.42 kB
+build/client/assets/page-yG6YYxzp.js                    7.02 kB │ gzip:  2.32 kB
+build/client/assets/page-BpWwx7-x.js                    7.03 kB │ gzip:  2.70 kB
+build/client/assets/entry.client-C0KqWxMQ.js            7.20 kB │ gzip:  2.66 kB
+build/client/assets/page-BIl_tqXI.js                    7.38 kB │ gzip:  2.47 kB
+build/client/assets/AvailabilityPopup-aXgfbElv.js       7.60 kB │ gzip:  2.43 kB
+build/client/assets/page-HULy9wXS.js                    7.84 kB │ gzip:  2.31 kB
+build/client/assets/page-D1Y3mAyJ.js                    8.13 kB │ gzip:  2.30 kB
+build/client/assets/page-CerrC7EF.js                    8.41 kB │ gzip:  2.80 kB
+build/client/assets/page-eUc4bU82.js                    8.61 kB │ gzip:  2.98 kB
+build/client/assets/page-CUBWVyUz.js                    8.78 kB │ gzip:  2.86 kB
+build/client/assets/page-QA44Mreq.js                    9.33 kB │ gzip:  3.10 kB
+build/client/assets/page-B9xise4g.js                    9.89 kB │ gzip:  3.20 kB
+build/client/assets/page-Jb-kyXdF.js                   10.27 kB │ gzip:  3.26 kB
+build/client/assets/page-CMjMphQg.js                   10.79 kB │ gzip:  3.28 kB
+build/client/assets/page-BzbfE5Pk.js                   11.14 kB │ gzip:  3.49 kB
+build/client/assets/QuickPlanModal-CIG6TRgr.js         11.23 kB │ gzip:  3.44 kB
+build/client/assets/page-DVrzO_PO.js                   12.13 kB │ gzip:  3.67 kB
+build/client/assets/page-BS2h7cG2.js                   13.88 kB │ gzip:  4.06 kB
+build/client/assets/page-Cm38P--0.js                   15.22 kB │ gzip:  4.35 kB
+build/client/assets/page-BKS7AEXU.js                   16.39 kB │ gzip:  4.21 kB
+build/client/assets/page-BlALLF0q.js                   21.45 kB │ gzip:  5.31 kB
+build/client/assets/page-DjxJ2F-5.js                   21.97 kB │ gzip:  5.49 kB
+build/client/assets/index-9askVzL2.js                  26.33 kB │ gzip:  7.54 kB
+build/client/assets/format-B6tA65fF.js                 27.23 kB │ gzip:  5.92 kB
+build/client/assets/page-DZoWSVrz.js                   29.41 kB │ gzip:  6.15 kB
+build/client/assets/page-B_tl7jam.js                   31.06 kB │ gzip: 11.57 kB
+build/client/assets/page-BTk19PUz.js                   32.63 kB │ gzip:  8.90 kB
+build/client/assets/page-C6e2xyfz.js                   34.98 kB │ gzip:  7.98 kB
+build/client/assets/page-CdIit1xd.js                   63.88 kB │ gzip: 14.76 kB
+build/client/assets/root-H3oRFLms.js                   83.72 kB │ gzip: 24.74 kB
+build/client/assets/page-DjMfzdCt.js                  103.31 kB │ gzip: 30.66 kB
+build/client/assets/page-qOXrZ_N4.js                  106.71 kB │ gzip: 24.20 kB
+build/client/assets/chunk-JZWAC4HX-p9aGx4ri.js        124.33 kB │ gzip: 41.68 kB
+build/client/assets/index-BZykBTrK.js                 135.05 kB │ gzip: 43.32 kB
+✓ built in 5.94s
+vite v6.4.1 building SSR bundle for production...
+transforming...
+src/app/contact/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/administratie/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/docs/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/dev-login/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/diensten-ruilen/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/beschikbaarheid/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/beschikbaarheid-overzicht/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/cao-management/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/clients/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/incidenten/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/quick-login/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/planning/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/account/logout/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/test-login/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/employees/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/setup-role/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/account/signin/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/(app)/my-leave/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/test-setup/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/account/profile/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/employees/[id]/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/account/signup/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/admin/settings/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/planning/afwijkingen/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/incidenten/beheer/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/facturatie/uren/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/employees/new/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/planning/reports/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/planning/new/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/planning/v2/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/planning/edit/[id]/page.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/Marketing/PricingCards.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/Availability/ExceptionsList.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/Availability/WeekPattern.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/ShiftSwaps/SwapRequestModal.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/Dashboard/AvailabilityPopup.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/Planning/QuickPlanModal.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/Marketing/MarketingNavbar.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/Admin/ObjectLabelSettings.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/Dashboard/MobileLaunchpad.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/providers/AuthProvider.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/Subscription/SubscriptionPlans.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/app/providers.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/Navigation/MobileBottomNav.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/Navigation/TopNavigation.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/__create/useDevServerHeartbeat.ts (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/Dashboard/GuardClockIn.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/NotificationBell.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+✓ 201 modules transformed.
+✗ Build failed in 2.10s
+Could not resolve "./guard" from "src/app/api/internal/staging-tools/mail-sink/route.js"
+file: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/internal/staging-tools/mail-sink/route.js
+    at getRollupError (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/parseAst.js:402:41)
+    at error (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/parseAst.js:398:42)
+    at ModuleLoader.handleInvalidResolvedId (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:21687:24)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:21647:26 {
+  code: 'UNRESOLVED_IMPORT',
+  exporter: './guard',
+  id: '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/internal/staging-tools/mail-sink/route.js',
+  watchFiles: [
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/functies/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/prijzen/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/contact/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/(app)/my-leave/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/account/logout/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/(dashboard)/account/subscription/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/account/signin/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/account/profile/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/account/signup/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/admin/settings/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/beschikbaarheid/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/administratie/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/cao-management/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/dev-login/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/diensten-ruilen/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/clients/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/root.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/docs/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/employees/[id]/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/beschikbaarheid-overzicht/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/employees/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/employees/new/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/incidenten/beheer/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/incidenten/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/facturatie/uren/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/afwijkingen/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/edit/[id]/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/new/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/reports/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/v2/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/quick-login/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/setup-role/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/test-login/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/test-setup/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/migrations/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api.$.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/__create/not-found.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/config/defaults/entry.server.node.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/package.json',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/CTABanner.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/PolymorphicComponent.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/MarketingLayout.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useUserRole.ts',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/LoadingState.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ShiftSwaps/SwapRequestModal.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/PricingCards.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Availability/WeekPattern.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Availability/ExceptionsList.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/AvailabilityPopup.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/useUpload.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/useUser.ts',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/usePlanningWeek.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/usePlanningData.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useSystemSettings.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/PlanningHeader.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/PlanningControls.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/DeleteModal.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/WeekView.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/DayView.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/SwapRequestsPanel.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/GapsWarning.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/SwapApprovalModal.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/MobileFilterSheet.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/AvailabilitySidebar.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/QuickPlanModal.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/EmployeeDetailDrawer.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/MonthView.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/AvailabilityStatusModal.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/useAuth.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/marketing.css',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/tailwind.config.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useCaoTypes.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeShifts.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeFileUpload.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ShiftsHistory.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeDetail.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/EmployeeHeader.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/PersonalInfoForm.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ErrorState.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/LoadingState.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/DeleteConfirmationModal.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ProfilePhotoUpload.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/AvailabilityView.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/DocumentUpload.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Admin/ObjectLabelSettings.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ui/FeatureGate.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/PhotoUpload.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Subscription/SubscriptionOverview.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Subscription/SubscriptionPlans.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/providers/AuthProvider.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/FeaturesGrid.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useDashboardData.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/HeroSection.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/MarketingFooter.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/MarketingNavbar.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/StatsCards.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/QuickActions.tsx',
+    ... 135 more items
+  ]
+}

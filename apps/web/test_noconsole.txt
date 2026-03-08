@@ -1,0 +1,13 @@
+
+> dev
+> react-router dev
+
+  ➜  Local:   http://localhost:5005/
+  ➜  Network: http://192.168.0.201:5005/
+  ➜  press h + enter to show help
+1:04:10 PM [vite] (client) Pre-transform error: SPA Mode: 2 invalid route export(s) in `./api.$.tsx`: `loader`, `action`. See https://reactrouter.com/how-to/spa for more information.
+  Plugin: react-router:route-exports
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api.$.tsx
+1:04:10 PM [vite] (client) Pre-transform error: SPA Mode: 1 invalid route export(s) in `./__create/not-found.tsx`: `loader`. See https://reactrouter.com/how-to/spa for more information.
+  Plugin: react-router:route-exports
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/__create/not-found.tsx

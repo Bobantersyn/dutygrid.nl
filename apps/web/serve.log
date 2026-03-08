@@ -1,0 +1,146 @@
+[page.tsx] MODULE EVALUATED!
+--- STARTING REGISTER ROUTES ---
+[route-builder] importing ../src/app/api/availability/exceptions/batch/delete/route.js
+[route-builder] successfully imported ../src/app/api/availability/exceptions/batch/delete/route.js
+[route-builder] importing ../src/app/api/shift-swaps/suggestions/[shift_id]/route.js
+[route-builder] successfully imported ../src/app/api/shift-swaps/suggestions/[shift_id]/route.js
+[route-builder] importing ../src/app/api/employees/availability-overview/route.js
+[route-builder] successfully imported ../src/app/api/employees/availability-overview/route.js
+[route-builder] importing ../src/app/api/availability/exceptions/batch/route.js
+[route-builder] successfully imported ../src/app/api/availability/exceptions/batch/route.js
+[route-builder] importing ../src/app/api/shifts/[id]/approve-override/route.js
+[route-builder] successfully imported ../src/app/api/shifts/[id]/approve-override/route.js
+[route-builder] importing ../src/app/api/availability/saved-patterns/route.js
+[route-builder] successfully imported ../src/app/api/availability/saved-patterns/route.js
+[route-builder] importing ../src/app/api/planning/availability-check/route.js
+[route-builder] successfully imported ../src/app/api/planning/availability-check/route.js
+[route-builder] importing ../src/app/api/availability/week-overview/route.js
+[route-builder] successfully imported ../src/app/api/availability/week-overview/route.js
+[route-builder] importing ../src/app/api/notifications/unread-count/route.js
+[route-builder] successfully imported ../src/app/api/notifications/unread-count/route.js
+[route-builder] importing ../src/app/api/availability/exceptions/route.js
+[route-builder] successfully imported ../src/app/api/availability/exceptions/route.js
+[route-builder] importing ../src/app/api/test-create-beveiliger/route.js
+[route-builder] successfully imported ../src/app/api/test-create-beveiliger/route.js
+[route-builder] importing ../src/app/api/reports/billing/export/route.js
+[route-builder] successfully imported ../src/app/api/reports/billing/export/route.js
+[route-builder] importing ../src/app/api/availability/patterns/route.js
+[route-builder] successfully imported ../src/app/api/availability/patterns/route.js
+[route-builder] importing ../src/app/api/reports/hours/export/route.js
+[route-builder] successfully imported ../src/app/api/reports/hours/export/route.js
+[route-builder] importing ../src/app/api/custom-auth/session/route.js
+[route-builder] successfully imported ../src/app/api/custom-auth/session/route.js
+[route-builder] importing ../src/app/api/availability/check/route.js
+[route-builder] successfully imported ../src/app/api/availability/check/route.js
+[route-builder] importing ../src/app/api/custom-auth/logout/route.js
+[route-builder] successfully imported ../src/app/api/custom-auth/logout/route.js
+[route-builder] importing ../src/app/api/debug-constraints/route.js
+[route-builder] successfully imported ../src/app/api/debug-constraints/route.js
+[route-builder] importing ../src/app/api/custom-auth/login/route.js
+[route-builder] successfully imported ../src/app/api/custom-auth/login/route.js
+[route-builder] importing ../src/app/api/assignments/[id]/route.js
+[route-builder] successfully imported ../src/app/api/assignments/[id]/route.js
+[route-builder] importing ../src/app/api/planning/suggest/route.js
+[route-builder] successfully imported ../src/app/api/planning/suggest/route.js
+[route-builder] importing ../src/app/api/shift-swaps/[id]/route.js
+[route-builder] successfully imported ../src/app/api/shift-swaps/[id]/route.js
+[route-builder] importing ../src/app/api/system-settings/route.js
+[route-builder] successfully imported ../src/app/api/system-settings/route.js
+[route-builder] importing ../src/app/api/reports/billing/route.js
+[route-builder] successfully imported ../src/app/api/reports/billing/route.js
+[route-builder] importing ../src/app/api/cao-types/[id]/route.js
+[route-builder] successfully imported ../src/app/api/cao-types/[id]/route.js
+[route-builder] importing ../src/app/api/employees/[id]/route.js
+[route-builder] successfully imported ../src/app/api/employees/[id]/route.js
+[route-builder] importing ../src/app/api/migrations/run/route.js
+[route-builder] successfully imported ../src/app/api/migrations/run/route.js
+[route-builder] importing ../src/app/api/notifications/route.js
+[route-builder] successfully imported ../src/app/api/notifications/route.js
+[route-builder] importing ../src/app/api/planning-gaps/route.js
+[route-builder] successfully imported ../src/app/api/planning-gaps/route.js
+[route-builder] importing ../src/app/api/reports/hours/route.js
+[route-builder] successfully imported ../src/app/api/reports/hours/route.js
+[route-builder] importing ../src/app/api/debug-schema/route.js
+[route-builder] successfully imported ../src/app/api/debug-schema/route.js
+[route-builder] importing ../src/app/api/clients/[id]/route.js
+[route-builder] successfully imported ../src/app/api/clients/[id]/route.js
+[route-builder] importing ../src/app/api/hours/export/route.js
+[route-builder] successfully imported ../src/app/api/hours/export/route.js
+[route-builder] importing ../src/app/api/assignments/route.js
+[route-builder] successfully imported ../src/app/api/assignments/route.js
+[route-builder] importing ../src/app/api/quick-login/route.js
+[route-builder] successfully imported ../src/app/api/quick-login/route.js
+[route-builder] importing ../src/app/api/shift-swaps/route.js
+[route-builder] successfully imported ../src/app/api/shift-swaps/route.js
+[route-builder] importing ../src/app/api/admin/users/route.js
+[route-builder] successfully imported ../src/app/api/admin/users/route.js
+[route-builder] importing ../src/app/api/shifts/[id]/route.js
+[route-builder] successfully imported ../src/app/api/shifts/[id]/route.js
+[route-builder] importing ../src/app/api/leave/[id]/route.js
+[route-builder] successfully imported ../src/app/api/leave/[id]/route.js
+[route-builder] importing ../src/app/api/cao-types/route.js
+[route-builder] successfully imported ../src/app/api/cao-types/route.js
+[route-builder] importing ../src/app/api/employees/route.js
+[route-builder] successfully imported ../src/app/api/employees/route.js
+[route-builder] importing ../src/app/api/user-role/route.js
+[route-builder] successfully imported ../src/app/api/user-role/route.js
+[route-builder] importing ../src/app/api/clients/route.js
+[route-builder] successfully imported ../src/app/api/clients/route.js
+[route-builder] importing ../src/app/api/shifts/route.js
+[route-builder] successfully imported ../src/app/api/shifts/route.js
+[route-builder] importing ../src/app/api/audit/route.js
+[route-builder] successfully imported ../src/app/api/audit/route.js
+[route-builder] importing ../src/app/api/hours/route.js
+[route-builder] successfully imported ../src/app/api/hours/route.js
+[route-builder] importing ../src/app/api/leave/route.js
+[route-builder] successfully imported ../src/app/api/leave/route.js
+--- FINISHED REGISTER ROUTES ---
+--- STARTING EVALUATION OF __create/index.ts ---
+--- __create/index.ts initialized ---
+[react-router-serve] http://localhost:5005 (http://192.168.0.201:5005)
+HEAD /account/subscription 200 - - 6.859 ms
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/subscription
+GET /account/subscription 200 - - 17.494 ms
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /src/__create/dev-error-overlay.js
+GET /src/__create/dev-error-overlay.js 200 - - 37.195 ms
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[traceId:e6201428-7e1d-402a-8147-da7422e5b4dc] [Session API] Error: Error: No database connection string was provided to `neon()`. Perhaps process.env.DATABASE_URL has not been set
+    at NullishQueryFunction (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/sql-BfhTxwII.js:4:9)
+    at Module.GET (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/route-CqrtVi28.js:30:31)
+    at handler (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js:25813:39)
+    at dispatch (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/hono/dist/compose.js:22:23)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/hono/dist/compose.js:22:46
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at contextStorage2 (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/hono/dist/middleware/context-storage/index.js:6:29)
+    at dispatch (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/hono/dist/compose.js:22:23)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/hono/dist/compose.js:22:46
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js:25873:12
+[Hono] Request finished: GET /api/custom-auth/session
+GET /api/custom-auth/session 200 - - 13.037 ms
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /
+[page.tsx] HomePage rendered
+[page.tsx] HomeContent rendered. userLoading: true user: undefined
+GET / 200 - - 5.194 ms
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /src/__create/dev-error-overlay.js
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[traceId:3c1e9bac-d8b3-4447-88be-83331819341f] [Session API] Error: Error: No database connection string was provided to `neon()`. Perhaps process.env.DATABASE_URL has not been set
+    at NullishQueryFunction (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/sql-BfhTxwII.js:4:9)
+    at Module.GET (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/assets/route-CqrtVi28.js:30:31)
+    at handler (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js:25813:39)
+    at dispatch (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/hono/dist/compose.js:22:23)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/hono/dist/compose.js:22:46
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at contextStorage2 (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/hono/dist/middleware/context-storage/index.js:6:29)
+    at dispatch (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/hono/dist/compose.js:22:23)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/hono/dist/compose.js:22:46
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js:25873:12
+[Hono] Request finished: GET /api/custom-auth/session
+GET /api/custom-auth/session 200 - - 8.491 ms
+GET /src/__create/dev-error-overlay.js 200 - - 32.051 ms
+

@@ -1,0 +1,690 @@
+
+> dev
+> react-router dev
+
+2026-03-01T11:53:43.606Z vite:transform 6.06ms react-router.config.ts
+2026-03-01T11:53:43.607Z vite:transform 7.14ms react-router.config.ts
+2026-03-01T11:53:43.612Z vite:resolve 0.20ms @vercel/react-router/vite -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@vercel/react-router/vite.js
+2026-03-01T11:53:43.614Z vite:resolve 0.23ms @vercel/react-router/vite -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@vercel/react-router/vite.js
+2026-03-01T11:53:43.801Z vite:transform 1.60ms src/app/routes.ts
+2026-03-01T11:53:43.801Z vite:transform 1.74ms src/app/routes.ts
+2026-03-01T11:53:43.805Z vite:resolve 0.25ms @react-router/dev/routes -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/routes.js
+2026-03-01T11:53:43.807Z vite:resolve 0.15ms @react-router/dev/routes -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/routes.js
+  ➜  Local:   http://localhost:5005/
+  ➜  Network: http://192.168.0.201:5005/
+  ➜  press h + enter to show help
+2026-03-01T11:53:44.178Z vite:resolve 4.46ms /src/app/root.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/root.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.57ms /src/app/routes.ts -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/routes.ts
+2026-03-01T11:53:44.178Z vite:resolve 4.60ms /src/app/api.$.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api.$.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.61ms /src/app/global.css -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/global.css
+2026-03-01T11:53:44.178Z vite:resolve 4.62ms /src/app/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.63ms /src/app/providers.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/providers.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.64ms /src/app/__create/not-found.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/__create/not-found.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.64ms /src/app/api/vitest.config.ts -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/vitest.config.ts
+2026-03-01T11:53:44.178Z vite:resolve 4.65ms /src/app/administratie/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/administratie/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.66ms /src/app/beschikbaarheid-overzicht/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/beschikbaarheid-overzicht/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.67ms /src/app/beschikbaarheid/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/beschikbaarheid/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.68ms /src/app/clients/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/clients/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.68ms /src/app/dev-login/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/dev-login/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.69ms /src/app/contact/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/contact/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.70ms /src/app/cao-management/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/cao-management/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.71ms /src/app/docs/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/docs/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.74ms /src/app/diensten-ruilen/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/diensten-ruilen/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.75ms /src/app/employees/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/employees/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.76ms /src/app/functies/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/functies/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.76ms /src/app/incidenten/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/incidenten/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.77ms /src/app/migrations/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/migrations/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.78ms /src/app/planning/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.79ms /src/app/quick-login/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/quick-login/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.79ms /src/app/prijzen/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/prijzen/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.80ms /src/app/test-setup/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/test-setup/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.81ms /src/app/test-login/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/test-login/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.81ms /src/app/setup-role/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/setup-role/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.82ms /src/app/(app)/my-leave/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/(app)/my-leave/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.83ms /src/app/account/logout/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/account/logout/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.83ms /src/app/account/profile/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/account/profile/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.84ms /src/app/account/signin/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/account/signin/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.85ms /src/app/admin/settings/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/admin/settings/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.85ms /src/app/account/trial-expired/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/account/trial-expired/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.86ms /src/app/account/signup/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/account/signup/page.tsx
+2026-03-01T11:53:44.178Z vite:resolve 4.87ms /src/app/api/audit/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/audit/route.js
+2026-03-01T11:53:44.178Z vite:resolve 4.87ms /src/app/api/assignments/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/assignments/route.js
+2026-03-01T11:53:44.178Z vite:resolve 4.89ms /src/app/api/cao-types/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/cao-types/route.js
+2026-03-01T11:53:44.178Z vite:resolve 4.90ms /src/app/api/clients/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/clients/route.js
+2026-03-01T11:53:44.178Z vite:resolve 4.91ms /src/app/api/debug-schema/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/debug-schema/route.js
+2026-03-01T11:53:44.178Z vite:resolve 4.92ms /src/app/api/debug-constraints/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/debug-constraints/route.js
+2026-03-01T11:53:44.178Z vite:resolve 4.92ms /src/app/api/incidents/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/incidents/route.js
+2026-03-01T11:53:44.178Z vite:resolve 4.93ms /src/app/api/employees/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/employees/route.js
+2026-03-01T11:53:44.178Z vite:resolve 4.93ms /src/app/api/hours/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/hours/route.js
+2026-03-01T11:53:44.178Z vite:resolve 4.94ms /src/app/api/leave/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/leave/route.js
+2026-03-01T11:53:44.178Z vite:resolve 4.95ms /src/app/api/notifications/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/notifications/route.js
+2026-03-01T11:53:44.178Z vite:resolve 4.95ms /src/app/api/object-labels/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/object-labels/route.js
+2026-03-01T11:53:44.178Z vite:resolve 4.96ms /src/app/api/planning-gaps/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/planning-gaps/route.js
+2026-03-01T11:53:44.178Z vite:resolve 4.97ms /src/app/api/shifts/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/shifts/route.js
+2026-03-01T11:53:44.179Z vite:resolve 4.97ms /src/app/api/quick-login/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/quick-login/route.js
+2026-03-01T11:53:44.179Z vite:resolve 4.98ms /src/app/api/shift-swaps/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/shift-swaps/route.js
+2026-03-01T11:53:44.179Z vite:resolve 4.99ms /src/app/api/system-settings/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/system-settings/route.js
+2026-03-01T11:53:44.179Z vite:resolve 4.99ms /src/app/api/test-create-beveiliger/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/test-create-beveiliger/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.00ms /src/app/api/test-seed/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/test-seed/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.01ms /src/app/api/utils/2fa-helper.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/2fa-helper.js
+2026-03-01T11:53:44.179Z vite:resolve 5.01ms /src/app/api/utils/audit-logger.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/audit-logger.js
+2026-03-01T11:53:44.179Z vite:resolve 5.02ms /src/app/api/utils/distance.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/distance.js
+2026-03-01T11:53:44.179Z vite:resolve 5.04ms /src/app/api/utils/planning-helpers.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/planning-helpers.js
+2026-03-01T11:53:44.179Z vite:resolve 5.04ms /src/app/api/utils/rate-limiter.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/rate-limiter.js
+2026-03-01T11:53:44.179Z vite:resolve 5.05ms /src/app/api/utils/security-headers.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/security-headers.js
+2026-03-01T11:53:44.179Z vite:resolve 5.06ms /src/app/api/utils/sql.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/sql.js
+2026-03-01T11:53:44.179Z vite:resolve 5.06ms /src/app/api/utils/upload.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/upload.js
+2026-03-01T11:53:44.179Z vite:resolve 5.07ms /src/app/api/user-role/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/user-role/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.08ms /src/app/employees/new/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/employees/new/page.tsx
+2026-03-01T11:53:44.179Z vite:resolve 5.08ms /src/app/planning/afwijkingen/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/afwijkingen/page.tsx
+2026-03-01T11:53:44.179Z vite:resolve 5.09ms /src/app/employees/[id]/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/employees/[id]/page.tsx
+2026-03-01T11:53:44.179Z vite:resolve 5.09ms /src/app/facturatie/uren/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/facturatie/uren/page.tsx
+2026-03-01T11:53:44.179Z vite:resolve 5.10ms /src/app/incidenten/beheer/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/incidenten/beheer/page.tsx
+2026-03-01T11:53:44.179Z vite:resolve 5.11ms /src/app/planning/new/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/new/page.tsx
+2026-03-01T11:53:44.179Z vite:resolve 5.11ms /src/app/planning/reports/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/reports/page.tsx
+2026-03-01T11:53:44.179Z vite:resolve 5.12ms /src/app/planning/v2/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/v2/page.tsx
+2026-03-01T11:53:44.179Z vite:resolve 5.13ms /src/app/(dashboard)/account/subscription/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/(dashboard)/account/subscription/page.tsx
+2026-03-01T11:53:44.179Z vite:resolve 5.13ms /src/app/api/admin/users/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/admin/users/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.14ms /src/app/api/assignments/[id]/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/assignments/[id]/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.14ms /src/app/api/cao-types/[id]/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/cao-types/[id]/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.15ms /src/app/api/availability/check/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/check/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.16ms /src/app/api/availability/exceptions/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/exceptions/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.18ms /src/app/api/availability/saved-patterns/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/saved-patterns/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.19ms /src/app/api/availability/week-overview/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/week-overview/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.19ms /src/app/api/availability/patterns/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/patterns/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.20ms /src/app/api/custom-auth/session/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/custom-auth/session/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.21ms /src/app/api/custom-auth/logout/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/custom-auth/logout/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.22ms /src/app/api/custom-auth/login/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/custom-auth/login/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.22ms /src/app/api/clients/[id]/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/clients/[id]/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.23ms /src/app/api/cron/data-retention/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/cron/data-retention/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.24ms /src/app/api/custom-auth/signup/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/custom-auth/signup/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.24ms /src/app/api/employees/[id]/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/employees/[id]/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.25ms /src/app/api/hours/export/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/hours/export/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.26ms /src/app/api/employees/availability-overview/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/employees/availability-overview/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.26ms /src/app/api/leave/[id]/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/leave/[id]/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.27ms /src/app/api/planning/availability-check/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/planning/availability-check/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.28ms /src/app/api/migrations/run/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/migrations/run/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.28ms /src/app/api/notifications/unread-count/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/notifications/unread-count/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.29ms /src/app/api/planning/suggest/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/planning/suggest/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.29ms /src/app/api/shifts/[id]/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/shifts/[id]/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.30ms /src/app/api/planning/generate/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/planning/generate/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.32ms /src/app/api/reports/billing/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/reports/billing/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.32ms /src/app/api/shift-swaps/[id]/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/shift-swaps/[id]/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.33ms /src/app/api/reports/hours/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/reports/hours/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.34ms /src/app/planning/edit/[id]/page.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/edit/[id]/page.tsx
+2026-03-01T11:53:44.179Z vite:resolve 5.34ms /src/app/api/availability/exceptions/batch/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/exceptions/batch/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.35ms /src/app/api/shifts/[id]/approve-override/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/shifts/[id]/approve-override/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.35ms /src/app/api/reports/billing/export/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/reports/billing/export/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.36ms /src/app/api/reports/hours/export/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/reports/hours/export/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.37ms /src/app/api/shift-swaps/suggestions/[shift_id]/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/shift-swaps/suggestions/[shift_id]/route.js
+2026-03-01T11:53:44.179Z vite:resolve 5.37ms /src/app/api/availability/exceptions/batch/delete/route.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/availability/exceptions/batch/delete/route.js
+2026-03-01T11:53:44.583Z vite:resolve 0.32ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/sql -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/sql.js
+2026-03-01T11:53:44.583Z vite:resolve 0.40ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/session -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/session.js
+2026-03-01T11:53:44.583Z vite:resolve 0.62ms @/app/api/utils/sql -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/sql.js
+2026-03-01T11:53:44.583Z vite:resolve 0.64ms @/utils/session -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/session.js
+2026-03-01T11:53:44.583Z vite:transform 27.29ms /src/app/api/assignments/route.js
+2026-03-01T11:53:44.584Z vite:transform 0.23ms [skipped]  virtual:console-to-parent
+2026-03-01T11:53:44.601Z vite:resolve 0.25ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/audit-logger -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/audit-logger.js
+2026-03-01T11:53:44.601Z vite:resolve 0.49ms @/app/api/utils/audit-logger -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/audit-logger.js
+2026-03-01T11:53:44.601Z vite:transform 3.08ms /src/app/api/audit/route.js
+2026-03-01T11:53:44.603Z vite:transform 1.76ms /src/app/api/cao-types/route.js
+2026-03-01T11:53:44.629Z vite:transform 1.51ms /src/app/api/debug-schema/route.js
+2026-03-01T11:53:44.633Z vite:transform 3.41ms /src/app/api/employees/route.js
+2026-03-01T11:53:44.634Z vite:transform 1.21ms /src/app/api/clients/route.js
+2026-03-01T11:53:44.639Z vite:transform 4.88ms /src/app/api/leave/route.js
+2026-03-01T11:53:44.641Z vite:transform 1.76ms /src/app/api/notifications/route.js
+2026-03-01T11:53:44.645Z vite:resolve 0.16ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/feature-flags -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/feature-flags.ts
+2026-03-01T11:53:44.645Z vite:resolve 0.37ms @/utils/feature-flags -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/feature-flags.ts
+2026-03-01T11:53:44.645Z vite:transform 3.90ms /src/app/api/hours/route.js
+2026-03-01T11:53:44.646Z vite:resolve 0.26ms ../utils/planning-helpers.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/planning-helpers.js
+2026-03-01T11:53:44.647Z vite:transform 1.84ms /src/app/api/planning-gaps/route.js
+2026-03-01T11:53:44.650Z vite:resolve 0.18ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/argon2 -> null
+2026-03-01T11:53:44.650Z vite:resolve 0.58ms argon2 -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/argon2.js?v=b8390700
+2026-03-01T11:53:44.650Z vite:transform 2.66ms /src/app/api/quick-login/route.js
+2026-03-01T11:53:44.652Z vite:transform 2.15ms /src/app/api/test-create-beveiliger/route.js
+2026-03-01T11:53:44.654Z vite:transform 1.08ms /src/app/api/system-settings/route.js
+2026-03-01T11:53:44.657Z vite:resolve 0.21ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/notifications -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/notifications.js
+2026-03-01T11:53:44.657Z vite:resolve 0.43ms @/utils/notifications -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/notifications.js
+2026-03-01T11:53:44.657Z vite:transform 3.68ms /src/app/api/shift-swaps/route.js
+2026-03-01T11:53:44.658Z vite:transform 1.13ms /src/app/api/object-labels/route.js
+2026-03-01T11:53:44.660Z vite:transform 1.48ms /src/app/api/test-seed/route.js
+2026-03-01T11:53:44.666Z vite:resolve 0.32ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/planning-helpers -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/planning-helpers.js
+2026-03-01T11:53:44.667Z vite:resolve 0.39ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/distance -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/distance.js
+2026-03-01T11:53:44.667Z vite:resolve 0.64ms @/app/api/utils/planning-helpers -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/planning-helpers.js
+2026-03-01T11:53:44.667Z vite:resolve 0.66ms @/app/api/utils/distance -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/distance.js
+2026-03-01T11:53:44.667Z vite:transform 6.87ms /src/app/api/shifts/route.js
+2026-03-01T11:53:44.668Z vite:transform 0.73ms /src/app/api/debug-constraints/route.js
+2026-03-01T11:53:44.670Z vite:transform 2.38ms /src/app/api/incidents/route.js
+2026-03-01T11:53:44.672Z vite:resolve 0.16ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/speakeasy -> null
+2026-03-01T11:53:44.672Z vite:resolve 0.20ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/crypto -> null
+2026-03-01T11:53:44.672Z vite:resolve 0.21ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/qrcode -> null
+2026-03-01T11:53:44.673Z vite:resolve 0.57ms speakeasy -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/speakeasy.js?v=b8390700
+2026-03-01T11:53:44.673Z vite:resolve 0.58ms crypto -> __vite-browser-external:crypto
+2026-03-01T11:53:44.673Z vite:resolve 0.60ms qrcode -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/qrcode.js?v=b8390700
+2026-03-01T11:53:44.673Z vite:transform 2.92ms /src/app/api/utils/2fa-helper.js
+2026-03-01T11:53:44.673Z vite:transform 0.17ms [skipped] __vite-browser-external:crypto
+2026-03-01T11:53:44.677Z vite:transform 3.55ms /src/app/api/utils/audit-logger.js
+2026-03-01T11:53:44.682Z vite:resolve 0.15ms ./sql.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/sql.js
+2026-03-01T11:53:44.682Z vite:resolve 0.19ms ./distance.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/distance.js
+2026-03-01T11:53:44.682Z vite:transform 5.12ms /src/app/api/utils/planning-helpers.js
+2026-03-01T11:53:44.683Z vite:transform 1.05ms /src/app/api/utils/security-headers.js
+2026-03-01T11:53:44.686Z vite:resolve 0.08ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/@neondatabase/serverless -> null
+2026-03-01T11:53:44.686Z vite:resolve 0.29ms @neondatabase/serverless -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/@neondatabase_serverless.js?v=b8390700
+2026-03-01T11:53:44.687Z vite:transform 3.16ms /src/app/api/utils/sql.js
+2026-03-01T11:53:44.688Z vite:transform 1.47ms /src/app/api/utils/distance.js
+2026-03-01T11:53:44.704Z vite:transform 1.17ms /src/app/api/utils/upload.js
+2026-03-01T11:53:44.709Z vite:transform 5.02ms /src/app/api/utils/rate-limiter.js
+2026-03-01T11:53:44.711Z vite:transform 2.05ms /src/app/api/user-role/route.js
+2026-03-01T11:53:44.743Z vite:transform 2.78ms /src/app/api/admin/users/route.js
+2026-03-01T11:53:44.804Z vite:transform 4.62ms /src/app/api/assignments/[id]/route.js
+2026-03-01T11:53:44.809Z vite:transform 1.88ms /src/app/api/cao-types/[id]/route.js
+2026-03-01T11:53:44.811Z vite:transform 1.82ms /src/app/api/availability/check/route.js
+2026-03-01T11:53:44.813Z vite:transform 1.90ms /src/app/api/availability/exceptions/route.js
+2026-03-01T11:53:44.814Z vite:resolve 0.14ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/jose -> null
+2026-03-01T11:53:44.814Z vite:resolve 0.24ms jose -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/jose.js?v=b8390700
+2026-03-01T11:53:44.814Z vite:transform 1.53ms /src/app/api/custom-auth/session/route.js
+2026-03-01T11:53:44.816Z vite:transform 1.43ms /src/app/api/availability/patterns/route.js
+2026-03-01T11:53:44.819Z vite:transform 3.66ms /src/app/api/availability/week-overview/route.js
+2026-03-01T11:53:44.820Z vite:transform 0.98ms /src/app/api/custom-auth/logout/route.js
+2026-03-01T11:53:44.822Z vite:transform 1.30ms /src/app/api/availability/saved-patterns/route.js
+2026-03-01T11:53:44.825Z vite:transform 2.97ms /src/app/api/clients/[id]/route.js
+2026-03-01T11:53:44.826Z vite:transform 1.12ms /src/app/api/cron/data-retention/route.js
+2026-03-01T11:53:44.830Z vite:transform 2.32ms /src/app/api/employees/[id]/route.js
+2026-03-01T11:53:44.832Z vite:transform 1.33ms /src/app/api/employees/availability-overview/route.js
+2026-03-01T11:53:44.833Z vite:transform 1.54ms /src/app/api/hours/export/route.js
+2026-03-01T11:53:44.835Z vite:transform 1.87ms /src/app/api/leave/[id]/route.js
+2026-03-01T11:53:44.838Z vite:transform 0.93ms /src/app/api/notifications/unread-count/route.js
+2026-03-01T11:53:44.841Z vite:resolve 0.31ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node:fs/promises -> null
+2026-03-01T11:53:44.841Z vite:resolve 0.38ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node:path -> null
+2026-03-01T11:53:44.841Z vite:resolve 0.39ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/fs/promises -> null
+2026-03-01T11:53:44.841Z vite:resolve 0.72ms node:fs/promises -> __vite-browser-external:node:fs/promises
+2026-03-01T11:53:44.841Z vite:resolve 0.73ms node:path -> __vite-browser-external:node:path
+2026-03-01T11:53:44.841Z vite:resolve 0.74ms fs/promises -> __vite-browser-external:fs/promises
+2026-03-01T11:53:44.842Z vite:transform 3.93ms /src/app/api/migrations/run/route.js
+2026-03-01T11:53:44.842Z vite:transform 0.17ms [skipped] __vite-browser-external:node:fs/promises
+2026-03-01T11:53:44.842Z vite:transform 0.14ms [skipped] __vite-browser-external:node:path
+2026-03-01T11:53:44.846Z vite:transform 1.32ms /src/app/api/planning/availability-check/route.js
+2026-03-01T11:53:44.849Z vite:transform 3.21ms /src/app/api/shifts/[id]/route.js
+2026-03-01T11:53:44.851Z vite:resolve 0.16ms ../../utils/planning-helpers.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/utils/planning-helpers.js
+2026-03-01T11:53:44.851Z vite:transform 1.76ms /src/app/api/planning/generate/route.js
+2026-03-01T11:53:44.852Z vite:transform 1.04ms /src/app/api/reports/hours/route.js
+2026-03-01T11:53:44.854Z vite:transform 1.09ms /src/app/api/planning/suggest/route.js
+2026-03-01T11:53:44.860Z vite:transform 6.09ms /src/app/api/shift-swaps/[id]/route.js
+2026-03-01T11:53:44.877Z vite:transform 1.81ms /src/app/api/reports/billing/export/route.js
+2026-03-01T11:53:44.878Z vite:transform 1.12ms /src/app/api/shifts/[id]/approve-override/route.js
+2026-03-01T11:53:44.880Z vite:transform 1.23ms /src/app/api/reports/hours/export/route.js
+2026-03-01T11:53:44.881Z vite:transform 1.18ms /src/app/api/availability/exceptions/batch/route.js
+2026-03-01T11:53:44.882Z vite:transform 1.10ms /src/app/api/shift-swaps/suggestions/[shift_id]/route.js
+2026-03-01T11:53:44.883Z vite:transform 1.02ms /src/app/api/availability/exceptions/batch/delete/route.js
+2026-03-01T11:53:44.884Z vite:transform 0.98ms /src/app/api/reports/billing/route.js
+2026-03-01T11:53:44.888Z vite:transform 62.42ms /src/app/api/custom-auth/login/route.js
+2026-03-01T11:53:44.889Z vite:transform 53.39ms /src/app/api/custom-auth/signup/route.js
+2026-03-01T11:53:44.893Z vite:transform 1.45ms /src/utils/session.js
+2026-03-01T11:53:44.894Z vite:resolve 0.10ms ./chunk-6D2KAR2R.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-6D2KAR2R.js?v=b8390700
+2026-03-01T11:53:44.894Z vite:resolve 0.13ms ./chunk-4ZTCU46X.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-4ZTCU46X.js?v=b8390700
+2026-03-01T11:53:44.895Z vite:resolve 0.14ms ./chunk-6KGMDUP6.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-6KGMDUP6.js?v=b8390700
+2026-03-01T11:53:44.895Z vite:resolve 0.15ms ./chunk-3L3XZB35.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-3L3XZB35.js?v=b8390700
+2026-03-01T11:53:44.895Z vite:resolve 0.16ms ./chunk-OL46QLBJ.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-OL46QLBJ.js?v=b8390700
+2026-03-01T11:53:44.895Z vite:transform 0.92ms /node_modules/.vite/deps/argon2.js?v=b8390700
+2026-03-01T11:53:44.895Z vite:resolve 0.03ms ./chunk-M6HAR4WH.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-M6HAR4WH.js?v=b8390700
+2026-03-01T11:53:44.895Z vite:resolve 0.05ms ./chunk-MJAJF77I.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-MJAJF77I.js?v=b8390700
+2026-03-01T11:53:44.895Z vite:resolve 0.08ms ./chunk-LIPDDAMZ.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-LIPDDAMZ.js?v=b8390700
+2026-03-01T11:53:44.895Z vite:transform 0.42ms /node_modules/.vite/deps/speakeasy.js?v=b8390700
+2026-03-01T11:53:44.898Z vite:transform 1.70ms /node_modules/.vite/deps/@neondatabase_serverless.js?v=b8390700
+2026-03-01T11:53:44.899Z vite:transform 1.11ms /node_modules/.vite/deps/jose.js?v=b8390700
+2026-03-01T11:53:44.909Z vite:resolve 0.05ms virtual:react-router/hmr-runtime ->  virtual:react-router/hmr-runtime
+2026-03-01T11:53:44.909Z vite:resolve 0.26ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/providers/AuthProvider -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/providers/AuthProvider.tsx
+2026-03-01T11:53:44.909Z vite:resolve 0.33ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/vitest/config -> null
+2026-03-01T11:53:44.909Z vite:resolve 0.26ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/@tanstack/react-query -> null
+2026-03-01T11:53:44.909Z vite:resolve 0.32ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/react/jsx-runtime -> null
+2026-03-01T11:53:44.909Z vite:resolve 0.63ms @/providers/AuthProvider -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/providers/AuthProvider.tsx
+2026-03-01T11:53:44.910Z vite:resolve 0.69ms vitest/config -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/vitest_config.js?v=b8390700
+2026-03-01T11:53:44.910Z vite:resolve 0.71ms @tanstack/react-query -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/@tanstack_react-query.js?v=b8390700
+2026-03-01T11:53:44.910Z vite:resolve 0.72ms react/jsx-runtime -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/react_jsx-runtime.js?v=b8390700
+2026-03-01T11:53:44.910Z vite:transform 620.12ms /src/app/api.$.tsx
+2026-03-01T11:53:44.910Z vite:transform 635.87ms /src/app/api/vitest.config.ts
+2026-03-01T11:53:44.911Z vite:transform 640.34ms /src/app/providers.tsx
+2026-03-01T11:53:44.957Z vite:resolve 0.88ms ./global.css -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/global.css
+2026-03-01T11:53:44.957Z vite:resolve 0.94ms ../__create/HotReload -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/HotReload.tsx
+2026-03-01T11:53:44.957Z vite:resolve 0.96ms ../__create/hmr-sandbox-store -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/hmr-sandbox-store.ts
+2026-03-01T11:53:44.957Z vite:resolve 0.97ms ../__create/useDevServerHeartbeat -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/useDevServerHeartbeat.ts
+2026-03-01T11:53:44.957Z vite:resolve 0.98ms ./providers -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/providers.tsx
+2026-03-01T11:53:44.957Z vite:resolve 0.99ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/PolymorphicComponent -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/PolymorphicComponent.tsx
+2026-03-01T11:53:44.957Z vite:resolve 1.00ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useUserRole -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useUserRole.ts
+2026-03-01T11:53:44.957Z vite:resolve 1.01ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Availability/WeekPattern -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Availability/WeekPattern.tsx
+2026-03-01T11:53:44.957Z vite:resolve 1.05ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Availability/ExceptionsList -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Availability/ExceptionsList.tsx
+2026-03-01T11:53:44.957Z vite:resolve 1.06ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/fetch -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/fetch.ts
+2026-03-01T11:53:44.957Z vite:resolve 1.07ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Navigation/TopNavigation -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Navigation/TopNavigation.tsx
+2026-03-01T11:53:44.957Z vite:resolve 1.09ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Navigation/MobileBottomNav -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Navigation/MobileBottomNav.tsx
+2026-03-01T11:53:44.958Z vite:resolve 1.50ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/react-router -> null
+2026-03-01T11:53:44.958Z vite:resolve 1.67ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/react -> null
+2026-03-01T11:53:44.958Z vite:resolve 1.72ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/@react-aria/button -> null
+2026-03-01T11:53:44.958Z vite:resolve 1.73ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/html-to-image -> null
+2026-03-01T11:53:44.958Z vite:resolve 1.77ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/serialize-error -> null
+2026-03-01T11:53:44.958Z vite:resolve 1.78ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/sonner -> null
+2026-03-01T11:53:44.958Z vite:resolve 1.78ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/virtual:load-fonts.jsx -> null
+2026-03-01T11:53:44.958Z vite:resolve 2.26ms @/__create/PolymorphicComponent -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/PolymorphicComponent.tsx
+2026-03-01T11:53:44.959Z vite:resolve 2.27ms @/hooks/useUserRole -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useUserRole.ts
+2026-03-01T11:53:44.959Z vite:resolve 2.28ms @/components/Availability/WeekPattern -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Availability/WeekPattern.tsx
+2026-03-01T11:53:44.959Z vite:resolve 2.29ms @/components/Availability/ExceptionsList -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Availability/ExceptionsList.tsx
+2026-03-01T11:53:44.959Z vite:resolve 2.30ms @/__create/fetch -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/fetch.ts
+2026-03-01T11:53:44.959Z vite:resolve 2.31ms @/components/Navigation/TopNavigation -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Navigation/TopNavigation.tsx
+2026-03-01T11:53:44.959Z vite:resolve 2.32ms @/components/Navigation/MobileBottomNav -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Navigation/MobileBottomNav.tsx
+2026-03-01T11:53:44.959Z vite:resolve 2.42ms react-router -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/react-router.js?v=b8390700
+2026-03-01T11:53:44.959Z vite:resolve 2.45ms react -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/react.js?v=b8390700
+2026-03-01T11:53:44.959Z vite:resolve 2.45ms @react-aria/button -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/@react-aria_button.js?v=b8390700
+2026-03-01T11:53:44.959Z vite:resolve 2.46ms html-to-image -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/html-to-image.js?v=b8390700
+2026-03-01T11:53:44.959Z vite:resolve 2.47ms serialize-error -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/serialize-error.js?v=b8390700
+2026-03-01T11:53:44.959Z vite:resolve 2.48ms sonner -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/sonner.js?v=b8390700
+2026-03-01T11:53:44.962Z vite:transform 669.57ms /src/app/beschikbaarheid/page.tsx
+2026-03-01T11:53:44.967Z vite:transform 769.96ms /src/app/root.tsx
+2026-03-01T11:53:44.994Z vite:resolve 0.42ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/LoadingState -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/LoadingState.tsx
+2026-03-01T11:53:44.995Z vite:resolve 0.70ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/lucide-react -> null
+2026-03-01T11:53:44.995Z vite:resolve 0.97ms @/components/Dashboard/LoadingState -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/LoadingState.tsx
+2026-03-01T11:53:44.995Z vite:resolve 1.03ms lucide-react -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/lucide-react.js?v=b8390700
+2026-03-01T11:53:44.996Z vite:transform 721.25ms /src/app/__create/not-found.tsx
+2026-03-01T11:53:44.996Z vite:transform 694.82ms /src/app/administratie/page.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.40ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/AvailabilityPopup -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/AvailabilityPopup.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.47ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useDashboardData -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useDashboardData.js
+2026-03-01T11:53:45.033Z vite:resolve 1.48ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/MarketingNavbar -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/MarketingNavbar.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.50ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/MarketingFooter -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/MarketingFooter.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.51ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/HeroSection -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/HeroSection.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.52ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/FeaturesGrid -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/FeaturesGrid.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.53ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/CTABanner -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/CTABanner.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.57ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/StatsCards -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/StatsCards.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.58ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/QuickActions -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/QuickActions.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.59ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/TodayShifts -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/TodayShifts.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.60ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/ClientsModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/ClientsModal.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.61ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/AssignmentsModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/AssignmentsModal.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.61ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/EmployeesModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/EmployeesModal.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.62ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/ShiftsModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/ShiftsModal.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.63ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/LeaveRequestsModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/LeaveRequestsModal.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.64ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/QuickPlanModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/QuickPlanModal.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.65ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/SecurityGuard/SecurityGuardWeekView -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/SecurityGuard/SecurityGuardWeekView.tsx
+2026-03-01T11:53:45.033Z vite:resolve 1.65ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/MobileLaunchpad -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/MobileLaunchpad.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.02ms @/components/Dashboard/AvailabilityPopup -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/AvailabilityPopup.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.04ms @/hooks/useDashboardData -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useDashboardData.js
+2026-03-01T11:53:45.034Z vite:resolve 3.06ms @/components/Marketing/marketing.css -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/marketing.css
+2026-03-01T11:53:45.034Z vite:resolve 3.07ms @/components/Marketing/MarketingNavbar -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/MarketingNavbar.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.08ms @/components/Marketing/MarketingFooter -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/MarketingFooter.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.09ms @/components/Marketing/HeroSection -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/HeroSection.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.10ms @/components/Marketing/FeaturesGrid -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/FeaturesGrid.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.11ms @/components/Marketing/CTABanner -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/CTABanner.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.11ms @/components/Dashboard/StatsCards -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/StatsCards.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.12ms @/components/Dashboard/QuickActions -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/QuickActions.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.13ms @/components/Dashboard/TodayShifts -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/TodayShifts.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.14ms @/components/Dashboard/Modals/ClientsModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/ClientsModal.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.15ms @/components/Dashboard/Modals/AssignmentsModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/AssignmentsModal.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.16ms @/components/Dashboard/Modals/EmployeesModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/EmployeesModal.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.17ms @/components/Dashboard/Modals/ShiftsModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/ShiftsModal.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.18ms @/components/Dashboard/Modals/LeaveRequestsModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/Modals/LeaveRequestsModal.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.19ms @/components/Planning/QuickPlanModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/QuickPlanModal.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.20ms @/components/SecurityGuard/SecurityGuardWeekView -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/SecurityGuard/SecurityGuardWeekView.tsx
+2026-03-01T11:53:45.034Z vite:resolve 3.20ms @/components/Dashboard/MobileLaunchpad -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/MobileLaunchpad.tsx
+2026-03-01T11:53:45.037Z vite:transform 726.99ms /src/app/beschikbaarheid-overzicht/page.tsx
+2026-03-01T11:53:45.037Z vite:transform 573.73ms /src/app/page.tsx
+2026-03-01T11:53:45.037Z vite:transform 671.37ms /src/app/dev-login/page.tsx
+2026-03-01T11:53:45.057Z vite:resolve 0.45ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ShiftSwaps/SwapRequestModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ShiftSwaps/SwapRequestModal.tsx
+2026-03-01T11:53:45.057Z vite:resolve 0.54ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/MarketingLayout -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/MarketingLayout.tsx
+2026-03-01T11:53:45.057Z vite:resolve 0.98ms @/components/ShiftSwaps/SwapRequestModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ShiftSwaps/SwapRequestModal.tsx
+2026-03-01T11:53:45.057Z vite:resolve 0.99ms @/components/Marketing/MarketingLayout -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/MarketingLayout.tsx
+2026-03-01T11:53:45.059Z vite:transform 676.96ms /src/app/diensten-ruilen/page.tsx
+2026-03-01T11:53:45.059Z vite:transform 687.91ms /src/app/contact/page.tsx
+2026-03-01T11:53:45.110Z vite:transform 788.11ms /src/app/clients/page.tsx
+2026-03-01T11:53:45.203Z vite:transform 0.26ms /node_modules/.vite/deps/chunk-6KGMDUP6.js?v=b8390700
+2026-03-01T11:53:45.203Z vite:transform 0.11ms /node_modules/.vite/deps/chunk-3L3XZB35.js?v=b8390700
+2026-03-01T11:53:45.203Z vite:transform 0.09ms /node_modules/.vite/deps/chunk-MJAJF77I.js?v=b8390700
+2026-03-01T11:53:45.204Z vite:transform 0.10ms /node_modules/.vite/deps/chunk-M6HAR4WH.js?v=b8390700
+2026-03-01T11:53:45.204Z vite:transform 0.07ms [skipped] /node_modules/.vite/deps/chunk-OL46QLBJ.js?v=b8390700
+2026-03-01T11:53:45.204Z vite:transform 0.09ms /node_modules/.vite/deps/chunk-4ZTCU46X.js?v=b8390700
+2026-03-01T11:53:45.205Z vite:transform 0.75ms /node_modules/.vite/deps/chunk-LIPDDAMZ.js?v=b8390700
+2026-03-01T11:53:45.205Z vite:transform 0.09ms /node_modules/.vite/deps/chunk-6D2KAR2R.js?v=b8390700
+2026-03-01T11:53:45.224Z vite:resolve 0.56ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/react-hook-form -> null
+2026-03-01T11:53:45.224Z vite:resolve 0.98ms react-hook-form -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/react-hook-form.js?v=b8390700
+2026-03-01T11:53:45.225Z vite:transform 782.99ms /src/app/docs/page.tsx
+2026-03-01T11:53:45.226Z vite:transform 790.39ms /src/app/incidenten/page.tsx
+2026-03-01T11:53:45.258Z vite:transform 842.07ms /src/app/employees/page.tsx
+2026-03-01T11:53:45.298Z vite:resolve 0.32ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/useUpload -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/useUpload.js
+2026-03-01T11:53:45.298Z vite:resolve 0.64ms @/utils/useUpload -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/useUpload.js
+2026-03-01T11:53:45.301Z vite:transform 912.86ms /src/app/cao-management/page.tsx
+2026-03-01T11:53:45.339Z vite:resolve 1.27ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/useUser -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/useUser.ts
+2026-03-01T11:53:45.339Z vite:resolve 1.33ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/usePlanningWeek -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/usePlanningWeek.js
+2026-03-01T11:53:45.339Z vite:resolve 1.35ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/usePlanningData -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/usePlanningData.js
+2026-03-01T11:53:45.339Z vite:resolve 1.36ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useSystemSettings -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useSystemSettings.js
+2026-03-01T11:53:45.339Z vite:resolve 1.39ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/PlanningHeader -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/PlanningHeader.tsx
+2026-03-01T11:53:45.339Z vite:resolve 1.41ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/PlanningControls -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/PlanningControls.tsx
+2026-03-01T11:53:45.339Z vite:resolve 1.41ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/GapsWarning -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/GapsWarning.tsx
+2026-03-01T11:53:45.339Z vite:resolve 1.42ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/SwapRequestsPanel -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/SwapRequestsPanel.tsx
+2026-03-01T11:53:45.339Z vite:resolve 1.43ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/DayView -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/DayView.tsx
+2026-03-01T11:53:45.339Z vite:resolve 1.44ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/WeekView -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/WeekView.tsx
+2026-03-01T11:53:45.339Z vite:resolve 1.46ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/DeleteModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/DeleteModal.tsx
+2026-03-01T11:53:45.339Z vite:resolve 1.47ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/SwapApprovalModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/SwapApprovalModal.tsx
+2026-03-01T11:53:45.339Z vite:resolve 1.48ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/AvailabilitySidebar -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/AvailabilitySidebar.tsx
+2026-03-01T11:53:45.339Z vite:resolve 1.49ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/EmployeeDetailDrawer -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/EmployeeDetailDrawer.tsx
+2026-03-01T11:53:45.339Z vite:resolve 1.50ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/AvailabilityStatusModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/AvailabilityStatusModal.tsx
+2026-03-01T11:53:45.339Z vite:resolve 1.51ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/MobileFilterSheet -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/MobileFilterSheet.tsx
+2026-03-01T11:53:45.339Z vite:resolve 1.52ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/MonthView -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/MonthView.tsx
+2026-03-01T11:53:45.340Z vite:resolve 2.81ms @/utils/useUser -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/useUser.ts
+2026-03-01T11:53:45.340Z vite:resolve 2.83ms @/hooks/usePlanningWeek -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/usePlanningWeek.js
+2026-03-01T11:53:45.340Z vite:resolve 2.84ms @/hooks/usePlanningData -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/usePlanningData.js
+2026-03-01T11:53:45.340Z vite:resolve 2.85ms @/hooks/useSystemSettings -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useSystemSettings.js
+2026-03-01T11:53:45.340Z vite:resolve 2.86ms @/components/Planning/PlanningHeader -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/PlanningHeader.tsx
+2026-03-01T11:53:45.340Z vite:resolve 2.87ms @/components/Planning/PlanningControls -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/PlanningControls.tsx
+2026-03-01T11:53:45.340Z vite:resolve 2.88ms @/components/Planning/GapsWarning -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/GapsWarning.tsx
+2026-03-01T11:53:45.340Z vite:resolve 2.88ms @/components/Planning/SwapRequestsPanel -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/SwapRequestsPanel.tsx
+2026-03-01T11:53:45.340Z vite:resolve 2.89ms @/components/Planning/DayView -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/DayView.tsx
+2026-03-01T11:53:45.340Z vite:resolve 2.90ms @/components/Planning/WeekView -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/WeekView.tsx
+2026-03-01T11:53:45.340Z vite:resolve 2.91ms @/components/Planning/DeleteModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/DeleteModal.tsx
+2026-03-01T11:53:45.340Z vite:resolve 2.92ms @/components/Planning/SwapApprovalModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/SwapApprovalModal.tsx
+2026-03-01T11:53:45.340Z vite:resolve 2.93ms @/components/Planning/AvailabilitySidebar -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/AvailabilitySidebar.tsx
+2026-03-01T11:53:45.340Z vite:resolve 2.94ms @/components/Planning/EmployeeDetailDrawer -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/EmployeeDetailDrawer.tsx
+2026-03-01T11:53:45.340Z vite:resolve 2.95ms @/components/Planning/AvailabilityStatusModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/AvailabilityStatusModal.tsx
+2026-03-01T11:53:45.340Z vite:resolve 2.96ms @/components/Planning/MobileFilterSheet -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/MobileFilterSheet.tsx
+2026-03-01T11:53:45.340Z vite:resolve 2.97ms @/components/Planning/MonthView -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/MonthView.tsx
+2026-03-01T11:53:45.347Z vite:transform 831.23ms /src/app/test-setup/page.tsx
+2026-03-01T11:53:45.347Z vite:transform 847.23ms /src/app/test-login/page.tsx
+2026-03-01T11:53:45.347Z vite:transform 894.35ms /src/app/planning/page.tsx
+2026-03-01T11:53:45.370Z vite:resolve 0.55ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/PricingCards -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/PricingCards.tsx
+2026-03-01T11:53:45.370Z vite:resolve 0.93ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/@chakra-ui/react -> null
+2026-03-01T11:53:45.370Z vite:resolve 1.23ms @/components/Marketing/PricingCards -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Marketing/PricingCards.tsx
+2026-03-01T11:53:45.370Z vite:resolve 1.32ms @chakra-ui/react -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/@chakra-ui_react.js?v=b8390700
+2026-03-01T11:53:45.372Z vite:transform 880.29ms /src/app/prijzen/page.tsx
+2026-03-01T11:53:45.372Z vite:transform 885.80ms /src/app/quick-login/page.tsx
+2026-03-01T11:53:45.373Z vite:transform 895.73ms /src/app/migrations/page.tsx
+2026-03-01T11:53:45.382Z vite:transform 872.83ms /src/app/functies/page.tsx
+2026-03-01T11:53:45.391Z vite:transform 853.98ms /src/app/account/trial-expired/page.tsx
+2026-03-01T11:53:45.413Z vite:resolve 0.14ms ./chunk-5OELCRUH.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-5OELCRUH.js?v=b8390700
+2026-03-01T11:53:45.413Z vite:resolve 0.23ms ./chunk-YXCGMT6C.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-YXCGMT6C.js?v=b8390700
+2026-03-01T11:53:45.413Z vite:resolve 0.25ms ./chunk-6AOBALTA.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-6AOBALTA.js?v=b8390700
+2026-03-01T11:53:45.413Z vite:resolve 0.26ms ./chunk-POFGPJ6W.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-POFGPJ6W.js?v=b8390700
+2026-03-01T11:53:45.413Z vite:resolve 0.27ms ./chunk-VBIM2L62.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-VBIM2L62.js?v=b8390700
+2026-03-01T11:53:45.413Z vite:resolve 0.28ms ./chunk-CUJJHL4M.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-CUJJHL4M.js?v=b8390700
+2026-03-01T11:53:45.413Z vite:resolve 0.29ms ./chunk-FWGMBMZS.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-FWGMBMZS.js?v=b8390700
+2026-03-01T11:53:45.413Z vite:resolve 0.30ms ./chunk-NJ23G3YS.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-NJ23G3YS.js?v=b8390700
+2026-03-01T11:53:45.414Z vite:transform 1.17ms /node_modules/.vite/deps/vitest_config.js?v=b8390700
+2026-03-01T11:53:45.449Z vite:resolve 0.05ms ./chunk-LYQBP2WS.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-LYQBP2WS.js?v=b8390700
+2026-03-01T11:53:45.449Z vite:resolve 0.12ms ./chunk-MEQKY3CZ.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-MEQKY3CZ.js?v=b8390700
+2026-03-01T11:53:45.449Z vite:resolve 0.14ms ./chunk-CMM6OKGN.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-CMM6OKGN.js?v=b8390700
+2026-03-01T11:53:45.449Z vite:transform 0.56ms /node_modules/.vite/deps/react-router.js?v=b8390700
+2026-03-01T11:53:45.455Z vite:resolve 0.03ms ./chunk-7BUGFXDR.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-7BUGFXDR.js?v=b8390700
+2026-03-01T11:53:45.455Z vite:transform 1.41ms /node_modules/.vite/deps/@tanstack_react-query.js?v=b8390700
+2026-03-01T11:53:45.455Z vite:transform 0.15ms /node_modules/.vite/deps/react_jsx-runtime.js?v=b8390700
+2026-03-01T11:53:45.456Z vite:resolve 0.03ms ./chunk-GSKIDCVT.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-GSKIDCVT.js?v=b8390700
+2026-03-01T11:53:45.456Z vite:transform 0.60ms /node_modules/.vite/deps/sonner.js?v=b8390700
+2026-03-01T11:53:45.482Z vite:transform 0.47ms /node_modules/.vite/deps/html-to-image.js?v=b8390700
+2026-03-01T11:53:45.483Z vite:transform 0.13ms /node_modules/.vite/deps/react.js?v=b8390700
+2026-03-01T11:53:45.485Z vite:resolve 0.13ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/dateUtils -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/dateUtils.js
+2026-03-01T11:53:45.485Z vite:resolve 0.23ms @/utils/dateUtils -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/dateUtils.js
+2026-03-01T11:53:45.485Z vite:transform 2.38ms /src/hooks/useDashboardData.js
+2026-03-01T11:53:45.487Z vite:resolve 0.03ms ./chunk-WNVB35NT.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-WNVB35NT.js?v=b8390700
+2026-03-01T11:53:45.487Z vite:transform 1.82ms /node_modules/.vite/deps/@react-aria_button.js?v=b8390700
+2026-03-01T11:53:45.493Z vite:transform 0.26ms /node_modules/.vite/deps/serialize-error.js?v=b8390700
+2026-03-01T11:53:45.591Z vite:transform 1067.19ms /src/app/setup-role/page.tsx
+2026-03-01T11:53:45.592Z vite:transform 1046.36ms /src/app/account/signup/page.tsx
+2026-03-01T11:53:45.610Z vite:resolve 0.54ms ../../../hooks/useUserRole -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useUserRole.ts
+2026-03-01T11:53:45.610Z vite:resolve 0.63ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/useAuth -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/useAuth.js
+2026-03-01T11:53:45.610Z vite:resolve 1.14ms @/utils/useAuth -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/useAuth.js
+2026-03-01T11:53:45.612Z vite:transform 1068.88ms /src/app/account/logout/page.tsx
+2026-03-01T11:53:45.612Z vite:transform 1108.00ms /src/app/account/profile/page.tsx
+2026-03-01T11:53:45.612Z vite:transform 1081.36ms /src/app/account/signin/page.tsx
+2026-03-01T11:53:45.629Z vite:transform 1045.19ms /src/app/(app)/my-leave/page.tsx
+2026-03-01T11:53:45.651Z vite:resolve 0.29ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Admin/ObjectLabelSettings -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Admin/ObjectLabelSettings.tsx
+2026-03-01T11:53:45.651Z vite:resolve 0.60ms @/components/Admin/ObjectLabelSettings -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Admin/ObjectLabelSettings.tsx
+2026-03-01T11:53:45.653Z vite:transform 1049.56ms /src/app/admin/settings/page.tsx
+2026-03-01T11:53:45.672Z vite:resolve 0.30ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/PhotoUpload -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/PhotoUpload.tsx
+2026-03-01T11:53:45.672Z vite:resolve 0.60ms @/components/PhotoUpload -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/PhotoUpload.tsx
+2026-03-01T11:53:45.675Z vite:transform 987.25ms /src/app/employees/new/page.tsx
+2026-03-01T11:53:45.950Z vite:resolve 0.08ms /src/__create/@auth/create.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/@auth/create.js
+2026-03-01T11:53:45.950Z vite:resolve 0.04ms /src/__create/dev-error-overlay.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/dev-error-overlay.js
+2026-03-01T11:53:45.951Z vite:resolve 0.04ms /src/docs/ApiEndpoints.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/ApiEndpoints.js
+2026-03-01T11:53:45.951Z vite:resolve 0.03ms /src/docs/CaoRulesValidation.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/CaoRulesValidation.js
+2026-03-01T11:53:45.951Z vite:resolve 0.03ms /src/docs/Changelog.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/Changelog.js
+2026-03-01T11:53:45.951Z vite:resolve 0.03ms /src/docs/DatabaseSchema.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/DatabaseSchema.js
+2026-03-01T11:53:45.951Z vite:resolve 0.03ms /src/docs/Features.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/Features.js
+2026-03-01T11:53:45.951Z vite:resolve 0.03ms /src/docs/FutureFeatures.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/FutureFeatures.js
+2026-03-01T11:53:45.951Z vite:resolve 0.03ms /src/docs/PagesAndRoutes.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/PagesAndRoutes.js
+2026-03-01T11:53:45.951Z vite:resolve 0.03ms /src/docs/SystemOverview.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/SystemOverview.js
+2026-03-01T11:53:45.951Z vite:resolve 0.03ms /src/docs/TechnicalDetails.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/TechnicalDetails.js
+2026-03-01T11:53:45.951Z vite:resolve 0.03ms /src/docs/UserFlows.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/UserFlows.js
+2026-03-01T11:53:45.951Z vite:resolve 0.03ms /src/docs/UserRoles.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/docs/UserRoles.js
+2026-03-01T11:53:45.952Z vite:resolve 0.03ms /src/hooks/useCaoTypes.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useCaoTypes.js
+2026-03-01T11:53:45.952Z vite:resolve 0.04ms /src/hooks/useEmployeeDetail.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeDetail.js
+2026-03-01T11:53:45.952Z vite:resolve 0.03ms /src/hooks/useEmployeeFileUpload.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeFileUpload.js
+2026-03-01T11:53:45.952Z vite:resolve 0.03ms /src/hooks/useEmployeeShifts.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeShifts.js
+2026-03-01T11:53:45.952Z vite:resolve 0.04ms /src/hooks/useSecurityGuardWeek.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useSecurityGuardWeek.js
+2026-03-01T11:53:45.952Z vite:resolve 0.03ms /src/utils/shiftValidation.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/shiftValidation.js
+2026-03-01T11:53:45.952Z vite:resolve 0.04ms /src/utils/useHandleStreamResponse.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/useHandleStreamResponse.js
+2026-03-01T11:53:45.952Z vite:resolve 0.03ms /src/__create/stripe.ts -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/stripe.ts
+2026-03-01T11:53:45.952Z vite:resolve 0.03ms /src/client.d.ts -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/client.d.ts
+2026-03-01T11:53:45.952Z vite:resolve 0.03ms /src/global.d.ts -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/global.d.ts
+2026-03-01T11:53:45.952Z vite:resolve 0.03ms /src/hooks/useFeatureAccess.ts -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useFeatureAccess.ts
+2026-03-01T11:53:45.953Z vite:resolve 0.03ms /src/vite-env.d.ts -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/vite-env.d.ts
+2026-03-01T11:53:45.953Z vite:resolve 0.03ms /src/DOCUMENTATION.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/DOCUMENTATION.tsx
+2026-03-01T11:53:45.953Z vite:resolve 0.04ms /src/components/Dashboard/AvailabilityOverview.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/AvailabilityOverview.tsx
+2026-03-01T11:53:45.953Z vite:resolve 0.03ms /src/components/Dashboard/GuardClockIn.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/GuardClockIn.tsx
+2026-03-01T11:53:45.953Z vite:resolve 0.04ms /src/components/EmployeeDetail/AvailabilityView.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/AvailabilityView.tsx
+2026-03-01T11:53:45.953Z vite:resolve 0.04ms /src/components/EmployeeDetail/DeleteConfirmationModal.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/DeleteConfirmationModal.tsx
+2026-03-01T11:53:45.953Z vite:resolve 0.03ms /src/components/EmployeeDetail/DocumentUpload.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/DocumentUpload.tsx
+2026-03-01T11:53:45.953Z vite:resolve 0.03ms /src/components/EmployeeDetail/EmployeeHeader.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/EmployeeHeader.tsx
+2026-03-01T11:53:45.953Z vite:resolve 0.03ms /src/components/EmployeeDetail/ErrorState.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ErrorState.tsx
+2026-03-01T11:53:45.954Z vite:resolve 0.03ms /src/components/EmployeeDetail/LoadingState.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/LoadingState.tsx
+2026-03-01T11:53:45.954Z vite:resolve 0.03ms /src/components/EmployeeDetail/PersonalInfoForm.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/PersonalInfoForm.tsx
+2026-03-01T11:53:45.954Z vite:resolve 0.03ms /src/components/EmployeeDetail/ProfilePhotoUpload.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ProfilePhotoUpload.tsx
+2026-03-01T11:53:45.954Z vite:resolve 0.03ms /src/components/EmployeeDetail/ShiftsHistory.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ShiftsHistory.tsx
+2026-03-01T11:53:45.954Z vite:resolve 0.03ms /src/components/NotificationBell.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/NotificationBell.tsx
+2026-03-01T11:53:45.954Z vite:resolve 0.04ms /src/components/Planning/AvailabilityDetailPopup.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/AvailabilityDetailPopup.tsx
+2026-03-01T11:53:45.954Z vite:resolve 0.04ms /src/components/Planning/LeaveRegistrationModal.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/LeaveRegistrationModal.tsx
+2026-03-01T11:53:45.954Z vite:resolve 0.03ms /src/components/Planning/OverrideApprovalModal.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/OverrideApprovalModal.tsx
+2026-03-01T11:53:45.954Z vite:resolve 0.05ms /src/components/Planning/ShiftCard.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/ShiftCard.tsx
+2026-03-01T11:53:45.954Z vite:resolve 0.04ms /src/components/Planning/ShiftCardCompact.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/ShiftCardCompact.tsx
+2026-03-01T11:53:45.955Z vite:resolve 0.03ms /src/components/SecurityGuard/ShiftDetailModal.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/SecurityGuard/ShiftDetailModal.tsx
+2026-03-01T11:53:45.955Z vite:resolve 0.03ms /src/components/Subscription/SubscriptionOverview.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Subscription/SubscriptionOverview.tsx
+2026-03-01T11:53:45.955Z vite:resolve 0.03ms /src/components/Subscription/SubscriptionPlans.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Subscription/SubscriptionPlans.tsx
+2026-03-01T11:53:45.955Z vite:resolve 0.03ms /src/components/ui/Badge.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ui/Badge.tsx
+2026-03-01T11:53:45.955Z vite:resolve 0.04ms /src/components/ui/Button.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ui/Button.tsx
+2026-03-01T11:53:45.955Z vite:resolve 0.03ms /src/components/ui/FeatureGate.tsx -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ui/FeatureGate.tsx
+2026-03-01T11:53:45.955Z vite:resolve 0.03ms /tailwind.config.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/tailwind.config.js
+2026-03-01T11:53:45.955Z vite:transform 1308.62ms /src/app/global.css
+2026-03-01T11:53:45.957Z vite:transform 0.92ms /node_modules/.vite/deps/react-hook-form.js?v=b8390700
+2026-03-01T11:53:45.965Z vite:transform 7.02ms /node_modules/.vite/deps/lucide-react.js?v=b8390700
+2026-03-01T11:53:45.985Z vite:resolve 1.01ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeDetail -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeDetail.js
+2026-03-01T11:53:45.985Z vite:resolve 1.09ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeShifts -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeShifts.js
+2026-03-01T11:53:45.985Z vite:resolve 1.11ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useCaoTypes -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useCaoTypes.js
+2026-03-01T11:53:45.985Z vite:resolve 1.12ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeFileUpload -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeFileUpload.js
+2026-03-01T11:53:45.985Z vite:resolve 1.13ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/EmployeeHeader -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/EmployeeHeader.tsx
+2026-03-01T11:53:45.985Z vite:resolve 1.14ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/PersonalInfoForm -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/PersonalInfoForm.tsx
+2026-03-01T11:53:45.985Z vite:resolve 1.14ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ShiftsHistory -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ShiftsHistory.tsx
+2026-03-01T11:53:45.985Z vite:resolve 1.18ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ProfilePhotoUpload -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ProfilePhotoUpload.tsx
+2026-03-01T11:53:45.985Z vite:resolve 1.19ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/DocumentUpload -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/DocumentUpload.tsx
+2026-03-01T11:53:45.985Z vite:resolve 1.20ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/DeleteConfirmationModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/DeleteConfirmationModal.tsx
+2026-03-01T11:53:45.985Z vite:resolve 1.21ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/LoadingState -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/LoadingState.tsx
+2026-03-01T11:53:45.985Z vite:resolve 1.22ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ErrorState -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ErrorState.tsx
+2026-03-01T11:53:45.985Z vite:resolve 1.22ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/AvailabilityView -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/AvailabilityView.tsx
+2026-03-01T11:53:45.985Z vite:resolve 1.24ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ui/FeatureGate -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ui/FeatureGate.tsx
+2026-03-01T11:53:45.986Z vite:resolve 1.85ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/date-fns -> null
+2026-03-01T11:53:45.986Z vite:resolve 1.86ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/date-fns/locale -> null
+2026-03-01T11:53:45.986Z vite:resolve 2.25ms @/hooks/useEmployeeDetail -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeDetail.js
+2026-03-01T11:53:45.986Z vite:resolve 2.26ms @/hooks/useEmployeeShifts -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeShifts.js
+2026-03-01T11:53:45.986Z vite:resolve 2.27ms @/hooks/useCaoTypes -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useCaoTypes.js
+2026-03-01T11:53:45.986Z vite:resolve 2.28ms @/hooks/useEmployeeFileUpload -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useEmployeeFileUpload.js
+2026-03-01T11:53:45.986Z vite:resolve 2.29ms @/components/EmployeeDetail/EmployeeHeader -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/EmployeeHeader.tsx
+2026-03-01T11:53:45.986Z vite:resolve 2.30ms @/components/EmployeeDetail/PersonalInfoForm -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/PersonalInfoForm.tsx
+2026-03-01T11:53:45.986Z vite:resolve 2.31ms @/components/EmployeeDetail/ShiftsHistory -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ShiftsHistory.tsx
+2026-03-01T11:53:45.986Z vite:resolve 2.33ms @/components/EmployeeDetail/ProfilePhotoUpload -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ProfilePhotoUpload.tsx
+2026-03-01T11:53:45.986Z vite:resolve 2.34ms @/components/EmployeeDetail/DocumentUpload -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/DocumentUpload.tsx
+2026-03-01T11:53:45.986Z vite:resolve 2.35ms @/components/EmployeeDetail/DeleteConfirmationModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/DeleteConfirmationModal.tsx
+2026-03-01T11:53:45.986Z vite:resolve 2.36ms @/components/EmployeeDetail/LoadingState -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/LoadingState.tsx
+2026-03-01T11:53:45.986Z vite:resolve 2.36ms @/components/EmployeeDetail/ErrorState -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/ErrorState.tsx
+2026-03-01T11:53:45.986Z vite:resolve 2.37ms @/components/EmployeeDetail/AvailabilityView -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/EmployeeDetail/AvailabilityView.tsx
+2026-03-01T11:53:45.986Z vite:resolve 2.39ms @/components/ui/FeatureGate -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ui/FeatureGate.tsx
+2026-03-01T11:53:45.986Z vite:resolve 2.49ms date-fns -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/date-fns.js?v=b8390700
+2026-03-01T11:53:45.986Z vite:resolve 2.50ms date-fns/locale -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/date-fns_locale.js?v=b8390700
+2026-03-01T11:53:45.988Z vite:transform 1265.52ms /src/app/employees/[id]/page.tsx
+2026-03-01T11:53:45.989Z vite:transform 1277.37ms /src/app/incidenten/beheer/page.tsx
+2026-03-01T11:53:46.002Z vite:transform 1247.13ms /src/app/facturatie/uren/page.tsx
+2026-03-01T11:53:46.031Z vite:transform 1265.45ms /src/app/planning/v2/page.tsx
+2026-03-01T11:53:46.035Z vite:transform 2.05ms /src/utils/useUpload.js
+2026-03-01T11:53:46.043Z vite:transform 3.14ms /src/hooks/usePlanningData.js
+2026-03-01T11:53:46.057Z vite:transform 2.00ms /src/hooks/usePlanningWeek.js
+2026-03-01T11:53:46.100Z vite:transform 1.08ms /src/hooks/useSystemSettings.js
+2026-03-01T11:53:46.150Z vite:transform 1422.53ms /src/app/planning/afwijkingen/page.tsx
+2026-03-01T11:53:46.165Z vite:transform 1421.31ms /src/app/planning/reports/page.tsx
+2026-03-01T11:53:46.190Z vite:transform 1402.99ms /src/app/planning/new/page.tsx
+2026-03-01T11:53:46.193Z vite:transform 779.11ms /src/__create/useDevServerHeartbeat.ts
+2026-03-01T11:53:46.193Z vite:transform 0.15ms /node_modules/.vite/deps/chunk-POFGPJ6W.js?v=b8390700
+2026-03-01T11:53:46.194Z vite:transform 0.82ms /node_modules/.vite/deps/chunk-YXCGMT6C.js?v=b8390700
+2026-03-01T11:53:46.195Z vite:transform 0.12ms /node_modules/.vite/deps/chunk-VBIM2L62.js?v=b8390700
+2026-03-01T11:53:46.195Z vite:transform 0.08ms /node_modules/.vite/deps/chunk-CUJJHL4M.js?v=b8390700
+2026-03-01T11:53:46.195Z vite:transform 0.09ms /node_modules/.vite/deps/chunk-FWGMBMZS.js?v=b8390700
+2026-03-01T11:53:46.195Z vite:transform 0.09ms /node_modules/.vite/deps/chunk-6AOBALTA.js?v=b8390700
+2026-03-01T11:53:46.195Z vite:transform 0.08ms /node_modules/.vite/deps/chunk-NJ23G3YS.js?v=b8390700
+2026-03-01T11:53:46.195Z vite:transform 0.03ms [skipped] /node_modules/.vite/deps/chunk-LYQBP2WS.js?v=b8390700
+2026-03-01T11:53:46.196Z vite:transform 0.42ms /node_modules/.vite/deps/chunk-7BUGFXDR.js?v=b8390700
+2026-03-01T11:53:46.197Z vite:transform 0.82ms /src/utils/dateUtils.js
+2026-03-01T11:53:46.198Z vite:transform 0.78ms /node_modules/.vite/deps/chunk-CMM6OKGN.js?v=b8390700
+2026-03-01T11:53:46.202Z vite:transform 4.05ms /node_modules/.vite/deps/chunk-MEQKY3CZ.js?v=b8390700
+2026-03-01T11:53:46.203Z vite:transform 0.10ms [skipped] /node_modules/.vite/deps/chunk-WNVB35NT.js?v=b8390700
+2026-03-01T11:53:46.210Z vite:transform 1.01ms /src/utils/useAuth.js
+2026-03-01T11:53:46.230Z vite:transform 12.53ms /node_modules/.vite/deps/@chakra-ui_react.js?v=b8390700
+2026-03-01T11:53:46.234Z vite:transform 1342.69ms /src/utils/feature-flags.ts
+2026-03-01T11:53:46.235Z vite:transform 809.40ms /src/hooks/useUserRole.ts
+2026-03-01T11:53:46.235Z vite:transform 760.20ms /src/components/Marketing/CTABanner.tsx
+2026-03-01T11:53:46.262Z vite:resolve 0.66ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/@react-router/dev/routes -> null
+2026-03-01T11:53:46.263Z vite:resolve 1.12ms @react-router/dev/routes -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/@react-router_dev_routes.js?v=b8390700
+2026-03-01T11:53:46.268Z vite:transform 1408.39ms /src/app/planning/edit/[id]/page.tsx
+2026-03-01T11:53:46.268Z vite:transform 818.96ms /src/components/Dashboard/LoadingState.tsx
+2026-03-01T11:53:46.268Z vite:transform 831.54ms /src/components/Availability/WeekPattern.tsx
+2026-03-01T11:53:46.268Z vite:transform 2072.36ms /src/app/routes.ts
+2026-03-01T11:53:46.268Z vite:transform 774.94ms /src/components/Dashboard/QuickActions.tsx
+2026-03-01T11:53:46.276Z vite:resolve 0.33ms ./hmr-sandbox-store -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/__create/hmr-sandbox-store.ts
+2026-03-01T11:53:46.277Z vite:transform 863.36ms /src/__create/HotReload.tsx
+2026-03-01T11:53:46.277Z vite:transform 882.51ms /src/providers/AuthProvider.tsx
+2026-03-01T11:53:46.293Z vite:resolve 0.84ms ../NotificationBell -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/NotificationBell.tsx
+2026-03-01T11:53:46.293Z vite:resolve 0.91ms ../../hooks/useUserRole -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useUserRole.ts
+2026-03-01T11:53:46.293Z vite:resolve 0.96ms react/jsx-dev-runtime -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=b8390700
+2026-03-01T11:53:46.293Z vite:resolve 1.29ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/zustand -> null
+2026-03-01T11:53:46.293Z vite:resolve 1.24ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/react-router-dom -> null
+2026-03-01T11:53:46.294Z vite:resolve 2.04ms zustand -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/zustand.js?v=b8390700
+2026-03-01T11:53:46.294Z vite:resolve 2.09ms react-router-dom -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/react-router-dom.js?v=b8390700
+2026-03-01T11:53:46.294Z vite:transform 1327.48ms virtual:load-fonts.jsx
+2026-03-01T11:53:46.298Z vite:transform 796.83ms /src/components/Dashboard/Modals/ClientsModal.tsx
+2026-03-01T11:53:46.298Z vite:transform 820.54ms /src/components/Marketing/MarketingNavbar.tsx
+2026-03-01T11:53:46.298Z vite:transform 884.02ms /src/__create/hmr-sandbox-store.ts
+2026-03-01T11:53:46.298Z vite:transform 747.34ms /src/components/ShiftSwaps/SwapRequestModal.tsx
+2026-03-01T11:53:46.298Z vite:transform 735.39ms /src/components/Marketing/MarketingLayout.tsx
+2026-03-01T11:53:46.298Z vite:transform 826.43ms /src/components/Marketing/FeaturesGrid.tsx
+2026-03-01T11:53:46.298Z vite:transform 873.02ms /src/components/Navigation/TopNavigation.tsx
+2026-03-01T11:53:46.457Z vite:transform 1.01ms /src/hooks/useCaoTypes.js
+2026-03-01T11:53:46.459Z vite:transform 1.49ms /src/hooks/useEmployeeDetail.js
+2026-03-01T11:53:46.466Z vite:transform 0.74ms /src/hooks/useEmployeeShifts.js
+2026-03-01T11:53:46.485Z vite:transform 1.27ms /src/hooks/useEmployeeFileUpload.js
+2026-03-01T11:53:46.493Z vite:transform 8.33ms /node_modules/.vite/deps/chunk-GSKIDCVT.js?v=b8390700
+2026-03-01T11:53:46.516Z vite:resolve 0.03ms ./chunk-ZFXKT4LN.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-ZFXKT4LN.js?v=b8390700
+2026-03-01T11:53:46.517Z vite:transform 1.71ms /node_modules/.vite/deps/date-fns.js?v=b8390700
+2026-03-01T11:53:46.532Z vite:resolve 0.64ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Subscription/SubscriptionOverview -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Subscription/SubscriptionOverview.tsx
+2026-03-01T11:53:46.532Z vite:resolve 0.71ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Subscription/SubscriptionPlans -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Subscription/SubscriptionPlans.tsx
+2026-03-01T11:53:46.533Z vite:resolve 1.40ms @/components/Subscription/SubscriptionOverview -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Subscription/SubscriptionOverview.tsx
+2026-03-01T11:53:46.533Z vite:resolve 1.42ms @/components/Subscription/SubscriptionPlans -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Subscription/SubscriptionPlans.tsx
+2026-03-01T11:53:46.535Z vite:transform 1066.90ms /src/components/Marketing/HeroSection.tsx
+2026-03-01T11:53:46.535Z vite:transform 1730.74ms /src/app/(dashboard)/account/subscription/page.tsx
+2026-03-01T11:53:46.535Z vite:transform 1113.83ms /src/__create/PolymorphicComponent.tsx
+2026-03-01T11:53:46.535Z vite:transform 1047.75ms /src/components/Dashboard/StatsCards.tsx
+2026-03-01T11:53:46.535Z vite:transform 1011.35ms /src/components/Dashboard/TodayShifts.tsx
+2026-03-01T11:53:46.535Z vite:transform 1084.05ms /src/components/Navigation/MobileBottomNav.tsx
+2026-03-01T11:53:46.549Z vite:resolve 0.47ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/GuardClockIn -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/GuardClockIn.tsx
+2026-03-01T11:53:46.549Z vite:resolve 0.96ms @/components/Dashboard/GuardClockIn -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/GuardClockIn.tsx
+2026-03-01T11:53:46.551Z vite:transform 1106.82ms /src/components/Availability/ExceptionsList.tsx
+2026-03-01T11:53:46.551Z vite:transform 992.76ms /src/components/Marketing/MarketingFooter.tsx
+2026-03-01T11:53:46.551Z vite:transform 1033.94ms /src/components/Dashboard/MobileLaunchpad.tsx
+2026-03-01T11:53:46.557Z vite:resolve 0.43ms ./ShiftDetailModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/SecurityGuard/ShiftDetailModal.tsx
+2026-03-01T11:53:46.557Z vite:resolve 0.50ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useSecurityGuardWeek -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useSecurityGuardWeek.js
+2026-03-01T11:53:46.558Z vite:resolve 0.93ms @/hooks/useSecurityGuardWeek -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useSecurityGuardWeek.js
+2026-03-01T11:53:46.558Z vite:transform 1132.90ms /src/__create/fetch.ts
+2026-03-01T11:53:46.559Z vite:transform 1062.62ms /src/components/Dashboard/Modals/EmployeesModal.tsx
+2026-03-01T11:53:46.559Z vite:transform 1017.70ms /src/components/SecurityGuard/SecurityGuardWeekView.tsx
+2026-03-01T11:53:46.567Z vite:transform 1111.00ms /src/components/Dashboard/AvailabilityPopup.tsx
+2026-03-01T11:53:46.581Z vite:resolve 0.76ms ./ShiftCard -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/ShiftCard.tsx
+2026-03-01T11:53:46.581Z vite:resolve 0.85ms ./OverrideApprovalModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/OverrideApprovalModal.tsx
+2026-03-01T11:53:46.581Z vite:resolve 0.87ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ui/Button -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ui/Button.tsx
+2026-03-01T11:53:46.581Z vite:resolve 0.90ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/shiftValidation -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/shiftValidation.js
+2026-03-01T11:53:46.582Z vite:resolve 1.69ms @/components/ui/Button -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/ui/Button.tsx
+2026-03-01T11:53:46.582Z vite:resolve 1.72ms @/utils/shiftValidation -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/utils/shiftValidation.js
+2026-03-01T11:53:46.582Z vite:transform 549.37ms /src/utils/useUser.ts
+2026-03-01T11:53:46.584Z vite:transform 1053.85ms /src/components/Planning/QuickPlanModal.tsx
+2026-03-01T11:53:46.584Z vite:transform 536.34ms /src/components/Planning/PlanningHeader.tsx
+2026-03-01T11:53:46.584Z vite:transform 527.05ms /src/components/Planning/DeleteModal.tsx
+2026-03-01T11:53:46.584Z vite:transform 541.40ms /src/components/Planning/GapsWarning.tsx
+2026-03-01T11:53:46.584Z vite:transform 533.72ms /src/components/Planning/DayView.tsx
+2026-03-01T11:53:46.597Z vite:transform 1069.87ms /src/components/Dashboard/Modals/AssignmentsModal.tsx
+2026-03-01T11:53:46.597Z vite:transform 561.64ms /src/components/Planning/PlanningControls.tsx
+2026-03-01T11:53:46.597Z vite:transform 1092.26ms /src/components/Dashboard/Modals/LeaveRequestsModal.tsx
+2026-03-01T11:53:46.597Z vite:transform 1086.87ms /src/components/Dashboard/Modals/ShiftsModal.tsx
+2026-03-01T11:53:46.603Z vite:transform 498.29ms /src/components/Planning/MonthView.tsx
+2026-03-01T11:53:46.603Z vite:transform 503.58ms /src/components/Planning/SwapApprovalModal.tsx
+2026-03-01T11:53:46.611Z vite:transform 552.63ms /src/components/Planning/AvailabilitySidebar.tsx
+2026-03-01T11:53:46.624Z vite:resolve 0.25ms ./LeaveRegistrationModal -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/LeaveRegistrationModal.tsx
+2026-03-01T11:53:46.626Z vite:transform 554.79ms /src/components/Planning/EmployeeDetailDrawer.tsx
+2026-03-01T11:53:46.634Z vite:transform 7.48ms /node_modules/.vite/deps/date-fns_locale.js?v=b8390700
+2026-03-01T11:53:46.645Z vite:resolve 0.52ms ./PlanningControls -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/PlanningControls.tsx
+2026-03-01T11:53:46.645Z vite:resolve 0.59ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/AvailabilityOverview -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/AvailabilityOverview.tsx
+2026-03-01T11:53:46.646Z vite:resolve 0.93ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/react-image-crop -> null
+2026-03-01T11:53:46.646Z vite:resolve 0.95ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/react-image-crop/dist/ReactCrop.css -> null
+2026-03-01T11:53:46.646Z vite:resolve 1.18ms @/components/Dashboard/AvailabilityOverview -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/AvailabilityOverview.tsx
+2026-03-01T11:53:46.647Z vite:resolve 2.01ms react-image-crop -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/react-image-crop.js?v=b8390700
+2026-03-01T11:53:46.647Z vite:resolve 2.06ms react-image-crop/dist/ReactCrop.css -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react-image-crop/dist/ReactCrop.css
+2026-03-01T11:53:46.648Z vite:transform 534.67ms /src/components/Planning/SwapRequestsPanel.tsx
+2026-03-01T11:53:46.648Z vite:transform 518.80ms /src/components/Planning/AvailabilityStatusModal.tsx
+2026-03-01T11:53:46.648Z vite:transform 529.63ms /src/components/Planning/MobileFilterSheet.tsx
+2026-03-01T11:53:46.649Z vite:transform 438.18ms /src/components/PhotoUpload.tsx
+2026-03-01T11:53:46.656Z vite:resolve 0.44ms ./ShiftCardCompact -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Planning/ShiftCardCompact.tsx
+2026-03-01T11:53:46.661Z vite:transform 540.08ms /src/components/Planning/WeekView.tsx
+2026-03-01T11:53:46.661Z vite:transform 529.52ms /src/components/Marketing/PricingCards.tsx
+2026-03-01T11:53:46.661Z vite:transform 466.03ms  virtual:react-router/hmr-runtime
+2026-03-01T11:53:46.668Z vite:transform 0.27ms /node_modules/.vite/deps/zustand.js?v=b8390700
+2026-03-01T11:53:46.681Z vite:transform 1119.35ms /src/components/Marketing/marketing.css
+2026-03-01T11:53:46.682Z vite:transform 0.51ms /node_modules/.vite/deps/react_jsx-dev-runtime.js?v=b8390700
+2026-03-01T11:53:46.684Z vite:transform 1.80ms /node_modules/.vite/deps/@react-router_dev_routes.js?v=b8390700
+2026-03-01T11:53:46.684Z vite:resolve 0.04ms ./chunk-MJOFRAQK.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/chunk-MJOFRAQK.js?v=b8390700
+2026-03-01T11:53:46.685Z vite:transform 0.38ms /node_modules/.vite/deps/react-router-dom.js?v=b8390700
+2026-03-01T11:53:46.700Z vite:transform 0.21ms [skipped] /node_modules/.vite/deps/chunk-ZFXKT4LN.js?v=b8390700
+2026-03-01T11:53:46.716Z vite:transform 2.06ms /src/hooks/useSecurityGuardWeek.js
+2026-03-01T11:53:46.736Z vite:transform 1.38ms /src/utils/shiftValidation.js
+2026-03-01T11:53:46.777Z vite:transform 16.22ms /node_modules/react-image-crop/dist/ReactCrop.css
+2026-03-01T11:53:46.778Z vite:transform 0.35ms /node_modules/.vite/deps/react-image-crop.js?v=b8390700
+2026-03-01T11:53:46.778Z vite:transform 0.49ms /node_modules/.vite/deps/chunk-MJOFRAQK.js?v=b8390700
+2026-03-01T11:53:46.785Z vite:transform 326.30ms /src/components/EmployeeDetail/EmployeeHeader.tsx
+2026-03-01T11:53:46.793Z vite:transform 292.13ms /src/components/EmployeeDetail/AvailabilityView.tsx
+2026-03-01T11:53:46.793Z vite:transform 280.99ms /src/components/EmployeeDetail/ProfilePhotoUpload.tsx
+2026-03-01T11:53:46.793Z vite:transform 282.66ms /src/components/EmployeeDetail/LoadingState.tsx
+2026-03-01T11:53:46.806Z vite:transform 602.52ms /src/components/Admin/ObjectLabelSettings.tsx
+2026-03-01T11:53:46.806Z vite:transform 311.90ms /src/components/EmployeeDetail/DeleteConfirmationModal.tsx
+2026-03-01T11:53:46.806Z vite:transform 325.95ms /src/components/EmployeeDetail/DocumentUpload.tsx
+2026-03-01T11:53:46.806Z vite:transform 105.94ms /src/components/SecurityGuard/ShiftDetailModal.tsx
+2026-03-01T11:53:46.818Z vite:resolve 0.47ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useFeatureAccess -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useFeatureAccess.ts
+2026-03-01T11:53:46.819Z vite:resolve 1.00ms @/hooks/useFeatureAccess -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useFeatureAccess.ts
+2026-03-01T11:53:46.821Z vite:transform 84.38ms /src/components/Planning/LeaveRegistrationModal.tsx
+2026-03-01T11:53:46.821Z vite:transform 128.15ms /src/components/Subscription/SubscriptionPlans.tsx
+2026-03-01T11:53:46.821Z vite:transform 324.23ms /src/components/ui/FeatureGate.tsx
+2026-03-01T11:53:46.837Z vite:transform 127.62ms /src/components/Dashboard/GuardClockIn.tsx
+2026-03-01T11:53:46.837Z vite:transform 82.06ms /src/components/Planning/ShiftCardCompact.tsx
+2026-03-01T11:53:46.837Z vite:transform 114.56ms /src/components/Planning/ShiftCard.tsx
+2026-03-01T11:53:46.837Z vite:transform 337.95ms /src/components/EmployeeDetail/ErrorState.tsx
+2026-03-01T11:53:46.848Z vite:transform 127.67ms /src/components/ui/Button.tsx
+2026-03-01T11:53:46.848Z vite:transform 382.24ms /src/components/EmployeeDetail/PersonalInfoForm.tsx
+2026-03-01T11:53:46.855Z vite:resolve 0.31ms ./AvailabilityPopup -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/components/Dashboard/AvailabilityPopup.tsx
+2026-03-01T11:53:46.856Z vite:transform 169.10ms /src/components/Subscription/SubscriptionOverview.tsx
+2026-03-01T11:53:46.856Z vite:transform 111.85ms /src/components/Dashboard/AvailabilityOverview.tsx
+2026-03-01T11:53:46.867Z vite:transform 204.62ms /src/components/NotificationBell.tsx
+2026-03-01T11:53:46.867Z vite:transform 403.93ms /src/components/EmployeeDetail/ShiftsHistory.tsx
+2026-03-01T11:53:46.867Z vite:transform 150.18ms /src/components/Planning/OverrideApprovalModal.tsx
+2026-03-01T11:53:46.875Z vite:resolve 0.24ms ./api_vite-4CVLWFFX.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/api_vite-4CVLWFFX.js?v=b8390700
+2026-03-01T11:53:46.875Z vite:resolve 0.31ms ./jiti-HMKA5FUY.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/jiti-HMKA5FUY.js?v=b8390700
+2026-03-01T11:53:46.875Z vite:resolve 0.32ms ./browser-WM7VNYWW.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/browser-WM7VNYWW.js?v=b8390700
+2026-03-01T11:53:46.875Z vite:resolve 0.33ms ./dep-C9BXG1mU-WYET5U3E.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/dep-C9BXG1mU-WYET5U3E.js?v=b8390700
+2026-03-01T11:53:46.875Z vite:resolve 0.34ms ./dep-DWMUTS1A-ZZDQASZX.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/dep-DWMUTS1A-ZZDQASZX.js?v=b8390700
+2026-03-01T11:53:46.875Z vite:resolve 0.35ms ./postcss-HV6II6MA.js -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/.vite/deps/postcss-HV6II6MA.js?v=b8390700
+2026-03-01T11:53:46.876Z vite:resolve 0.47ms /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/lightningcss -> null
+2026-03-01T11:53:46.877Z vite:resolve 2.20ms lightningcss -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/lightningcss/node/index.mjs?v=b8390700
+2026-03-01T11:53:46.877Z vite:resolve 0.13ms ./useUserRole -> /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/hooks/useUserRole.ts
+2026-03-01T11:53:46.878Z vite:transform 10.14ms /src/hooks/useFeatureAccess.ts
+2026-03-01T11:53:46.879Z vite:transform 579.25ms /node_modules/.vite/deps/chunk-5OELCRUH.js?v=b8390700

@@ -1,0 +1,26 @@
+
+> dev
+> react-router dev
+
+12:58:46 PM [vite] (client) Re-optimizing dependencies because vite config has changed
+  ➜  Local:   http://localhost:5005/
+  ➜  Network: http://192.168.0.201:5005/
+  ➜  press h + enter to show help
+12:58:47 PM [vite] (client) Pre-transform error: Failed to resolve import "virtual:load-fonts.jsx" from "src/app/root.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/root.tsx:43:0
+  30 |  import { serializeError } from "serialize-error";
+  31 |  import { Toaster } from "sonner";
+  32 |  import { LoadFonts } from "virtual:load-fonts.jsx";
+     |                             ^
+  33 |  import { HotReloadIndicator } from "../__create/HotReload";
+  34 |  import { useSandboxStore } from "../__create/hmr-sandbox-store";
+12:58:47 PM [vite] (client) Pre-transform error: Failed to resolve import "virtual:load-fonts.jsx" from "src/app/root.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/root.tsx:43:0
+  30 |  import { serializeError } from "serialize-error";
+  31 |  import { Toaster } from "sonner";
+  32 |  import { LoadFonts } from "virtual:load-fonts.jsx";
+     |                             ^
+  33 |  import { HotReloadIndicator } from "../__create/HotReload";
+  34 |  import { useSandboxStore } from "../__create/hmr-sandbox-store";

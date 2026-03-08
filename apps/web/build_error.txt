@@ -1,0 +1,25 @@
+
+> build
+> react-router build
+
+Error: Route config in "routes.ts" is invalid.
+
+Error: Unable to define routes with duplicate route id: "superadmin/page"
+    at walk (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/vite.js:273:13)
+    at walk (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/vite.js:280:9)
+    at configRoutesToRouteManifest (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/vite.js:285:5)
+    at resolveConfig (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/vite.js:536:16)
+    at createConfigLoader (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/vite.js:623:29)
+    at config (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/vite.js:3236:35)
+    at runConfigHook (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:49479:17)
+    at Module.resolveConfig (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:48785:12)
+    at hasReactRouterRscPlugin (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/cli/index.js:1355:22)
+    at build (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/cli/index.js:1921:72)
+    at createConfigLoader (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/vite.js:625:11)
+    at config (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/vite.js:3236:35)
+    at runConfigHook (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:49479:17)
+    at Module.resolveConfig (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:48785:12)
+    at hasReactRouterRscPlugin (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/cli/index.js:1355:22)
+    at build (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/cli/index.js:1921:72)
+    at build2 (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/cli/index.js:2260:5)
+    at run2 (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/cli/index.js:2565:7)

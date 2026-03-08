@@ -1,0 +1,67 @@
+
+> build
+> react-router build
+
+vite v6.4.1 building for production...
+transforming...
+✓ 57 modules transformed.
+✗ Build failed in 1.21s
+[react-router:route-exports] SPA Mode: 1 invalid route export(s) in `./superadmin/page.tsx`: `loader`. See https://reactrouter.com/how-to/spa for more information.
+file: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/superadmin/page.tsx
+    at Object.transform (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/vite.js:3958:19)
+    at Object.handler (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:46537:15)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/rollup/dist/es/shared/node-entry.js:22548:40
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  code: 'PLUGIN_ERROR',
+  plugin: 'react-router:route-exports',
+  hook: 'transform',
+  id: '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/superadmin/page.tsx',
+  watchFiles: [
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/functies/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/prijzen/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/@react-router/dev/dist/config/defaults/entry.client.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/account/logout/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/contact/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/(dashboard)/account/subscription/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/root.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/account/profile/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/(app)/my-leave/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/account/signin/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/beschikbaarheid/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/admin/settings/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/administratie/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/beschikbaarheid-overzicht/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/account/signup/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/diensten-ruilen/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/clients/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/dev-login/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/docs/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/employees/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/employees/[id]/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/cao-management/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/facturatie/uren/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/employees/new/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/incidenten/beheer/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/afwijkingen/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/migrations/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/incidenten/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/new/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/edit/[id]/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/reports/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/setup-role/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/test-setup/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/planning/v2/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/test-login/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/quick-login/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api.$.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/__create/not-found.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/superadmin/page.tsx',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/package.json',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react/jsx-runtime.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react/index.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react-dom/client.js',
+    '/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/node_modules/react-router/dist/development/dom-export.mjs'
+  ]
+}
