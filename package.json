@@ -1,4 +1,13 @@
 {
+  "name": "dutygrid-workspace",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --prefix apps/web",
+    "install": "npm install --prefix apps/web"
+  },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
     "@remix-run/dev": "^2.17.4",
