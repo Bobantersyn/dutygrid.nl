@@ -1,5 +1,6 @@
 {
     "framework": "react-router",
+    "installCommand": "cd ../.. && npm install",
     "rewrites": [
         {
             "source": "/superadmin",
