@@ -33,8 +33,8 @@ export async function POST(request) {
         try {
             // 1. Create the Owner (Admin) and Company
             const [adminUser] = await sql`
-                INSERT INTO auth_users (email, name, "company_name", password, subscription_plan, subscription_status, kvk_number, company_size, trial_ends_at, created_at)
-                VALUES (${adminEmail}, 'Sandbox Admin', ${companyName}, ${hashedPassword}, ${currentPlan}, ${currentStatus}, '12345678', ${companySize}, ${trialEndsAt}, ${now})
+                INSERT INTO auth_users (email, name, "company_name", password, subscription_status, kvk_number, company_size, trial_ends_at, created_at)
+                VALUES (${adminEmail}, 'Sandbox Admin', ${companyName}, ${hashedPassword}, ${currentPlan}, '12345678', ${companySize}, ${trialEndsAt}, ${now})
                 RETURNING id, company_name
             `;
             createdUserIds.push(adminUser.id);
@@ -43,8 +43,8 @@ export async function POST(request) {
             // 2. Create the Planner
             const plannerEmail = adminEmail.replace('@', '+planner@');
             const [plannerUser] = await sql`
-                INSERT INTO auth_users (email, name, "company_name", password, subscription_plan, subscription_status, kvk_number, company_size, trial_ends_at, created_at)
-                VALUES (${plannerEmail}, 'Sandbox Planner', ${companyName}, ${hashedPassword}, ${currentPlan}, ${currentStatus}, '12345678', ${companySize}, ${trialEndsAt}, ${now})
+                INSERT INTO auth_users (email, name, "company_name", password, subscription_status, kvk_number, company_size, trial_ends_at, created_at)
+                VALUES (${plannerEmail}, 'Sandbox Planner', ${companyName}, ${hashedPassword}, ${currentPlan}, '12345678', ${companySize}, ${trialEndsAt}, ${now})
                 RETURNING id
             `;
             createdUserIds.push(plannerUser.id);
@@ -53,8 +53,8 @@ export async function POST(request) {
             // 3. Create the Guard (Medewerker)
             const guardEmail = adminEmail.replace('@', '+guard@');
             const [guardUser] = await sql`
-                INSERT INTO auth_users (email, name, "company_name", password, subscription_plan, subscription_status, kvk_number, company_size, trial_ends_at, created_at)
-                VALUES (${guardEmail}, 'Sandbox Medewerker', ${companyName}, ${hashedPassword}, ${currentPlan}, ${currentStatus}, '12345678', ${companySize}, ${trialEndsAt}, ${now})
+                INSERT INTO auth_users (email, name, "company_name", password, subscription_status, kvk_number, company_size, trial_ends_at, created_at)
+                VALUES (${guardEmail}, 'Sandbox Medewerker', ${companyName}, ${hashedPassword}, ${currentPlan}, '12345678', ${companySize}, ${trialEndsAt}, ${now})
                 RETURNING id
             `;
             createdUserIds.push(guardUser.id);
