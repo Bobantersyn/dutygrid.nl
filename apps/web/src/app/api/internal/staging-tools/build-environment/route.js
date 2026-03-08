@@ -7,6 +7,7 @@ import { logAudit } from '@/app/api/utils/audit-logger';
 export async function POST(request) {
     try {
         requireStagingEnvironment(); console.log("START API");
+        // Triggering Vercel Build Wakeup Payload
         const session = await getSession(request);
 
         const body = await request.json();
