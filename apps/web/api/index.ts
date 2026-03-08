@@ -46,7 +46,7 @@ if (process.env.CORS_ORIGINS) {
 for (const method of ['post', 'put', 'patch'] as const) {
     app[method](
         '*',
-        bodyLimit({ maxSize: 4.5 * 1024 * 1024, onError: (c) => c.json({ error: 'Body size limit exceeded' }, 413) })
+         // bodyLimit({ maxSize: 4.5 * 1024 * 1024, onError: (c) => c.json({ error: 'Body size limit exceeded' }, 413) })
     );
 }
 
