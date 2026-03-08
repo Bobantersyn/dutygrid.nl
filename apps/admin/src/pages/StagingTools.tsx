@@ -221,9 +221,68 @@ export default function StagingTools() {
                             </div>
                         </div>
                     </div>
+                    {/* Tool 5: Stress Testing & Webhooks */}
+                    <div className="border border-slate-200 rounded p-5 flex flex-col mt-2">
+                        <h3 className="font-semibold text-lg mb-1">⚡ Stress Tests & Webhooks</h3>
+                        <p className="text-sm text-slate-500 mb-4">Injecteer extreme belasting en simuleer lifecycle events via de fysieke Stripe endpoint.</p>
 
+                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                            <div className="border border-slate-200 rounded p-4">
+                                <h4 className="text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Extreme Volume Generation</h4>
+                                <button
+                                    onClick={async () => {
+                                        if (!companyData) return alert('Selecteer of creëer eerst een testbedrijf');
+                                        const conf = window.confirm("Dit injecteert 250+ diensten, 65 werknemers en 35 incidenten om de React boom extreem te belasten. Doorgaan?");
+                                        if (!conf) return;
+                                        try {
+                                            const r = await fetch('/api/internal/staging-tools/generate-demo-data', {
+                                                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                                body: JSON.stringify({ preset: 'stress_test', email: companyData.adminEmail })
+                                            });
+                                            const res = await r.json(); alert(r.ok ? res.message : (res.error || 'Mislukt'));
+                                        } catch (e) { alert('Netwerk fout'); }
+                                    }}
+                                    className="w-full text-left px-3 py-2 text-sm text-purple-700 hover:bg-purple-100 rounded flex items-center gap-2 border border-purple-200"
+                                >
+                                    <span className="text-lg">🔥</span> Injecteer Stress Test (250+ Diensten)
+                                </button>
+                            </div>
 
-
+                            <div className="border border-slate-200 rounded p-4 flex flex-col gap-2">
+                                <h4 className="text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Stripe Webhook Mocks</h4>
+                                <button
+                                    onClick={async () => {
+                                        if (!companyData) return alert('Maak eerst een testbedrijf aan');
+                                        try {
+                                            const r = await fetch('/api/webhooks/stripe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'invoice.payment_succeeded', data: { object: { customer_email: companyData.adminEmail, amount_paid: 30000, status: 'paid' } } }) });
+                                            alert(r.ok ? 'Webhook [Succeeded] 200 OK' : `Webhook faalde met status HTTP ${r.status}`);
+                                        } catch (e) { alert('Netwerk fout bij Webhook'); }
+                                    }}
+                                    className="w-full text-left px-3 py-2 text-sm text-emerald-700 hover:bg-emerald-100 rounded flex items-center gap-2 border border-emerald-200"
+                                ><span className="text-lg">💰</span> Webhook: Payment Succeeded</button>
+                                <button
+                                    onClick={async () => {
+                                        if (!companyData) return alert('Maak eerst een testbedrijf aan');
+                                        try {
+                                            const r = await fetch('/api/webhooks/stripe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'invoice.payment_failed', data: { object: { customer_email: companyData.adminEmail, amount_due: 30000, status: 'open' } } }) });
+                                            alert(r.ok ? 'Webhook [Failed] 200 OK' : `Webhook faalde met status HTTP ${r.status}`);
+                                        } catch (e) { alert('Netwerk fout bij Webhook'); }
+                                    }}
+                                    className="w-full text-left px-3 py-2 text-sm text-orange-700 hover:bg-orange-100 rounded flex items-center gap-2 border border-orange-200"
+                                ><span className="text-lg">⚠️</span> Webhook: Payment Failed</button>
+                                <button
+                                    onClick={async () => {
+                                        if (!companyData) return alert('Maak eerst een testbedrijf aan');
+                                        try {
+                                            const r = await fetch('/api/webhooks/stripe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'customer.subscription.deleted', data: { object: { customer_email: companyData.adminEmail, status: 'canceled' } } }) });
+                                            alert(r.ok ? 'Webhook [Canceled] 200 OK' : `Webhook faalde met status HTTP ${r.status}`);
+                                        } catch (e) { alert('Netwerk fout bij Webhook'); }
+                                    }}
+                                    className="w-full text-left px-3 py-2 text-sm text-red-700 hover:bg-red-100 rounded flex items-center gap-2 border border-red-200"
+                                ><span className="text-lg">❌</span> Webhook: Sub Canceled</button>
+                            </div>
+                        </div>
+                    </div>
                     {/* Mail Sink */}
                     <div className="border border-slate-200 rounded p-5 flex flex-col md:col-span-2 mt-2">
                         <div className="flex justify-between items-center mb-1">

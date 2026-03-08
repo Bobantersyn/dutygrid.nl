@@ -1,12 +1,21 @@
 import sql from '@/app/api/utils/sql';
 import { requireStagingEnvironment } from '../guard.js';
+import { getSession } from '@/utils/session';
+import { logAudit } from '@/app/api/utils/audit-logger';
 
 export async function POST(request) {
     try {
         requireStagingEnvironment();
 
         const body = await request.json();
-        const { preset = 'small', adminId } = body;
+        const { preset = 'small', email } = body;
+
+        const session = await getSession(request);
+        const users = await sql`SELECT id FROM auth_users WHERE email = ${email}`;
+        if (users.length === 0) return Response.json({ error: 'Company admin not found.' }, { status: 404 });
+
+        const userId = users[0].id;
+        const stagingDomain = `${userId}.dutygrid-staging.local`;
 
         let empCount = 5;
         let shiftCount = 10;
@@ -20,12 +29,16 @@ export async function POST(request) {
             empCount = 40;
             shiftCount = 120;
             incidentCount = 20;
+        } else if (preset === 'stress_test') {
+            empCount = 65;
+            shiftCount = 250;
+            incidentCount = 35;
         }
 
         // 1. Create a dummy client and assignment
         const [client] = await sql`
             INSERT INTO clients (name, email, city, status) 
-            VALUES (${'Demo Client ' + preset}, 'contact@democlient.com', 'Amsterdam', 'active')
+            VALUES (${'Demo Client ' + preset}, ${`client@${stagingDomain}`}, 'Amsterdam', 'active')
             RETURNING id
         `;
 
@@ -40,7 +53,7 @@ export async function POST(request) {
         for (let i = 0; i < empCount; i++) {
             const [emp] = await sql`
                 INSERT INTO employees (name, first_name, last_name, email, hourly_rate, status)
-                VALUES (${`Demo V1-${i}`}, 'Demo', ${`V1-${i}`}, ${`demo${i}@test.com`}, 20.00, 'active')
+                VALUES (${`Demo V1-${i}`}, 'Demo', ${`V1-${i}`}, ${`demo${i}@${stagingDomain}`}, 20.00, 'active')
                 RETURNING id
             `;
             employeeIds.push(emp.id);
@@ -70,6 +83,19 @@ export async function POST(request) {
                 INSERT INTO incidents (title, description, severity, status, location, reported_at)
                 VALUES (${'Mock Incident ' + i}, 'Dit is een automatisch gegenereerd incident voor de staging omgeving.', 'medium', 'open', 'Amsterdam', NOW())
             `;
+        }
+
+        // 5. Log actions
+        if (session?.user?.id) {
+            await logAudit(
+                session,
+                'CREATE',
+                'staging_environment_seed',
+                userId,
+                null,
+                { preset, employees: empCount, shifts: shiftCount },
+                request
+            );
         }
 
         return Response.json({

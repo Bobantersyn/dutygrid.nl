@@ -1,7 +1,12 @@
 // Utility to hard-block staging tool usage in production environments
 export function requireStagingEnvironment() {
-    // Tijdelijk de strikte check uitgeschakeld zodat je via Vercel de functionaliteit kan testen.
-    // Omdat de routes achter de `/api/internal/` prefix zitten is de kans op per ongeluk gebruik nihil,
-    // maar voor echte productie (met echte klanten) moeten we dit beveiligen op server-niveau of via middleware.
+    const isDev = process.env.NODE_ENV === 'development';
+    const isStaging = process.env.STAGING === 'true';
+    const isPreview = process.env.VERCEL_ENV === 'preview';
+
+    if (!isDev && !isStaging && !isPreview) {
+        throw new Error("FATAL: Staging-tools are strictly prohibited in the live Production environment.");
+    }
+
     return true;
 }
