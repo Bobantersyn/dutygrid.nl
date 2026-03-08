@@ -63,6 +63,7 @@ const routeModules: Record<string, () => Promise<any>> = {
   "../src/app/api/internal/companies/[id]/route.js": () => import("../src/app/api/internal/companies/[id]/route.js"),
   "../src/app/api/internal/impersonate/route.js": () => import("../src/app/api/internal/impersonate/route.js"),
   "../src/app/api/internal/login/route.js": () => import("../src/app/api/internal/login/route.js"),
+  "../src/app/api/internal/staging-tools/build-environment/route.js": () => import("../src/app/api/internal/staging-tools/build-environment/route.js"),
   "../src/app/api/internal/staging-tools/create-company/route.js": () => import("../src/app/api/internal/staging-tools/create-company/route.js"),
   "../src/app/api/internal/staging-tools/generate-demo-data/route.js": () => import("../src/app/api/internal/staging-tools/generate-demo-data/route.js"),
   "../src/app/api/internal/staging-tools/impersonate/route.js": () => import("../src/app/api/internal/staging-tools/impersonate/route.js"),
