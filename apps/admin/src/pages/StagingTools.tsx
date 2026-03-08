@@ -1,17 +1,9 @@
 import { useState } from 'react';
+import TestCompanyBuilder from '../components/TestCompanyBuilder';
 
 export default function StagingTools() {
-    const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
     const [companyData, setCompanyData] = useState<any>(null);
-    const [generateMessage, setGenerateMessage] = useState('');
-
-    // Signup Simulation States
-    const [signupCompany, setSignupCompany] = useState('Test Security BV');
-    const [signupEmail, setSignupEmail] = useState('test+1@dutygrid.test');
-    const [signupEmployees, setSignupEmployees] = useState('5');
-    const [signupPlan, setSignupPlan] = useState('professional');
-    const [signupLoading, setSignupLoading] = useState(false);
 
     // Mail Sink states
     const [interceptedEmails, setInterceptedEmails] = useState<any[]>([]);
@@ -32,75 +24,6 @@ export default function StagingTools() {
             }
         } catch (error) {
             alert('Netwerkfout bij inloggen.');
-        }
-    };
-
-    const handleSimulateSignup = async () => {
-        setSignupLoading(true);
-        setMessage('Signup funnel starten... Even geduld.');
-        try {
-            // Note for backend dev: We will build this endpoint next
-            const res = await fetch('/api/internal/staging-tools/simulate-signup', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ companyName: signupCompany, email: signupEmail, employees: signupEmployees, plan: signupPlan })
-            });
-            const data = await res.json();
-
-            if (res.ok && data.success) {
-                setMessage(data.message);
-                setCompanyData(data.company); // Reuse companyData so the Role Jumps block activates
-            } else {
-                setMessage(`Fout: ${data.error || 'Onbekende fout'}`);
-            }
-        } catch (error) {
-            setMessage('Netwerkfout bij signup simulatie.');
-        } finally {
-            setSignupLoading(false);
-        }
-    };
-
-    const handleCreateCompany = async () => {
-        setLoading(true);
-        setMessage('Bedrijf aanmaken... Even geduld.');
-        setCompanyData(null);
-        try {
-            const res = await fetch('/api/internal/staging-tools/create-company', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' }
-            });
-            const data = await res.json();
-
-            if (res.ok && data.success) {
-                setMessage(data.message);
-                setCompanyData(data.company);
-            } else {
-                setMessage(`Fout: ${data.error || 'Onbekende fout'}`);
-            }
-        } catch (error) {
-            setMessage('Netwerkfout bij het aanmaken van testbedrijf.');
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const handleGenerateData = async (preset: string) => {
-        setGenerateMessage(`Genereren van '${preset}' data...`);
-        try {
-            const res = await fetch('/api/internal/staging-tools/generate-demo-data', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ preset })
-            });
-            const data = await res.json();
-
-            if (res.ok && data.success) {
-                setGenerateMessage(data.message);
-            } else {
-                setGenerateMessage(`Fout: ${data.error}`);
-            }
-        } catch (error) {
-            setGenerateMessage('Netwerkfout bij genereren.');
         }
     };
 
@@ -133,94 +56,12 @@ export default function StagingTools() {
                     </div>
                 )}
 
+                <TestCompanyBuilder onBuildComplete={(data) => {
+                    setCompanyData(data);
+                    setMessage(`Succes! ${data.name} is gebouwd.`);
+                }} />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Tool 1: Simuleer Nieuwe Registratie (BELANGRIJKSTE) */}
-                    <div className="border border-blue-200 rounded-lg p-5 flex flex-col bg-blue-50/30 md:col-span-2 shadow-sm relative overflow-hidden">
-                        <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">CORE FUNNEL</div>
-                        <h3 className="font-semibold text-xl mb-1 text-blue-900">1️⃣ Simuleer Nieuwe Registratie</h3>
-                        <p className="text-sm text-slate-600 mb-5">Maakt een volledig nieuw bedrijf alsof een klant zich net heeft geregistreerd. Verstuurt e-mails en triggert onboarding.</p>
-
-                        <div className="flex flex-col gap-4">
-                            <div className="flex flex-col sm:flex-row gap-4">
-                                <div className="flex-1 w-full">
-                                    <label className="block text-xs font-semibold text-slate-700 mb-1">Bedrijfsnaam</label>
-                                    <input
-                                        type="text"
-                                        value={signupCompany}
-                                        onChange={e => setSignupCompany(e.target.value)}
-                                        className="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 bg-white"
-                                    />
-                                </div>
-                                <div className="flex-1 w-full">
-                                    <label className="block text-xs font-semibold text-slate-700 mb-1">E-mail (gebruik trap tricks)</label>
-                                    <input
-                                        type="email"
-                                        value={signupEmail}
-                                        onChange={e => setSignupEmail(e.target.value)}
-                                        className="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 bg-white"
-                                    />
-                                </div>
-                            </div>
-                            <div className="flex flex-col sm:flex-row gap-4 items-end">
-                                <div className="flex-1 w-full">
-                                    <label className="block text-xs font-semibold text-slate-700 mb-1">Aantal Medewerkers</label>
-                                    <input
-                                        type="number"
-                                        value={signupEmployees}
-                                        onChange={e => setSignupEmployees(e.target.value)}
-                                        className="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 bg-white"
-                                    />
-                                </div>
-                                <div className="flex-1 w-full">
-                                    <label className="block text-xs font-semibold text-slate-700 mb-1">Gewenst Plan (Optioneel)</label>
-                                    <select
-                                        value={signupPlan}
-                                        onChange={e => setSignupPlan(e.target.value)}
-                                        className="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 bg-white"
-                                    >
-                                        <option value="starter">Starter</option>
-                                        <option value="growth">Growth</option>
-                                        <option value="professional">Professional (Trial Default)</option>
-                                    </select>
-                                </div>
-                                <button
-                                    onClick={handleSimulateSignup}
-                                    disabled={signupLoading}
-                                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-medium shadow-sm transition-colors disabled:opacity-50 h-[38px] whitespace-nowrap"
-                                >
-                                    {signupLoading ? 'Bezig...' : 'Start Signup Flow'}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Tool 2: Quick Test Company */}
-                    <div className="border border-slate-200 rounded p-5 flex flex-col bg-slate-50">
-                        <h3 className="font-semibold text-lg mb-1">2️⃣ Snelle Testomgeving</h3>
-                        <p className="text-sm text-slate-500 mb-4 flex-1">Maakt direct een testbedrijf met demo accounts. Dit gebruik je als je snel features of de frontend wil testen zonder de hele funnel te doorlopen.</p>
-                        <button
-                            onClick={handleCreateCompany}
-                            disabled={loading}
-                            className="bg-[#0f172a] hover:bg-slate-800 text-white px-4 py-3 rounded font-medium shadow-sm transition-colors disabled:opacity-50"
-                        >
-                            {loading ? 'Bezig met db scripts...' : 'Genereer testbedrijf'}
-                        </button>
-                    </div>
-
-                    {/* Tool 3: Demo Data Presets */}
-                    <div className="border border-slate-200 rounded p-5 flex flex-col bg-slate-50">
-                        <h3 className="font-semibold text-lg mb-1">3️⃣ Demo Data Prestes</h3>
-                        <p className="text-sm text-slate-500 mb-4 flex-1">Medewerkers, diensten, rapporten en incidenten worden toegevoegd. Dit is geen plan selectie, alleen testdata.</p>
-                        <div className="flex gap-2">
-                            <button onClick={() => handleGenerateData('small')} className="flex-1 bg-white text-blue-700 hover:bg-blue-50 border border-blue-200 px-3 py-2 rounded text-sm font-medium shadow-sm transition-colors">Small</button>
-                            <button onClick={() => handleGenerateData('growth')} className="flex-1 bg-white text-blue-700 hover:bg-blue-50 border border-blue-200 px-3 py-2 rounded text-sm font-medium shadow-sm transition-colors">Growth</button>
-                            <button onClick={() => handleGenerateData('pro')} className="flex-1 bg-white text-blue-700 hover:bg-blue-50 border border-blue-200 px-3 py-2 rounded text-sm font-medium shadow-sm transition-colors">Pro</button>
-                        </div>
-                        {generateMessage && (
-                            <p className="text-xs mt-3 text-emerald-600 font-medium">{generateMessage}</p>
-                        )}
-                    </div>
-
                     {/* Tool 5: Login als gebruiker (Role Jumps) */}
                     {companyData && (
                         <div className="border border-emerald-200 rounded p-5 flex flex-col bg-emerald-50/30 md:col-span-2">
