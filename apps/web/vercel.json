@@ -1,3 +1,15 @@
 {
-    "framework": "react-router"
+    "framework": "react-router",
+    "redirects": [
+        {
+            "source": "/superadmin",
+            "destination": "https://dutygrid-superadmin.vercel.app",
+            "permanent": false
+        },
+        {
+            "source": "/superadmin/(.*)",
+            "destination": "https://dutygrid-superadmin.vercel.app/$1",
+            "permanent": false
+        }
+    ]
 }
