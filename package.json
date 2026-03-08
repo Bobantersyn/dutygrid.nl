@@ -5,8 +5,7 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "install": "npm install"
+    "build": "turbo run build"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
