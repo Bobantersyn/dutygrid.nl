@@ -7,12 +7,12 @@ const JWT_SECRET = new TextEncoder().encode(
     process.env.AUTH_SECRET || 'dutygrid-secret-key-change-in-production'
 );
 
-export async function POST(request) {
+export async function GET(request) {
     try {
         requireStagingEnvironment();
 
-        const body = await request.json();
-        const { email } = body;
+        const { searchParams } = new URL(request.url);
+        const email = searchParams.get('email');
 
         if (!email) {
             return Response.json({ error: 'Email required' }, { status: 400 });
@@ -51,18 +51,16 @@ export async function POST(request) {
 
         const secureFlag = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
 
-        return Response.json(
-            { success: true },
-            {
-                status: 200,
-                headers: {
-                    // Set core app cookie
-                    'Set-Cookie': `session=${sessionToken}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${durationSeconds}; ${secureFlag}`,
-                },
+        // Redirect to the main planning app on the correct domain with cookie initialized
+        return new Response(null, {
+            status: 302,
+            headers: {
+                'Location': '/planning',
+                'Set-Cookie': `session=${sessionToken}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${durationSeconds}; ${secureFlag}`,
             }
-        );
+        });
     } catch (error) {
         console.error('[Impersonate API] Error:', error);
-        return Response.json({ error: `INTERNAL CRASH: ${error.message}`, details: error.message, stack: String(error.stack) }, { status: 500 });
+        return new Response(`INTERNAL CRASH: ${error.message}`, { status: 500 });
     }
 }

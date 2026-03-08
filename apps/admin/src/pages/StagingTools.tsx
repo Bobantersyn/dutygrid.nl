@@ -9,22 +9,13 @@ export default function StagingTools() {
     const [interceptedEmails, setInterceptedEmails] = useState<any[]>([]);
     const [emailLoading, setEmailLoading] = useState(false);
 
-    const handleLoginAs = async (email: string) => {
-        try {
-            const res = await fetch('/api/internal/staging-tools/impersonate', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email })
-            });
-            if (res.ok) {
-                // Redirect completely to the main app side
-                window.location.href = '/planning';
-            } else {
-                alert('Inloggen mislukt.');
-            }
-        } catch (error) {
-            alert('Netwerkfout bij inloggen.');
-        }
+    const handleLoginAs = (email: string) => {
+        // Direct physical navigation to the core app to guarantee cross-domain Set-Cookie (SSO bridge).
+        const baseUrl = process.env.NODE_ENV === 'development'
+            ? 'http://localhost:3000'
+            : 'https://www.dutygrid.nl';
+
+        window.location.href = `${baseUrl}/api/internal/staging-tools/impersonate?email=${encodeURIComponent(email)}`;
     };
 
     return (
