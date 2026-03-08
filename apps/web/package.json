@@ -27,6 +27,7 @@
 		"@emotion/styled": "11.11.0",
 		"@google/generative-ai": "^0.24.1",
 		"@hono/auth-js": "^1.0.15",
+		"@hono/node-server": "^1.19.11",
 		"@lshay/ui": "^0.1.32",
 		"@neondatabase/serverless": "^0.10.4",
 		"@react-aria/button": "^3.13.1",

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 4002",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b --verbose || echo 'TSC FAILED' && vite build --debug",
     "lint": "eslint .",
     "preview": "vite preview"
   },

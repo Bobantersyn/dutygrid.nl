@@ -1,23 +1,28 @@
-import fetch from 'node-fetch';
+import { POST } from '../apps/web/src/app/api/internal/staging-tools/build-environment/route.js';
+import dotenv from 'dotenv';
 
-async function test() {
-    const res = await fetch('http://localhost:5005/api/internal/staging-tools/build-environment', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            company: { name: 'Auto Test Script', email: 'hello@autotest.test', employees: '50' },
-            mode: 'preset_small',
-            plan: 'growth',
-            trialDuration: 14,
-            billingStatus: 'trialing',
-            timeOffsetDays: 7,
-            seedData: { employees: true, shifts: true, incidents: true, clients: true },
-            featureFlags: {}
-        })
-    });
-    console.log("Status:", res.status);
-    const data = await res.json();
-    console.log("Response:", JSON.stringify(data, null, 2));
+dotenv.config({ path: 'apps/web/.env.local' });
+
+async function run() {
+  const req = new Request('http://localhost/api', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      company: { name: 'Test API Local', email: 'test_engine@test.com', employees: '3' },
+      mode: 'preset_small',
+      plan: 'starter',
+      billingStatus: 'trialing',
+      timeOffsetDays: 0,
+      seedData: { employees: true, shifts: true, incidents: false, clients: true, invoices: false }
+    })
+  });
+  
+  try {
+    const res = await POST(req);
+    const json = await res.json();
+    console.log(json);
+  } catch (e) {
+    console.error(e);
+  }
 }
-
-test();
+run();
