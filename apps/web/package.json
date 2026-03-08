@@ -2,10 +2,9 @@
 	"name": "web",
 	"private": true,
 	"type": "module",
-	"type": "module",
 	"scripts": {
 		"dev": "react-router dev",
-		"build": "react-router build",
+		"build": "react-router build && cp -a .vercel/output ../../.vercel/output",
 		"start": "react-router-serve ./build/server/index.js",
 		"typecheck": "react-router typegen && tsc --noEmit"
 	},
