@@ -214,35 +214,7 @@ export default function StagingTools() {
                         </div>
                     </div>
 
-                    {/* Feature Flags */}
-                    <div className="border border-slate-200 rounded p-5 flex flex-col mt-2">
-                        <h3 className="font-semibold text-lg mb-1">🚩 Feature Flags</h3>
-                        <p className="text-sm text-slate-500 mb-4">Schakel test-functies in of uit voor het huidige actieve testbedrijf.</p>
 
-                        <div className="space-y-3">
-                            <label className="flex items-center gap-3 p-3 bg-white border border-slate-200 rounded cursor-pointer hover:bg-slate-50">
-                                <input type="checkbox" className="w-5 h-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" defaultChecked />
-                                <div>
-                                    <div className="text-sm font-medium text-slate-900">Enable GPS Locaties</div>
-                                    <div className="text-xs text-slate-500">Toon de Live Map view in de interface</div>
-                                </div>
-                            </label>
-                            <label className="flex items-center gap-3 p-3 bg-white border border-slate-200 rounded cursor-pointer hover:bg-slate-50">
-                                <input type="checkbox" className="w-5 h-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" defaultChecked />
-                                <div>
-                                    <div className="text-sm font-medium text-slate-900">Enable Incident Module</div>
-                                    <div className="text-xs text-slate-500">Sta rapportage van live incidenten toe</div>
-                                </div>
-                            </label>
-                            <label className="flex items-center gap-3 p-3 bg-white border border-slate-200 rounded cursor-pointer hover:bg-slate-50">
-                                <input type="checkbox" className="w-5 h-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" />
-                                <div>
-                                    <div className="text-sm font-medium text-slate-900">Enable Client Portal <span className="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded ml-1 text-slate-500">Beta</span></div>
-                                    <div className="text-xs text-slate-500">Geef opdrachtgevers inzicht in rapportages</div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
 
                     {/* Mail Sink */}
                     <div className="border border-slate-200 rounded p-5 flex flex-col md:col-span-2 mt-2">

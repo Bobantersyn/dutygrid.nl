@@ -228,6 +228,37 @@ export default function TestCompanyBuilder({ onBuildComplete }: Props) {
                     </div>
                 )}
 
+                {/* Section 5: Feature Flags Override */}
+                <div>
+                    <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 flex items-center gap-2 pb-2 border-b">
+                        <span className="bg-slate-100 text-slate-500 w-6 h-6 rounded-full flex items-center justify-center text-xs">5</span>
+                        Feature Flags Override
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <label className="flex items-center gap-3 p-3 bg-white border border-slate-200 rounded cursor-pointer hover:bg-slate-50">
+                            <input type="checkbox" checked={config.featureFlags.gps} onChange={e => setConfig({ ...config, featureFlags: { ...config.featureFlags, gps: e.target.checked } })} className="w-5 h-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" />
+                            <div>
+                                <div className="text-sm font-medium text-slate-900">Enable GPS Locaties</div>
+                                <div className="text-xs text-slate-500">Live Map view aan voor tenant</div>
+                            </div>
+                        </label>
+                        <label className="flex items-center gap-3 p-3 bg-white border border-slate-200 rounded cursor-pointer hover:bg-slate-50">
+                            <input type="checkbox" checked={config.featureFlags.incidents} onChange={e => setConfig({ ...config, featureFlags: { ...config.featureFlags, incidents: e.target.checked } })} className="w-5 h-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" />
+                            <div>
+                                <div className="text-sm font-medium text-slate-900">Enable Incidenten</div>
+                                <div className="text-xs text-slate-500">Logboek rapportage aan</div>
+                            </div>
+                        </label>
+                        <label className="flex items-center gap-3 p-3 bg-white border border-slate-200 rounded cursor-pointer hover:bg-slate-50">
+                            <input type="checkbox" checked={config.featureFlags.clients} onChange={e => setConfig({ ...config, featureFlags: { ...config.featureFlags, clients: e.target.checked } })} className="w-5 h-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" />
+                            <div>
+                                <div className="text-sm font-medium text-slate-900">Enable Client Portal</div>
+                                <div className="text-xs text-slate-500">Externe inlog voor opdrachtgevers</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
                 {/* Submit Action */}
                 <div className="pt-4 border-t border-slate-200 flex justify-end">
                     <button
