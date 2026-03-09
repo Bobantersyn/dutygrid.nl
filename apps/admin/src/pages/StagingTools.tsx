@@ -335,7 +335,11 @@ export default function StagingTools() {
 
                                 try {
                                     const r = await fetch('/api/internal/staging-tools/nuke-companies', { method: 'POST' });
-                                    if (r.ok) { const d = await r.json(); alert(d.message); setCompanyData(null); }
+                                    if (r.ok) {
+                                        const d = await r.json();
+                                        alert(d.message + "\\n\\nDe applicatie wordt nu herladen om de cache te wissen.");
+                                        window.location.reload();
+                                    }
                                     else { alert('Fout bij uitvoeren nucleaire actie'); }
                                 } catch (e) { alert('Netwerk fout'); }
                             }}
