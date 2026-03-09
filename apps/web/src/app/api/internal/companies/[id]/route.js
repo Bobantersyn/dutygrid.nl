@@ -21,11 +21,13 @@ export async function GET(request, { params }) {
             return Response.json({ error: 'Company not found' }, { status: 404 });
         }
 
-        // Fetch other users in this company
+        // Fetch other users in this company + staging child users
+        const stagingDomainSuffix = `@${companyId}.dutygrid-staging.local`;
         const users = await sql`
             SELECT id, email, name, created_at, subscription_status
             FROM auth_users 
             WHERE company_name = ${owners[0].name}
+               OR email LIKE '%' || ${stagingDomainSuffix}
         `;
 
         // Fetch activity logs (gracefully handle if table doesn't exist yet)
