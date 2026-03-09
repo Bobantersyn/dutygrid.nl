@@ -26,8 +26,9 @@ export default function TestCompanyBuilder({ onBuildComplete }: Props) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
+    const randomSuffix = Math.random().toString(36).substring(2, 6).toUpperCase();
     const [config, setConfig] = useState<TestEnvironmentConfig>({
-        company: { name: 'Test Security BV', email: 'test+1@dutygrid.test', employees: '12' },
+        company: { name: `Test Security BV (${randomSuffix})`, email: `test+${randomSuffix.toLowerCase()}@dutygrid.test`, employees: '12' },
         mode: 'blank',
         plan: 'trial',
         trialDuration: 14,
