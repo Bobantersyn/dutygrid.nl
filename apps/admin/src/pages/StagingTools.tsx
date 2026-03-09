@@ -56,23 +56,20 @@ export default function StagingTools() {
                     {/* Tool 5: Login als gebruiker (Role Jumps) */}
                     {companyData && (
                         <div className="border border-emerald-200 rounded p-5 flex flex-col bg-emerald-50/30 md:col-span-2">
-                            <h3 className="font-semibold text-lg mb-1 text-emerald-900">🛡️ Login als gebruiker (Sessie Impersonatie)</h3>
+                            <h3 className="font-semibold text-lg mb-1 text-emerald-900">Login als gebruiker (Sessie Impersonatie)</h3>
                             <p className="text-sm text-slate-600 mb-4">Log in op het actieve testbedrijf (<span className="font-bold">{companyData.name}</span>) zonder wachtwoorden in te voeren.</p>
 
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                 <button onClick={() => handleLoginAs(companyData.adminEmail)} className="flex flex-col items-center justify-center bg-white hover:bg-emerald-50 text-slate-800 px-3 py-3 rounded border border-emerald-200 shadow-sm transition-all group">
-                                    <span className="text-lg mb-1">👑</span>
-                                    <span className="font-bold">Admin</span>
+                                    <span className="font-bold mt-1">Admin</span>
                                     <span className="text-[10px] text-slate-400 group-hover:text-emerald-600 transition-colors">{companyData.adminEmail}</span>
                                 </button>
                                 <button onClick={() => handleLoginAs(companyData.plannerEmail)} className="flex flex-col items-center justify-center bg-white hover:bg-emerald-50 text-slate-800 px-3 py-3 rounded border border-emerald-200 shadow-sm transition-all group">
-                                    <span className="text-lg mb-1">🗂</span>
-                                    <span className="font-bold">Planner</span>
+                                    <span className="font-bold mt-1">Planner</span>
                                     <span className="text-[10px] text-slate-400 group-hover:text-emerald-600 transition-colors">{companyData.plannerEmail}</span>
                                 </button>
                                 <button onClick={() => handleLoginAs(companyData.guardEmail)} className="flex flex-col items-center justify-center bg-white hover:bg-emerald-50 text-slate-800 px-3 py-3 rounded border border-emerald-200 shadow-sm transition-all group">
-                                    <span className="text-lg mb-1">🧑‍💼</span>
-                                    <span className="font-bold">Medewerker</span>
+                                    <span className="font-bold mt-1">Medewerker</span>
                                     <span className="text-[10px] text-slate-400 group-hover:text-emerald-600 transition-colors">{companyData.guardEmail}</span>
                                 </button>
                             </div>
@@ -116,7 +113,7 @@ export default function StagingTools() {
 
                     {/* Tool 4: Time Travel & Billing */}
                     <div className="border border-slate-200 rounded p-5 flex flex-col mt-2">
-                        <h3 className="font-semibold text-lg mb-1">⏰ Time Travel & Billing</h3>
+                        <h3 className="font-semibold text-lg mb-1">Time Travel & Billing</h3>
                         <p className="text-sm text-slate-500 mb-4">Simuleer abonnementen die verlopen of spoel de tijd door in de actieve testomgeving.</p>
 
                         <div className="flex flex-col gap-4">
@@ -133,7 +130,7 @@ export default function StagingTools() {
                                         }}
                                         className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 px-3 py-1.5 rounded text-sm font-medium transition-colors"
                                     >
-                                        ⏳ +7 Dagen
+                                        +7 Dagen
                                     </button>
                                     <button
                                         onClick={async () => {
@@ -145,7 +142,7 @@ export default function StagingTools() {
                                         }}
                                         className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 px-3 py-1.5 rounded text-sm font-medium transition-colors"
                                     >
-                                        ⏳ +14 Dagen
+                                        +14 Dagen
                                     </button>
                                     <button
                                         onClick={async () => {
@@ -157,7 +154,7 @@ export default function StagingTools() {
                                         }}
                                         className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 px-3 py-1.5 rounded text-sm font-medium transition-colors"
                                     >
-                                        ⏳ +30 Dagen
+                                        +30 Dagen
                                     </button>
                                 </div>
                             </div>
@@ -175,7 +172,7 @@ export default function StagingTools() {
                                         }}
                                         className="bg-orange-50 text-orange-700 hover:bg-orange-100 border border-orange-200 px-3 py-1.5 rounded text-sm font-medium"
                                     >
-                                        ▶️ Expire Trial Nu
+                                        Expire Trial Nu
                                     </button>
 
                                     <button
@@ -188,7 +185,7 @@ export default function StagingTools() {
                                         }}
                                         className="bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded text-sm font-medium"
                                     >
-                                        💳 Activate Monthly
+                                        Activate Monthly
                                     </button>
 
                                     <button
@@ -201,7 +198,7 @@ export default function StagingTools() {
                                         }}
                                         className="bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded text-sm font-medium"
                                     >
-                                        💳 Activate Yearly
+                                        Activate Yearly
                                     </button>
 
                                     <button
@@ -215,7 +212,7 @@ export default function StagingTools() {
                                         }}
                                         className="bg-red-50 text-red-700 hover:bg-red-100 border border-red-200 px-3 py-1.5 rounded text-sm font-medium"
                                     >
-                                        ❌ Payment Failed
+                                        Payment Failed
                                     </button>
                                 </div>
                             </div>
@@ -223,7 +220,7 @@ export default function StagingTools() {
                     </div>
                     {/* Tool 5: Stress Testing & Webhooks */}
                     <div className="border border-slate-200 rounded p-5 flex flex-col mt-2">
-                        <h3 className="font-semibold text-lg mb-1">⚡ Stress Tests & Webhooks</h3>
+                        <h3 className="font-semibold text-lg mb-1">Stress Tests & Webhooks</h3>
                         <p className="text-sm text-slate-500 mb-4">Injecteer extreme belasting en simuleer lifecycle events via de fysieke Stripe endpoint.</p>
 
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
@@ -242,9 +239,9 @@ export default function StagingTools() {
                                             const res = await r.json(); alert(r.ok ? res.message : (res.error || 'Mislukt'));
                                         } catch (e) { alert('Netwerk fout'); }
                                     }}
-                                    className="w-full text-left px-3 py-2 text-sm text-purple-700 hover:bg-purple-100 rounded flex items-center gap-2 border border-purple-200"
+                                    className="w-full text-left px-3 py-2 text-sm text-purple-700 hover:bg-purple-100 rounded flex items-center justify-center gap-2 border border-purple-200 font-medium"
                                 >
-                                    <span className="text-lg">🔥</span> Injecteer Stress Test (250+ Diensten)
+                                    Injecteer Stress Test (250+ Diensten)
                                 </button>
                             </div>
 
@@ -259,7 +256,7 @@ export default function StagingTools() {
                                         } catch (e) { alert('Netwerk fout bij Webhook'); }
                                     }}
                                     className="w-full text-left px-3 py-2 text-sm text-emerald-700 hover:bg-emerald-100 rounded flex items-center gap-2 border border-emerald-200"
-                                ><span className="text-lg">💰</span> Webhook: Payment Succeeded</button>
+                                >Webhook: Payment Succeeded</button>
                                 <button
                                     onClick={async () => {
                                         if (!companyData) return alert('Maak eerst een testbedrijf aan');
@@ -269,7 +266,7 @@ export default function StagingTools() {
                                         } catch (e) { alert('Netwerk fout bij Webhook'); }
                                     }}
                                     className="w-full text-left px-3 py-2 text-sm text-orange-700 hover:bg-orange-100 rounded flex items-center gap-2 border border-orange-200"
-                                ><span className="text-lg">⚠️</span> Webhook: Payment Failed</button>
+                                >Webhook: Payment Failed</button>
                                 <button
                                     onClick={async () => {
                                         if (!companyData) return alert('Maak eerst een testbedrijf aan');
@@ -279,14 +276,14 @@ export default function StagingTools() {
                                         } catch (e) { alert('Netwerk fout bij Webhook'); }
                                     }}
                                     className="w-full text-left px-3 py-2 text-sm text-red-700 hover:bg-red-100 rounded flex items-center gap-2 border border-red-200"
-                                ><span className="text-lg">❌</span> Webhook: Sub Canceled</button>
+                                >Webhook: Sub Canceled</button>
                             </div>
                         </div>
                     </div>
                     {/* Mail Sink */}
                     <div className="border border-slate-200 rounded p-5 flex flex-col md:col-span-2 mt-2">
                         <div className="flex justify-between items-center mb-1">
-                            <h3 className="font-semibold text-lg">📬 Mail Sink Inbox</h3>
+                            <h3 className="font-semibold text-lg">Mail Sink Inbox</h3>
                             <button onClick={async () => {
                                 setEmailLoading(true);
                                 try {
@@ -295,7 +292,7 @@ export default function StagingTools() {
                                 } catch (e) { }
                                 setEmailLoading(false);
                             }} className="bg-slate-100 px-3 py-1 rounded text-sm hover:bg-slate-200 font-medium border border-slate-200 shadow-sm">
-                                🔄 Hernieuwen
+                                Hernieuwen
                             </button>
                         </div>
                         <p className="text-sm text-slate-500 mb-4">Lees onderschepte uitgaande e-mails (wachtwoord-resets, facturen, trial waarschuwingen) die naar test-accounts zijn verstuurd.</p>
@@ -343,9 +340,9 @@ export default function StagingTools() {
                                     else { alert('Fout bij uitvoeren nucleaire actie'); }
                                 } catch (e) { alert('Netwerk fout'); }
                             }}
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-red-50 text-red-600 border border-red-200 rounded-lg hover:bg-red-600 hover:text-white transition-colors text-sm font-bold shadow-sm"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-red-50 text-red-600 border border-red-200 rounded-lg hover:bg-red-600 hover:text-white transition-colors text-sm font-bold shadow-sm uppercase tracking-wide"
                         >
-                            <span className="text-lg">☢️</span> Nuke ALL Test Companies
+                            Nuke ALL Test Companies
                         </button>
                     </div>
                 </div>

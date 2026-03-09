@@ -13,21 +13,24 @@ function AdminLayout() {
 
     return (
         <div className="flex h-screen w-full bg-gray-50 text-slate-900">
-            <aside className="w-64 bg-[#0f172a] text-white flex flex-col hidden md:flex">
-                <div className="p-4 text-xl font-bold border-b border-slate-700">DutyGrid Admin</div>
-                <nav className="flex-1 p-4 space-y-2">
+            <aside className="w-64 bg-[#0f172a] text-white flex flex-col hidden md:flex h-full">
+                <nav className="flex-1 p-4 pt-6 space-y-2">
                     <Link to="/companies" className={`flex items-center space-x-2 p-2 rounded transition-colors ${location.pathname.startsWith('/companies') ? 'bg-blue-600 text-white font-medium' : 'text-slate-300 hover:bg-slate-800'}`}>
                         <span>Bedrijven</span>
                     </Link>
                     {isStaging && (
                         <Link to="/staging-tools" className={`flex items-center space-x-2 p-2 rounded transition-colors ${location.pathname.startsWith('/staging-tools') ? 'bg-blue-600 text-white font-medium' : 'text-slate-300 hover:bg-slate-800'}`}>
-                            <span>Test Toolkit 🧪</span>
+                            <span>Test Toolkit</span>
                         </Link>
                     )}
                     <a href="#" onClick={(e) => { e.preventDefault(); alert('Systeem Log wordt momenteel nog gebouwd.'); }} className="flex items-center space-x-2 p-2 text-slate-300 hover:bg-slate-800 rounded transition-colors mt-8">
                         <span>Systeem Log</span>
                     </a>
                 </nav>
+                <div className="p-6 mt-auto">
+                    <div className="text-xl font-bold text-white tracking-tight">DutyGrid Admin</div>
+                    <div className="text-xs text-slate-500 mt-1">v2.1 Staging</div>
+                </div>
             </aside>
             <main className="flex-1 overflow-auto flex flex-col">
                 <header className="h-16 bg-white border-b flex shrink-0 items-center px-6 justify-between shadow-sm z-10">
