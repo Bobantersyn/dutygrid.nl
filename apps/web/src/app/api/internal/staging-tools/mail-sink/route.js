@@ -7,9 +7,14 @@ export async function GET(request) {
 
         // Fetch last 50 caught emails
         const emails = await sql`
-            SELECT id, to_email, subject, body, sent_at 
+            SELECT 
+                id, 
+                recipient_email AS to_email, 
+                subject, 
+                body_text AS body, 
+                created_at AS sent_at 
             FROM staging_mail_sink
-            ORDER BY sent_at DESC
+            ORDER BY created_at DESC
             LIMIT 50
         `;
 

@@ -164,6 +164,15 @@ export async function POST(request) {
                 );
             }
 
+            // 7. Dispatch Sandbox Welcome Email to sink
+            const { sendEmail } = await import('@/app/api/utils/mailer');
+            await sendEmail({
+                to: adminEmail,
+                subject: 'Je DutyGrid Testomgeving is gereed!',
+                bodyText: `Welkom in je gloednieuwe testomgeving: ${companyName}.\n\nJouw bedrijf en medewerkers zijn zojuist gegenereerd.\n\nJe kan altijd inloggen met het vaste wachtwoord: ${password}\n\nSucces met het testen van de applicatie!`,
+                tenantId: adminUser.id
+            });
+
             // Return success
             return Response.json({
                 success: true,

@@ -67,6 +67,14 @@ export async function POST(request) {
 
         // 4. In a real app we would trigger a verification email here. 
         // For staging, we drop a log line that indicates this would have been sent to Mail Sink.
+        // We now use the actual mailer utility which intercepts it into the DB!
+        const { sendEmail } = await import('@/app/api/utils/mailer');
+        await sendEmail({
+            to: email,
+            subject: 'Welkom bij DutyGrid! Je 14-daagse Proefperiode',
+            bodyText: `Beste Eigenaar,\n\nBedankt voor je registratie bij DutyGrid.\nJe trial voor plan '${plan || 'professional'}' loopt tot ${user.trial_ends_at.toLocaleDateString()}.\n\nJe automatische inlogwachtwoord voor deze test is: ${defaultPassword}\n\nSucces met plannen!`,
+            tenantId: user.id
+        });
         console.log(`[Staging SIMULATE SIGNUP] Trial Welcome / Verification email triggered for ${email}`);
 
 
