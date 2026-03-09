@@ -78,7 +78,8 @@ export function TopNavigation() {
                         onClick={() => {
                             // Clear consumer session cookie and go back to admin portal
                             document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                            window.location.href = "http://localhost:4002/companies"; // Development port for admin
+                            const isDev = window.location.hostname === 'localhost';
+                            window.location.href = isDev ? "http://localhost:4002/companies" : "/superadmin/companies";
                         }}
                         className="bg-white text-red-600 px-3 py-1 rounded shadow text-xs hover:bg-gray-100 transition"
                     >
