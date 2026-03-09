@@ -121,7 +121,25 @@ export async function POST(request) {
                 // Seed Shifts
                 if (seed.shifts && assignmentId) {
                     const totalShifts = config.mode === 'preset_pro' ? 100 : config.mode === 'preset_growth' ? 20 : 3;
-                    const shiftPromises = Array.from({ length: totalShifts }).map(() => {
+
+                    // Guaranteed 3 shifts for the primary testing guard (yesterday, today, tomorrow)
+                    const guaranteedShifts = [];
+                    for (let d = -1; d <= 1; d++) {
+                        const start = new Date(now);
+                        start.setDate(now.getDate() + d);
+                        start.setHours(9, 0, 0, 0); // 09:00 AM
+                        const end = new Date(start);
+                        end.setHours(start.getHours() + 8); // 8 hour shift
+
+                        guaranteedShifts.push(sql`
+                            INSERT INTO shifts (assignment_id, employee_id, start_time, end_time, status)
+                            VALUES (${assignmentId}, ${guardEmp.id}, ${start.toISOString()}, ${end.toISOString()}, 'planned')
+                        `);
+                    }
+
+                    // Random shifts for the rest of the pool
+                    const remainingShifts = totalShifts > 3 ? totalShifts - 3 : 0;
+                    const randomShiftPromises = Array.from({ length: remainingShifts }).map(() => {
                         const randomEmp = employeeIds[Math.floor(Math.random() * employeeIds.length)];
                         const start = new Date(now);
                         start.setDate(now.getDate() + (Math.floor(Math.random() * 15) - 7));
@@ -134,7 +152,8 @@ export async function POST(request) {
                             VALUES (${assignmentId}, ${randomEmp}, ${start.toISOString()}, ${end.toISOString()}, 'planned')
                         `;
                     });
-                    await Promise.all(shiftPromises);
+
+                    await Promise.all([...guaranteedShifts, ...randomShiftPromises]);
                 }
 
                 // Seed Incidents
