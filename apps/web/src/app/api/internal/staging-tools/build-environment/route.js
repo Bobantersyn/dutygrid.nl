@@ -138,12 +138,15 @@ export async function POST(request) {
                 }
 
                 // Seed Incidents
-                if (seed.incidents) {
+                if (seed.incidents && assignmentId && employeeIds.length > 0) {
                     const totalIncidents = config.mode === 'preset_pro' ? 20 : config.mode === 'preset_growth' ? 5 : 1;
-                    const incidentPromises = Array.from({ length: totalIncidents }).map((_, i) => sql`
-                        INSERT INTO incidents (title, description, severity, status, location, reported_at)
-                        VALUES (${'Mock Incident ' + i}, 'Automatically generated incident.', 'medium', 'open', 'Utrecht', ${now.toISOString()})
-                    `);
+                    const incidentPromises = Array.from({ length: totalIncidents }).map(() => {
+                        const randomEmp = employeeIds[Math.floor(Math.random() * employeeIds.length)];
+                        return sql`
+                            INSERT INTO incidents (assignment_id, employee_id, date, description, status)
+                            VALUES (${assignmentId}, ${randomEmp}, ${now.toISOString()}, 'Automatically generated incident.', 'open')
+                        `;
+                    });
                     await Promise.all(incidentPromises);
                 }
             }

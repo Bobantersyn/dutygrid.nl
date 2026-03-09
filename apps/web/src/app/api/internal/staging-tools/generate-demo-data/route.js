@@ -79,9 +79,10 @@ export async function POST(request) {
 
         // 4. Create Incidents
         for (let i = 0; i < incidentCount; i++) {
+            const randomEmp = employeeIds[Math.floor(Math.random() * employeeIds.length)];
             await sql`
-                INSERT INTO incidents (title, description, severity, status, location, reported_at)
-                VALUES (${'Mock Incident ' + i}, 'Dit is een automatisch gegenereerd incident voor de staging omgeving.', 'medium', 'open', 'Amsterdam', NOW())
+                INSERT INTO incidents (assignment_id, employee_id, date, description, status)
+                VALUES (${assignment.id}, ${randomEmp}, NOW(), 'Dit is een automatisch gegenereerd incident voor de staging omgeving.', 'open')
             `;
         }
 
