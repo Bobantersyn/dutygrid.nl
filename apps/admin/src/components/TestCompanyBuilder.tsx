@@ -16,6 +16,7 @@ interface TestEnvironmentConfig {
         invoices: boolean;
     };
     featureFlags: { gps: boolean; incidents: boolean; clients: boolean; };
+    customShifts: { count: number; months: number; };
 }
 
 interface Props {
@@ -35,7 +36,8 @@ export default function TestCompanyBuilder({ onBuildComplete }: Props) {
         billingStatus: 'trialing',
         timeOffsetDays: 0,
         seedData: { employees: false, shifts: false, incidents: false, clients: false, invoices: false },
-        featureFlags: { gps: false, incidents: false, clients: false }
+        featureFlags: { gps: false, incidents: false, clients: false },
+        customShifts: { count: 10, months: 1 }
     });
 
     // Auto-update presets when "mode" changes
@@ -226,6 +228,34 @@ export default function TestCompanyBuilder({ onBuildComplete }: Props) {
                                 </label>
                             ))}
                         </div>
+
+                        {config.seedData.shifts && (
+                            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                <div>
+                                    <label className="block text-xs font-semibold text-slate-700 mb-1">Aantal Test Diensten (voor jouw Medewerker-Account)</label>
+                                    <input
+                                        type="number"
+                                        value={config.customShifts.count}
+                                        onChange={e => setConfig({ ...config, customShifts: { ...config.customShifts, count: parseInt(e.target.value) || 0 } })}
+                                        className="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                                        min="1"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-semibold text-slate-700 mb-1">Spreiding & Periode</label>
+                                    <select
+                                        value={config.customShifts.months}
+                                        onChange={e => setConfig({ ...config, customShifts: { ...config.customShifts, months: Number(e.target.value) } })}
+                                        className="w-full border border-slate-300 rounded px-3 py-2 text-sm bg-white"
+                                    >
+                                        <option value={1}>1 Maand (Huidige maand)</option>
+                                        <option value={2}>2 Maanden (Huidig + Volgende)</option>
+                                        <option value={3}>3 Maanden Vooruit</option>
+                                        <option value={6}>6 Maanden Vooruit</option>
+                                    </select>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 )}
 

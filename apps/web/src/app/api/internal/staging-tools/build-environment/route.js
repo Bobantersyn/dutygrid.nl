@@ -122,12 +122,26 @@ export async function POST(request) {
                 if (seed.shifts && assignmentId) {
                     const totalShifts = config.mode === 'preset_pro' ? 100 : config.mode === 'preset_growth' ? 20 : 3;
 
-                    // Guaranteed 3 shifts for the primary testing guard (yesterday, today, tomorrow)
+                    // Dynamic shifts for the primary testing guard based on UI input
+                    const customShiftsCount = config.customShifts?.count || 10;
+                    const customShiftsMonths = config.customShifts?.months || 1;
+
                     const guaranteedShifts = [];
-                    for (let d = -1; d <= 1; d++) {
+                    for (let i = 0; i < customShiftsCount; i++) {
                         const start = new Date(now);
-                        start.setDate(now.getDate() + d);
-                        start.setHours(9, 0, 0, 0); // 09:00 AM
+
+                        // Force shift 0 to be today, shift 1 to be tomorrow for immediate visual feedback
+                        let dayOffset = 0;
+                        if (i === 0) dayOffset = 0; // Today
+                        else if (i === 1) dayOffset = 1; // Tomorrow
+                        else {
+                            const maxDaysOffset = customShiftsMonths * 30;
+                            // Spread from 7 days ago up to the max requested duration
+                            dayOffset = Math.floor(Math.random() * (maxDaysOffset + 7)) - 7;
+                        }
+
+                        start.setDate(now.getDate() + dayOffset);
+                        start.setHours(Math.floor(Math.random() * 10) + 7, 0, 0, 0); // Between 07:00 and 17:00
                         const end = new Date(start);
                         end.setHours(start.getHours() + 8); // 8 hour shift
 
@@ -138,7 +152,7 @@ export async function POST(request) {
                     }
 
                     // Random shifts for the rest of the pool
-                    const remainingShifts = totalShifts > 3 ? totalShifts - 3 : 0;
+                    const remainingShifts = totalShifts;
                     const randomShiftPromises = Array.from({ length: remainingShifts }).map(() => {
                         const randomEmp = employeeIds[Math.floor(Math.random() * employeeIds.length)];
                         const start = new Date(now);
