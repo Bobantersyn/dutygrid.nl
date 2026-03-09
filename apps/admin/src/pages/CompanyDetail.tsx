@@ -30,25 +30,33 @@ export default function CompanyDetail() {
         }
     };
 
-    const handleImpersonate = async () => {
-        if (!confirm(`Are you sure you want to log in as ${data.company.name}? Your actions will be logged.`)) return;
+    const [selectedImpersonateId, setSelectedImpersonateId] = useState<string>('');
+
+    const handleImpersonate = async (userIdToImpersonate: string) => {
+        const allUsers = data?.users ? [data.company, ...data.users] : [data.company];
+        const targetUser = allUsers.find((u: any) => String(u.id) === String(userIdToImpersonate)) || data.company;
+
+        if (!confirm(`Weet je zeker dat je wilt inloggen als ${targetUser.email}? Je huidige sessie op de achtergrond blijft actief.`)) return;
 
         setActionLoading(true);
         try {
             const res = await fetch('/api/internal/impersonate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ target_user_id: data.company.id })
+                body: JSON.stringify({ target_user_id: userIdToImpersonate })
             });
             const result = await res.json();
             if (res.ok && result.success) {
-                // Redirection should take them to the main app URL (port 4000 usually)
-                window.location.href = 'http://localhost:4000' + result.redirectUrl;
+                // Redirection should take them to the main app URL
+                const baseUrl = process.env.NODE_ENV === 'development'
+                    ? 'http://localhost:3000'
+                    : 'https://www.dutygrid.nl';
+                window.location.href = baseUrl + result.redirectUrl;
             } else {
-                alert('Failed to impersonate: ' + result.error + (result.details ? '\n\nDetails: ' + result.details : ''));
+                alert('Inloggen mislukt: ' + result.error + (result.details ? '\n\nDetails: ' + result.details : ''));
             }
         } catch (err) {
-            alert('Network error');
+            alert('Netwerk fout tijdens inloggen.');
         } finally {
             setActionLoading(false);
         }
@@ -75,19 +83,20 @@ export default function CompanyDetail() {
     const { company, users, activity } = data;
 
     const tabs = ['Account', 'Users', 'Subscription', 'Billing', 'Activity'];
+    const isTestCompany = company.email.includes('.dutygrid-staging.local') || company.email.includes('test+');
 
     return (
         <div className="max-w-6xl mx-auto space-y-6">
-            <Link to="/companies" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition">
+            <Link to="/companies" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition mb-2">
                 <ArrowLeft size={16} /> Terug naar overzicht
             </Link>
 
-            {/* Header Profile */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex items-start justify-between">
-                <div>
-                    <h1 className="text-2xl font-bold text-gray-900">{company.name}</h1>
-                    <p className="text-gray-500 mt-1">KvK: {company.kvk_number || 'Onbekend'} • Eigenaar: {company.email}</p>
-                    <div className="mt-4 flex gap-3">
+            {/* Header Profile - Mobile Friendly */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col md:flex-row items-start justify-between gap-6">
+                <div className="w-full md:w-auto">
+                    <h1 className="text-2xl font-bold text-gray-900 break-words">{company.name}</h1>
+                    <p className="text-gray-500 mt-1 text-sm md:text-base">KvK: {company.kvk_number || 'Onbekend'} • Eigenaar: <span className="break-all">{company.email}</span></p>
+                    <div className="mt-4 flex flex-wrap gap-2 md:gap-3">
                         <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded capitalize">
                             {company.subscription_status}
                         </span>
@@ -96,17 +105,58 @@ export default function CompanyDetail() {
                                 Trial tot: {new Date(company.trial_ends_at).toLocaleDateString('nl-NL')}
                             </span>
                         )}
+                        {isTestCompany && (
+                            <span className="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-1 rounded">
+                                STAGING DATA
+                            </span>
+                        )}
                     </div>
                 </div>
 
-                <div className="flex gap-3">
-                    <button
-                        disabled={actionLoading}
-                        onClick={handleImpersonate}
-                        className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded-lg hover:bg-slate-800 transition disabled:opacity-50"
-                    >
-                        <ShieldAlert size={16} /> Impersonate Admin
-                    </button>
+                <div className="w-full md:w-auto flex flex-col gap-2">
+                    {isTestCompany ? (
+                        <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 text-sm w-full md:w-72 shadow-sm">
+                            <p className="font-semibold text-slate-800 mb-3 flex items-center justify-between">
+                                Testomgeving Logins
+                                <span className="text-xs font-normal text-slate-500">(1-Klik)</span>
+                            </p>
+                            <div className="flex flex-col gap-3">
+                                <select
+                                    className="border border-slate-300 rounded-md text-sm p-2 w-full focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white"
+                                    value={selectedImpersonateId || String(company.id)}
+                                    onChange={(e) => setSelectedImpersonateId(e.target.value)}
+                                >
+                                    <option value={String(company.id)}>👑 Admin (Eigenaar)</option>
+                                    {users.filter((u: any) => String(u.id) !== String(company.id)).map((u: any) => (
+                                        <option key={u.id} value={String(u.id)}>
+                                            {u.email.includes('planner') ? '🗂 Planner' : u.email.includes('medewerker') ? '🧑‍💼 Beveiliger' : '👤 Gast'} - {u.email.split('@')[0]}
+                                        </option>
+                                    ))}
+                                </select>
+                                <button
+                                    disabled={actionLoading}
+                                    onClick={() => handleImpersonate(selectedImpersonateId || String(company.id))}
+                                    className="flex items-center justify-center gap-2 px-4 py-2.5 bg-emerald-600 text-white text-sm font-semibold rounded-md hover:bg-emerald-700 transition disabled:opacity-50 w-full shadow-sm"
+                                >
+                                    <ShieldAlert size={16} /> Direct Inloggen
+                                </button>
+                                <div className="mt-2 pt-2 border-t border-slate-200">
+                                    <p className="text-xs text-slate-500 text-center">
+                                        Vast wachtwoord voor handmatig testen:<br />
+                                        <code className="bg-white border text-emerald-700 px-1.5 py-0.5 rounded mt-1 inline-block font-mono font-bold select-all">TestPassword123!</code>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
+                        <button
+                            disabled={actionLoading}
+                            onClick={() => handleImpersonate(String(company.id))}
+                            className="flex items-center justify-center gap-2 px-6 py-2.5 bg-slate-900 text-white text-sm font-medium rounded-lg hover:bg-slate-800 transition disabled:opacity-50 w-full shadow-sm"
+                        >
+                            <ShieldAlert size={16} /> Impersonate Eigenaar
+                        </button>
+                    )}
                 </div>
             </div>
 
