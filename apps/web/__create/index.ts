@@ -73,17 +73,8 @@ if (process.env.CORS_ORIGINS) {
     })
   );
 }
-for (const method of ['post', 'put', 'patch'] as const) {
-  app[method](
-    '*',
-    bodyLimit({
-      maxSize: 4.5 * 1024 * 1024, // 4.5mb to match vercel limit
-      onError: (c) => {
-        return c.json({ error: 'Body size limit exceeded' }, 413);
-      },
-    })
-  );
-}
+// Removed redundant Hono bodyLimit middleware. Vercel automatically enforces a 4.5MB limit at the infrastructure edge.
+// Running it internally here causes `TypeError: Cannot read properties of undefined (reading 'window')` inside Vite SSR.
 
 if (process.env.AUTH_SECRET) {
   app.use(

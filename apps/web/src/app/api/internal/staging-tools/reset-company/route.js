@@ -1,13 +1,11 @@
 import sql from '@/app/api/utils/sql';
 import { getSession } from '@/utils/session';
 import { logAudit } from '@/app/api/utils/audit-logger';
+import { requireStagingEnvironment } from '../guard.js';
 
 export async function POST(request) {
     try {
-        const isStaging = process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'development';
-        if (!isStaging && process.env.STAGING !== 'true' && process.env.VERCEL_ENV !== 'preview') {
-            return Response.json({ error: 'Tool only available in Staging.' }, { status: 403 });
-        }
+        requireStagingEnvironment();
         const session = await getSession(request);
 
         const body = await request.json();
