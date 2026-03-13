@@ -58,9 +58,21 @@ export function QuickActions({ isPlannerOrAdmin }) {
               title="Nieuwe Dienst"
               description="Plan dienst in"
             />
+            <ActionCard
+              href="/planning/verlof"
+              icon={Building2}
+              title="Verlof Beheren"
+              description="Beoordeel aanvragen"
+            />
           </>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full md:col-span-2">
+            <ActionCard
+              href="/beschikbaarheid/verlof"
+              icon={Calendar}
+              title="Verlof aanvragen"
+              description="Vraag verlof aan of meld je ziek"
+            />
             <ActionCard
               href="/diensten-ruilen"
               icon={RefreshCw}

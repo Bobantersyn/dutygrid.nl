@@ -126,13 +126,16 @@ export function TopNavigation() {
                                 <>
                                     <NavItem href="/" icon={LayoutGrid} label="Dashboard" active={currentPath === "/"} />
                                     <NavItem href="/planning" icon={Calendar} label="Planning" active={currentPath.startsWith("/planning")} />
+                                    <NavItem href="/planning/verlof" icon={FileText} label="Verlof" active={currentPath === "/planning/verlof"} />
                                     <NavItem href="/employees" icon={Users} label="Medewerkers" active={currentPath.startsWith("/employees")} />
                                     {/* Clients & Assignments united into 1 logical block visually */}
                                     <NavItem href="/clients" icon={Building2} label="Klanten & Opdrachten" active={currentPath.startsWith("/clients") || currentPath.startsWith("/assignments")} />
                                 </>
                             ) : (
                                 <>
+                                    <NavItem href="/" icon={LayoutGrid} label="Dashboard" active={currentPath === "/"} />
                                     <NavItem href="/beschikbaarheid" icon={Clock} label="Uren" active={currentPath.startsWith("/beschikbaarheid")} />
+                                    <NavItem href="/beschikbaarheid/verlof" icon={Calendar} label="Verlof" active={currentPath === "/beschikbaarheid/verlof"} />
                                     <NavItem href="/diensten-ruilen" icon={ArrowLeftRight} label="Ruilen" active={currentPath.startsWith("/diensten-ruilen")} />
                                 </>
                             )}

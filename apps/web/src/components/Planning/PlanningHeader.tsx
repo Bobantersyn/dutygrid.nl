@@ -1,7 +1,13 @@
 import { Plus, BarChart2, Filter } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
-export function PlanningHeader({ isCollapsed, onToggleCollapse, onOpenAvailabilityStatus, onOpenMobileFilters }) {
+export function PlanningHeader({ isCollapsed, onToggleCollapse, onOpenAvailabilityStatus, onOpenMobileFilters, isPlannerOrAdmin }: {
+  isCollapsed?: boolean;
+  onToggleCollapse?: () => void;
+  onOpenAvailabilityStatus?: () => void;
+  onOpenMobileFilters?: () => void;
+  isPlannerOrAdmin?: boolean;
+}) {
   return (
     <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
       <div className="flex flex-col sm:flex-row sm:items-center gap-3">
@@ -12,14 +18,25 @@ export function PlanningHeader({ isCollapsed, onToggleCollapse, onOpenAvailabili
           </p>
         </div>
 
-        {/* Status chip (green, small, clickable) next to title block */}
-        <button
-          onClick={onOpenAvailabilityStatus}
-          className="flex items-center gap-1.5 px-2.5 py-1 bg-green-50 text-green-700 hover:bg-green-100 border border-green-200 rounded-full text-xs font-medium transition-colors cursor-pointer mt-1 sm:mt-0"
-        >
-          <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-          Invulstatus
-        </button>
+        <div className="flex items-center gap-2 mt-1 sm:mt-0">
+          {/* Status chip (green, small, clickable) next to title block */}
+          <button
+            onClick={onOpenAvailabilityStatus}
+            className="flex items-center gap-1.5 px-2.5 py-1 bg-green-50 text-green-700 hover:bg-green-100 border border-green-200 rounded-full text-xs font-medium transition-colors cursor-pointer"
+          >
+            <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+            Invulstatus
+          </button>
+
+          {/* NEW: Leave Requests Button */}
+          <button
+            onClick={() => window.location.href = isPlannerOrAdmin ? '/planning/verlof' : '/beschikbaarheid/verlof'}
+            className="flex items-center gap-1.5 px-2.5 py-1 bg-orange-50 text-orange-700 hover:bg-orange-100 border border-orange-200 rounded-full text-xs font-medium transition-colors cursor-pointer"
+          >
+            <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
+            Verlofaanvragen
+          </button>
+        </div>
       </div>
 
       <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">

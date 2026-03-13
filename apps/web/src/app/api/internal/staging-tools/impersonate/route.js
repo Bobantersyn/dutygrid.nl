@@ -33,6 +33,7 @@ export async function GET(request) {
             userId: user.id,
             email: user.email,
             name: user.name,
+            is_impersonating: true,
         })
             .setProtectedHeader({ alg: 'HS256' })
             .setIssuedAt()

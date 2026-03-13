@@ -1,5 +1,4 @@
 import { AsyncLocalStorage } from 'node:async_hooks';
-console.log('--- STARTING EVALUATION OF __create/index.ts ---');
 import nodeConsole from 'node:console';
 import { skipCSRFCheck } from '@auth/core';
 import Credentials from '@auth/core/providers/credentials';
@@ -10,7 +9,6 @@ import { Hono } from 'hono';
 import { contextStorage, getContext } from 'hono/context-storage';
 import { cors } from 'hono/cors';
 import { proxy } from 'hono/proxy';
-import { bodyLimit } from 'hono/body-limit';
 import { requestId } from 'hono/request-id';
 
 import { serializeError } from 'serialize-error';
@@ -18,230 +16,183 @@ import ws from 'ws';
 import NeonAdapter from './adapter';
 import { getHTMLForErrorPage } from './get-html-for-error-page';
 import { isAuthAction } from './is-auth-action';
-import { API_BASENAME, api } from './route-builder';
+import { API_BASENAME, api, registerRoutes } from './route-builder';
 neonConfig.webSocketConstructor = ws;
 
-const als = new AsyncLocalStorage<{ requestId: string }>();
+// Ensure routes are registered BEFORE any app.route or request handling
+// Use globalThis to persist state across HMR (Hot Module Replacement)
+if (!(globalThis as any).__routes_registered) {
+  await registerRoutes();
+  (globalThis as any).__routes_registered = true;
+}
 
-// console overrides removed to prevent Vite HMR infinite call stacks
+const als = new AsyncLocalStorage<{ requestId: string }>();
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 const adapter = NeonAdapter(pool);
 
-console.log('--- __create/index.ts initialized ---');
-const app = new Hono();
+export async function buildApp() {
+  const app = new Hono();
 
-app.use('*', async (c, next) => {
-  console.log(`[Hono] Request started: ${c.req.method} ${c.req.path}`);
-  await next();
-  console.log(`[Hono] Request finished: ${c.req.method} ${c.req.path}`);
-});
-
-app.use('*', requestId());
-
-app.use('*', (c, next) => {
-  const requestId = c.get('requestId');
-  // console.log(`[Hono] als.run start for ${requestId}`);
-  return als.run({ requestId }, () => {
-    // console.log(`[Hono] Inside als.run for ${requestId}`);
-    return next();
+  app.use('*', requestId());
+  app.use('*', (c, next) => {
+    return als.run({ requestId: c.get('requestId') }, () => next());
   });
-});
+  app.use(contextStorage());
 
-app.use(contextStorage());
+  app.onError((err, c) => {
+    if (c.req.method !== 'GET') {
+      return c.json(
+        {
+          error: 'An error occurred in your app',
+          details: serializeError(err),
+        },
+        500
+      );
+    }
+    return c.html(getHTMLForErrorPage(err), 200);
+  });
 
-app.onError((err, c) => {
-  if (c.req.method !== 'GET') {
-    return c.json(
-      {
-        error: 'An error occurred in your app',
-        details: serializeError(err),
-      },
-      500
+  if (process.env.CORS_ORIGINS) {
+    app.use(
+      '/*',
+      cors({
+        origin: (process.env.CORS_ORIGINS as string).split(',').map((origin) => origin.trim()),
+      })
     );
   }
-  return c.html(getHTMLForErrorPage(err), 200);
-});
 
-if (process.env.CORS_ORIGINS) {
-  app.use(
-    '/*',
-    cors({
-      origin: process.env.CORS_ORIGINS.split(',').map((origin) => origin.trim()),
-    })
-  );
-}
-// Removed redundant Hono bodyLimit middleware. Vercel automatically enforces a 4.5MB limit at the infrastructure edge.
-// Running it internally here causes `TypeError: Cannot read properties of undefined (reading 'window')` inside Vite SSR.
-
-if (process.env.AUTH_SECRET) {
-  app.use(
-    '/api/auth/*',
-    initAuthConfig((c) => ({
-      secret: process.env.AUTH_SECRET,
-      pages: {
-        signIn: '/account/signin',
-        signOut: '/account/logout',
-      },
-      skipCSRFCheck,
-      session: {
-        strategy: 'jwt',
-      },
-      callbacks: {
-        session({ session, token }) {
-          if (token.sub) {
-            session.user.id = token.sub;
-          }
-          return session;
+  if (process.env.AUTH_SECRET) {
+    app.use(
+      '/api/auth/*',
+      initAuthConfig((c) => ({
+        secret: process.env.AUTH_SECRET,
+        pages: {
+          signIn: '/account/signin',
+          signOut: '/account/logout',
         },
-      },
-      cookies: {
-        csrfToken: {
-          options: {
-            secure: true,
-            sameSite: 'none',
+        skipCSRFCheck,
+        session: {
+          strategy: 'jwt',
+        },
+        callbacks: {
+          session({ session, token }) {
+            if (token.sub) {
+              session.user.id = token.sub;
+            }
+            return session;
           },
         },
-        sessionToken: {
-          options: {
-            secure: true,
-            sameSite: 'none',
+        cookies: {
+          csrfToken: {
+            options: {
+              secure: true,
+              sameSite: 'none',
+            },
+          },
+          sessionToken: {
+            options: {
+              secure: true,
+              sameSite: 'none',
+            },
+          },
+          callbackUrl: {
+            options: {
+              secure: true,
+              sameSite: 'none',
+            },
           },
         },
-        callbackUrl: {
-          options: {
-            secure: true,
-            sameSite: 'none',
-          },
-        },
-      },
-      providers: [
-        Credentials({
-          id: 'credentials-signin',
-          name: 'Credentials Sign in',
-          credentials: {
-            email: {
-              label: 'Email',
-              type: 'email',
+        providers: [
+          Credentials({
+            id: 'credentials-signin',
+            name: 'Credentials Sign in',
+            credentials: {
+              email: { label: 'Email', type: 'email' },
+              password: { label: 'Password', type: 'password' },
             },
-            password: {
-              label: 'Password',
-              type: 'password',
+            authorize: async (credentials) => {
+              const { email, password } = credentials;
+              if (!email || !password || typeof email !== 'string' || typeof password !== 'string') return null;
+              const user = await adapter.getUserByEmail(email);
+              if (!user) return null;
+              const matchingAccount = user.accounts.find(a => a.provider === 'credentials');
+              const accountPassword = matchingAccount?.password;
+              if (!accountPassword) return null;
+              const isValid = await verify(accountPassword, password);
+              if (!isValid) return null;
+              return user;
             },
-          },
-          authorize: async (credentials) => {
-            const { email, password } = credentials;
-            if (!email || !password) {
-              return null;
-            }
-            if (typeof email !== 'string' || typeof password !== 'string') {
-              return null;
-            }
-
-            // logic to verify if user exists
-            const user = await adapter.getUserByEmail(email);
-            if (!user) {
-              return null;
-            }
-            const matchingAccount = user.accounts.find(
-              (account) => account.provider === 'credentials'
-            );
-            const accountPassword = matchingAccount?.password;
-            if (!accountPassword) {
-              return null;
-            }
-
-            const isValid = await verify(accountPassword, password);
-            if (!isValid) {
-              return null;
-            }
-
-            // return user object with the their profile data
-            return user;
-          },
-        }),
-        Credentials({
-          id: 'credentials-signup',
-          name: 'Credentials Sign up',
-          credentials: {
-            email: {
-              label: 'Email',
-              type: 'email',
+          }),
+          Credentials({
+            id: 'credentials-signup',
+            name: 'Credentials Sign up',
+            credentials: {
+              email: { label: 'Email', type: 'email' },
+              password: { label: 'Password', type: 'password' },
+              name: { label: 'Name', type: 'text' },
+              image: { label: 'Image', type: 'text', required: false },
             },
-            password: {
-              label: 'Password',
-              type: 'password',
+            authorize: async (credentials) => {
+              const { email, password, name, image } = credentials;
+              if (!email || !password || typeof email !== 'string' || typeof password !== 'string') return null;
+              const user = await adapter.getUserByEmail(email);
+              if (!user) {
+                const newUser = await adapter.createUser({
+                  id: crypto.randomUUID(),
+                  emailVerified: null,
+                  email,
+                  name: typeof name === 'string' ? name : undefined,
+                  image: typeof image === 'string' ? image : undefined,
+                });
+                await adapter.linkAccount({
+                  extraData: { password: await hash(password) },
+                  type: 'credentials',
+                  userId: newUser.id,
+                  providerAccountId: newUser.id,
+                  provider: 'credentials',
+                });
+                return newUser;
+              }
+              return null;
             },
-            name: { label: 'Name', type: 'text' },
-            image: { label: 'Image', type: 'text', required: false },
-          },
-          authorize: async (credentials) => {
-            const { email, password, name, image } = credentials;
-            if (!email || !password) {
-              return null;
-            }
-            if (typeof email !== 'string' || typeof password !== 'string') {
-              return null;
-            }
-
-            // logic to verify if user exists
-            const user = await adapter.getUserByEmail(email);
-            if (!user) {
-              const newUser = await adapter.createUser({
-                id: crypto.randomUUID(),
-                emailVerified: null,
-                email,
-                name: typeof name === 'string' && name.length > 0 ? name : undefined,
-                image: typeof image === 'string' && image.length > 0 ? image : undefined,
-              });
-              await adapter.linkAccount({
-                extraData: {
-                  password: await hash(password),
-                },
-                type: 'credentials',
-                userId: newUser.id,
-                providerAccountId: newUser.id,
-                provider: 'credentials',
-              });
-              return newUser;
-            }
-            return null;
-          },
-        }),
-      ],
-    }))
-  );
-}
-app.all('/integrations/:path{.+}', async (c, next) => {
-  const queryParams = c.req.query();
-  const url = `${process.env.NEXT_PUBLIC_CREATE_BASE_URL ?? 'https://www.create.xyz'}/integrations/${c.req.param('path')}${Object.keys(queryParams).length > 0 ? `?${new URLSearchParams(queryParams).toString()}` : ''}`;
-
-  return proxy(url, {
-    method: c.req.method,
-    body: c.req.raw.body ?? null,
-    // @ts-ignore - this key is accepted even if types not aware and is
-    // required for streaming integrations
-    duplex: 'half',
-    redirect: 'manual',
-    headers: {
-      ...c.req.header(),
-      'X-Forwarded-For': process.env.NEXT_PUBLIC_CREATE_HOST,
-      'x-createxyz-host': process.env.NEXT_PUBLIC_CREATE_HOST,
-      Host: process.env.NEXT_PUBLIC_CREATE_HOST,
-      'x-createxyz-project-group-id': process.env.NEXT_PUBLIC_PROJECT_GROUP_ID,
-    },
-  });
-});
-
-app.use('/api/auth/*', async (c, next) => {
-  if (isAuthAction(c.req.path)) {
-    return authHandler()(c, next);
+          }),
+        ],
+      }))
+    );
   }
-  return next();
-});
-app.route(API_BASENAME, api);
 
-export { app };
+  app.all('/integrations/:path{.+}', async (c) => {
+    const queryParams = c.req.query();
+    const url = `${process.env.NEXT_PUBLIC_CREATE_BASE_URL ?? 'https://www.create.xyz'}/integrations/${c.req.param('path')}${Object.keys(queryParams).length > 0 ? `?${new URLSearchParams(queryParams).toString()}` : ''}`;
+
+    return proxy(url, {
+      method: c.req.method,
+      body: c.req.raw.body ?? null,
+      redirect: 'manual',
+      headers: {
+        ...c.req.header(),
+        'X-Forwarded-For': process.env.NEXT_PUBLIC_CREATE_HOST!,
+        'x-createxyz-host': process.env.NEXT_PUBLIC_CREATE_HOST!,
+        Host: process.env.NEXT_PUBLIC_CREATE_HOST!,
+        'x-createxyz-project-group-id': process.env.NEXT_PUBLIC_PROJECT_GROUP_ID!,
+      },
+    });
+  });
+
+  app.use('/api/auth/*', async (c, next) => {
+    if (isAuthAction(c.req.path)) {
+      return authHandler()(c, next);
+    }
+    return next();
+  });
+
+  app.route(API_BASENAME, api);
+  return app;
+}
+
+// Keep the default export backward-compatible by instantiating it globally just in case other things rely on the singleton
+export const app = await buildApp();
 

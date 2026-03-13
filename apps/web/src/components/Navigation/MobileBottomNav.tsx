@@ -43,15 +43,18 @@ export function MobileBottomNav() {
         <nav className="fixed bottom-0 left-0 right-0 z-50 flex h-16 w-full items-center justify-around border-t border-gray-200 bg-white/90 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] backdrop-blur-md pb-safe lg:hidden">
             {isPlannerOrAdmin ? (
                 <>
-                    <NavItem href="/planning?view=today" icon={CalendarCheck} label="Planning" active={currentPath.startsWith("/planning")} />
+                    <NavItem href="/" icon={BarChart3} label="Dashboard" active={currentPath === "/"} />
+                    <NavItem href="/planning" icon={CalendarCheck} label="Planning" active={currentPath.startsWith("/planning")} />
+                    <NavItem href="/planning/verlof" icon={Users} label="Verlof" active={currentPath === "/planning/verlof"} />
                     <NavItem href="/employees" icon={Users} label="Medewerkers" active={currentPath.startsWith("/employees")} />
                     <NavItem href="/clients" icon={Building} label="Klanten" active={currentPath.startsWith("/clients") || currentPath.startsWith("/assignments")} />
-                    <NavItem href="/" icon={BarChart3} label="Dashboard" active={currentPath === "/"} />
                 </>
             ) : (
                 <>
+                    <NavItem href="/" icon={BarChart3} label="Dashboard" active={currentPath === "/"} />
                     <NavItem href="/planning" icon={CalendarCheck} label="Rooster" active={currentPath.startsWith("/planning")} />
                     <NavItem href="/beschikbaarheid" icon={BarChart3} label="Uren" active={currentPath.startsWith("/beschikbaarheid")} />
+                    <NavItem href="/beschikbaarheid/verlof" icon={CalendarCheck} label="Verlof" active={currentPath === "/beschikbaarheid/verlof"} />
                 </>
             )}
         </nav>

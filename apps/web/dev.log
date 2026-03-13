@@ -1,105 +1,2810 @@
 
 > dev
-> react-router dev --port 3000
+> react-router dev
 
-  ➜  Local:   http://localhost:3000/
-  ➜  Network: http://192.168.0.201:3000/
+  ➜  Local:   http://localhost:5005/
+  ➜  Network: http://192.168.0.201:5005/
   ➜  press h + enter to show help
---- STARTING REGISTER ROUTES ---
-[route-builder] importing ../src/app/api/availability/exceptions/batch/delete/route.js
-[route-builder] successfully imported ../src/app/api/availability/exceptions/batch/delete/route.js
-[route-builder] importing ../src/app/api/shift-swaps/suggestions/[shift_id]/route.js
-[route-builder] successfully imported ../src/app/api/shift-swaps/suggestions/[shift_id]/route.js
-[route-builder] importing ../src/app/api/employees/availability-overview/route.js
-[route-builder] successfully imported ../src/app/api/employees/availability-overview/route.js
-[route-builder] importing ../src/app/api/availability/exceptions/batch/route.js
-[route-builder] successfully imported ../src/app/api/availability/exceptions/batch/route.js
-[route-builder] importing ../src/app/api/shifts/[id]/approve-override/route.js
-[route-builder] successfully imported ../src/app/api/shifts/[id]/approve-override/route.js
-[route-builder] importing ../src/app/api/availability/saved-patterns/route.js
-[route-builder] successfully imported ../src/app/api/availability/saved-patterns/route.js
-[route-builder] importing ../src/app/api/planning/availability-check/route.js
-[route-builder] successfully imported ../src/app/api/planning/availability-check/route.js
-[route-builder] importing ../src/app/api/availability/week-overview/route.js
-[route-builder] successfully imported ../src/app/api/availability/week-overview/route.js
-[route-builder] importing ../src/app/api/notifications/unread-count/route.js
-[route-builder] successfully imported ../src/app/api/notifications/unread-count/route.js
-[route-builder] importing ../src/app/api/availability/exceptions/route.js
-[route-builder] successfully imported ../src/app/api/availability/exceptions/route.js
-[route-builder] importing ../src/app/api/test-create-beveiliger/route.js
-[route-builder] successfully imported ../src/app/api/test-create-beveiliger/route.js
-[route-builder] importing ../src/app/api/reports/billing/export/route.js
-[route-builder] successfully imported ../src/app/api/reports/billing/export/route.js
-[route-builder] importing ../src/app/api/availability/patterns/route.js
-[route-builder] successfully imported ../src/app/api/availability/patterns/route.js
-[route-builder] importing ../src/app/api/reports/hours/export/route.js
-[route-builder] successfully imported ../src/app/api/reports/hours/export/route.js
-[route-builder] importing ../src/app/api/custom-auth/session/route.js
-[route-builder] successfully imported ../src/app/api/custom-auth/session/route.js
-[route-builder] importing ../src/app/api/availability/check/route.js
-[route-builder] successfully imported ../src/app/api/availability/check/route.js
-[route-builder] importing ../src/app/api/custom-auth/logout/route.js
-[route-builder] successfully imported ../src/app/api/custom-auth/logout/route.js
-[route-builder] importing ../src/app/api/debug-constraints/route.js
-[route-builder] successfully imported ../src/app/api/debug-constraints/route.js
-[route-builder] importing ../src/app/api/custom-auth/login/route.js
-[route-builder] successfully imported ../src/app/api/custom-auth/login/route.js
-[route-builder] importing ../src/app/api/assignments/[id]/route.js
-[route-builder] successfully imported ../src/app/api/assignments/[id]/route.js
-[route-builder] importing ../src/app/api/planning/suggest/route.js
-[route-builder] successfully imported ../src/app/api/planning/suggest/route.js
-[route-builder] importing ../src/app/api/shift-swaps/[id]/route.js
-[route-builder] successfully imported ../src/app/api/shift-swaps/[id]/route.js
-[route-builder] importing ../src/app/api/system-settings/route.js
-[route-builder] successfully imported ../src/app/api/system-settings/route.js
-[route-builder] importing ../src/app/api/reports/billing/route.js
-[route-builder] successfully imported ../src/app/api/reports/billing/route.js
-[route-builder] importing ../src/app/api/cao-types/[id]/route.js
-[route-builder] successfully imported ../src/app/api/cao-types/[id]/route.js
-[route-builder] importing ../src/app/api/employees/[id]/route.js
-[route-builder] successfully imported ../src/app/api/employees/[id]/route.js
-[route-builder] importing ../src/app/api/migrations/run/route.js
-[route-builder] successfully imported ../src/app/api/migrations/run/route.js
-[route-builder] importing ../src/app/api/notifications/route.js
-[route-builder] successfully imported ../src/app/api/notifications/route.js
-[route-builder] importing ../src/app/api/planning-gaps/route.js
-[route-builder] successfully imported ../src/app/api/planning-gaps/route.js
-[route-builder] importing ../src/app/api/reports/hours/route.js
-[route-builder] successfully imported ../src/app/api/reports/hours/route.js
-[route-builder] importing ../src/app/api/debug-schema/route.js
-[route-builder] successfully imported ../src/app/api/debug-schema/route.js
-[route-builder] importing ../src/app/api/clients/[id]/route.js
-[route-builder] successfully imported ../src/app/api/clients/[id]/route.js
-[route-builder] importing ../src/app/api/hours/export/route.js
-[route-builder] successfully imported ../src/app/api/hours/export/route.js
-[route-builder] importing ../src/app/api/assignments/route.js
-[route-builder] successfully imported ../src/app/api/assignments/route.js
-[route-builder] importing ../src/app/api/quick-login/route.js
-[route-builder] successfully imported ../src/app/api/quick-login/route.js
-[route-builder] importing ../src/app/api/shift-swaps/route.js
-[route-builder] successfully imported ../src/app/api/shift-swaps/route.js
-[route-builder] importing ../src/app/api/admin/users/route.js
-[route-builder] successfully imported ../src/app/api/admin/users/route.js
-[route-builder] importing ../src/app/api/shifts/[id]/route.js
-[route-builder] successfully imported ../src/app/api/shifts/[id]/route.js
-[route-builder] importing ../src/app/api/leave/[id]/route.js
-[route-builder] successfully imported ../src/app/api/leave/[id]/route.js
-[route-builder] importing ../src/app/api/cao-types/route.js
-[route-builder] successfully imported ../src/app/api/cao-types/route.js
-[route-builder] importing ../src/app/api/employees/route.js
-[route-builder] successfully imported ../src/app/api/employees/route.js
-[route-builder] importing ../src/app/api/user-role/route.js
-[route-builder] successfully imported ../src/app/api/user-role/route.js
-[route-builder] importing ../src/app/api/clients/route.js
-[route-builder] successfully imported ../src/app/api/clients/route.js
-[route-builder] importing ../src/app/api/shifts/route.js
-[route-builder] successfully imported ../src/app/api/shifts/route.js
-[route-builder] importing ../src/app/api/audit/route.js
-[route-builder] successfully imported ../src/app/api/audit/route.js
-[route-builder] importing ../src/app/api/hours/route.js
-[route-builder] successfully imported ../src/app/api/hours/route.js
-[route-builder] importing ../src/app/api/leave/route.js
-[route-builder] successfully imported ../src/app/api/leave/route.js
---- FINISHED REGISTER ROUTES ---
 --- STARTING EVALUATION OF __create/index.ts ---
 --- __create/index.ts initialized ---
+[page.tsx] MODULE EVALUATED!
+🚧 Dev server started
+[Hono] Request started: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /logo.png
+[Hono] Request finished: GET /logo.png
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+11:20:51 AM [vite] (client) page reload /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/custom-auth/login/route.js
+11:20:51 AM [vite] (client) page reload /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api/custom-auth/login/route.js
+11:20:51 AM [vite] (client) page reload src/app/api/custom-auth/login/route.js
+11:20:51 AM [vite] (ssr) page reload src/app/api/custom-auth/login/route.js
+--- STARTING EVALUATION OF __create/index.ts ---
+--- __create/index.ts initialized ---
+🚧 Dev server started
+[Hono] Request started: GET /account/signin
+[Hono] Request started: GET /account/signin
+[Hono] Request started: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request started: GET /api/debug-routes
+[Hono] Request finished: GET /api/debug-routes
+[Hono] Request started: GET /favicon.ico
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /favicon.ico
+[Hono] Request finished: GET /favicon.ico
+11:23:31 AM [vite] vite.config.ts changed, restarting server...
+✘ [ERROR] Unterminated string literal
+
+    vite.config.ts:53:26:
+      53 │         'src/**/page.jsx',
+         ╵                           ^
+
+failed to load config from /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/vite.config.ts
+11:23:31 AM [vite] Build failed with 1 error:
+vite.config.ts:53:26: ERROR: Unterminated string literal
+11:23:31 AM [vite] server restart failed
+11:23:45 AM [vite] vite.config.ts changed, restarting server...
+✘ [ERROR] Unterminated string literal
+
+    vite.config.ts:53:26:
+      53 │         'src/**/page.jsx',
+         ╵                           ^
+
+failed to load config from /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/vite.config.ts
+11:23:45 AM [vite] Build failed with 1 error:
+vite.config.ts:53:26: ERROR: Unterminated string literal
+11:23:45 AM [vite] server restart failed
+11:23:58 AM [vite] vite.config.ts changed, restarting server...
+✘ [ERROR] Unterminated string literal
+
+    vite.config.ts:49:26:
+      49 │         "src/**/page.jsx",
+         ╵                           ^
+
+failed to load config from /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/vite.config.ts
+11:23:58 AM [vite] Build failed with 1 error:
+vite.config.ts:49:26: ERROR: Unterminated string literal
+11:23:58 AM [vite] server restart failed
+11:23:58 AM [vite] vite.config.ts changed, restarting server...
+✘ [ERROR] Unterminated string literal
+
+    vite.config.ts:49:26:
+      49 │         "src/**/page.jsx",
+         ╵                           ^
+
+failed to load config from /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/vite.config.ts
+11:23:58 AM [vite] Build failed with 1 error:
+vite.config.ts:49:26: ERROR: Unterminated string literal
+11:23:58 AM [vite] server restart failed
+11:24:10 AM [vite] vite.config.ts changed, restarting server...
+11:24:10 AM [vite] vite.config.ts changed, restarting server...
+11:24:11 AM [vite] (client) Re-optimizing dependencies because vite config has changed
+11:24:11 AM [vite] server restarted.
+--- STARTING EVALUATION OF __create/index.ts ---
+--- __create/index.ts initialized ---
+[page.tsx] MODULE EVALUATED!
+🚧 Dev server started
+[Hono] Request started: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+11:25:41 AM [vite] (client) page reload /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api.$.tsx
+11:25:41 AM [vite] (ssr) page reload __create/route-builder.ts
+--- STARTING EVALUATION OF __create/index.ts ---
+--- __create/index.ts initialized ---
+🚧 Dev server started
+[Hono] Request started: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request started: GET /account/signin
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /logo.png
+[Hono] Request finished: GET /logo.png
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+1:49:45 PM [vite] (client) page reload /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api.$.tsx
+1:49:46 PM [vite] (ssr) page reload __create/index.ts
+--- STARTING EVALUATION OF __create/index.ts ---
+--- __create/index.ts initialized ---
+🚧 Dev server started
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for 0e66ff92-a6fc-46c7-94f9-464cf78ac918
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for 6bbfcf4b-8375-4250-8525-ad683d21aedc
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for eb0ebc3e-a217-4e87-a8ac-bb5f6e0791d0
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /logo.png
+[Hono] requestId middleware start
+[Hono] als.run start for 9ec05b2f-7bdf-451c-95b7-5efd9063adb1
+[Hono] contextStorage middleware start
+[Hono] Request finished: GET /logo.png
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for b24a2250-9ebc-49fd-9a3d-b873e1cce8ee
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for a6eb6176-6ef9-4b15-a7b9-917c414d4866
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 7d45b2c2-63c3-4f13-adc4-4ec42da19df2
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for 86932873-3910-461c-b0a4-feba28c88d21
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 03774845-9189-4f99-8d0c-25be3feba78a
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 3a9f2145-2345-4beb-96ab-67daf40fb1e6
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 06e8f5ca-1bae-419e-be4a-41dc102011cd
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[getSession] Session valid for user: admin@dutygrid.nl
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for bbf84a59-c165-4669-852d-83a33a40f45e
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for adf5715b-7008-450d-9d7e-c2d17cb6a04f
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for c9c46bf6-58da-4f4b-8cf8-2013c545726d
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 74e91c80-d758-4cc8-a267-a2c6fbed85da
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for aad4dfd1-7f0a-4765-9b77-07be491511a9
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for 02cef8a3-f931-40c1-bdd4-bee24237845a
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for f8511176-3b65-455b-b1ce-603666a4ca31
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for bd1f35a3-5684-4402-a92b-f6c45fe89909
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+1:49:59 PM [vite] (client) page reload /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api.$.tsx
+1:49:59 PM [vite] (ssr) page reload __create/index.ts
+1:49:59 PM [vite] (ssr) Error when evaluating SSR module ./__create/server.ts: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7: ERROR: Expected ";" but found ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7
+  
+  Expected ";" but found ")"
+  222|            }),
+  223|          ],
+  224|        }))
+     |         ^
+  225|    );
+  226|    console.log('[Hono] auth middleware registered');
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:49:59 PM [vite] Internal server error: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7: ERROR: Expected ";" but found ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7
+  
+  Expected ";" but found ")"
+  222|            }),
+  223|          ],
+  224|        }))
+     |         ^
+  225|    );
+  226|    console.log('[Hono] auth middleware registered');
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:49:59 PM [vite] Internal server error: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7: ERROR: Expected ";" but found ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7
+  
+  Expected ";" but found ")"
+  222|            }),
+  223|          ],
+  224|        }))
+     |         ^
+  225|    );
+  226|    console.log('[Hono] auth middleware registered');
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:49:59 PM [vite] Internal server error: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7: ERROR: Expected ";" but found ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7
+  
+  Expected ";" but found ")"
+  222|            }),
+  223|          ],
+  224|        }))
+     |         ^
+  225|    );
+  226|    console.log('[Hono] auth middleware registered');
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:49:59 PM [vite] Internal server error: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7: ERROR: Expected ";" but found ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7
+  
+  Expected ";" but found ")"
+  222|            }),
+  223|          ],
+  224|        }))
+     |         ^
+  225|    );
+  226|    console.log('[Hono] auth middleware registered');
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:49:59 PM [vite] Internal server error: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7: ERROR: Expected ";" but found ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7
+  
+  Expected ";" but found ")"
+  222|            }),
+  223|          ],
+  224|        }))
+     |         ^
+  225|    );
+  226|    console.log('[Hono] auth middleware registered');
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:49:59 PM [vite] Internal server error: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7: ERROR: Expected ";" but found ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:224:7
+  
+  Expected ";" but found ")"
+  222|            }),
+  223|          ],
+  224|        }))
+     |         ^
+  225|    );
+  226|    console.log('[Hono] auth middleware registered');
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:50:22 PM [vite] (client) page reload /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api.$.tsx
+1:50:22 PM [vite] (ssr) page reload __create/index.ts
+1:50:22 PM [vite] (ssr) Error when evaluating SSR module ./__create/server.ts: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2: ERROR: Unexpected ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2
+  
+  Unexpected ")"
+  353|                  })(c, next);
+  354|                }
+  355|    );
+     |    ^
+  356|          console.log('[Hono] auth middleware registered');
+  357|        }
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:50:22 PM [vite] Internal server error: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2: ERROR: Unexpected ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2
+  
+  Unexpected ")"
+  353|                  })(c, next);
+  354|                }
+  355|    );
+     |    ^
+  356|          console.log('[Hono] auth middleware registered');
+  357|        }
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:50:22 PM [vite] Internal server error: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2: ERROR: Unexpected ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2
+  
+  Unexpected ")"
+  353|                  })(c, next);
+  354|                }
+  355|    );
+     |    ^
+  356|          console.log('[Hono] auth middleware registered');
+  357|        }
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:50:22 PM [vite] Internal server error: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2: ERROR: Unexpected ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2
+  
+  Unexpected ")"
+  353|                  })(c, next);
+  354|                }
+  355|    );
+     |    ^
+  356|          console.log('[Hono] auth middleware registered');
+  357|        }
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:50:22 PM [vite] Internal server error: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2: ERROR: Unexpected ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2
+  
+  Unexpected ")"
+  353|                  })(c, next);
+  354|                }
+  355|    );
+     |    ^
+  356|          console.log('[Hono] auth middleware registered');
+  357|        }
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:50:22 PM [vite] Internal server error: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2: ERROR: Unexpected ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2
+  
+  Unexpected ")"
+  353|                  })(c, next);
+  354|                }
+  355|    );
+     |    ^
+  356|          console.log('[Hono] auth middleware registered');
+  357|        }
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:50:22 PM [vite] Internal server error: Transform failed with 1 error:
+/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2: ERROR: Unexpected ")"
+  Plugin: vite:esbuild
+  File: /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/__create/index.ts:355:2
+  
+  Unexpected ")"
+  353|                  })(c, next);
+  354|                }
+  355|    );
+     |    ^
+  356|          console.log('[Hono] auth middleware registered');
+  357|        }
+  
+      at failureErrorWithLog (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:1467:15)
+      at /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:736:50
+      at responseCallbacks.<computed> (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:603:9)
+      at handleIncomingPacket (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:658:12)
+      at Socket.readFromStdout (/Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/node_modules/esbuild/lib/main.js:581:7)
+      at Socket.emit (node:events:518:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Socket.Readable.push (node:internal/streams/readable:392:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+      at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+1:50:47 PM [vite] (client) page reload /Users/roland/.gemini/antigravity/playground/Eigen Projecten /DutyGrid/anything/apps/web/src/app/api.$.tsx
+1:50:47 PM [vite] (ssr) page reload __create/index.ts
+--- STARTING EVALUATION OF __create/index.ts ---
+--- __create/index.ts initialized ---
+[Hono] auth middleware registered
+🚧 Dev server started
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for a3039880-4d69-4e34-86fe-9b9e069e7a82
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for 597761c3-c410-4720-a009-1ec6bdd45ddb
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for 78c9251a-35a7-4be3-b02a-4069fa757c96
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 023f1f5a-0737-4a19-9ca0-5c7f51995b06
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 05542d59-1a78-4015-8787-f7d98e410fff
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for b47ad855-3170-4096-b534-7565726c490d
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for 05b51890-a3e6-4061-a0c1-6391a7ac15ac
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for f54e669f-cef6-44f5-8d2d-cb8aa3da896e
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for ff3449cc-31df-4e33-88b5-dd0b2bd29a06
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for e6c6cb39-ffd9-4fd4-8786-9185017a2e07
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[getSession] Session valid for user: admin@dutygrid.nl
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for d82563bb-85b9-4fb2-a3fe-8e99929c2d2e
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for 42f4c6fc-7790-4349-84f1-899d3f64a09b
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 8a53ebea-e255-4019-a459-99943b33472f
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 87477293-85d4-4bcc-9c51-1bc73e0eeffe
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for 6ef666bf-3426-4ca5-96cd-ed085c4b8b05
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for b6d4a2d4-4691-4ec6-a2c8-efda6e532d3f
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for 0cba8c8f-11e2-449b-9476-b343f6730054
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for ce429e13-2d9f-4bab-82e8-6ff16e8ac910
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for 2def59cf-53f3-4426-ba02-2da2752df58f
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for f6dd4834-afc4-4dbb-9eb7-f76127da73e4
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 6b33fe96-fd55-49f2-922a-cddf2a7ad0cb
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for ead18fb9-89a1-452a-a5fa-be468072ef8d
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for 0513bd26-c47e-4d7a-a703-c4d9ffcf4286
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[getSession] Session valid for user: admin@dutygrid.nl
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+[Hono] Request started: GET /api/user-role
+[Hono] requestId middleware start
+[Hono] als.run start for 7f0eb775-9ba8-4705-bca1-4d84365110d0
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/user-role
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/user-role
+[Hono] Request finished: GET /api/user-role
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 85de351b-a1c2-4f05-a628-e774f7b4a310
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for cdbf8ce9-5e62-4c09-8d35-7cc17f0d4f69
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 8ad248c9-b8a1-4e1c-b2bc-12fe364d9318
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 87986a85-8f8b-4214-af48-db6ccf4edc93
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 62b5aa7e-f46f-42dd-b7ac-8f74e5dd694b
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for e7dc2bf5-9e62-45cb-8f52-b5ee5bad6662
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 752d5630-57ca-41fd-a689-26701856c5ca
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for b8c1da6d-c3dc-4a1e-9a4a-ddec669fc34c
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 5f162781-b346-40bf-b8de-035b2d4c677c
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for a1b62e24-0f79-437b-a700-694172826bc9
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 862d0500-fce6-4a19-954d-759fdf6408f1
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 0e68e376-9c22-4ee1-bc8b-eef614d0df2c
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 4ac1556f-0b60-4336-bdfa-2b8c2ae236c0
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for a9c77f46-e5d1-439a-9e8d-87c5cff381f3
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for adc6b2f9-eac6-43aa-afa9-56b32aa58441
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 8c5a8860-6af0-4dbb-bfde-04a082846b48
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 9be12c72-1af6-4d77-803b-00197c2ee282
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 4a29babe-b3b1-4e77-8cac-453c6d2ba934
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 7d7d65d5-1ae7-47ad-b4f2-d9246d99802a
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 3da73d14-c14e-48a9-b75a-8ab87a0ee01e
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for ba2258d7-0110-4bec-b70d-31ab82843a4d
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 8bb6ef80-88b8-4810-8585-cf2ecc80a99f
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 06c09ff8-4eec-42d5-8a2d-ff6efb0a8e06
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for a5ba962f-8902-44d9-995c-732109947ac4
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for b2d84498-900a-407c-950c-7b9b5e0ab5d5
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 7814a638-8485-4792-9065-43a236b4f7ce
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for ecf7bf9e-5f78-4ea4-8c88-1b50371459ed
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 544418c2-0ad7-4174-91a3-58a10583de46
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 1c0c7a4b-587a-43a0-a485-86e4410328c4
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 6fe0060f-ad5d-4a39-b340-552b8403e196
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for e749a47e-27d7-402f-98e8-07d40689d474
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for c2ecbc96-3e84-495e-9b7a-535a87368e7d
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for fb717bc3-76db-49d3-8b01-5c96407c020d
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 97ac2994-8941-4fbe-87e3-cad1b4d218e0
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for b05641d3-1ab0-433f-9bcd-35b90e337b23
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for f6d0d81b-277d-450e-8458-7666c74da2a0
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 8162ad71-3a20-4d69-bc34-903abfa0a8d0
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 2dc10a31-a2a0-4c2b-b0f3-dbad211d5244
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 41d96741-b4be-4d86-a32b-be878382db7f
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for a06f7bf4-d246-46d2-aaf6-79679a724a52
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for a31e3536-148a-42fb-acf2-c5d300c61971
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 9925f971-2f0f-4e53-ad31-0a8c445ab420
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 50954740-5e68-43b4-951e-edb0a9574876
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 8efabe31-c83d-4193-baa9-7e36405a7096
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 12fab220-45e9-4011-a31d-ccdd61c5f070
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for b257a3b9-3547-4cd5-9a56-d21b35083aa4
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 7dad5b53-61fb-46e0-beb0-2a46dff9f072
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for e804abb3-aa0a-45c8-b764-33197ba49d1f
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 8fb7d021-1b0c-4905-a7fd-068da174ccc2
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for c6a0b751-96f2-4fbe-a35d-f357a5d574d5
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 7c22a099-02f2-4e2e-ad90-13d8f34a482b
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for ab42c39d-9d46-41e6-8b23-7502852edec1
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 09117c8a-04ea-42fa-ae81-e224084e7b96
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 812bea74-73a5-47a4-9b44-5157691bc7d8
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 3b2faa34-7214-437d-b5ba-d4f3de821c63
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for bfef915a-d092-40a7-8f75-c23caee7edc9
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 642750f2-0640-48d4-8dcc-0f57da3823fb
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for c43338eb-a9da-4438-92ee-7259f5ba1a33
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for c4616e0a-1224-4341-957e-b6fdb015af63
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 54ab335a-5dd0-4661-8527-54162c2e6bd6
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 0c0ce735-3354-4cfc-be97-b3d594d31a9b
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for d042e75f-a223-410c-a816-3a62b9c0d220
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 0f138ea9-8f3c-4f5f-a8ef-fb8b3008afaa
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 5d5ab639-89bc-43a5-89a3-d8a8fc2e849f
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] requestId middleware start
+[Hono] als.run start for d31b817c-66d8-4e7f-bdcc-e2679870b82e
+[Hono] contextStorage middleware start
+[Route Builder] Handling POST /api/custom-auth/login
+[Login API] POST request received
+[Login API] Request body: {"email":"planner@dutygrid.nlplanner@dutygrid.nl","password":"password","rememberMe":false}
+[Route Builder] Handler success for /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 02f91d03-9091-4630-bef8-817c778fdf31
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 5d9cbf37-7482-480d-aeb7-c368499156db
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 98839492-489f-4753-9ca2-384bcc012a93
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 16f84737-24fb-41b0-a185-3a36416d1364
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] requestId middleware start
+[Hono] als.run start for e68d7238-4c3d-4af9-b69d-e7e54f759be9
+[Hono] contextStorage middleware start
+[Route Builder] Handling POST /api/custom-auth/login
+[Login API] POST request received
+[Login API] Request body: {"email":"planner@dutygrid.nlplanner@dutygrid.nl","password":"password","rememberMe":false}
+[Route Builder] Handler success for /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 03d1ee96-c37a-484c-bbb3-529834ebcd0b
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for f60c98cb-89a9-412d-a58b-1b252060bd53
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 9e845ab9-5b99-4844-8f6f-1c186025daa1
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for a3af7a59-3e08-41b2-8a43-ddfd9606776d
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 7e9e404c-a35c-4e62-a0a4-31f7b7d64a87
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 0f077949-733c-4da1-9fec-9c3e4d84defb
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 770f57ff-4772-4f0d-8726-83058994bbc3
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 52f9ab60-a37b-4dc1-b42e-f489ca60b3fe
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 7dd0dcba-4b0d-481d-9322-37817f3110e1
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 3dea4515-b259-4952-9daa-c86c0919a6ff
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 6fa57926-7ac9-4307-a7e3-c611313d76eb
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 0cd127d8-62c9-4156-bab6-1f01efe550ed
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 84da7608-5c3e-4991-8e43-5baed3958480
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for a4a8e0ec-4f72-417b-a4e4-5e426058d3a6
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 391235f0-1cb5-42fa-96dd-264e8a29b098
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 24ac6ac4-9b13-4322-bede-5f762734e2e6
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 5b27b9d0-5225-413d-ad76-b945880f2fa5
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 6ba7392f-b10b-411d-9666-dd6a074d59d1
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for d466557b-ea7e-44b5-b340-eea483e288cd
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 4328ccc5-b03d-44ad-a9ba-9f33ebc72514
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for e55b46e7-de53-433f-9553-a52a1dfa19c5
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 19e5b8fd-5a01-421f-9a97-967019ee2f5b
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for ae3cc398-8ee7-493a-b0d8-b6ce1e171c4b
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 87d41ea9-2f27-47cd-b4b9-c34775b75d71
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for f2e98e1d-09e6-4e7f-a7bc-e8842ab81653
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for d542aa43-ef01-4869-8b56-37fef57f6e5b
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 007bb5fd-a3c1-4516-8a69-6067663b0de2
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for f2565a3f-973a-4504-ab75-46a5b572aa7d
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 5bd986b8-764f-450a-b2b9-8e7cbca96ff7
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 3a78a7eb-2c86-4a0d-a274-a00b1343191c
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 8c6169db-b119-48ff-a28f-14d20231f889
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 35f0a0dd-cd8b-478a-8261-e3c957c20c49
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 5190252d-78ae-43e6-8f43-1362e6ebcc3d
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 662a87de-efa3-461e-935a-6ef173a26e79
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for e3caa469-4488-46f6-b81d-ead3fd7b4787
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 9ade2800-f996-45b2-85c2-6b591b26b3c7
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 6b42e9e5-742f-4d87-a1cf-5c68b8a2f567
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 6ff0ca4d-c0c5-42df-b4cd-240bfcb39a3d
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 9df82531-e55e-46b8-8da5-2d30a3843176
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 86a381bc-dd57-43b3-a7f0-a29ce433c730
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 7a7e7072-8dff-4f6b-86dd-b38e346de57e
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 4db15deb-eb51-4e4b-9d09-aa473b3274b3
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for c63f0f5f-9fc2-4884-888b-96118db5b0fa
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 0e1faede-0480-4b23-bb73-bd757f5b1fbb
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 95a30b9a-c097-4019-9dfb-c88a071d5822
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 35601629-b90c-44db-ad70-77363820c49b
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 7f9ccb61-d61e-4bd2-8867-0e8ac7f21b75
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 100
+[getSession] Session token found: true
+[getSession] Session valid for user: admin@dutygrid.nl
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: POST /api/custom-auth/logout
+[Hono] requestId middleware start
+[Hono] als.run start for 41a56738-cc73-499a-b273-80d12892d573
+[Hono] contextStorage middleware start
+[Route Builder] Handling POST /api/custom-auth/logout
+[Hono] Request started: POST /api/custom-auth/logout
+[Hono] requestId middleware start
+[Hono] als.run start for dff94bb9-3aa7-43ea-99d3-3ca393338ff2
+[Hono] contextStorage middleware start
+[Route Builder] Handling POST /api/custom-auth/logout
+[Route Builder] Handler success for /api/custom-auth/logout
+[Hono] Request finished: POST /api/custom-auth/logout
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for 96d928b2-77c2-4215-bc20-b915f5979862
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: POST /api/custom-auth/logout
+[Hono] requestId middleware start
+[Hono] als.run start for 12f82957-2733-4a05-bb1b-5308dbb0dd35
+[Hono] contextStorage middleware start
+[Route Builder] Handling POST /api/custom-auth/logout
+[Route Builder] Handler success for /api/custom-auth/logout
+[Hono] Request finished: POST /api/custom-auth/logout
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for 6a44dd01-3d45-4003-acd4-3d75055db211
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Route Builder] Handler success for /api/custom-auth/logout
+[Hono] Request finished: POST /api/custom-auth/logout
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for b35acb79-5d0d-44f5-a5e3-dd0af9e10634
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 433c1afc-8cd3-4612-91d8-b64ee6dc8d1c
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 7c3e9431-221c-4e8e-b934-72eed79cb3ad
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 3b9a32a2-30ba-4b83-971b-7ad5e02bd769
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 15b18060-ef61-42d3-b5bd-f1eaec6c18e6
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for eef802cb-14d7-46ad-a335-828175d54717
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 6fafd632-ac0f-4c95-9b51-75f91b2959b6
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for b936e052-4d19-4d9b-80fb-647224d4b32c
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 3d9bdb49-a4d7-4b06-944e-15f84f1b19b1
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for d3ae24ac-a6a1-4593-98eb-707d04b27ab6
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 24a8cd0c-dce9-4d85-8602-183c49d50a49
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 40e9943f-9e03-49a0-ad04-ae977d2efef4
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for cd877876-1b82-4da1-84d6-ffda9bc4982b
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for e2f83826-61cf-4b8a-89e1-6a966cace82b
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 75b57958-1508-4060-86cd-aa73ef4e0d89
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 081500db-d39f-4f90-bd63-19fb47fa784a
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 1d55eea7-2f89-4a56-8327-15dee60bb8cd
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 24e5d842-e888-4e54-8845-90736d8bb07b
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 652285cf-f518-463a-8079-d0ebe535980a
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for bdcfcda6-aa3e-45f2-9b20-493446594683
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 0cda9159-35c2-4bf2-bc2e-bf40432a2de3
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 29a031d9-1561-41c8-aa36-066b04b66587
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for c034c97f-ca45-486f-82eb-2208852b8fff
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 50cfba7f-b99b-407e-a978-2a099b1d6f62
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 18019fb3-67db-4a46-b58d-ff5206de7bdf
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: GET /api/notifications/unread-count
+[Hono] requestId middleware start
+[Hono] als.run start for 2900c7bf-9779-4fd1-ac20-e90025247e4f
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/notifications/unread-count
+[getSession] Cookie header present: true Length: 45
+[getSession] Session token found: false
+[getSession] No session cookie found in header
+[Route Builder] Handler success for /api/notifications/unread-count
+[Hono] Request finished: GET /api/notifications/unread-count
+[Hono] Request started: POST /api/custom-auth/logout
+[Hono] requestId middleware start
+[Hono] als.run start for 1203074b-f09f-47dd-aa76-27db467da201
+[Hono] contextStorage middleware start
+[Route Builder] Handling POST /api/custom-auth/logout
+[Route Builder] Handler success for /api/custom-auth/logout
+[Hono] Request finished: POST /api/custom-auth/logout
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for 18cc321a-5083-41b8-891a-40644964ce48
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 152acd01-7ec1-4b6b-bb3d-e051812c1518
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for d53d4cde-e1ed-4536-8c8b-02f8f0fbcb2e
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] requestId middleware start
+[Hono] als.run start for d4078136-c7d9-4382-bbf2-6eced954dab8
+[Hono] contextStorage middleware start
+[Route Builder] Handling POST /api/custom-auth/login
+[Login API] POST request received
+[Login API] Request body: {"email":"planner@dutygrid.nl","password":"password","rememberMe":false}
+[Route Builder] Handler success for /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for 3a8e5518-0312-435f-b91c-f0a9eabe4d8a
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 3deb5ea1-adbc-4c75-b5ac-697ce583689b
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 073e2c14-4133-4eec-8cb8-5a68b5779d52
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] requestId middleware start
+[Hono] als.run start for 667744ba-9a99-400e-878d-b16292ac686f
+[Hono] contextStorage middleware start
+[Route Builder] Handling POST /api/custom-auth/login
+[Login API] POST request received
+[Login API] Request body: {"email":"planner@dutygrid.nl","password":"passwordpassword","rememberMe":false}
+[Route Builder] Handler success for /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] requestId middleware start
+[Hono] als.run start for c87ac09d-3ac9-4c16-b41b-c7c574247644
+[Hono] contextStorage middleware start
+[Route Builder] Handling POST /api/custom-auth/login
+[Login API] POST request received
+[Login API] Request body: {"email":"planner@dutygrid.nl","password":"password"}
+[Route Builder] Handler success for /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] requestId middleware start
+[Hono] als.run start for c3c44646-4b86-4597-97c6-37bc0f416113
+[Hono] contextStorage middleware start
+[Route Builder] Handling POST /api/custom-auth/login
+[Login API] POST request received
+[Login API] Request body: {"email":"planner@dutygrid.nl","password":"password"}
+[Route Builder] Handler success for /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request started: GET /planning
+[Hono] requestId middleware start
+[Hono] als.run start for ebea8e72-8ac0-4825-bb6a-1e81b0a0e7ae
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /planning
+[Hono] Request finished: GET /planning
+[Hono] Request started: GET /api/system-settings
+[Hono] requestId middleware start
+[Hono] als.run start for fc61cbc7-acc2-4e88-bfaf-1528b9aac036
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/system-settings
+[getSession] Cookie header present: false Length: undefined
+[getSession] No cookie header found
+[Route Builder] Handler success for /api/system-settings
+[Hono] Request finished: GET /api/system-settings
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for b2c73686-deb6-4bcf-a38b-2987a740b288
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for d191a342-a7b0-4441-8713-6ef383f5e04f
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for 9f7c4348-802c-4df0-b71b-9c9455cfe263
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /logo.png
+[Hono] requestId middleware start
+[Hono] als.run start for 24516713-f123-4ded-b605-4164fa3c22a8
+[Hono] contextStorage middleware start
+[Hono] Request finished: GET /logo.png
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for a89e2a6d-6e35-498c-a1f5-916e6a1ccb56
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 541ac92e-bd73-49c1-8156-269eebb937ba
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for 345eac75-c051-48fa-960c-6178d4429033
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /logo.png
+[Hono] requestId middleware start
+[Hono] als.run start for 54c91df4-acda-403f-88bf-0d73742ccb1e
+[Hono] contextStorage middleware start
+[Hono] Request finished: GET /logo.png
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 7d2230b0-34e5-4e0f-8cdc-5fc3b93b7943
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 4cd9a827-906b-4a74-9f15-ccb8113a964c
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for ab7ff586-c176-422f-a7f4-4db01d9dc665
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 50184dcb-cb49-4930-a130-1ed4e99ba045
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 069b8a88-f893-4b9d-94b8-8a275a804219
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] requestId middleware start
+[Hono] als.run start for 32a34ad0-6dac-462e-b4eb-7e1efc733261
+[Hono] contextStorage middleware start
+[Route Builder] Handling POST /api/custom-auth/login
+[Login API] POST request received
+[Login API] Request body: {"email":"planner@dutygrid.nlplanner@dutygrid.nl","password":"password","rememberMe":false}
+[Route Builder] Handler success for /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] requestId middleware start
+[Hono] als.run start for 7a487c6f-5e3d-47cf-a296-106d57531355
+[Hono] contextStorage middleware start
+[Route Builder] Handling POST /api/custom-auth/login
+[Login API] POST request received
+[Login API] Request body: {"email":"planner@dutygrid.nlplanner@dutygrid.nl","password":"password","rememberMe":false}
+[Route Builder] Handler success for /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request started: POST /api/custom-auth/login
+[Hono] requestId middleware start
+[Hono] als.run start for f4574c0d-b192-4437-a4b5-93fd847e4896
+[Hono] contextStorage middleware start
+[Route Builder] Handling POST /api/custom-auth/login
+[Login API] POST request received
+[Login API] Request body: {"email":"planner@dutygrid.nl","password":"password","rememberMe":false}
+[Route Builder] Handler success for /api/custom-auth/login
+[Hono] Request finished: POST /api/custom-auth/login
+[Hono] Request started: GET /api/custom-auth/login
+[Hono] requestId middleware start
+[Hono] als.run start for ba917b09-ad50-46a9-bf45-1ffa01c961b7
+[Hono] contextStorage middleware start
+!!! API LOADER CALLED: http://localhost:5005/api/custom-auth/login
+[Hono] Request started: GET /api/custom-auth/login
+[Hono] requestId middleware start
+[Hono] als.run start for 5345c6f8-796f-4662-a541-7b391e3994b1
+[Hono] contextStorage middleware start
+[Hono] Global Error Handler: TypeError: Cannot set properties of undefined (setting 'server')
+    at eval (eval at runInlinedModule (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:77:18)
+    at dispatch (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:22:23)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:22:46
+    at eval (eval at runInlinedModule (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:156:12)
+    at dispatch (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:22:23)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:22:46
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at contextStorage2 (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/middleware/context-storage/index.js:6:29)
+    at eval (eval at runInlinedModule (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:49:52)
+    at dispatch (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:22:23)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:22:46
+    at eval (eval at runInlinedModule (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:44:12)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at eval (eval at runInlinedModule (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:43:14)
+    at dispatch (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:22:23)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:22:46
+    at requestId2 (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/middleware/request-id/request-id.js:16:11)
+    at eval (eval at runInlinedModule (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:38:48)
+    at dispatch (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:22:23)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:22:46
+    at eval (eval at runInlinedModule (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:33:9)
+    at dispatch (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:22:23)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:5:12
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/hono-base.js:301:31
+    at Hono.#dispatch (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/hono-base.js:311:7)
+    at Hono.fetch (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/hono-base.js:325:26)
+    at loader (eval at runInlinedModule (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:11:36)
+    at callRouteHandler (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-4LKRSAEJ.mjs:509:22)
+    at commonRoute.loader (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-4LKRSAEJ.mjs:659:25)
+    at actualHandler (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-JZWAC4HX.mjs:4744:14)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-JZWAC4HX.mjs:4756:91
+    at runHandler (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-JZWAC4HX.mjs:4761:7)
+    at callLoaderOrAction (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-JZWAC4HX.mjs:4808:22)
+    at Object.resolve (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-JZWAC4HX.mjs:4628:16)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-JZWAC4HX.mjs:4433:62
+    at Array.map (<anonymous>)
+    at defaultDataStrategy (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-JZWAC4HX.mjs:4433:49)
+    at callDataStrategyImpl (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-JZWAC4HX.mjs:4702:23)
+    at callDataStrategy (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-JZWAC4HX.mjs:3742:25)
+    at loadRouteData (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-JZWAC4HX.mjs:3719:25)
+    at queryImpl (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-JZWAC4HX.mjs:3494:26)
+    at Object.queryRoute (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-JZWAC4HX.mjs:3445:24)
+    at handleResourceRequest (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-4LKRSAEJ.mjs:1545:38)
+    at requestHandler (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-4LKRSAEJ.mjs:1254:24)
+    at requestHandler (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/apps/web/node_modules/react-router/dist/development/chunk-4LKRSAEJ.mjs:1330:12)
+    at eval (eval at runInlinedModule (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:80:14)
+    at eval (eval at runInlinedModule (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:81:7)
+    at dispatch (file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:22:23)
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/hono/dist/compose.js:22:46
+    at file:///Users/roland/.gemini/antigravity/playground/Eigen%20Projecten%20/DutyGrid/anything/node_modules/@hono/node-server/dist/serve-static.mjs:99:14
+[Hono] Request finished: GET /api/custom-auth/login
+[Hono] Request finished: GET /api/custom-auth/login
+[Hono] Request started: GET /favicon.ico
+[Hono] requestId middleware start
+[Hono] als.run start for cd1c6997-25b0-46a2-8c95-53046d207105
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /favicon.ico
+[Hono] Request finished: GET /favicon.ico
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for d2600393-254e-44e1-9e77-b2f6822e3cd3
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /logo.png
+[Hono] requestId middleware start
+[Hono] als.run start for f90f2b86-3c09-44d6-848e-759555d7e125
+[Hono] contextStorage middleware start
+[Hono] Request finished: GET /logo.png
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 9ef42285-e1a6-40dc-8b80-9287c50f9d99
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for ffc54442-7f32-4c5b-b126-2708058771bd
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for 4a70365b-373d-4e69-af04-67547e04fb07
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for c3d5edf4-db5f-4e9a-a0c4-832220e0f19a
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for 33182b41-fa40-427a-946b-bae40ac46e9a
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /account/signin
+[Hono] requestId middleware start
+[Hono] als.run start for 8895a322-2ef0-441c-a995-38de3d383fa7
+[Hono] contextStorage middleware start
+[root.tsx] Layout rendered
+[root.tsx] App Component rendered! Outlet follows. Location: /account/signin
+[Hono] Request finished: GET /account/signin
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for a4e68b74-ca2d-4416-b35c-b0ca7ec76d85
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session
+[Hono] Request started: GET /api/custom-auth/session
+[Hono] requestId middleware start
+[Hono] als.run start for ea87db4c-645f-430f-a35c-0a22abbe9edf
+[Hono] contextStorage middleware start
+[Route Builder] Handling GET /api/custom-auth/session
+[Route Builder] Handler success for /api/custom-auth/session
+[Hono] Request finished: GET /api/custom-auth/session

@@ -1,7 +1,6 @@
 import { Hono } from 'hono';
-import type { Handler } from 'hono/types';
-import updatedFetch from '../src/__create/fetch';
-import { API_BASENAME } from './route-builder';
+import type { Handler } from 'hono/types';import updatedFetch from '../src/__create/fetch';
+// import { API_BASENAME } from './route-builder'; // REMOVED CIRCULAR IMPORT
 
 // Re-export const locally for consistency
 const API_BASENAME_LOCAL = '/api';
@@ -124,10 +123,19 @@ async function registerRoutes() {
         if (route[method]) {
           const honoPath = getHonoPath(filePath);
           const handler: Handler = async (c) => {
+            console.log(`[Route Builder] Handling ${c.req.method} ${c.req.path}`);
             const params = c.req.param();
-            return await route[method](c.req.raw, { params });
+            try {
+              const result = await route[method](c.req.raw, { params });
+              console.log(`[Route Builder] Handler success for ${c.req.path}`);
+              return result;
+            } catch (err: any) {
+              console.error(`[Route Builder] Handler error for ${c.req.path}:`, err);
+              throw err;
+            }
           };
           const methodLower = method.toLowerCase();
+          console.log(`[Route Builder] Registering ${method} ${honoPath}`);
           switch (methodLower) {
             case 'get': api.get(honoPath, handler); break;
             case 'post': api.post(honoPath, handler); break;
@@ -145,36 +153,5 @@ async function registerRoutes() {
   registered = true;
 }
 
-if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
-  await registerRoutes();
-} else {
-  // Execute registration lazily on first request in dev
-  api.use('*', async (c, next) => {
-    if (!registered) {
-      await registerRoutes();
-    }
-    // Note: the very first request in dev might still 404 due to Hono radix compilation lock, 
-    // but subsequent requests usually work in dev, or dev doesn't use static compilation strictly.
-    return next();
-  });
-}
-
-api.get('/debug-routes', (c) => {
-  return c.json({
-    routes: Object.keys(routeModules),
-    failed: failedImports,
-    exports: moduleExports,
-    registered: registered
-  });
-});
-
-
-// HMR logic for Dev (optional, Vite handles basic module reloading)
-// if (import.meta.env.DEV && import.meta.hot) {
-//   import.meta.hot.accept((newModule) => {
-//     // Simple reload logic if needed
-//     // Since we await at top level, full reload might happen anyway, which is fine.
-//   });
-// }
-
-export { api, API_BASENAME_LOCAL as API_BASENAME };
+// Export for index.ts to call
+export { api, API_BASENAME_LOCAL as API_BASENAME, registerRoutes };

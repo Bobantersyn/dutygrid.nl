@@ -63,6 +63,13 @@ export function SecurityGuardWeekView({ employeeId }: { employeeId: string | num
                 </a>
               )}
               <a
+                href="/beschikbaarheid/verlof"
+                className="px-3 sm:px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors flex items-center gap-2"
+              >
+                <CalendarClock size={20} />
+                <span className="hidden sm:inline">Verlof & Ziekte</span>
+              </a>
+              <a
                 href="/diensten-ruilen"
                 className="px-3 sm:px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors flex items-center gap-2"
               >
@@ -87,13 +94,13 @@ export function SecurityGuardWeekView({ employeeId }: { employeeId: string | num
 
       {/* Security Guard Actions */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {canManageAvailability && (
             <a
               href="/beschikbaarheid"
               className="group p-6 bg-white border border-gray-200 rounded-xl hover:shadow-md transition-shadow flex items-center gap-6"
             >
-              <div className="p-4 bg-purple-100 text-purple-600 rounded-full group-hover:scale-110 transition-transform">
+              <div className="p-4 bg-purple-100 text-purple-600 rounded-full group-hover:scale-110 transition-transform flex-shrink-0">
                 <CalendarClock size={32} />
               </div>
               <div>
@@ -101,17 +108,34 @@ export function SecurityGuardWeekView({ employeeId }: { employeeId: string | num
                   Mijn Beschikbaarheid
                 </h3>
                 <p className="text-gray-600">
-                  Geef je vaste weekpatroon en vakanties door
+                  Geef je vaste weekpatroon door
                 </p>
               </div>
             </a>
           )}
 
           <a
+            href="/beschikbaarheid/verlof"
+            className="group p-6 bg-white border border-gray-200 rounded-xl hover:shadow-md transition-shadow flex items-center gap-6"
+          >
+            <div className="p-4 bg-orange-100 text-orange-600 rounded-full group-hover:scale-110 transition-transform flex-shrink-0">
+              <CalendarClock size={32} />
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                Verlof & Ziekte
+              </h3>
+              <p className="text-gray-600">
+                Vraag verlof aan of meld je ziek
+              </p>
+            </div>
+          </a>
+
+          <a
             href="/diensten-ruilen"
             className="group p-6 bg-white border border-gray-200 rounded-xl hover:shadow-md transition-shadow flex items-center gap-6"
           >
-            <div className="p-4 bg-cyan-100 text-cyan-600 rounded-full group-hover:scale-110 transition-transform">
+            <div className="p-4 bg-cyan-100 text-cyan-600 rounded-full group-hover:scale-110 transition-transform flex-shrink-0">
               <ArrowLeftRight size={32} />
             </div>
             <div>

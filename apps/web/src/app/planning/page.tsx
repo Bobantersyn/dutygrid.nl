@@ -183,6 +183,7 @@ export default function PlanningPage() {
               onToggleCollapse={() => setIsCollapsed(!isCollapsed)}
               onOpenAvailabilityStatus={() => setShowAvailabilityStatus(true)}
               onOpenMobileFilters={() => setIsMobileFiltersOpen(true)}
+              isPlannerOrAdmin={isPlannerOrAdmin}
             />
 
             {!isCollapsed && (

@@ -35,6 +35,7 @@ export async function POST(request) {
             return Response.json({ error: 'Invalid email or password' }, { status: 401 });
         }
 
+        console.log('[Login API] Creating JWT and Session...');
         // Duration logic
         // If rememberMe: 30 days. Else: 1 day.
         const durationSeconds = rememberMe ? 30 * 24 * 60 * 60 : 24 * 60 * 60;

@@ -134,6 +134,19 @@ export default function MobileLaunchpad() {
                             </div>
                         </a>
 
+                        <a
+                            href="/beschikbaarheid/verlof"
+                            className="flex flex-col justify-between p-4 bg-white rounded-2xl shadow-sm border border-gray-100 aspect-square group active:scale-95 transition-all"
+                        >
+                            <div className="w-10 h-10 bg-orange-50 rounded-full flex items-center justify-center mb-4">
+                                <CalendarClock size={20} className="text-orange-600" />
+                            </div>
+                            <div>
+                                <h3 className="font-semibold text-gray-900">Verlof</h3>
+                                <p className="text-xs text-gray-500 mt-1">Aanvragen & Ziekte</p>
+                            </div>
+                        </a>
+
                         {/* FeatureGated Incidenten */}
                         <FeatureGate
                             feature="incident_reporting"

@@ -54,7 +54,9 @@ export function restart(options: VitePluginRestartOptions = {}): Plugin {
 		name: `vite-plugin-restart:${i++}`,
 		apply: 'serve',
 		config(c) {
-			if (!enableGlob) return;
+			if (!enableGlob || !c) return;
+			console.log('!!! RESTART PLUGIN CONFIG CALLED !!!');
+			console.log(new Error().stack);
 			if (!c.server) c.server = {};
 			if (!c.server.watch) c.server.watch = {};
 		},

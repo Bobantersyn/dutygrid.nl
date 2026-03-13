@@ -9,7 +9,7 @@ export async function GET(request) {
     }
 
     const rows =
-      await sql`SELECT role, employee_id FROM user_roles WHERE user_id = ${session.user.id} LIMIT 1`;
+      await sql`SELECT role, employee_id FROM user_roles WHERE user_id = ${session.user.id}::text LIMIT 1`;
 
     if (rows.length === 0) {
       return Response.json({ role: null, employee_id: null });

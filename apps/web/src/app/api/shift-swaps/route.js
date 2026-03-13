@@ -53,7 +53,7 @@ export async function GET(request) {
     if (status) filtered = filtered.filter(row => row.status === status);
     if (employeeId) filtered = filtered.filter(row => row.requesting_employee_id == employeeId || row.target_employee_id == employeeId);
 
-    return Response.json(filtered);
+    return Response.json({ swaps: filtered });
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
   }

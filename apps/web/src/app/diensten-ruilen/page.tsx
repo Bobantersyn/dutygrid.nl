@@ -45,7 +45,7 @@ export default function DienstenRuilenPage() {
         <h2 className="text-xl font-semibold mb-4">Mijn Komende Diensten</h2>
         {loadingShifts ? <p>Laden...</p> : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {myShifts?.map(shift => (
+            {myShifts?.shifts?.map(shift => (
               <div key={shift.id} className="p-4 bg-white border rounded-lg shadow-sm">
                 <div className="flex justify-between items-start mb-2">
                   <span className="font-bold">{new Date(shift.shift_date).toLocaleDateString()}</span>
@@ -72,7 +72,7 @@ export default function DienstenRuilenPage() {
         <h2 className="text-xl font-semibold mb-4">Status Aanvragen</h2>
         {loadingRequests ? <p>Laden...</p> : (
           <div className="space-y-3">
-            {myRequests?.map(req => (
+            {myRequests?.swaps?.map(req => (
               <div key={req.id} className="flex justify-between items-center p-4 bg-gray-50 border rounded-lg">
                 <div>
                   <p className="font-medium">{new Date(req.shift_date).toLocaleDateString()} - {req.location_name}</p>
@@ -88,7 +88,7 @@ export default function DienstenRuilenPage() {
                 </div>
               </div>
             ))}
-            {myRequests?.length === 0 && <p className="text-gray-500 italic">Nog geen aanvragen ingediend.</p>}
+            {myRequests?.swaps?.length === 0 && <p className="text-gray-500 italic">Nog geen aanvragen ingediend.</p>}
           </div>
         )}
       </section>
